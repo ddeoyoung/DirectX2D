@@ -165,7 +165,7 @@ void ContentsCore::Update(float _Delta)
 			}
 			Polygon(DC, &Tri[0], Tri.size());
 		}
-
+		
 
 		GameEngineCore::MainWindow.DoubleBuffering();
 	}
