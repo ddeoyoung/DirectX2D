@@ -2,6 +2,11 @@
 #include "GameEngineDebug.h"
 #include <Windows.h>
 
+#include <d3d11_4.h>
+#include <d3dcompiler.h>
+#include <DirectXPackedVector.h>
+#include <DirectXCollision.h>
+
 // 설명 :
 class GameEngineMath
 {
@@ -266,19 +271,7 @@ public:
 		return VectorRotationToRadX(_Value, _Deg * GameEngineMath::D2R);
 	}
 
-	static float4 VectorRotationToRadX(const float4& _Value, const float _Rad)
-	{
-		//Rot.X = _Value.X * cosf(_Rad) - _Value.Y * sinf(_Rad);
-		//Rot.Y = _Value.X * sinf(_Rad) + _Value.Y * cosf(_Rad);
-
-
-		// 왜 이 공식인지를 이해해야 합니다.
-		float4 Rot;
-		Rot.X = _Value.X;
-		Rot.Y = _Value.Z * sinf(_Rad) + _Value.Y * cosf(_Rad);
-		Rot.Z = _Value.Z * cosf(_Rad) - _Value.Y * sinf(_Rad);
-		return Rot;
-	}
+	static float4 VectorRotationToRadX(const float4& _Value, const float _Rad);
 
 	float4 VectorRotationToDegY(const float _Deg)
 	{
@@ -291,15 +284,7 @@ public:
 		return VectorRotationToRadY(_Value, _Deg * GameEngineMath::D2R);
 	}
 
-	static float4 VectorRotationToRadY(const float4& _Value, const float _Rad)
-	{
-		// 왜 이 공식인지를 이해해야 합니다.
-		float4 Rot;
-		Rot.X = _Value.X * cosf(_Rad) - _Value.Z * sinf(_Rad);
-		Rot.Y = _Value.Y;
-		Rot.Z = _Value.X * sinf(_Rad) + _Value.Z * cosf(_Rad);
-		return Rot;
-	}
+	static float4 VectorRotationToRadY(const float4& _Value, const float _Rad);
 
 	float4 VectorRotationToDegZ(const float _Deg)
 	{
@@ -311,15 +296,7 @@ public:
 		return VectorRotationToRadZ(_Value, _Deg * GameEngineMath::D2R);
 	}
 
-	static float4 VectorRotationToRadZ(const float4& _Value, const float _Rad)
-	{
-		// 왜 이 공식인지를 이해해야 합니다.
-		float4 Rot;
-		Rot.X = _Value.X * cosf(_Rad) - _Value.Y * sinf(_Rad);
-		Rot.Y = _Value.X * sinf(_Rad) + _Value.Y * cosf(_Rad);
-		Rot.Z = _Value.Z;
-		return Rot;
-	}
+	static float4 VectorRotationToRadZ(const float4& _Value, const float _Rad);
 
 
 	//                                       90.0f
@@ -354,7 +331,7 @@ public:
 		return GetUnitVectorFromRad(_Degree * GameEngineMath::D2R);
 	}
 
-	float4 operator*(const class float4x4& _Other);
+	float4 operator*(const class float4x4& _Other) const;
 };
 
 class GameEngineRect
@@ -502,8 +479,78 @@ public:
 	}
 
 
+	void RotationXDegs(const float _Value)
+	{
+		RotationXRad(_Value * GameEngineMath::D2R);
+	}
+
+	void RotationXRad(const float _Value)
+	{
+		Identity();
+		// DirectX::XMMatrixRotationX
+		float CosValue = cosf(_Value);
+		float SinValue = sinf(_Value);
+		Arr2D[1][1] = CosValue;
+		Arr2D[1][2] = SinValue;
+		Arr2D[2][1] = -SinValue;
+		Arr2D[2][2] = CosValue;
+	}
+
+	void RotationYDegs(const float _Value)
+	{
+		RotationYRad(_Value * GameEngineMath::D2R);
+	}
+
+	void RotationYRad(const float _Value)
+	{
+		Identity();
 
 
+		// DirectX::XMMatrixRotationY
+		float CosValue = cosf(_Value);
+		float SinValue = sinf(_Value);
+		Arr2D[0][0] = CosValue;
+		Arr2D[0][2] = -SinValue;
+		Arr2D[2][0] = SinValue;
+		Arr2D[2][2] = CosValue;
+	}
+
+	void RotationZDegs(const float _Value)
+	{
+		RotationZRad(_Value * GameEngineMath::D2R);
+	}
+
+	void RotationZRad(const float _Value)
+	{
+		Identity();
+
+
+		// DirectX::XMMatrixRotationZ
+		float CosValue = cosf(_Value);
+		float SinValue = sinf(_Value);
+		Arr2D[0][0] = CosValue;
+		Arr2D[0][1] = SinValue;
+		Arr2D[1][0] = -SinValue;
+		Arr2D[1][1] = CosValue;
+
+
+		//					    [cosf(_Rad)][sinf(_Rad)][02][03]
+		//					    [-sinf(_Rad)][cosf(_Rad)][12][13]
+		//					    [20][21][22][23]
+		//					    [30][31][32][33]
+		// [x][y][z][w]        = rx  ry  rz  rw
+
+		// [x]*[00] + [y] *[10] + [z] * [20] + [w] * [30]
+
+		//float4 Rot * 행렬;
+
+		//Rot.X = _Value.X * cosf(_Rad) - _Value.Y * sinf(_Rad);
+		//Rot.Y = _Value.X * sinf(_Rad) + _Value.Y * cosf(_Rad);
+		//Rot.Z = _Value.Z;
+
+
+		// 회전을 시킬수 있는 행렬이 되어야 한다.
+	}
 
 	float4x4 operator*(const float4x4& _Other)
 	{

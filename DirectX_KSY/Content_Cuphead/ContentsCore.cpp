@@ -11,6 +11,24 @@ ContentsCore::~ContentsCore()
 
 void ContentsCore::Start()
 {
+	// 회전방향을 외적으로 알아내는 방법
+	float4 PlayerPos = { 3, 5 };
+	float4 MonsterPos = { 5, 5 };
+
+	float4 PlayerDir = { 0, 1, 0 };
+	float4 PlayerLook = (PlayerPos - MonsterPos).NormalizeReturn();
+
+
+	float4 Check = float4::Cross3D(PlayerDir, PlayerLook);
+
+	// float4 Rev = float4::Cross3D({0, 10, 0}, { 0.01f, -10.0f, 0 });
+
+	if (0 > Check.Z)
+	{
+		// 왼쪽으로 돌아라.
+	}
+
+	int a = 0;
 
 }
 
@@ -30,21 +48,28 @@ void ContentsCore::Update(float _Delta)
 		static float4 Scale = { 100.0f, 100.0f, 100.0f }; // 크기
 		static float4 Rotation = { 0, 0, 0 }; // 회전
 		static float4 Position = { 100.0f, 100.0f, 100.0f }; // 이동
-
-		//static float Dir = 1.0f;
-
-		//Scale -= float4(100.0f, 100.0f, 100.0f) * _Delta * Dir;
-
-		//if (100.0f <= abs(Scale.X))
-		//{
-		//	Dir *= -1.0f;
-		//}
-
-
 		Rotation.X += 360.0f * _Delta;
 		Rotation.Y += 360.0f * _Delta;
 		Rotation.Z += 360.0f * _Delta;
 
+		float4x4 Scale4x4;
+		float4x4 Rotation4x4X;
+		float4x4 Rotation4x4Y;
+		float4x4 Rotation4x4Z;
+		float4x4 Rotation4x4;
+		float4x4 Position4x4;
+
+
+		Scale4x4.Scale({ 100, 100, 100 });
+
+		//Rotation4x4X.RotationXDegs(Rotation.X);
+		//Rotation4x4Y.RotationYDegs(Rotation.Y);
+		//Rotation4x4Z.RotationZDegs(Rotation.Z);
+		//Rotation4x4 = Rotation4x4X * Rotation4x4Y * Rotation4x4Z;
+		//Position4x4.Pos({ 100, 100, 100 });
+
+		// 행렬의 곱샘은 교환법칙이 성립하지 않습니다.
+		float4x4 World4x4 = Scale4x4 * Rotation4x4 * Position4x4;
 
 		// 로컬과 월드의 차이입니다.
 		// 사각형을 만들기 위해서 점을 4개 만들었습니다.
@@ -55,40 +80,47 @@ void ContentsCore::Update(float _Delta)
 		std::vector<float4> Vertex;
 		Vertex.resize(4 * 6);
 
+		float4 BaseVertexs[4];
+
+		BaseVertexs[0] = { -0.5f, -0.5f, -0.5f };
+		BaseVertexs[1] = { 0.5f, -0.5f, -0.5f };
+		BaseVertexs[2] = { 0.5f, 0.5f, -0.5f };
+		BaseVertexs[3] = { -0.5f, 0.5f, -0.5f };
+
 		// 앞면
-		Vertex[0] = { -0.5f, -0.5f, -0.5f };
-		Vertex[1] = { 0.5f, -0.5f, -0.5f };
-		Vertex[2] = { 0.5f, 0.5f, -0.5f };
-		Vertex[3] = { -0.5f, 0.5f, -0.5f };
+		Vertex[0] = BaseVertexs[0];
+		Vertex[1] = BaseVertexs[1];
+		Vertex[2] = BaseVertexs[2];
+		Vertex[3] = BaseVertexs[3];
 
 		// 뒷면
-		Vertex[4] = float4::VectorRotationToDegX(Vertex[0], 180.0f);
-		Vertex[5] = float4::VectorRotationToDegX(Vertex[1], 180.0f);
-		Vertex[6] = float4::VectorRotationToDegX(Vertex[2], 180.0f);
-		Vertex[7] = float4::VectorRotationToDegX(Vertex[3], 180.0f);
+		Vertex[4] = float4::VectorRotationToDegX(BaseVertexs[0], 180.0f);
+		Vertex[5] = float4::VectorRotationToDegX(BaseVertexs[1], 180.0f);
+		Vertex[6] = float4::VectorRotationToDegX(BaseVertexs[2], 180.0f);
+		Vertex[7] = float4::VectorRotationToDegX(BaseVertexs[3], 180.0f);
 
 		// 왼쪽이나 오른쪽
-		Vertex[8] = float4::VectorRotationToDegY(Vertex[0], 90.0f);
-		Vertex[9] = float4::VectorRotationToDegY(Vertex[1], 90.0f);
-		Vertex[10] = float4::VectorRotationToDegY(Vertex[2], 90.0f);
-		Vertex[11] = float4::VectorRotationToDegY(Vertex[3], 90.0f);
+		Vertex[8] = float4::VectorRotationToDegY(BaseVertexs[0], 90.0f);
+		Vertex[9] = float4::VectorRotationToDegY(BaseVertexs[1], 90.0f);
+		Vertex[10] = float4::VectorRotationToDegY(BaseVertexs[2], 90.0f);
+		Vertex[11] = float4::VectorRotationToDegY(BaseVertexs[3], 90.0f);
 
 		// 왼쪽이나 오른쪽
-		Vertex[12] = float4::VectorRotationToDegY(Vertex[0], -90.0f);
-		Vertex[13] = float4::VectorRotationToDegY(Vertex[1], -90.0f);
-		Vertex[14] = float4::VectorRotationToDegY(Vertex[2], -90.0f);
-		Vertex[15] = float4::VectorRotationToDegY(Vertex[3], -90.0f);
+		Vertex[12] = float4::VectorRotationToDegY(BaseVertexs[0], -90.0f);
+		Vertex[13] = float4::VectorRotationToDegY(BaseVertexs[1], -90.0f);
+		Vertex[14] = float4::VectorRotationToDegY(BaseVertexs[2], -90.0f);
+		Vertex[15] = float4::VectorRotationToDegY(BaseVertexs[3], -90.0f);
 
 		// 위거나 아래
-		Vertex[16] = float4::VectorRotationToDegX(Vertex[0], 90.0f);
-		Vertex[17] = float4::VectorRotationToDegX(Vertex[1], 90.0f);
-		Vertex[18] = float4::VectorRotationToDegX(Vertex[2], 90.0f);
-		Vertex[19] = float4::VectorRotationToDegX(Vertex[3], 90.0f);
+		Vertex[16] = float4::VectorRotationToDegX(BaseVertexs[0], 90.0f);
+		Vertex[17] = float4::VectorRotationToDegX(BaseVertexs[1], 90.0f);
+		Vertex[18] = float4::VectorRotationToDegX(BaseVertexs[2], 90.0f);
+		Vertex[19] = float4::VectorRotationToDegX(BaseVertexs[3], 90.0f);
 
-		Vertex[20] = float4::VectorRotationToDegX(Vertex[0], -90.0f);
-		Vertex[21] = float4::VectorRotationToDegX(Vertex[1], -90.0f);
-		Vertex[22] = float4::VectorRotationToDegX(Vertex[2], -90.0f);
-		Vertex[23] = float4::VectorRotationToDegX(Vertex[3], -90.0f);
+		Vertex[20] = float4::VectorRotationToDegX(BaseVertexs[0], -90.0f);
+		Vertex[21] = float4::VectorRotationToDegX(BaseVertexs[1], -90.0f);
+		Vertex[22] = float4::VectorRotationToDegX(BaseVertexs[2], -90.0f);
+		Vertex[23] = float4::VectorRotationToDegX(BaseVertexs[3], -90.0f);
 
 
 
@@ -129,6 +161,9 @@ void ContentsCore::Update(float _Delta)
 		// 
 		// short Arr[2][3] = {{0, 1, 2}, {0, 2, 3}}; 24
 
+		// godf
+
+
 		for (size_t indexCount = 0; indexCount < Index.size() / 3; indexCount++)
 		{
 			int ArrIndex[3];
@@ -141,31 +176,25 @@ void ContentsCore::Update(float _Delta)
 			Tri.resize(3);
 			for (size_t VertexCount = 0; VertexCount < Tri.size(); VertexCount++)
 			{
+				// 위치를 더해줌으로해서 월드 상태로 이전시켰다고 한다.
 				float4 WorldPoint = Vertex[ArrIndex[VertexCount]];
 
-				WorldPoint *= Scale;
-				WorldPoint = WorldPoint.VectorRotationToDegX(Rotation.X);
-				WorldPoint = WorldPoint.VectorRotationToDegY(Rotation.Y);
-				WorldPoint = WorldPoint.VectorRotationToDegZ(Rotation.Z);
-				WorldPoint += Position;
-
-				// WorldPoint.X = (WorldPoint.X * Scale.X) + Position.Y;
+				//변환식은 이제 딱 한가지 인것.
+				WorldPoint = WorldPoint * World4x4;
 
 				Trifloat4[VertexCount] = WorldPoint;
 				Tri[VertexCount] = WorldPoint.WindowPOINT();
 			}
-
 			float4 Dir0 = Trifloat4[0] - Trifloat4[1];
 			float4 Dir1 = Trifloat4[1] - Trifloat4[2];
 			float4 Check = float4::Cross3D(Dir1, Dir0);
-
 			if (Check.Z < 1.0f)
 			{
 				continue;
 			}
 			Polygon(DC, &Tri[0], Tri.size());
 		}
-		
+
 
 		GameEngineCore::MainWindow.DoubleBuffering();
 	}
