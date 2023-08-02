@@ -17,6 +17,13 @@
     <ClCompile Include="GameEngineObject.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineTransform.cpp" />
+    <ClCompile Include="GameEngineCamera.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderer.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -35,6 +42,13 @@
     <ClInclude Include="GameEngineObject.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineTransform.h" />
+    <ClInclude Include="GameEngineCamera.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderer.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -42,6 +56,9 @@
     </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{8cb7b43d-914b-427d-980c-0169c3dd7d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{29b4182e-a77f-46b6-bcff-2689110b9df6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

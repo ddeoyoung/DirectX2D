@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngineObject.h"
+#include <list>
 
 // ¼³¸í :
 class GameEngineActor : public GameEngineObject
@@ -18,6 +19,6 @@ public:
 protected:
 
 private:
-
+	// Renderer¿Í Collision : GameEngineComponent
 };
 
