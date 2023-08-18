@@ -24,6 +24,9 @@
     <ClCompile Include="GameEngineRenderer.cpp">
       <Filter>Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineCoreObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -48,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="GameEngineRenderer.h">
       <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineCoreObject.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
