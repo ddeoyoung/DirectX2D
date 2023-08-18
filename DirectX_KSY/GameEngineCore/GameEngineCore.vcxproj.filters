@@ -38,6 +38,9 @@
     <ClCompile Include="GameEngineResources.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineRenderTarget.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -75,6 +78,9 @@
       <Filter>Object\Transform</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineResources.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderTarget.h">
       <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
