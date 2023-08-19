@@ -41,6 +41,13 @@
     <ClCompile Include="GameEngineRenderTarget.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineVertex.cpp" />
+    <ClCompile Include="GameEngineVertexBuffer.cpp" />
+    <ClCompile Include="GameEngineInputLayOut.cpp" />
+    <ClCompile Include="GameEngineDirectBuffer.cpp" />
+    <ClCompile Include="GameEngineDevice_Resources.cpp">
+      <Filter>Device</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -83,6 +90,10 @@
     <ClInclude Include="GameEngineRenderTarget.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineVertex.h" />
+    <ClInclude Include="GameEngineVertexBuffer.h" />
+    <ClInclude Include="GameEngineInputLayOut.h" />
+    <ClInclude Include="GameEngineDirectBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">

@@ -123,6 +123,8 @@ void GameEngineDevice::Initiallize(const GameEngineWindow& _Window)
 	Window = &_Window;
 
 	CreateSwapChain();
+
+	void ResourcesInit();
 }
 
 IDXGIAdapter* GameEngineDevice::GetHighPerformanceAdapter()
@@ -184,7 +186,7 @@ void GameEngineDevice::CreateSwapChain()
 	// 스왑체인 
 	float4 WindowScale = Window->GetScale();
 
-	// _DESC <= 이미
+	// _DESC <= 이미지
 	// TEXTURE_DESC <= 이미지의 크기 이미지의 포맷 이미지의 구조체
 
 
@@ -265,14 +267,12 @@ void GameEngineDevice::CreateSwapChain()
 		MsgBoxAssert("팩토리 추출에 실패했습니다.");
 	}
 
-	// 이 장치와 관련된 요소들을 만들수 있는 기능을 가지고 있다.
 	pF->CreateSwapChain(Device, &ScInfo, &SwapChain);
 
 	pF->Release();
 	pA->Release();
 	pD->Release();
 
-	// 배열로 보고 있다는것을 알수가 있다.
 
 	ID3D11Texture2D* DXBackBufferTexture = nullptr;
 	if (S_OK != SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&DXBackBufferTexture)))
@@ -280,33 +280,16 @@ void GameEngineDevice::CreateSwapChain()
 		MsgBoxAssert("백버퍼 텍스처를 얻어오지 못했습니다.");
 	}
 
-	// 다이렉트x는 무언가 그릴수 있는 권한을 
-	// 
-
-	// 텍스처로는 안됩니다.
 	BackBufferTexture = GameEngineTexture::Create(DXBackBufferTexture);
 
-	// 여기에 그려진것만 텍스처에 나옵니다.
-	// Api로 치면 Window에서 직접 얻어온 HDC입니다.
 	BackBufferRenderTarget = GameEngineRenderTarget::Create(BackBufferTexture);
 
-
-	// 텍스처는 랜더타겟이 아니야.
-	// 랜더타겟을 만들어야 한다.
-
-	// BackBufferTexture->Release();
-
-	// 스왑체인이지 텍스처가 아니다.
-	// 뭔가를 그리려면 텍스처가 존재해야 하는데.
-	// 그 텍스처를 
 }
 
 void GameEngineDevice::RenderStart()
 {
-	// 도화지를 한번 싹 지워요.
 	BackBufferRenderTarget->Clear();
 
-	// 이 도화지를 세팅합니다.
 	BackBufferRenderTarget->Setting();
 }
 
