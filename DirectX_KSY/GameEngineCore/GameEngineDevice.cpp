@@ -124,7 +124,7 @@ void GameEngineDevice::Initiallize(const GameEngineWindow& _Window)
 
 	CreateSwapChain();
 
-	void ResourcesInit();
+	ResourcesInit();
 }
 
 IDXGIAdapter* GameEngineDevice::GetHighPerformanceAdapter()
@@ -186,7 +186,7 @@ void GameEngineDevice::CreateSwapChain()
 	// 스왑체인 
 	float4 WindowScale = Window->GetScale();
 
-	// _DESC <= 이미지
+	// _DESC <= 이미
 	// TEXTURE_DESC <= 이미지의 크기 이미지의 포맷 이미지의 구조체
 
 
@@ -288,6 +288,11 @@ void GameEngineDevice::CreateSwapChain()
 
 void GameEngineDevice::RenderStart()
 {
+	if (nullptr == Device)
+	{
+		return;
+	}
+
 	BackBufferRenderTarget->Clear();
 
 	BackBufferRenderTarget->Setting();
@@ -295,6 +300,11 @@ void GameEngineDevice::RenderStart()
 
 void GameEngineDevice::RenderEnd()
 {
+	if (nullptr == Device)
+	{
+		return;
+	}
+
 	// 스왑체인에 연결된 텍스처에 그려져있는 색상을 화면에 출력하라는것.
 	HRESULT Result = SwapChain->Present(0, 0);
 	if (Result == DXGI_ERROR_DEVICE_REMOVED || Result == DXGI_ERROR_DEVICE_RESET)
