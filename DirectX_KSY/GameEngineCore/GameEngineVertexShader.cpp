@@ -43,12 +43,12 @@ void GameEngineVertexShader::ShaderLoad(
 	// 
 	HRESULT Result = D3DCompileFromFile(
 		UniPath.c_str(), // 경로
-		nullptr, // 쉐이더에서 사용할 매크로 매크로는 안씁니다.
-		D3D_COMPILE_STANDARD_FILE_INCLUDE, // 내부에서 사용한 #include 그냥 겠다. 내가 직접 안넣어준다.
+		nullptr, // 쉐이더에서 사용할 매크로
+		D3D_COMPILE_STANDARD_FILE_INCLUDE, // 내부에서 사용한 #include
 		EntryName.c_str(), // "ColorShader_VS"
 		Version.c_str(), // "vs_5_0"
 		Flag,
-		0, // 뭔지 모름.
+		0,
 		&BinaryCode,
 		&Error);
 
@@ -59,5 +59,19 @@ void GameEngineVertexShader::ShaderLoad(
 		return;
 	}
 
+	Result = GameEngineCore::MainDevcie.GetDevice()->CreateVertexShader(
+		BinaryCode->GetBufferPointer(),
+		BinaryCode->GetBufferSize(),
+		nullptr,
+		&ShaderPtr);
 
+	if (S_OK != Result)
+	{
+		MsgBoxAssert("버텍스 쉐이더 생성에 실패했습니다.");
+	}
+}
+
+void GameEngineVertexShader::Setting()
+{
+	GameEngineCore::MainDevcie.GetContext()->VSSetShader(ShaderPtr, nullptr, 0);
 }
