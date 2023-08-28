@@ -26,9 +26,6 @@ GameEngineFile::GameEngineFile(const std::string& _path)
 void GameEngineFile::Open(FileOpenType _OpenType, FileDataType _DataType, bool _IsStartAllData)
 {
 
-	// C시절부터 내려오는 할아버지 함수를 사용할 겁니다.
-	// 바뀐적이 없어요.
-
 	std::string Path = GameEngineFile::GetStringPath();
 
 	std::string Mode = "";
@@ -83,7 +80,6 @@ void GameEngineFile::Read(void* _Data, size_t _Size)
 	//size_t _ElementCount, // 읽을 횟수 2
 	//FILE* _Stream 
 
-
 	if (nullptr == FilePtr)
 	{
 		MsgBoxAssert("열리지 않은 파일을 읽으려고 했습니다. Open을 먼저 실행해주세요.");
@@ -99,7 +95,6 @@ void GameEngineFile::Read(void* _Data, size_t _Size)
 
 uintmax_t GameEngineFile::GetFileSize()
 {
-	// c 함수를 사용했는데 
 	return std::filesystem::file_size(Path);
 }
 
