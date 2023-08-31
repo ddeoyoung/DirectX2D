@@ -3,5 +3,13 @@
   <ItemGroup>
     <FxCompile Include="ColorShader.fx" />
     <FxCompile Include="TextureShader.fx" />
+    <FxCompile Include="Transform.fx">
+      <Filter>Header</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{544db6c9-3175-41fa-be7e-76df7dd7ac3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
