@@ -18,7 +18,7 @@ public:
 	GameEngineIndexBuffer& operator=(const GameEngineIndexBuffer& _Other) = delete;
 	GameEngineIndexBuffer& operator=(GameEngineIndexBuffer&& _Other) noexcept = delete;
 
-	static std::shared_ptr<GameEngineIndexBuffer> Create(const std::string_view& _Name, const std::vector<unsigned int>& _Data)
+	static std::shared_ptr<GameEngineIndexBuffer> Create(std::string_view _Name, const std::vector<unsigned int>& _Data)
 	{
 		std::shared_ptr<GameEngineIndexBuffer> Res = GameEngineResources::CreateRes(_Name);
 		Res->ResCreate(&_Data[0], _Data.size());
@@ -27,11 +27,17 @@ public:
 
 	void Setting();
 
+	inline int GetIndexCount()
+	{
+		return IndexCount;
+	}
+
 protected:
 
 private:
 	const class GameEngineInputLayOutInfo* VertexInfoPtr;
 
+	//                                점1개의 크기가 얼마? 점 개수가 몇개냐.,
 	void ResCreate(const void* _Data, size_t _IndexCount);
 
 	DXGI_FORMAT Format = DXGI_FORMAT::DXGI_FORMAT_R32_UINT;
@@ -39,5 +45,4 @@ private:
 	UINT IndexCount = 0;
 	UINT Offset = 0;
 };
-
 

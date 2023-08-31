@@ -19,7 +19,7 @@ public:
 	GameEngineVertexBuffer& operator=(GameEngineVertexBuffer&& _Other) noexcept = delete;
 
 	template<typename VertexType>
-	static std::shared_ptr<GameEngineVertexBuffer> Create(const std::string_view& _Name, const std::vector<VertexType>& _Data)
+	static std::shared_ptr<GameEngineVertexBuffer> Create(std::string_view _Name, const std::vector<VertexType>& _Data)
 	{
 		std::shared_ptr<GameEngineVertexBuffer> Res = GameEngineResources::CreateRes(_Name);
 		Res->ResCreate(&_Data[0], sizeof(VertexType), _Data.size());
@@ -33,6 +33,8 @@ protected:
 
 private:
 	const class GameEngineInputLayOutInfo* VertexInfoPtr;
+
+	//                                점1개의 크기가 얼마? 점 개수가 몇개냐.,
 	void ResCreate(const void* _Data, size_t _VertexSize, size_t _VertexCount);
 
 	UINT VertexSize = 0;
