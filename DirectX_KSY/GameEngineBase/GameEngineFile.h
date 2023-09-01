@@ -4,6 +4,7 @@
 #include <string>
 
 // Ostream Istream
+// 그게 내부에서 내가 쓰는 함수를 쓰고 있어요.
 
 enum class FileOpenType
 {
@@ -32,10 +33,13 @@ public:
 	//GameEngineFile& operator=(const GameEngineFile& _Other) = delete;
 	//GameEngineFile& operator=(GameEngineFile&& _Other) noexcept = delete;
 
+	// 운영체제에게 허락을 맡아서 이 파일을 이제부터 편집하거나 읽겠습니다.
 	void Open(FileOpenType _OpenType, FileDataType _DataType, bool _IsStartAllData = true);
 
+	// 파일에서 데이터를 읽어드린다.
 	void Read(void* _Data, size_t _Size);
 
+	// 파일에서 데이터를 쓴다.
 	void Write(void* _Data, size_t _Size);
 
 	// 8바이트 정수형
@@ -57,5 +61,4 @@ private:
 	FileDataType DataType;
 	GameEngineSerializer Serializer;
 };
-
 

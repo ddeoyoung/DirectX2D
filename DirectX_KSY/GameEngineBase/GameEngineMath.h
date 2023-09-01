@@ -38,20 +38,39 @@ public:
 	static const float4 FORWARD;
 	static const float4 BACKWARD;
 
+	static const float4 WHITE;
 	static const float4 RED;
 	static const float4 GREEN;
 	static const float4 BLUE;
 
-	union
+	union 
 	{
 		float Arr1D[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 
-		struct
+		struct 
 		{
 			float X;
 			float Y;
 			float Z;
 			float W;
+		};
+
+
+		struct
+		{
+			float R;
+			float G;
+			float B;
+			float A;
+		};
+
+
+		struct
+		{
+			float Pos2DX;
+			float Pos2DY;
+			float Scale2DX;
+			float Scale2DY;
 		};
 
 		float Arr2D[1][4];
@@ -78,6 +97,16 @@ public:
 	inline int iY() const
 	{
 		return static_cast<int>(Y);
+	}
+
+	inline UINT uiX() const
+	{
+		return static_cast<unsigned int>(X);
+	}
+
+	inline UINT uiY() const
+	{
+		return static_cast<unsigned int>(Y);
 	}
 
 	inline float hX() const
@@ -159,7 +188,7 @@ public:
 
 	float4 operator/(const float _Value) const
 	{
-		float4 OtherVecter = { _Value , _Value , _Value , 1.0f };
+		float4 OtherVecter = { _Value , _Value , _Value , 1.0f};
 		float4 ReturnValue = DirectX::XMVectorDivide(DirectXVector, OtherVecter.DirectXVector);
 		ReturnValue.W = W;
 
@@ -383,7 +412,7 @@ public:
 
 	// GetUnitVectorFromDeg(45)
 
-	static float4 LerpClimp(const float4& Start, const float4& _End, float _Ratio)
+	static float4 LerpClamp(const float4& Start, const float4& _End, float _Ratio)
 	{
 		if (1.0f <= _Ratio)
 		{
@@ -520,7 +549,7 @@ public:
 		return *this;
 	}
 
-	float4x4()
+	float4x4() 
 	{
 		Identity();
 	}
@@ -535,7 +564,7 @@ public:
 	{
 	}
 
-	void Identity()
+	void Identity() 
 	{
 		DirectXMatrix = DirectX::XMMatrixIdentity();
 		return;
@@ -555,7 +584,7 @@ public:
 	{
 		RotationRad(_Value * GameEngineMath::D2R);
 	}
-
+	
 	void RotationRad(const float4& _Value)
 	{
 		float4x4 X;
@@ -634,11 +663,11 @@ public:
 		//					    [20][21][22][23]
 		//					    [30][31][32][33]
 		// [x][y][z][w]        = rx  ry  rz  rw
-
+		
 		// [x]*[00] + [y] *[10] + [z] * [20] + [w] * [30]
 
 		//float4 Rot * За·Д;
-
+		
 		//Rot.X = _Value.X * cosf(_Rad) - _Value.Y * sinf(_Rad);
 		//Rot.Y = _Value.X * sinf(_Rad) + _Value.Y * cosf(_Rad);
 		//Rot.Z = _Value.Z;

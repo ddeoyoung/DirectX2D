@@ -218,6 +218,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameEngineSampler.cpp" />
     <ClCompile Include="GameEngineShader.cpp">
       <SubType>
       </SubType>
@@ -308,6 +309,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineSampler.h" />
     <ClInclude Include="GameEngineShader.h">
       <SubType>
       </SubType>
@@ -341,6 +343,16 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="ThirdParty\DirectXTex\inc\DirectXTex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ThirdParty\DirectXTex\lib\Debug\DirectXTex.lib" />
+    <Library Include="ThirdParty\DirectXTex\lib\Release\DirectXTex.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\DirectXTex\inc\DirectXTex.inl" />
+    <None Include="ThirdParty\DirectXTex\lib\Debug\DirectXTex.pdb" />
+    <None Include="ThirdParty\DirectXTex\lib\Release\DirectXTex.pdb" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,9 +24,11 @@ public:
 	void MoveParentToExistsChild(std::string_view _ChildPath);
 	void MoveChild(std::string_view _ChildPath);
 
+	std::string GetExtension();
+
 	std::string PlusFilePath(std::string_view _ChildPath);
 
-	std::string GetStringPath()
+	std::string GetStringPath() 
 	{
 		return Path.string();
 	}

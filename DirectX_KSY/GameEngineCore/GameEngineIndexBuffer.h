@@ -2,7 +2,7 @@
 #include "GameEngineDirectBuffer.h"
 
 // 설명 :
-class GameEngineIndexBuffer :
+class GameEngineIndexBuffer : 
 	public GameEngineResources<GameEngineIndexBuffer>, public GameEngineDirectBuffer
 {
 	friend class GameEngineInputLayOut;
@@ -27,7 +27,7 @@ public:
 
 	void Setting();
 
-	inline int GetIndexCount()
+	inline int GetIndexCount() 
 	{
 		return IndexCount;
 	}
@@ -35,8 +35,6 @@ public:
 protected:
 
 private:
-	const class GameEngineInputLayOutInfo* VertexInfoPtr;
-
 	//                                점1개의 크기가 얼마? 점 개수가 몇개냐.,
 	void ResCreate(const void* _Data, size_t _IndexCount);
 

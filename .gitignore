@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/DirectX_KSY/GameEngineCore/ThirdParty/DirectXTex/lib/Debug/DirectXTex.lib
+/DirectX_KSY/GameEngineCore/ThirdParty/DirectXTex/lib/Debug/DirectXTex.pdb
+/DirectX_KSY/GameEngineCore/ThirdParty/DirectXTex/lib/Release/DirectXTex.lib
+/DirectX_KSY/GameEngineCore/ThirdParty/DirectXTex/lib/Release/DirectXTex.pdb

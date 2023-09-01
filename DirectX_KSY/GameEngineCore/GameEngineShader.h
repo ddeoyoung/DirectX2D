@@ -28,6 +28,8 @@ public:
 	GameEngineShader& operator=(const GameEngineShader& _Other) = delete;
 	GameEngineShader& operator=(GameEngineShader&& _Other) noexcept = delete;
 
+
+	
 protected:
 	void CreateVersion(ShaderType _Type, UINT _VersionHigh, UINT _VersionLow);
 	std::string Version;

@@ -1,64 +1,35 @@
 #include "PreCompile.h"
 #include "Player.h"
 #include <GameEngineCore/GameEngineSpriteRenderer.h>
+#include <GameEngineCore/GameEngineTexture.h>
+#include "PlayMap.h"
 
-Player::Player()
+Player::Player() 
 {
-
+	
 }
 
-Player::~Player()
+Player::~Player() 
 {
 }
 
 void Player::Start()
-{
+{/*
 	{
-		Renderer0 = CreateComponent<GameEngineSpriteRenderer>(0);
-		/*Renderer0->Transform.SetLocalPosition({ 0, 150, 0 });
-		Renderer0->Transform.SetLocalScale({ 50, 50, 100 });*/
-
-		// Renderer0->SetSprite("NSet.png");
-
-		// NewRender->SetSprite("AAA.png", 0);
-		{
-			//NewRender->SetConstnetbuffer("");
-			//NewRender->SetTextureSetting("");
-			//NewRender->SetTextureCurtingdataSetting("");
-			//NewRender->SetConstnetResSetting("");
-			//NewRender->SetConstnetResSetting("");
-			//NewRender->SetConstnetResSetting("");
-			//NewRender->SetConstnetResSetting("");
-			//NewRender->SetConstnetResSetting("");
-			//NewRender->SetConstnetResSetting("");
-
-		}
-
-
-
+		MainSpriteRenderer = CreateComponent<GameEngineSpriteRenderer>();
+		MainSpriteRenderer->CreateAnimation("Run", "HoHoYee_AttackABC");
+		MainSpriteRenderer->ChangeAnimation("Run");
+		MainSpriteRenderer->AutoSpriteSizeOn();
+		MainSpriteRenderer->SetAutoScaleRatio(0.4f);
 	}
 
-	{
-		std::shared_ptr<GameEngineSpriteRenderer> Renderer = CreateComponent<GameEngineSpriteRenderer>(0);
-		Renderer->Transform.SetLocalPosition({ 0, -150, 0 });
-		Renderer->Transform.SetLocalScale({ 50, 50, 100 });
-	}
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });*/
 
-	{
-		std::shared_ptr<GameEngineSpriteRenderer> Renderer = CreateComponent<GameEngineSpriteRenderer>(0);
-		Renderer->Transform.SetLocalPosition({ -150, 0, 0 });
-		Renderer->Transform.SetLocalScale({ 50, 50, 100 });
-	}
-
-	{
-		std::shared_ptr<GameEngineSpriteRenderer> Renderer = CreateComponent<GameEngineSpriteRenderer>(0);
-		Renderer->Transform.SetLocalPosition({ 150, 0, 0 });
-		Renderer->Transform.SetLocalScale({ 50, 50, 100 });
-	}
 }
 
 void Player::Update(float _Delta)
-{
+{/*
 	float Speed = 100.0f;
 
 	if (GameEngineInput::IsPress('A'))
@@ -90,4 +61,20 @@ void Player::Update(float _Delta)
 	{
 		Transform.AddLocalRotation({ 0.0f, 0.0f, -360.0f * _Delta });
 	}
+
+	GameEngineColor Color = PlayMap::MainMap->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
+
+	if (GameEngineColor::RED != Color)
+	{
+		GrivityForce.Y -= _Delta * 100.0f;
+		Transform.AddLocalPosition(GrivityForce * _Delta);
+	}
+	else 
+	{
+		GrivityForce = 0.0f;
+	}*/
+	// 땅에 딱붙게하고 싶다면 while돌려서 올려주세요.
+
+
+	// float4 Color = GetColor(Transform.GetWorldPosition());
 }

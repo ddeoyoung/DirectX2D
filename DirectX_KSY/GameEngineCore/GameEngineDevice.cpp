@@ -10,11 +10,11 @@
 #pragma comment(lib, "DXGI")
 
 
-GameEngineDevice::GameEngineDevice()
+GameEngineDevice::GameEngineDevice() 
 {
 }
 
-GameEngineDevice::~GameEngineDevice()
+GameEngineDevice::~GameEngineDevice() 
 {
 	if (nullptr != SwapChain)
 	{
@@ -42,7 +42,7 @@ void GameEngineDevice::Initiallize(const GameEngineWindow& _Window)
 	{
 		MsgBoxAssert("윈도우가 만들어지지 않았는데 디바이스를 초기화 할수는 없습니다.");
 		return;
-	}
+	} 
 
 	int iFlag = 0;
 
@@ -80,7 +80,7 @@ void GameEngineDevice::Initiallize(const GameEngineWindow& _Window)
 		nullptr, // 사용할수 있는 펙처레벨
 		0, // 그중에서 내가 원하는 펙처레벨 할수 있는 
 		D3D11_SDK_VERSION, // 지금 윈도우 버전으로 해줘.
-		&Device,
+		&Device, 
 		&Level,
 		&Context
 	);
@@ -145,7 +145,7 @@ IDXGIAdapter* GameEngineDevice::GetHighPerformanceAdapter()
 
 	SIZE_T VideoMemory = 0;
 
-	for (UINT Index = 0;; ++Index)
+	for (UINT Index = 0 ;; ++Index)
 	{
 		IDXGIAdapter* CurAdapter = nullptr;
 
@@ -178,7 +178,7 @@ IDXGIAdapter* GameEngineDevice::GetHighPerformanceAdapter()
 	}
 
 	Factory->Release();
-	return Adapter;
+ 	return Adapter;
 }
 
 void GameEngineDevice::CreateSwapChain()
@@ -190,7 +190,7 @@ void GameEngineDevice::CreateSwapChain()
 	// TEXTURE_DESC <= 이미지의 크기 이미지의 포맷 이미지의 구조체
 
 
-	DXGI_SWAP_CHAIN_DESC ScInfo = { 0, };
+	DXGI_SWAP_CHAIN_DESC ScInfo = {0,};
 
 	// 더블버퍼링
 	ScInfo.BufferCount = 2;
@@ -241,7 +241,7 @@ void GameEngineDevice::CreateSwapChain()
 	// 당연히 그래픽프레임이 더 빨라져야 합니다.
 	ScInfo.Windowed = true;
 
-	// 스왑체인을 만들어 내기 위해서는 _Devcie가 필요하다.
+	// 스왑체인을 만들어 내기 위해서는 _Device가 필요하다.
 	IDXGIDevice* pD = nullptr;
 	IDXGIAdapter* pA = nullptr;
 	IDXGIFactory* pF = nullptr;
@@ -267,12 +267,14 @@ void GameEngineDevice::CreateSwapChain()
 		MsgBoxAssert("팩토리 추출에 실패했습니다.");
 	}
 
+	// 이 장치와 관련된 요소들을 만들수 있는 기능을 가지고 있다.
 	pF->CreateSwapChain(Device, &ScInfo, &SwapChain);
 
 	pF->Release();
 	pA->Release();
 	pD->Release();
 
+	// 배열로 보고 있다는것을 알수가 있다.
 
 	ID3D11Texture2D* DXBackBufferTexture = nullptr;
 	if (S_OK != SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&DXBackBufferTexture)))
@@ -280,10 +282,25 @@ void GameEngineDevice::CreateSwapChain()
 		MsgBoxAssert("백버퍼 텍스처를 얻어오지 못했습니다.");
 	}
 
+	// 다이렉트x는 무언가 그릴수 있는 권한을 
+	// 
+	
+	// 텍스처로는 안됩니다.
 	BackBufferTexture = GameEngineTexture::Create(DXBackBufferTexture);
 
+	// 여기에 그려진것만 텍스처에 나옵니다.
+	// Api로 치면 Window에서 직접 얻어온 HDC입니다.
 	BackBufferRenderTarget = GameEngineRenderTarget::Create(BackBufferTexture);
 
+
+	// 텍스처는 랜더타겟이 아니야.
+	// 랜더타겟을 만들어야 한다.
+
+	// BackBufferTexture->Release();
+
+	// 스왑체인이지 텍스처가 아니다.
+	// 뭔가를 그리려면 텍스처가 존재해야 하는데.
+	// 그 텍스처를 
 }
 
 void GameEngineDevice::RenderStart()
@@ -293,8 +310,10 @@ void GameEngineDevice::RenderStart()
 		return;
 	}
 
+	// 도화지를 한번 싹 지워요.
 	BackBufferRenderTarget->Clear();
 
+	// 이 도화지를 세팅합니다.
 	BackBufferRenderTarget->Setting();
 }
 
@@ -306,7 +325,7 @@ void GameEngineDevice::RenderEnd()
 	}
 
 	// 스왑체인에 연결된 텍스처에 그려져있는 색상을 화면에 출력하라는것.
-	HRESULT Result = SwapChain->Present(0, 0);
+	HRESULT Result =  SwapChain->Present(0, 0);
 	if (Result == DXGI_ERROR_DEVICE_REMOVED || Result == DXGI_ERROR_DEVICE_RESET)
 	{
 		MsgBoxAssert("전체화면에서 창모드로 변경했습니다.");

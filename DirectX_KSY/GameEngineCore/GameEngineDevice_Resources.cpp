@@ -7,8 +7,11 @@
 #include "GameEngineIndexBuffer.h"
 #include "GameEngineShader.h"
 #include "GameEngineRasterizer.h"
+#include "GameEngineSampler.h"
 #include "GameEngineVertexShader.h"
 #include "GameEngineConstantBuffer.h"
+#include "GameEngineTexture.h"
+#include "GameEngineSprite.h"
 
 void GameEngineDevice::ResourcesInit()
 {
@@ -24,7 +27,7 @@ void GameEngineDevice::ResourcesInit()
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineCoreShader");
 		Dir.MoveChild("GameEngineCoreShader");
-		std::vector<GameEngineFile> Files = Dir.GetAllFile({ ".fx" });
+		std::vector<GameEngineFile> Files = Dir.GetAllFile({".fx"});
 
 		for (size_t i = 0; i < Files.size(); i++)
 		{
@@ -32,6 +35,25 @@ void GameEngineDevice::ResourcesInit()
 			GameEngineFile& File = Files[i];
 			GameEngineShader::AutoCompile(File);
 		}
+	}
+
+	{
+		// 엔진용 쉐이더를 전부다 전부다 로드하는 코드를 친다.
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("GameEngineResources");
+		Dir.MoveChild("Textrure");
+		std::vector<GameEngineFile> Files = Dir.GetAllFile();
+
+		for (size_t i = 0; i < Files.size(); i++)
+		{
+			// 구조적으로 잘 이해하고 있는지를 자신이 명확하게 인지하기 위해서
+			GameEngineFile& File = Files[i];
+			GameEngineTexture::Load(File.GetStringPath());
+		}
+
+		GameEngineSprite::CreateSingle("NSet.png");
+
 	}
 
 
@@ -88,10 +110,11 @@ void GameEngineDevice::ResourcesInit()
 		std::vector<GameEngineVertex2D> Vertex;
 		Vertex.resize(4);
 
-		Vertex[0] = { { -0.5f, -0.5f, 0.0f, 1.0f } };
-		Vertex[1] = { { 0.5f, -0.5f, 0.0f, 1.0f } };
-		Vertex[2] = { { 0.5f, 0.5f, 0.0f, 1.0f } };
-		Vertex[3] = { { -0.5f, 0.5f, 0.0f, 1.0f } };
+		// 이미지를 자르려면 TEXCOORD값이 바뀌어야 하는데.
+		Vertex[0] = { { -0.5f, 0.5f, 0.0f, 1.0f }, {0.0f, 0.0f} };
+		Vertex[1] = { { 0.5f, 0.5f, 0.0f, 1.0f } , {1.0f, 0.0f} };
+		Vertex[2] = { { 0.5f, -0.5f, 0.0f, 1.0f }  , {1.0f, 1.0f} };
+		Vertex[3] = { { -0.5f, -0.5f, 0.0f, 1.0f } , {0.0f, 1.0f} };
 
 		GameEngineVertexBuffer::Create("Rect", Vertex);
 
@@ -109,10 +132,10 @@ void GameEngineDevice::ResourcesInit()
 		std::vector<GameEngineVertex2D> Vertex;
 		Vertex.resize(4);
 
-		Vertex[0] = { { -1.0f, -1.0f, 0.0f, 1.0f } };
-		Vertex[1] = { { 1.0f, -1.0f, 0.0f, 1.0f } };
-		Vertex[2] = { { 1.0f, 1.0f, 0.0f, 1.0f } };
-		Vertex[3] = { { -1.0f, 1.0f, 0.0f, 1.0f } };
+		Vertex[0] = { { -1.0f, -1.0f, 0.0f, 1.0f }, {0.0f, 0.0f} };
+		Vertex[1] = { { 1.0f, -1.0f, 0.0f, 1.0f },  {1.0f, 0.0f} };
+		Vertex[2] = { { 1.0f, 1.0f, 0.0f, 1.0f },   {1.0f, 1.0f} };
+		Vertex[3] = { { -1.0f, 1.0f, 0.0f, 1.0f },  {0.0f, 1.0f} };
 
 		GameEngineVertexBuffer::Create("FullRect", Vertex);
 
@@ -135,12 +158,12 @@ void GameEngineDevice::ResourcesInit()
 		// 주의해야 한다.
 		GameEngineConstantBuffer::CreateAndFind(sizeof(TransformData), "TransformData", ShaderType::Vertex, 0);
 	}
-
+	
 	{
 
 		//D3D11_FILL_MODE FillMode;
 		// 랜더링 할때 채우기 모드를 결정한다.
-
+		
 		// 외적했는데 z방향이 어디냐?
 		// D3D11_CULL_NONE => 방향이 어디든 건져낸다.
 		// D3D11_CULL_BACK => z가 앞쪽인 픽셀들은 안건져 낸다.
@@ -167,5 +190,25 @@ void GameEngineDevice::ResourcesInit()
 		Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
 		// Desc.DepthClipEnable = TRUE;
 		std::shared_ptr<GameEngineRasterizer> Rasterizer = GameEngineRasterizer::Create("EngineRasterizer", Desc);
+	}
+
+	{
+
+		D3D11_SAMPLER_DESC Desc = {};
+		// 일반적인 보간형식 <= 뭉개진다.
+		// D3D11_FILTER_MIN_MAG_MIP_
+		// 그 밉맵에서 색상가져올때 다 뭉개는 방식으로 가져오겠다.
+		Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+		Desc.AddressU = D3D11_TEXTURE_ADDRESS_MIRROR;
+		Desc.AddressV = D3D11_TEXTURE_ADDRESS_MIRROR;
+		Desc.AddressW = D3D11_TEXTURE_ADDRESS_MIRROR;
+
+		Desc.MipLODBias = 0.0f;
+		Desc.MaxAnisotropy = 1;
+		Desc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+		Desc.MinLOD = -FLT_MAX;
+		Desc.MaxLOD = FLT_MAX;
+
+		std::shared_ptr<GameEngineSampler> Rasterizer = GameEngineSampler::Create("EngineBaseSampler", Desc);
 	}
 }

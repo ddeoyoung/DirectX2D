@@ -12,6 +12,7 @@ GameEngineInput::~GameEngineInput()
 {
 }
 
+
 class InputSystemCreator
 {
 public:
@@ -22,7 +23,6 @@ public:
 };
 
 InputSystemCreator InputInitInst;
-
 
 void GameEngineInput::InputInit()
 {
