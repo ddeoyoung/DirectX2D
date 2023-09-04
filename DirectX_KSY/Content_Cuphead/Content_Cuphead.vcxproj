@@ -167,8 +167,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseCharacter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
+    <ClCompile Include="KingDiceBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KingDiceTable.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="LogoLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Logo_Mdhr.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -189,8 +205,25 @@
     <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseCharacter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ContentEnum.h" />
     <ClInclude Include="ContentsCore.h" />
+    <ClInclude Include="KingDiceBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KingDiceTable.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="LogoLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Logo_Mdhr.h">
       <SubType>
       </SubType>
     </ClInclude>

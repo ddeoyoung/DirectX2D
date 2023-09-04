@@ -10,41 +10,84 @@
     <Filter Include="Object">
       <UniqueIdentifier>{1ed2653e-455b-4df4-b4a0-fe4cb1bc3f93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\KingDice">
+      <UniqueIdentifier>{8b867753-a8eb-4bfb-b298-11453aed3e72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Title">
+      <UniqueIdentifier>{15d2e981-d1fb-43fd-beb8-910dda7b9c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\OverWorld">
+      <UniqueIdentifier>{58d35493-8a6a-4854-bf90-08d8e66b2e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\BossStage">
+      <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Title">
+      <UniqueIdentifier>{e1490f86-5ce1-4a3f-8520-a1761a610c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Character">
+      <UniqueIdentifier>{2a2990b4-20f8-4cf4-a0d6-e4643869c91f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
       <Filter>PreCompile</Filter>
     </ClInclude>
     <ClInclude Include="ContentsCore.h" />
+    <ClInclude Include="KingDiceBackground.h">
+      <Filter>Object\KingDice</Filter>
+    </ClInclude>
+    <ClInclude Include="KingDiceTable.h">
+      <Filter>Object\KingDice</Filter>
+    </ClInclude>
     <ClInclude Include="TitleLevel.h">
-      <Filter>Level</Filter>
+      <Filter>Level\Title</Filter>
     </ClInclude>
     <ClInclude Include="LogoLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayLevel.h">
-      <Filter>Level</Filter>
+      <Filter>Level\Title</Filter>
     </ClInclude>
     <ClInclude Include="OverWorldLevel.h">
-      <Filter>Level</Filter>
+      <Filter>Level\OverWorld</Filter>
     </ClInclude>
+    <ClInclude Include="PlayLevel.h">
+      <Filter>Level\BossStage</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Mdhr.h">
+      <Filter>Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCharacter.h">
+      <Filter>Object\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentEnum.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
       <Filter>PreCompile</Filter>
     </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
+    <ClCompile Include="KingDiceBackground.cpp">
+      <Filter>Object\KingDice</Filter>
+    </ClCompile>
+    <ClCompile Include="KingDiceTable.cpp">
+      <Filter>Object\KingDice</Filter>
+    </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
-      <Filter>Level</Filter>
+      <Filter>Level\Title</Filter>
     </ClCompile>
     <ClCompile Include="LogoLevel.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayLevel.cpp">
-      <Filter>Level</Filter>
+      <Filter>Level\Title</Filter>
     </ClCompile>
     <ClCompile Include="OverWorldLevel.cpp">
-      <Filter>Level</Filter>
+      <Filter>Level\OverWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayLevel.cpp">
+      <Filter>Level\BossStage</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Mdhr.cpp">
+      <Filter>Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCharacter.cpp">
+      <Filter>Object\Character</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
