@@ -222,14 +222,14 @@
     <Library Include="ThirdParty\DirectXTex\lib\Release\DirectXTex.lib">
       <Filter>ThirdParty\Release</Filter>
     </Library>
+    <Library Include="ThirdParty\DirectXTex\lib\Debug\DirectXTex.pdb">
+      <Filter>ThirdParty\Debug</Filter>
+    </Library>
+    <Library Include="ThirdParty\DirectXTex\lib\Release\DirectXTex.pdb">
+      <Filter>ThirdParty\Release</Filter>
+    </Library>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ThirdParty\DirectXTex\lib\Debug\DirectXTex.pdb">
-      <Filter>ThirdParty\Debug</Filter>
-    </None>
-    <None Include="ThirdParty\DirectXTex\lib\Release\DirectXTex.pdb">
-      <Filter>ThirdParty\Release</Filter>
-    </None>
     <None Include="ThirdParty\DirectXTex\inc\DirectXTex.inl">
       <Filter>ThirdParty\inc</Filter>
     </None>

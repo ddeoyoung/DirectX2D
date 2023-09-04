@@ -15,20 +15,20 @@ std::map<std::string, std::shared_ptr<GameEngineLevel>> GameEngineCore::AllLevel
 
 
 
-GameEngineCore::GameEngineCore() 
+GameEngineCore::GameEngineCore()
 {
 }
 
-GameEngineCore::~GameEngineCore() 
+GameEngineCore::~GameEngineCore()
 {
 }
 
-void GameEngineCore::Start() 
+void GameEngineCore::Start()
 {
 	CoreObject->Start();
 }
 
-void GameEngineCore::Update() 
+void GameEngineCore::Update()
 {
 
 	if (nullptr != NextLevel)
@@ -50,8 +50,13 @@ void GameEngineCore::Update()
 
 	MainTime.Update();
 	float DeltaTime = MainTime.GetDeltaTime();
+
+	if (DeltaTime > 1.0f / 60.0f)
+	{
+		DeltaTime = 1.0f / 60.0f;
+	}
+
 	GameEngineSound::Update();
-	GameEngineInput::Update(DeltaTime);
 	CoreObject->Update(DeltaTime);
 
 	if (true == GameEngineWindow::IsFocus())
@@ -89,7 +94,7 @@ void GameEngineCore::Update()
 	// CurLevel->ActorRelease();
 }
 
-void GameEngineCore::Release() 
+void GameEngineCore::Release()
 {
 	CoreObject->Release();
 }
