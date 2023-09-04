@@ -22,6 +22,12 @@
     <ClInclude Include="LogoLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="PlayLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="OverWorldLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -32,6 +38,12 @@
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="LogoLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="OverWorldLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
