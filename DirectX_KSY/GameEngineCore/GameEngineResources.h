@@ -34,6 +34,7 @@ public:
 		return FindIter->second;
 	}
 
+	// 이름으로 로드한 애는 지울수 있습니다.
 	static void Release(std::string_view _Name)
 	{
 		std::string UpperName = GameEngineString::ToUpperReturn(_Name);
@@ -48,7 +49,7 @@ public:
 			return;
 		}
 
-		return NameRes.erase(FindIter);
+		NameRes.erase(FindIter);
 	}
 
 	void SetName(std::string_view _Name)
