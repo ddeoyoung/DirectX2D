@@ -28,7 +28,9 @@ void BaseCharacter::Start()
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 	MainRenderer->CreateAnimation("Idle", "Idle");
-	MainRenderer->ChangeAnimation("Idle");
+	MainRenderer->CreateAnimation("Run_Normal", "Normal");
+	MainRenderer->CreateAnimation("Run_Shoot", "Shoot");
+	MainRenderer->ChangeAnimation("Run_Normal");
 	MainRenderer->AutoSpriteSizeOn();
 
 	MainRenderer->Transform.SetLocalPosition({250, -550});

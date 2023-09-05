@@ -28,7 +28,7 @@ void Logo_Mdhr::Start()
 	}
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
-	Renderer->CreateAnimation("Logo", "Logo", 0.04f);
+	Renderer->CreateAnimation("Logo", "Logo", 0.03f);
 	Renderer->ChangeAnimation("Logo");
 
 	Renderer->Transform.SetLocalScale({1280, 720});

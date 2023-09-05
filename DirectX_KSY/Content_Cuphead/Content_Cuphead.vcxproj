@@ -171,6 +171,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BaseCharacter_State.cpp" />
     <ClCompile Include="ContentsCore.cpp" />
     <ClCompile Include="KingDiceBackground.cpp">
       <SubType>
@@ -205,6 +206,7 @@
     <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActorEnum.h" />
     <ClInclude Include="BaseCharacter.h">
       <SubType>
       </SubType>

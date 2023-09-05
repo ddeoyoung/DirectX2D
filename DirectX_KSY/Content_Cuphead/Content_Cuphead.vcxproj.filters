@@ -59,6 +59,9 @@
       <Filter>Object\Character</Filter>
     </ClInclude>
     <ClInclude Include="ContentEnum.h" />
+    <ClInclude Include="ActorEnum.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -87,6 +90,9 @@
       <Filter>Object\Title</Filter>
     </ClCompile>
     <ClCompile Include="BaseCharacter.cpp">
+      <Filter>Object\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCharacter_State.cpp">
       <Filter>Object\Character</Filter>
     </ClCompile>
   </ItemGroup>
