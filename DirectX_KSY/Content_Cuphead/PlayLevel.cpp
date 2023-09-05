@@ -4,6 +4,7 @@
 #include "KingDiceBackground.h"
 #include "KingDiceTable.h"
 #include "BaseCharacter.h"
+#include "Cuphead.h"
 
 PlayLevel::PlayLevel()
 {
@@ -32,7 +33,7 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	std::shared_ptr<KingDiceBackground> Background = CreateActor<KingDiceBackground>();
 	std::shared_ptr<KingDiceTable> Table = CreateActor<KingDiceTable>();
 
-	std::shared_ptr<BaseCharacter> Character = CreateActor<BaseCharacter>();
+	std::shared_ptr<BaseCharacter> Character = CreateActor<Cuphead>();
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)

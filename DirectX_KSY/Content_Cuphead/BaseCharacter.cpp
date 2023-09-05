@@ -11,32 +11,103 @@ BaseCharacter::~BaseCharacter()
 
 void BaseCharacter::Start()
 {
-	if (nullptr == GameEngineSprite::Find("Idle"))
-	{
-		GameEngineDirectory Dir;
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Cuphead");
-
-		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
-
-		for (size_t i = 0; i < Directorys.size(); i++)
-		{
-			GameEngineDirectory& Dir = Directorys[i];
-			GameEngineSprite::CreateFolder(Dir.GetStringPath());
-		}
-	}
-
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	MainRenderer->CreateAnimation("Idle", "Idle");
-	MainRenderer->CreateAnimation("Run_Normal", "Normal");
-	MainRenderer->CreateAnimation("Run_Shoot", "Shoot");
-	MainRenderer->ChangeAnimation("Run_Normal");
-	MainRenderer->AutoSpriteSizeOn();
-
-	MainRenderer->Transform.SetLocalPosition({250, -550});
+	
 }
 
 void BaseCharacter::Update(float _Delta)
 {
-
+	StateUpdate(_Delta);
 }
+
+void BaseCharacter::ChangeState(CharacterState _State)
+{
+	if (_State != State)
+	{
+		switch (_State)
+		{
+		case CharacterState::None:
+			break;
+		case CharacterState::Idle:
+			IdleStart();
+			break;
+		case CharacterState::Run:
+			RunStart();
+			break;
+		case CharacterState::Aim:
+			AimStart();
+			break;
+		case CharacterState::Shoot:
+			ShootStart();
+			break;
+		case CharacterState::Duck:
+			DuckStart();
+			break;
+		case CharacterState::Hit:
+			HitStart();
+			break;
+		case CharacterState::Dash:
+			DashStart();
+			break;
+		case CharacterState::Jump:
+			JumpStart();
+			break;
+		case CharacterState::Parry:
+			ParryStart();
+			break;
+		case CharacterState::Intro:
+			IntroStart();
+			break;
+		case CharacterState::Ghost:
+			GhostStart();
+			break;
+		case CharacterState::Death:
+			DeathStart();
+			break;
+		case CharacterState::Max:
+			break;
+		default:
+			break;
+		}
+	}
+
+	State = _State;
+}
+
+void BaseCharacter::StateUpdate(float _Delta)
+{
+	switch (State)
+	{
+	case CharacterState::None:
+		break;
+	case CharacterState::Idle:
+		return IdleUpdate(_Delta);
+	case CharacterState::Run:
+		return RunUpdate(_Delta);
+	case CharacterState::Aim:
+		return AimUpdate(_Delta);
+	case CharacterState::Shoot:
+		return ShootUpdate(_Delta);
+	case CharacterState::Duck:
+		return DuckUpdate(_Delta);
+	case CharacterState::Hit:
+		return HitUpdate(_Delta);
+	case CharacterState::Dash:
+		return DashUpdate(_Delta);
+	case CharacterState::Jump:
+		return JumpUpdate(_Delta);
+	case CharacterState::Parry:
+		return ParryUpdate(_Delta);
+	case CharacterState::Intro:
+		return IntroUpdate(_Delta);
+	case CharacterState::Ghost:
+		return GhostUpdate(_Delta);
+	case CharacterState::Death:
+		return DeathUpdate(_Delta);
+	case CharacterState::Max:
+		break;
+	default:
+		break;
+	}
+}
+
+void BaseCharacter::ChangeAnimationState(const std::string& _StateName) {}

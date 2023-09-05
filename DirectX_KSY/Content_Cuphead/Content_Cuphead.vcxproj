@@ -173,6 +173,10 @@
     </ClCompile>
     <ClCompile Include="BaseCharacter_State.cpp" />
     <ClCompile Include="ContentsCore.cpp" />
+    <ClCompile Include="Cuphead.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="KingDiceBackground.cpp">
       <SubType>
       </SubType>
@@ -213,6 +217,10 @@
     </ClInclude>
     <ClInclude Include="ContentEnum.h" />
     <ClInclude Include="ContentsCore.h" />
+    <ClInclude Include="Cuphead.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="KingDiceBackground.h">
       <SubType>
       </SubType>

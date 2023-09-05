@@ -2,11 +2,12 @@
 
 enum class CharacterState
 {
+	None,
 	Idle,
 	Run,
 	Aim,
-	Duck,
 	Shoot,
+	Duck,
 	Hit,
 	Dash,
 	Jump,
@@ -14,4 +15,5 @@ enum class CharacterState
 	Intro,
 	Ghost,
 	Death,
+	Max,
 };
