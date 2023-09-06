@@ -27,18 +27,42 @@ void BaseCharacter::RunStart()
 
 void BaseCharacter::RunUpdate(float _Delta)
 {
-	if	(true == GameEngineInput::IsUp(VK_LEFT)
-		|| true == GameEngineInput::IsUp(VK_RIGHT)		
-		|| true == GameEngineInput::IsUp(VK_UP)		
-		|| true == GameEngineInput::IsUp(VK_DOWN))
+	DirCheck();
+
+	float RunSpeed = 200.0f;
+	float4 MovePos = 0.0f;
+
+	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT) 
+		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT))
+	{
+		MovePos = float4::LEFT * _Delta * RunSpeed;
+	}
+
+	if (Dir == ActorDir::Right && true == GameEngineInput::IsDown(VK_RIGHT) 
+		|| Dir == ActorDir::Right && true == GameEngineInput::IsPress(VK_RIGHT))
+	{
+		MovePos = float4::RIGHT * _Delta * RunSpeed;
+	}
+
+	if (Dir == ActorDir::Up && true == GameEngineInput::IsDown(VK_UP) 
+		|| Dir == ActorDir::Up && true == GameEngineInput::IsPress(VK_UP))
+	{
+		MovePos = float4::UP * _Delta * RunSpeed;
+	}
+
+	if (Dir == ActorDir::Down && true == GameEngineInput::IsDown(VK_DOWN) 
+		|| Dir == ActorDir::Down && true == GameEngineInput::IsPress(VK_DOWN))
+	{
+		MovePos = float4::DOWN * _Delta * RunSpeed;
+	}
+
+	if (float4::ZERO == MovePos)
 	{
 		ChangeState(CharacterState::Idle);
 		return;
 	}
 
-	DirCheck();
-
-	
+	Transform.AddLocalPosition(MovePos);
 }
 
 void BaseCharacter::AimStart()
