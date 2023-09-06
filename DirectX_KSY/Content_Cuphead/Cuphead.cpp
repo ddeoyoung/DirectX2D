@@ -30,14 +30,14 @@ void Cuphead::Start()
 	}
 
 	// Create Animation
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Play);
 	MainRenderer->CreateAnimation("Cuphead_Idle", "Idle");
 	MainRenderer->CreateAnimation("Cuphead_Run_Normal", "Normal");
 	MainRenderer->CreateAnimation("Cuphead_Run_Shoot", "Shoot");
 	MainRenderer->CreateAnimation("Cuphead_Intro", "Type_A", 0.05f);
 
 	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->Transform.SetLocalPosition({ 250, -550 });
+	//MainRenderer->Transform.SetLocalPosition({ 250, -550 });
 
 	ChangeState(CharacterState::Intro);
 }
@@ -50,6 +50,23 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Run")
 	{
 		AnimationName += "_Normal";
+
+
+		switch (Dir)
+		{
+		case ActorDir::Left:
+			//Transform.SetLocalScale({ -1.0f, 1.0f });
+			break;
+		case ActorDir::Right:
+			//Transform.SetLocalScale({ 1.0f, 1.0f });
+			break;
+		case ActorDir::Up:
+			break;
+		case ActorDir::Down:
+			break;
+		default:
+			break;
+		}
 	}
 
 	CurState = _StateName;

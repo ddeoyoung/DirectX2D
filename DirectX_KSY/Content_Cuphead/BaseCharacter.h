@@ -60,6 +60,9 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void DirCheck();
+
+	ActorDir Dir = ActorDir::None;
 	CharacterState State = CharacterState::None;
 	std::string CurState = "";
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;

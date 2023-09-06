@@ -34,6 +34,8 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	std::shared_ptr<KingDiceTable> Table = CreateActor<KingDiceTable>();
 
 	std::shared_ptr<BaseCharacter> Character = CreateActor<Cuphead>();
+
+	Character->Transform.SetLocalPosition({ 250, -550 });
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)

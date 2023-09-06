@@ -13,6 +13,7 @@ void BaseCharacter::IdleUpdate(float _Delta)
 		|| true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP)
 		|| true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
 	{
+		DirCheck();
 		ChangeState(CharacterState::Run);
 		return;
 	}
@@ -23,7 +24,7 @@ void BaseCharacter::RunStart()
 {
 	ChangeAnimationState("Run");
 }
-  
+
 void BaseCharacter::RunUpdate(float _Delta)
 {
 	if	(true == GameEngineInput::IsUp(VK_LEFT)
@@ -34,6 +35,10 @@ void BaseCharacter::RunUpdate(float _Delta)
 		ChangeState(CharacterState::Idle);
 		return;
 	}
+
+	DirCheck();
+
+	
 }
 
 void BaseCharacter::AimStart()

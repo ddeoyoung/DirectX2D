@@ -1,5 +1,14 @@
 #pragma once
 
+enum class ActorDir
+{
+	None,
+	Left,
+	Right,
+	Up,
+	Down,
+};
+
 enum class CharacterState
 {
 	None,

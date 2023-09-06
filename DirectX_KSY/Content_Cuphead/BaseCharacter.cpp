@@ -111,3 +111,33 @@ void BaseCharacter::StateUpdate(float _Delta)
 }
 
 void BaseCharacter::ChangeAnimationState(const std::string& _StateName) {}
+
+void BaseCharacter::DirCheck()
+{
+	ActorDir CheckDir = Dir;
+
+	if (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+	{
+		CheckDir = ActorDir::Left;
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+	}
+	if (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
+	{
+		CheckDir = ActorDir::Right;
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+	if (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP))
+	{
+		CheckDir = ActorDir::Up;
+	}
+	if (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+	{
+		CheckDir = ActorDir::Down;
+	}
+
+	if (CheckDir != Dir)
+	{
+		Dir = CheckDir;
+		ChangeAnimationState(CurState);
+	}
+}
