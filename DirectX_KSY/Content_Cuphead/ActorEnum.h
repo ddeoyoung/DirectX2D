@@ -17,6 +17,8 @@ enum class CharacterState
 	Aim,
 	Shoot,
 	Duck,
+	DuckIdle,
+	DuckShoot,
 	Hit,
 	Dash,
 	Jump,

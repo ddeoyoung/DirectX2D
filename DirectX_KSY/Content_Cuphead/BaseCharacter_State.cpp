@@ -8,14 +8,28 @@ void BaseCharacter::IdleStart()
 
 void BaseCharacter::IdleUpdate(float _Delta)
 {
-	if (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT)
-		|| true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT)
-		|| true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP)
-		|| true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+	//if (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT)
+	//	|| true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
+	//{
+	//	DirCheck();
+	//	ChangeState(CharacterState::Run);
+	//	return;
+	//}
+
+	if (true == GameEngineInput::IsPress(VK_LEFT) || true == GameEngineInput::IsPress(VK_RIGHT))
 	{
 		DirCheck();
 		ChangeState(CharacterState::Run);
-		return;
+	}
+
+	if (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+	{
+		ChangeState(CharacterState::Duck);
+	}
+
+	if (true == GameEngineInput::IsDown(VK_SPACE))
+	{
+		ChangeState(CharacterState::Dash);
 	}
 }
 
@@ -29,7 +43,7 @@ void BaseCharacter::RunUpdate(float _Delta)
 {
 	DirCheck();
 
-	float RunSpeed = 200.0f;
+	float RunSpeed = 400.0f;
 	float4 MovePos = 0.0f;
 
 	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT) 
@@ -92,6 +106,37 @@ void BaseCharacter::DuckStart()
 
 void BaseCharacter::DuckUpdate(float _Delta)
 {
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(CharacterState::DuckIdle);
+	}
+
+	if (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
+	{
+		ChangeState(CharacterState::Idle);
+	}
+}
+
+void BaseCharacter::DuckIdleStart()
+{
+	ChangeAnimationState("Duck_Idle");
+}
+
+void BaseCharacter::DuckIdleUpdate(float _Delta)
+{
+	if (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
+	{
+		ChangeState(CharacterState::Idle);
+	}
+}
+
+void BaseCharacter::DuckShootStart()
+{
+	ChangeAnimationState("Duck_Shoot");
+}
+
+void BaseCharacter::DuckShootUpdate(float _Delta)
+{
 
 }
 
@@ -112,7 +157,27 @@ void BaseCharacter::DashStart()
 
 void BaseCharacter::DashUpdate(float _Delta)
 {
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(CharacterState::Idle);
+	}
 
+	float DashSpeed = 800.0f;
+	float4 MovePos = 0.0f;
+
+	switch (Dir)
+	{
+	case ActorDir::Left:
+		MovePos = float4::LEFT * _Delta * DashSpeed;
+		break;
+	case ActorDir::Right:
+		MovePos = float4::RIGHT * _Delta * DashSpeed;
+		break;
+	default:
+		break;
+	}
+
+	Transform.AddLocalPosition(MovePos);
 }
 
 void BaseCharacter::JumpStart()
@@ -146,7 +211,6 @@ void BaseCharacter::IntroUpdate(float _Delta)
 	{
 		ChangeState(CharacterState::Idle);
 	}
-
 }
 
 void BaseCharacter::GhostStart()

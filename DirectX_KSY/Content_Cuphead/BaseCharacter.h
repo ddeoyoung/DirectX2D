@@ -35,6 +35,12 @@ protected:
 	void DuckStart();
 	void DuckUpdate(float _Delta);
 
+	void DuckIdleStart();
+	void DuckIdleUpdate(float _Delta);
+
+	void DuckShootStart();
+	void DuckShootUpdate(float _Delta);
+
 	void HitStart();
 	void HitUpdate(float _Delta);
 

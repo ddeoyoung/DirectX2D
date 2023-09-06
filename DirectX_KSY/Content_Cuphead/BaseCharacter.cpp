@@ -42,6 +42,12 @@ void BaseCharacter::ChangeState(CharacterState _State)
 		case CharacterState::Duck:
 			DuckStart();
 			break;
+		case CharacterState::DuckIdle:
+			DuckIdleStart();
+			break;
+		case CharacterState::DuckShoot:
+			DuckShootStart();
+			break;
 		case CharacterState::Hit:
 			HitStart();
 			break;
@@ -89,6 +95,10 @@ void BaseCharacter::StateUpdate(float _Delta)
 		return ShootUpdate(_Delta);
 	case CharacterState::Duck:
 		return DuckUpdate(_Delta);
+	case CharacterState::DuckIdle:
+		return DuckIdleUpdate(_Delta);
+	case CharacterState::DuckShoot:
+		return DuckShootUpdate(_Delta);
 	case CharacterState::Hit:
 		return HitUpdate(_Delta);
 	case CharacterState::Dash:

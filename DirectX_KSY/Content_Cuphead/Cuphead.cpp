@@ -34,10 +34,15 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Idle", "Idle");
 	MainRenderer->CreateAnimation("Cuphead_Run_Normal", "Normal");
 	MainRenderer->CreateAnimation("Cuphead_Run_Shoot", "Shoot");
-	MainRenderer->CreateAnimation("Cuphead_Intro", "Type_A", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Intro_Type_A", "Intro_Type_A", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Intro_Type_B", "Intro_Type_B", 0.04f);
+	MainRenderer->CreateAnimation("Cuphead_Duck", "Duck");
+	MainRenderer->CreateAnimation("Cuphead_Duck_Idle", "Duck_Idle");
+	MainRenderer->CreateAnimation("Cuphead_Duck_Shoot", "Duck_Shoot");
+	MainRenderer->CreateAnimation("Cuphead_Dash_Ground", "Dash_Ground", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Dash_Air", "Dash_Air", 0.05f);
 
 	MainRenderer->AutoSpriteSizeOn();
-	//MainRenderer->Transform.SetLocalPosition({ 250, -550 });
 
 	ChangeState(CharacterState::Intro);
 }
@@ -47,18 +52,37 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 	std::string AnimationName = "Cuphead_";
 	AnimationName += _StateName;
 
+
+	// Intro
+	GameEngineRandom NewRandom;
+	int Random = NewRandom.RandomInt(1, 2);
+	NewRandom.SetSeed(Random);
+
+	if (_StateName == "Intro")
+	{
+		switch (Random)
+		{
+		case 1:
+			AnimationName += "_Type_A";
+			break;
+		case 2:
+			AnimationName += "_Type_B";
+			break;
+		default:
+			break;
+		}
+	}
+
+	// Run
 	if (_StateName == "Run")
 	{
 		AnimationName += "_Normal";
 
-
 		switch (Dir)
 		{
 		case ActorDir::Left:
-			//Transform.SetLocalScale({ -1.0f, 1.0f });
 			break;
 		case ActorDir::Right:
-			//Transform.SetLocalScale({ 1.0f, 1.0f });
 			break;
 		case ActorDir::Up:
 			break;
@@ -67,6 +91,12 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 		default:
 			break;
 		}
+	}
+
+	// Dash
+	if (_StateName == "Dash")
+	{
+		AnimationName += "_Ground";
 	}
 
 	CurState = _StateName;
