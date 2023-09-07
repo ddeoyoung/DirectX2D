@@ -69,9 +69,13 @@ protected:
 	void DirCheck();
 
 	ActorDir Dir = ActorDir::None;
+
 	CharacterState State = CharacterState::None;
 	std::string CurState = "";
+
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+
+	float4 GravityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 private:
 };

@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "BaseCharacter.h"
 
+#include "KingDiceTable.h"
+
 BaseCharacter::BaseCharacter()
 {
 }
@@ -17,6 +19,20 @@ void BaseCharacter::Start()
 void BaseCharacter::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+
+	GameEngineColor PixelColor = KingDiceTable::KDTable->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
+
+	if (PixelColor != GameEngineColor::RED)
+	{
+		GravityForce.Y -= _Delta * 100.0f;
+		Transform.AddLocalPosition(GravityForce * _Delta);
+	}
+
+	else
+	{
+		GravityForce = 0.0f;
+	}
+
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)

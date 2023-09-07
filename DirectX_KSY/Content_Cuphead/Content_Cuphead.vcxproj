@@ -172,12 +172,24 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BaseCharacter_State.cpp" />
+    <ClCompile Include="ChipsBettiganLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
     <ClCompile Include="Cuphead.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="HopusPocusLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="KingDiceBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KingDiceLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -193,7 +205,31 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MangosteenLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MrChimesLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MrWeezyLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="OverWorldLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PhearLapLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PipandDotLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PiroulettaLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -207,11 +243,19 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TipsyTroopLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorEnum.h" />
     <ClInclude Include="BaseCharacter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ChipsBettiganLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -221,7 +265,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="HopusPocusLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="KingDiceBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KingDiceLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -237,7 +289,31 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="MangosteenLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MrChimesLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MrWeezyLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="OverWorldLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PhearLapLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PipandDotLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PiroulettaLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -246,6 +322,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="TipsyTroopLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

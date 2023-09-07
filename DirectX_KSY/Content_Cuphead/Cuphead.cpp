@@ -41,6 +41,7 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Duck_Shoot", "Duck_Shoot");
 	MainRenderer->CreateAnimation("Cuphead_Dash_Ground", "Dash_Ground", 0.05f);
 	MainRenderer->CreateAnimation("Cuphead_Dash_Air", "Dash_Air", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump"/*, 0.03f*/);
 
 	MainRenderer->AutoSpriteSizeOn();
 

@@ -30,12 +30,13 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
+	// Background
 	std::shared_ptr<KingDiceBackground> Background = CreateActor<KingDiceBackground>();
 	std::shared_ptr<KingDiceTable> Table = CreateActor<KingDiceTable>();
 
+	// Player
 	std::shared_ptr<BaseCharacter> Character = CreateActor<Cuphead>();
-
-	Character->Transform.SetLocalPosition({ 250, -550 });
+	Character->Transform.SetLocalPosition({ 250, /*-550*/ -200 });
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
