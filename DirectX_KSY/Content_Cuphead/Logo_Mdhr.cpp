@@ -33,3 +33,11 @@ void Logo_Mdhr::Start()
 
 	Renderer->Transform.SetLocalScale({1280, 720});
 }
+
+void Logo_Mdhr::Update(float _Delta)
+{
+	if (true == Renderer->IsCurAnimationEnd())
+	{
+		GameEngineCore::ChangeLevel("TitleLevel");
+	}
+}

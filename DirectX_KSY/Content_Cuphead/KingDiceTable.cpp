@@ -17,13 +17,13 @@ void KingDiceTable::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\KingDice\\StageObject\\Table\\kd_bg_table.png");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Table\\kd_bg_table.png");
 
 		GameEngineTexture::Load(Dir.GetStringPath());
 		GameEngineSprite::CreateSingle("kd_bg_table.png");
 
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\KingDice\\StageObject\\Table\\kd_bg_table_pixel.bmp");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Table\\kd_bg_table_pixel.bmp");
 
 		GameEngineTexture::Load(Dir.GetStringPath());
 		GameEngineSprite::CreateSingle("kd_bg_table_pixel.bmp");

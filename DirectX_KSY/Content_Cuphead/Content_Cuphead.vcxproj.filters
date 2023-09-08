@@ -125,6 +125,9 @@
     <ClInclude Include="KingDiceLevel.h">
       <Filter>Level\BossStage</Filter>
     </ClInclude>
+    <ClInclude Include="TitleScreenBackground.h">
+      <Filter>Object\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -190,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="KingDiceLevel.cpp">
       <Filter>Level\BossStage</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenBackground.cpp">
+      <Filter>Object\Title</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ void KingDiceBackground::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\KingDice\\StageObject\\Background\\kd_bg_painting.png");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Background\\kd_bg_painting.png");
 
 		GameEngineTexture::Load(Dir.GetStringPath());
 		GameEngineSprite::CreateSingle("kd_bg_painting.png");
