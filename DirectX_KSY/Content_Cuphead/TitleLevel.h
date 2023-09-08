@@ -25,5 +25,6 @@ protected:
 private:
 	std::shared_ptr<class TitleBackground> Back = nullptr;
 	std::shared_ptr<class Cuphead_And_Mugman> CupheadAndMugman = nullptr;
+	std::shared_ptr<class TitleMenuBackground> MenuBack = nullptr;
 };
 

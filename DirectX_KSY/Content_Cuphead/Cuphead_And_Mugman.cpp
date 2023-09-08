@@ -27,7 +27,7 @@ void Cuphead_And_Mugman::Start()
 	}
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
-	Renderer->CreateAnimation("Cuphead_And_Mugman", "Cuphead_And_Mugman", 0.03f);
+	Renderer->CreateAnimation("Cuphead_And_Mugman", "Cuphead_And_Mugman", 0.04f);
 	Renderer->ChangeAnimation("Cuphead_And_Mugman");
 
 	Renderer->AutoSpriteSizeOn();

@@ -3,6 +3,7 @@
 
 #include "TitleBackground.h"
 #include "Cuphead_And_Mugman.h"
+#include "TitleMenuBackground.h"
 
 TitleLevel::TitleLevel() 
 {
@@ -19,12 +20,21 @@ void TitleLevel::Start()
 
 	Back = CreateActor<TitleBackground>();
 	CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
+	MenuBack = CreateActor<TitleMenuBackground>();
+	MenuBack->Off();
 }
 
 
 void TitleLevel::Update(float _Delta)
 {
 	if (GameEngineInput::IsPress('P'))
+	{
+		Back->Off();
+		CupheadAndMugman->Off();
+		MenuBack->On();
+	}
+
+	if (GameEngineInput::IsPress('Z'))
 	{
 		GameEngineCore::ChangeLevel("PlayLevel");
 	}

@@ -131,6 +131,9 @@
     <ClInclude Include="Cuphead_And_Mugman.h">
       <Filter>Object\Title</Filter>
     </ClInclude>
+    <ClInclude Include="TitleMenuBackground.h">
+      <Filter>Object\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -201,6 +204,9 @@
       <Filter>Object\Title</Filter>
     </ClCompile>
     <ClCompile Include="Cuphead_And_Mugman.cpp">
+      <Filter>Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenuBackground.cpp">
       <Filter>Object\Title</Filter>
     </ClCompile>
   </ItemGroup>

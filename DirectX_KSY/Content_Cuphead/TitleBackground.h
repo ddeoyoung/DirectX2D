@@ -21,5 +21,8 @@ protected:
 
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
+	std::shared_ptr<class GameEngineSpriteRenderer> PressKeyRenderer;
+
+	float PressKeyTime = 0.0f;
 };
 
