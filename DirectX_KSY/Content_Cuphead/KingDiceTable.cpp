@@ -39,15 +39,6 @@ void KingDiceTable::Start()
 	Renderer->SetSprite("kd_bg_table.png");
 	Renderer->Transform.SetLocalPosition(Pos);
 
-	/*std::shared_ptr<GameEngineTexture> PixelTexture = GameEngineTexture::Find("kd_bg_table_pixel.bmp");
-
-	float4 PixelPos = PixelTexture->GetScale().Half();
-	PixelPos *= -1.0f;
-
-	Renderer = CreateComponent<GameEngineSpriteRenderer>(3);
-	Renderer->SetSprite("kd_bg_table_pixel.bmp");
-	Renderer->Transform.SetLocalPosition(PixelPos);*/
-	//Renderer->Off();
 }
 
 GameEngineColor KingDiceTable::GetColor(float4 _Pos, GameEngineColor _DefaultColor)

@@ -1,6 +1,9 @@
 #include "PreCompile.h"
 #include "TitleLevel.h"
 
+#include "TitleBackground.h"
+#include "Cuphead_And_Mugman.h"
+
 TitleLevel::TitleLevel() 
 {
 }
@@ -12,7 +15,10 @@ TitleLevel::~TitleLevel()
 void TitleLevel::Start()
 {
 	GetMainCamera()->Transform.SetLocalPosition({ 0.0f, 0.0f, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Perspective);
+	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
+
+	Back = CreateActor<TitleBackground>();
+	CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
 }
 
 

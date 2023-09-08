@@ -43,7 +43,9 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Dash_Air", "Dash_Air", 0.05f);
 	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump"/*, 0.03f*/);
 
+
 	MainRenderer->AutoSpriteSizeOn();
+	MainRenderer->SetPivotType(PivotType::Bottom);
 
 	ChangeState(CharacterState::Intro);
 }

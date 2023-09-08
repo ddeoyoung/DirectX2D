@@ -36,7 +36,7 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Player
 	std::shared_ptr<BaseCharacter> Character = CreateActor<Cuphead>();
-	Character->Transform.SetLocalPosition({ 250, /*-550*/ -200 });
+	Character->Transform.SetLocalPosition({ 250, -550});
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)

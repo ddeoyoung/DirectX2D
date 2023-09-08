@@ -23,6 +23,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
-
+	std::shared_ptr<class TitleBackground> Back = nullptr;
+	std::shared_ptr<class Cuphead_And_Mugman> CupheadAndMugman = nullptr;
 };
 

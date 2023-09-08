@@ -13,49 +13,49 @@
     <Filter Include="Object\KingDice">
       <UniqueIdentifier>{8b867753-a8eb-4bfb-b298-11453aed3e72}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\Title">
-      <UniqueIdentifier>{15d2e981-d1fb-43fd-beb8-910dda7b9c63}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\OverWorld">
-      <UniqueIdentifier>{58d35493-8a6a-4854-bf90-08d8e66b2e21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\BossStage">
-      <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Title">
       <UniqueIdentifier>{e1490f86-5ce1-4a3f-8520-a1761a610c9e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\Character">
       <UniqueIdentifier>{2a2990b4-20f8-4cf4-a0d6-e4643869c91f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage">
+    <Filter Include="Level\0. Title">
+      <UniqueIdentifier>{15d2e981-d1fb-43fd-beb8-910dda7b9c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\1. OverWorld">
+      <UniqueIdentifier>{58d35493-8a6a-4854-bf90-08d8e66b2e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\3. BossStage">
+      <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\2. SubBossStage">
       <UniqueIdentifier>{5aef9699-05f0-4d62-bd2d-2968aad90ffe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage1">
+    <Filter Include="Level\2. SubBossStage\Stage1">
       <UniqueIdentifier>{7b21f813-e4b5-4b9b-b0bc-7709c9a80ca0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage2">
+    <Filter Include="Level\2. SubBossStage\Stage2">
       <UniqueIdentifier>{dc12733e-11a5-4df7-8d86-d5b2f74ee8df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage3">
+    <Filter Include="Level\2. SubBossStage\Stage3">
       <UniqueIdentifier>{2cff034a-1696-4245-9e5f-ae613ef4e030}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage4">
+    <Filter Include="Level\2. SubBossStage\Stage4">
       <UniqueIdentifier>{31c249c7-e6c9-4412-809a-1bb8e7c23916}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage5">
+    <Filter Include="Level\2. SubBossStage\Stage5">
       <UniqueIdentifier>{71dda4f7-8566-4fa9-8c83-f4150dc64037}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage6">
+    <Filter Include="Level\2. SubBossStage\Stage6">
       <UniqueIdentifier>{9793a7cd-b3ae-43c1-9841-89b138f47121}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage7">
+    <Filter Include="Level\2. SubBossStage\Stage7">
       <UniqueIdentifier>{f7bf2631-2d6d-450b-a3f8-7466b4dea3ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage8">
+    <Filter Include="Level\2. SubBossStage\Stage8">
       <UniqueIdentifier>{c6b48854-ed5c-4d0c-aa6a-a0327db16ed3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\SubBossStage\Stage9">
+    <Filter Include="Level\2. SubBossStage\Stage9">
       <UniqueIdentifier>{e6663c0c-ad12-4732-9208-5b8f82e49562}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -71,16 +71,16 @@
       <Filter>Object\KingDice</Filter>
     </ClInclude>
     <ClInclude Include="TitleLevel.h">
-      <Filter>Level\Title</Filter>
+      <Filter>Level\0. Title</Filter>
     </ClInclude>
     <ClInclude Include="LogoLevel.h">
-      <Filter>Level\Title</Filter>
+      <Filter>Level\0. Title</Filter>
     </ClInclude>
     <ClInclude Include="OverWorldLevel.h">
-      <Filter>Level\OverWorld</Filter>
+      <Filter>Level\1. OverWorld</Filter>
     </ClInclude>
     <ClInclude Include="PlayLevel.h">
-      <Filter>Level\BossStage</Filter>
+      <Filter>Level\3. BossStage</Filter>
     </ClInclude>
     <ClInclude Include="Logo_Mdhr.h">
       <Filter>Object\Title</Filter>
@@ -96,36 +96,39 @@
       <Filter>Object\Character</Filter>
     </ClInclude>
     <ClInclude Include="TipsyTroopLevel.h">
-      <Filter>Level\SubBossStage\Stage1</Filter>
+      <Filter>Level\2. SubBossStage\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="ChipsBettiganLevel.h">
-      <Filter>Level\SubBossStage\Stage2</Filter>
+      <Filter>Level\2. SubBossStage\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="MrWeezyLevel.h">
-      <Filter>Level\SubBossStage\Stage3</Filter>
+      <Filter>Level\2. SubBossStage\Stage3</Filter>
     </ClInclude>
     <ClInclude Include="HopusPocusLevel.h">
-      <Filter>Level\SubBossStage\Stage5</Filter>
+      <Filter>Level\2. SubBossStage\Stage5</Filter>
     </ClInclude>
     <ClInclude Include="PipandDotLevel.h">
-      <Filter>Level\SubBossStage\Stage4</Filter>
+      <Filter>Level\2. SubBossStage\Stage4</Filter>
     </ClInclude>
     <ClInclude Include="PhearLapLevel.h">
-      <Filter>Level\SubBossStage\Stage6</Filter>
+      <Filter>Level\2. SubBossStage\Stage6</Filter>
     </ClInclude>
     <ClInclude Include="PiroulettaLevel.h">
-      <Filter>Level\SubBossStage\Stage7</Filter>
+      <Filter>Level\2. SubBossStage\Stage7</Filter>
     </ClInclude>
     <ClInclude Include="MangosteenLevel.h">
-      <Filter>Level\SubBossStage\Stage8</Filter>
+      <Filter>Level\2. SubBossStage\Stage8</Filter>
     </ClInclude>
     <ClInclude Include="MrChimesLevel.h">
-      <Filter>Level\SubBossStage\Stage9</Filter>
+      <Filter>Level\2. SubBossStage\Stage9</Filter>
     </ClInclude>
     <ClInclude Include="KingDiceLevel.h">
-      <Filter>Level\BossStage</Filter>
+      <Filter>Level\3. BossStage</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScreenBackground.h">
+    <ClInclude Include="TitleBackground.h">
+      <Filter>Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Cuphead_And_Mugman.h">
       <Filter>Object\Title</Filter>
     </ClInclude>
   </ItemGroup>
@@ -141,16 +144,16 @@
       <Filter>Object\KingDice</Filter>
     </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
-      <Filter>Level\Title</Filter>
+      <Filter>Level\0. Title</Filter>
     </ClCompile>
     <ClCompile Include="LogoLevel.cpp">
-      <Filter>Level\Title</Filter>
+      <Filter>Level\0. Title</Filter>
     </ClCompile>
     <ClCompile Include="OverWorldLevel.cpp">
-      <Filter>Level\OverWorld</Filter>
+      <Filter>Level\1. OverWorld</Filter>
     </ClCompile>
     <ClCompile Include="PlayLevel.cpp">
-      <Filter>Level\BossStage</Filter>
+      <Filter>Level\3. BossStage</Filter>
     </ClCompile>
     <ClCompile Include="Logo_Mdhr.cpp">
       <Filter>Object\Title</Filter>
@@ -165,36 +168,39 @@
       <Filter>Object\Character</Filter>
     </ClCompile>
     <ClCompile Include="TipsyTroopLevel.cpp">
-      <Filter>Level\SubBossStage\Stage1</Filter>
+      <Filter>Level\2. SubBossStage\Stage1</Filter>
     </ClCompile>
     <ClCompile Include="ChipsBettiganLevel.cpp">
-      <Filter>Level\SubBossStage\Stage2</Filter>
+      <Filter>Level\2. SubBossStage\Stage2</Filter>
     </ClCompile>
     <ClCompile Include="MrWeezyLevel.cpp">
-      <Filter>Level\SubBossStage\Stage3</Filter>
+      <Filter>Level\2. SubBossStage\Stage3</Filter>
     </ClCompile>
     <ClCompile Include="HopusPocusLevel.cpp">
-      <Filter>Level\SubBossStage\Stage5</Filter>
+      <Filter>Level\2. SubBossStage\Stage5</Filter>
     </ClCompile>
     <ClCompile Include="PipandDotLevel.cpp">
-      <Filter>Level\SubBossStage\Stage4</Filter>
+      <Filter>Level\2. SubBossStage\Stage4</Filter>
     </ClCompile>
     <ClCompile Include="PhearLapLevel.cpp">
-      <Filter>Level\SubBossStage\Stage6</Filter>
+      <Filter>Level\2. SubBossStage\Stage6</Filter>
     </ClCompile>
     <ClCompile Include="PiroulettaLevel.cpp">
-      <Filter>Level\SubBossStage\Stage7</Filter>
+      <Filter>Level\2. SubBossStage\Stage7</Filter>
     </ClCompile>
     <ClCompile Include="MangosteenLevel.cpp">
-      <Filter>Level\SubBossStage\Stage8</Filter>
+      <Filter>Level\2. SubBossStage\Stage8</Filter>
     </ClCompile>
     <ClCompile Include="MrChimesLevel.cpp">
-      <Filter>Level\SubBossStage\Stage9</Filter>
+      <Filter>Level\2. SubBossStage\Stage9</Filter>
     </ClCompile>
     <ClCompile Include="KingDiceLevel.cpp">
-      <Filter>Level\BossStage</Filter>
+      <Filter>Level\3. BossStage</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScreenBackground.cpp">
+    <ClCompile Include="TitleBackground.cpp">
+      <Filter>Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Cuphead_And_Mugman.cpp">
       <Filter>Object\Title</Filter>
     </ClCompile>
   </ItemGroup>
