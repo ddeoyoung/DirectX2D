@@ -7,23 +7,8 @@
     <Filter Include="Level">
       <UniqueIdentifier>{ea0751e4-55cf-47c9-b99a-4f6daa1e288f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object">
-      <UniqueIdentifier>{1ed2653e-455b-4df4-b4a0-fe4cb1bc3f93}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\KingDice">
-      <UniqueIdentifier>{8b867753-a8eb-4bfb-b298-11453aed3e72}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Title">
-      <UniqueIdentifier>{e1490f86-5ce1-4a3f-8520-a1761a610c9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Character">
-      <UniqueIdentifier>{2a2990b4-20f8-4cf4-a0d6-e4643869c91f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\0. Title">
       <UniqueIdentifier>{15d2e981-d1fb-43fd-beb8-910dda7b9c63}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Character\Weapon">
-      <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level\1. Tutorial">
       <UniqueIdentifier>{11567a07-478f-45cb-a101-28f1beb0195f}</UniqueIdentifier>
@@ -64,8 +49,23 @@
     <Filter Include="Level\4. BossStage">
       <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Tutorial">
-      <UniqueIdentifier>{51e88052-d311-47d8-97f8-5d4ff553429f}</UniqueIdentifier>
+    <Filter Include="Level\0. Title\Object">
+      <UniqueIdentifier>{27712df7-f33b-4253-99dc-1b121ca33ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\1. Tutorial\Object">
+      <UniqueIdentifier>{99e97766-ba3d-4749-a0d2-8c653a0ce2f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. BossStage\Object">
+      <UniqueIdentifier>{11b6580f-a87f-4c97-8df3-72647015b7d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{1ed2653e-455b-4df4-b4a0-fe4cb1bc3f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character">
+      <UniqueIdentifier>{2a2990b4-20f8-4cf4-a0d6-e4643869c91f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Character\Weapon">
+      <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,12 +73,6 @@
       <Filter>PreCompile</Filter>
     </ClInclude>
     <ClInclude Include="ContentsCore.h" />
-    <ClInclude Include="KingDiceBackground.h">
-      <Filter>Object\KingDice</Filter>
-    </ClInclude>
-    <ClInclude Include="KingDiceTable.h">
-      <Filter>Object\KingDice</Filter>
-    </ClInclude>
     <ClInclude Include="TitleLevel.h">
       <Filter>Level\0. Title</Filter>
     </ClInclude>
@@ -91,18 +85,15 @@
     <ClInclude Include="PlayLevel.h">
       <Filter>Level\4. BossStage</Filter>
     </ClInclude>
-    <ClInclude Include="Logo_Mdhr.h">
-      <Filter>Object\Title</Filter>
-    </ClInclude>
     <ClInclude Include="BaseCharacter.h">
-      <Filter>Object\Character</Filter>
+      <Filter>Actor\Character</Filter>
     </ClInclude>
     <ClInclude Include="ContentEnum.h" />
     <ClInclude Include="ActorEnum.h">
-      <Filter>Object</Filter>
+      <Filter>Actor</Filter>
     </ClInclude>
     <ClInclude Include="Cuphead.h">
-      <Filter>Object\Character</Filter>
+      <Filter>Actor\Character</Filter>
     </ClInclude>
     <ClInclude Include="TipsyTroopLevel.h">
       <Filter>Level\3. SubBossStage\Stage1</Filter>
@@ -134,29 +125,38 @@
     <ClInclude Include="KingDiceLevel.h">
       <Filter>Level\4. BossStage</Filter>
     </ClInclude>
-    <ClInclude Include="TitleBackground.h">
-      <Filter>Object\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Cuphead_And_Mugman.h">
-      <Filter>Object\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleMenuBackground.h">
-      <Filter>Object\Title</Filter>
-    </ClInclude>
     <ClInclude Include="PeaShot.h">
-      <Filter>Object\Character\Weapon</Filter>
+      <Filter>Actor\Character\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="BaseWeapon.h">
-      <Filter>Object\Character\Weapon</Filter>
+      <Filter>Actor\Character\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="TutorialLevel.h">
       <Filter>Level\1. Tutorial</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialMap.h">
-      <Filter>Object\Tutorial</Filter>
-    </ClInclude>
     <ClInclude Include="ContentLevel.h">
       <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleMenuBackground.h">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Cuphead_And_Mugman.h">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Mdhr.h">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBackground.h">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap.h">
+      <Filter>Level\1. Tutorial\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="KingDiceBackground.h">
+      <Filter>Level\4. BossStage\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="KingDiceTable.h">
+      <Filter>Level\4. BossStage\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,12 +164,6 @@
       <Filter>PreCompile</Filter>
     </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
-    <ClCompile Include="KingDiceBackground.cpp">
-      <Filter>Object\KingDice</Filter>
-    </ClCompile>
-    <ClCompile Include="KingDiceTable.cpp">
-      <Filter>Object\KingDice</Filter>
-    </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Level\0. Title</Filter>
     </ClCompile>
@@ -182,17 +176,14 @@
     <ClCompile Include="PlayLevel.cpp">
       <Filter>Level\4. BossStage</Filter>
     </ClCompile>
-    <ClCompile Include="Logo_Mdhr.cpp">
-      <Filter>Object\Title</Filter>
-    </ClCompile>
     <ClCompile Include="BaseCharacter.cpp">
-      <Filter>Object\Character</Filter>
+      <Filter>Actor\Character</Filter>
     </ClCompile>
     <ClCompile Include="BaseCharacter_State.cpp">
-      <Filter>Object\Character</Filter>
+      <Filter>Actor\Character</Filter>
     </ClCompile>
     <ClCompile Include="Cuphead.cpp">
-      <Filter>Object\Character</Filter>
+      <Filter>Actor\Character</Filter>
     </ClCompile>
     <ClCompile Include="TipsyTroopLevel.cpp">
       <Filter>Level\3. SubBossStage\Stage1</Filter>
@@ -224,29 +215,38 @@
     <ClCompile Include="KingDiceLevel.cpp">
       <Filter>Level\4. BossStage</Filter>
     </ClCompile>
-    <ClCompile Include="TitleBackground.cpp">
-      <Filter>Object\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Cuphead_And_Mugman.cpp">
-      <Filter>Object\Title</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleMenuBackground.cpp">
-      <Filter>Object\Title</Filter>
-    </ClCompile>
     <ClCompile Include="PeaShot.cpp">
-      <Filter>Object\Character\Weapon</Filter>
+      <Filter>Actor\Character\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="BaseWeapon.cpp">
-      <Filter>Object\Character\Weapon</Filter>
+      <Filter>Actor\Character\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="TutorialLevel.cpp">
       <Filter>Level\1. Tutorial</Filter>
     </ClCompile>
-    <ClCompile Include="TutorialMap.cpp">
-      <Filter>Object\Tutorial</Filter>
-    </ClCompile>
     <ClCompile Include="ContentLevel.cpp">
       <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenuBackground.cpp">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Cuphead_And_Mugman.cpp">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Mdhr.cpp">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBackground.cpp">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap.cpp">
+      <Filter>Level\1. Tutorial\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="KingDiceBackground.cpp">
+      <Filter>Level\4. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="KingDiceTable.cpp">
+      <Filter>Level\4. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
