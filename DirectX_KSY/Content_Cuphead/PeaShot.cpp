@@ -39,7 +39,6 @@ void PeaShot::Start()
 
 	MainRenderer->ChangeAnimation("Peashot_Attack");
 	MainRenderer->AutoSpriteSizeOn();
-	//MainRenderer->SetImageScale({ 100.0f, 20.0f });
 	MainRenderer->Transform.SetLocalPosition({ 500.0f, -300.0f });
 }
 

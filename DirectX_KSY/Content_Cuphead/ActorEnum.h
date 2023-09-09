@@ -28,3 +28,8 @@ enum class CharacterState
 	Death,
 	Max,
 };
+
+enum class AttackDirection
+{
+
+};

@@ -31,17 +31,45 @@ void Cuphead::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Play);
+
+	// Idle
 	MainRenderer->CreateAnimation("Cuphead_Idle", "Idle");
-	MainRenderer->CreateAnimation("Cuphead_Run_Normal", "Normal");
-	MainRenderer->CreateAnimation("Cuphead_Run_Shoot", "Shoot");
+
+	// Run
+	MainRenderer->CreateAnimation("Cuphead_Run_Normal",		"Normal");
+	MainRenderer->CreateAnimation("Cuphead_Run_Shoot",		"Shoot");
+
+	// Aim
+	MainRenderer->CreateAnimation("Cuphead_Aim_Straight",		"Aim_Straight");
+	MainRenderer->CreateAnimation("Cuphead_Aim_Up",				"Aim_Up");
+	MainRenderer->CreateAnimation("Cuphead_Aim_Down",			"Aim_Down");
+	MainRenderer->CreateAnimation("Cuphead_Aim_Diagonal_Up",	"Aim_Diagonal_Up");
+	MainRenderer->CreateAnimation("Cuphead_Aim_Diagonal_Down",	"Aim_Diagonal_Down");
+
+	// Shoot
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Straight",		"Shoot_Straight");
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Up",			"Shoot_Up");
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Down",			"Shoot_Down");
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Diagonal_Up",	"Shoot_Diagonal_Up");
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Diagonal_Down","Shoot_Diagonal_Down");
+
+	// Intro
 	MainRenderer->CreateAnimation("Cuphead_Intro_Type_A", "Intro_Type_A", 0.05f);
 	MainRenderer->CreateAnimation("Cuphead_Intro_Type_B", "Intro_Type_B", 0.04f);
-	MainRenderer->CreateAnimation("Cuphead_Duck", "Duck");
-	MainRenderer->CreateAnimation("Cuphead_Duck_Idle", "Duck_Idle");
+
+	// Duck
+	MainRenderer->CreateAnimation("Cuphead_Duck",		"Duck");
+	MainRenderer->CreateAnimation("Cuphead_Duck_Idle",	"Duck_Idle");
 	MainRenderer->CreateAnimation("Cuphead_Duck_Shoot", "Duck_Shoot");
-	MainRenderer->CreateAnimation("Cuphead_Dash_Ground", "Dash_Ground", 0.05f);
-	MainRenderer->CreateAnimation("Cuphead_Dash_Air", "Dash_Air", 0.05f);
+
+	// Dash
+	MainRenderer->CreateAnimation("Cuphead_Dash_Ground",	"Dash_Ground", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Dash_Air",		"Dash_Air", 0.05f);
+
+	// Jump
 	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump"/*, 0.03f*/);
+
+
 
 
 	MainRenderer->AutoSpriteSizeOn();
