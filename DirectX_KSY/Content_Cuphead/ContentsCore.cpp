@@ -21,11 +21,12 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");
 	GameEngineCore::CreateLevel<OverWorldLevel>("OverWorldLevel");
 	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
-	GameEngineCore::ChangeLevel("PlayLevel");
+	GameEngineCore::ChangeLevel("TutorialLevel");
 }
 
 void ContentsCore::Update(float _Delta)
 {
+	
 }
 
 void ContentsCore::Release()

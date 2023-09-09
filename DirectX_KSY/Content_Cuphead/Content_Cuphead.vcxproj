@@ -180,6 +180,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ContentLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
     <ClCompile Include="Cuphead.cpp">
       <SubType>
@@ -272,6 +276,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TutorialMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorEnum.h" />
@@ -288,6 +296,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ContentEnum.h" />
+    <ClInclude Include="ContentLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsCore.h" />
     <ClInclude Include="Cuphead.h">
       <SubType>
@@ -372,6 +384,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TutorialLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TutorialMap.h">
       <SubType>
       </SubType>
     </ClInclude>

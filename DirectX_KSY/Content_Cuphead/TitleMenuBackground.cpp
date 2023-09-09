@@ -15,9 +15,9 @@ void TitleMenuBackground::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Title\\Menu\\cuphead_secondary_title_screen.png");
+		Dir.MoveChild("ContentsResources\\Texture\\Title\\Menu");
 
-		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\cuphead_secondary_title_screen.png");
 		GameEngineSprite::CreateSingle("cuphead_secondary_title_screen.png");
 	}
 

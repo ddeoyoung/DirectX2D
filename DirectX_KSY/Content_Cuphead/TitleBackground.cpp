@@ -15,15 +15,12 @@ void TitleBackground::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Title\\Background\\title_screen_background.png");
+		Dir.MoveChild("ContentsResources\\Texture\\Title\\Background");
 
-		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\title_screen_background.png");
 		GameEngineSprite::CreateSingle("title_screen_background.png");
 
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Title\\Background\\PressAnyButton.png");
-
-		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\PressAnyButton.png");
 		GameEngineSprite::CreateSingle("PressAnyButton.png");
 	}
 

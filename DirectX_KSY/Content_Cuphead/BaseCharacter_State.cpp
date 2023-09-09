@@ -194,16 +194,25 @@ void BaseCharacter::JumpStart()
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
-	if (true == MainRenderer->IsCurAnimationEnd())
+
+	
+	float JumpTimer = 0.0f;
+	float4 JumpPos = float4::ZERO;
+	float4 JumpGravityForce = float4::ZERO;
+
+	if (true == GameEngineInput::IsPress('Z') && 0.2f >= JumpTimer)
 	{
-		ChangeState(CharacterState::Idle);
+		JumpPos.Y += 1500.0f * _Delta;
 	}
 
-	float4 JumpGravityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
+	Transform.AddLocalPosition(JumpPos);
 
-	JumpGravityForce.Y += _Delta * 400.0f;
-	Transform.AddLocalPosition(JumpGravityForce * _Delta);
 
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		JumpTimer = 0.0f;
+		ChangeState(CharacterState::Idle);
+	}
 }
 
 void BaseCharacter::ParryStart()

@@ -64,6 +64,9 @@
     <Filter Include="Level\4. BossStage">
       <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Tutorial">
+      <UniqueIdentifier>{51e88052-d311-47d8-97f8-5d4ff553429f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -149,6 +152,12 @@
     <ClInclude Include="TutorialLevel.h">
       <Filter>Level\1. Tutorial</Filter>
     </ClInclude>
+    <ClInclude Include="TutorialMap.h">
+      <Filter>Object\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -232,6 +241,12 @@
     </ClCompile>
     <ClCompile Include="TutorialLevel.cpp">
       <Filter>Level\1. Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap.cpp">
+      <Filter>Object\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentLevel.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

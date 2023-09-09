@@ -24,7 +24,7 @@ void BaseCharacter::Update(float _Delta)
 
 	if (PixelColor != GameEngineColor::RED)
 	{
-		GravityForce.Y -= _Delta * 100.0f;
+		GravityForce.Y -= _Delta * 1500.0f;
 		Transform.AddLocalPosition(GravityForce * _Delta);
 	}
 
@@ -32,7 +32,6 @@ void BaseCharacter::Update(float _Delta)
 	{
 		GravityForce = 0.0f;
 	}
-
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)
