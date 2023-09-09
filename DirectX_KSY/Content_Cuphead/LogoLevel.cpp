@@ -15,13 +15,12 @@ LogoLevel::~LogoLevel()
 
 void LogoLevel::Start()
 {
-	GetMainCamera()->Transform.SetLocalPosition({ 0.0f, 0.0f, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
+	ContentLevel::Start();
 }
 
 void LogoLevel::Update(float _Delta)
 {
-
+	ContentLevel::Update(_Delta);
 }
 
 void LogoLevel::LevelStart(GameEngineLevel* _PrevLevel)

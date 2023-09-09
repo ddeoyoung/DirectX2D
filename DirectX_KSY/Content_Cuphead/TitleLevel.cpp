@@ -15,18 +15,13 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Start()
 {
-	GetMainCamera()->Transform.SetLocalPosition({ 0.0f, 0.0f, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
-
-	Back = CreateActor<TitleBackground>();
-	CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
-	MenuBack = CreateActor<TitleMenuBackground>();
-	MenuBack->Off();
+	ContentLevel::Start();
 }
-
 
 void TitleLevel::Update(float _Delta)
 {
+	ContentLevel::Update(_Delta);
+
 	if (GameEngineInput::IsPress('P'))
 	{
 		Back->Off();
@@ -43,10 +38,13 @@ void TitleLevel::Update(float _Delta)
 
 void TitleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	int a = 0;
+	Back = CreateActor<TitleBackground>();
+	CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
+	MenuBack = CreateActor<TitleMenuBackground>();
+	MenuBack->Off();
 }
 
 void TitleLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-	int a = 0;
+	
 }

@@ -11,12 +11,12 @@ OverWorldLevel::~OverWorldLevel()
 
 void OverWorldLevel::Start()
 {
-
+	ContentLevel::Start();
 }
 
 void OverWorldLevel::Update(float _Delta)
 {
-
+	ContentLevel::Update(_Delta);
 }
 
 void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)

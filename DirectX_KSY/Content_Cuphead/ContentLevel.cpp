@@ -11,7 +11,8 @@ ContentLevel::~ContentLevel()
 
 void ContentLevel::Start()
 {
-
+	GetMainCamera()->Transform.SetLocalPosition({ 0.0f, 0.0f, -500.0f });
+	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 }
 
 void ContentLevel::Update(float _Delta)

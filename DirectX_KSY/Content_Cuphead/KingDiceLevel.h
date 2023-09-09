@@ -1,7 +1,8 @@
 #pragma once
+#include "ContentLevel.h"
 
 // Ό³Έν :
-class KingDiceLevel
+class KingDiceLevel : public ContentLevel
 {
 public:
 	// constrcuter destructer

@@ -19,12 +19,12 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Start()
 {
-
+	ContentLevel::Start();
 }
 
 void PlayLevel::Update(float _Delta)
 {
-
+	ContentLevel::Update(_Delta); 
 }
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)

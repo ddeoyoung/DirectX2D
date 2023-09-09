@@ -15,18 +15,16 @@ TutorialLevel::~TutorialLevel()
 
 void TutorialLevel::Start()
 {
+	ContentLevel::Start();
 }
 
 void TutorialLevel::Update(float _Delta)
 {
-
+	ContentLevel::Update(_Delta);
 }
 
 void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	GetMainCamera()->Transform.SetLocalPosition({ 0.0f, 0.0f, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
-
 	Back = CreateActor<TutorialMap>();
 	//Player = CreateActor<Cuphead>();
 }
