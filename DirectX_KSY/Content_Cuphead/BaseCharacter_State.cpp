@@ -19,12 +19,12 @@ void BaseCharacter::IdleUpdate(float _Delta)
 		ChangeState(CharacterState::Duck);
 	}
 
-	if (true == GameEngineInput::IsDown(VK_SPACE))
+	if (true == GameEngineInput::IsDown(VK_LSHIFT))
 	{
 		ChangeState(CharacterState::Dash);
 	}
 
-	if (true == GameEngineInput::IsDown(VK_CONTROL))
+	if (true == GameEngineInput::IsDown('Z'))
 	{
 		ChangeState(CharacterState::Jump);
 	}
@@ -67,7 +67,12 @@ void BaseCharacter::RunUpdate(float _Delta)
 		MovePos = float4::DOWN * _Delta * RunSpeed;
 	}
 
-	if (true == GameEngineInput::IsDown(VK_CONTROL))
+	if (true == GameEngineInput::IsDown(VK_LSHIFT))
+	{
+		ChangeState(CharacterState::Dash);
+	}
+
+	if (true == GameEngineInput::IsDown('Z'))
 	{
 		ChangeState(CharacterState::Jump);
 	}
@@ -199,44 +204,6 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	JumpGravityForce.Y += _Delta * 400.0f;
 	Transform.AddLocalPosition(JumpGravityForce * _Delta);
 
-	/*DirCheck();
-
-	float RunSpeed = 400.0f;
-	float4 MovePos = 0.0f;
-
-	GravityForce.Y += _Delta * 100.0f;
-
-	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT)
-		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT))
-	{
-		MovePos = float4::LEFT * _Delta * RunSpeed;
-	}
-
-	if (Dir == ActorDir::Right && true == GameEngineInput::IsDown(VK_RIGHT)
-		|| Dir == ActorDir::Right && true == GameEngineInput::IsPress(VK_RIGHT))
-	{
-		MovePos = float4::RIGHT * _Delta * RunSpeed;
-	}
-
-	if (Dir == ActorDir::Up && true == GameEngineInput::IsDown(VK_UP)
-		|| Dir == ActorDir::Up && true == GameEngineInput::IsPress(VK_UP))
-	{
-		MovePos = float4::UP * _Delta * RunSpeed;
-	}
-
-	if (Dir == ActorDir::Down && true == GameEngineInput::IsDown(VK_DOWN)
-		|| Dir == ActorDir::Down && true == GameEngineInput::IsPress(VK_DOWN))
-	{
-		MovePos = float4::DOWN * _Delta * RunSpeed;
-	}
-
-	if (float4::ZERO == MovePos)
-	{
-		ChangeState(CharacterState::Idle);
-		return;
-	}
-
-	Transform.AddLocalPosition(MovePos * GravityForce);*/
 }
 
 void BaseCharacter::ParryStart()
