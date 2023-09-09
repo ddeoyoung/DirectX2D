@@ -58,6 +58,9 @@
     <Filter Include="Level\2. SubBossStage\Stage9">
       <UniqueIdentifier>{e6663c0c-ad12-4732-9208-5b8f82e49562}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Character\Weapon">
+      <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -134,6 +137,12 @@
     <ClInclude Include="TitleMenuBackground.h">
       <Filter>Object\Title</Filter>
     </ClInclude>
+    <ClInclude Include="PeaShot.h">
+      <Filter>Object\Character\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseWeapon.h">
+      <Filter>Object\Character\Weapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -208,6 +217,12 @@
     </ClCompile>
     <ClCompile Include="TitleMenuBackground.cpp">
       <Filter>Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="PeaShot.cpp">
+      <Filter>Object\Character\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWeapon.cpp">
+      <Filter>Object\Character\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -172,6 +172,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BaseCharacter_State.cpp" />
+    <ClCompile Include="BaseWeapon.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ChipsBettiganLevel.cpp">
       <SubType>
       </SubType>
@@ -225,6 +229,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PeaShot.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PhearLapLevel.cpp">
       <SubType>
       </SubType>
@@ -264,6 +272,10 @@
   <ItemGroup>
     <ClInclude Include="ActorEnum.h" />
     <ClInclude Include="BaseCharacter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BaseWeapon.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -318,6 +330,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="OverWorldLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PeaShot.h">
       <SubType>
       </SubType>
     </ClInclude>

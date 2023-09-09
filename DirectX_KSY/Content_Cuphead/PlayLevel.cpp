@@ -6,6 +6,9 @@
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 
+#include "BaseWeapon.h"
+#include "PeaShot.h"
+
 PlayLevel::PlayLevel()
 {
 }
@@ -37,6 +40,8 @@ void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Player
 	std::shared_ptr<BaseCharacter> Character = CreateActor<Cuphead>();
 	Character->Transform.SetLocalPosition({ 250, -550});
+
+	std::shared_ptr<BaseWeapon> Weapon = CreateActor<PeaShot>();
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)
