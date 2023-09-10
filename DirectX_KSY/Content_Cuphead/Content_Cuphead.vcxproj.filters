@@ -10,53 +10,8 @@
     <Filter Include="Level\0. Title">
       <UniqueIdentifier>{15d2e981-d1fb-43fd-beb8-910dda7b9c63}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\1. Tutorial">
-      <UniqueIdentifier>{11567a07-478f-45cb-a101-28f1beb0195f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\2. OverWorld">
-      <UniqueIdentifier>{58d35493-8a6a-4854-bf90-08d8e66b2e21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage">
-      <UniqueIdentifier>{5aef9699-05f0-4d62-bd2d-2968aad90ffe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage1">
-      <UniqueIdentifier>{7b21f813-e4b5-4b9b-b0bc-7709c9a80ca0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage2">
-      <UniqueIdentifier>{dc12733e-11a5-4df7-8d86-d5b2f74ee8df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage3">
-      <UniqueIdentifier>{2cff034a-1696-4245-9e5f-ae613ef4e030}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage4">
-      <UniqueIdentifier>{31c249c7-e6c9-4412-809a-1bb8e7c23916}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage5">
-      <UniqueIdentifier>{71dda4f7-8566-4fa9-8c83-f4150dc64037}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage6">
-      <UniqueIdentifier>{9793a7cd-b3ae-43c1-9841-89b138f47121}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage7">
-      <UniqueIdentifier>{f7bf2631-2d6d-450b-a3f8-7466b4dea3ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage8">
-      <UniqueIdentifier>{c6b48854-ed5c-4d0c-aa6a-a0327db16ed3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\3. SubBossStage\Stage9">
-      <UniqueIdentifier>{e6663c0c-ad12-4732-9208-5b8f82e49562}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\4. BossStage">
-      <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\0. Title\Object">
       <UniqueIdentifier>{27712df7-f33b-4253-99dc-1b121ca33ed0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\1. Tutorial\Object">
-      <UniqueIdentifier>{99e97766-ba3d-4749-a0d2-8c653a0ce2f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\4. BossStage\Object">
-      <UniqueIdentifier>{11b6580f-a87f-4c97-8df3-72647015b7d3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Actor">
       <UniqueIdentifier>{1ed2653e-455b-4df4-b4a0-fe4cb1bc3f93}</UniqueIdentifier>
@@ -66,6 +21,54 @@
     </Filter>
     <Filter Include="Actor\Character\Weapon">
       <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\2. Tutorial">
+      <UniqueIdentifier>{11567a07-478f-45cb-a101-28f1beb0195f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\2. Tutorial\Object">
+      <UniqueIdentifier>{99e97766-ba3d-4749-a0d2-8c653a0ce2f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\3. OverWorld">
+      <UniqueIdentifier>{58d35493-8a6a-4854-bf90-08d8e66b2e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage">
+      <UniqueIdentifier>{5aef9699-05f0-4d62-bd2d-2968aad90ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage1">
+      <UniqueIdentifier>{7b21f813-e4b5-4b9b-b0bc-7709c9a80ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage2">
+      <UniqueIdentifier>{dc12733e-11a5-4df7-8d86-d5b2f74ee8df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage3">
+      <UniqueIdentifier>{2cff034a-1696-4245-9e5f-ae613ef4e030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage4">
+      <UniqueIdentifier>{31c249c7-e6c9-4412-809a-1bb8e7c23916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage5">
+      <UniqueIdentifier>{71dda4f7-8566-4fa9-8c83-f4150dc64037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage6">
+      <UniqueIdentifier>{9793a7cd-b3ae-43c1-9841-89b138f47121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage7">
+      <UniqueIdentifier>{f7bf2631-2d6d-450b-a3f8-7466b4dea3ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage8">
+      <UniqueIdentifier>{c6b48854-ed5c-4d0c-aa6a-a0327db16ed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage9">
+      <UniqueIdentifier>{e6663c0c-ad12-4732-9208-5b8f82e49562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\5. BossStage">
+      <UniqueIdentifier>{81f60ae3-58da-4b8c-9312-69de336a4606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\5. BossStage\Object">
+      <UniqueIdentifier>{11b6580f-a87f-4c97-8df3-72647015b7d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\1. StoryBook">
+      <UniqueIdentifier>{0d1eb0f5-e930-4c04-a14d-965b9f4225d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,10 +83,10 @@
       <Filter>Level\0. Title</Filter>
     </ClInclude>
     <ClInclude Include="OverWorldLevel.h">
-      <Filter>Level\2. OverWorld</Filter>
+      <Filter>Level\3. OverWorld</Filter>
     </ClInclude>
     <ClInclude Include="PlayLevel.h">
-      <Filter>Level\4. BossStage</Filter>
+      <Filter>Level\5. BossStage</Filter>
     </ClInclude>
     <ClInclude Include="BaseCharacter.h">
       <Filter>Actor\Character</Filter>
@@ -96,34 +99,34 @@
       <Filter>Actor\Character</Filter>
     </ClInclude>
     <ClInclude Include="TipsyTroopLevel.h">
-      <Filter>Level\3. SubBossStage\Stage1</Filter>
+      <Filter>Level\4. SubBossStage\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="ChipsBettiganLevel.h">
-      <Filter>Level\3. SubBossStage\Stage2</Filter>
+      <Filter>Level\4. SubBossStage\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="MrWeezyLevel.h">
-      <Filter>Level\3. SubBossStage\Stage3</Filter>
+      <Filter>Level\4. SubBossStage\Stage3</Filter>
     </ClInclude>
     <ClInclude Include="HopusPocusLevel.h">
-      <Filter>Level\3. SubBossStage\Stage5</Filter>
+      <Filter>Level\4. SubBossStage\Stage5</Filter>
     </ClInclude>
     <ClInclude Include="PipandDotLevel.h">
-      <Filter>Level\3. SubBossStage\Stage4</Filter>
+      <Filter>Level\4. SubBossStage\Stage4</Filter>
     </ClInclude>
     <ClInclude Include="PhearLapLevel.h">
-      <Filter>Level\3. SubBossStage\Stage6</Filter>
+      <Filter>Level\4. SubBossStage\Stage6</Filter>
     </ClInclude>
     <ClInclude Include="PiroulettaLevel.h">
-      <Filter>Level\3. SubBossStage\Stage7</Filter>
+      <Filter>Level\4. SubBossStage\Stage7</Filter>
     </ClInclude>
     <ClInclude Include="MangosteenLevel.h">
-      <Filter>Level\3. SubBossStage\Stage8</Filter>
+      <Filter>Level\4. SubBossStage\Stage8</Filter>
     </ClInclude>
     <ClInclude Include="MrChimesLevel.h">
-      <Filter>Level\3. SubBossStage\Stage9</Filter>
+      <Filter>Level\4. SubBossStage\Stage9</Filter>
     </ClInclude>
     <ClInclude Include="KingDiceLevel.h">
-      <Filter>Level\4. BossStage</Filter>
+      <Filter>Level\5. BossStage</Filter>
     </ClInclude>
     <ClInclude Include="PeaShot.h">
       <Filter>Actor\Character\Weapon</Filter>
@@ -132,7 +135,7 @@
       <Filter>Actor\Character\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="TutorialLevel.h">
-      <Filter>Level\1. Tutorial</Filter>
+      <Filter>Level\2. Tutorial</Filter>
     </ClInclude>
     <ClInclude Include="ContentLevel.h">
       <Filter>Level</Filter>
@@ -150,13 +153,13 @@
       <Filter>Level\0. Title\Object</Filter>
     </ClInclude>
     <ClInclude Include="TutorialMap.h">
-      <Filter>Level\1. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\Object</Filter>
     </ClInclude>
     <ClInclude Include="KingDiceBackground.h">
-      <Filter>Level\4. BossStage\Object</Filter>
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
     <ClInclude Include="KingDiceTable.h">
-      <Filter>Level\4. BossStage\Object</Filter>
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,10 +174,10 @@
       <Filter>Level\0. Title</Filter>
     </ClCompile>
     <ClCompile Include="OverWorldLevel.cpp">
-      <Filter>Level\2. OverWorld</Filter>
+      <Filter>Level\3. OverWorld</Filter>
     </ClCompile>
     <ClCompile Include="PlayLevel.cpp">
-      <Filter>Level\4. BossStage</Filter>
+      <Filter>Level\5. BossStage</Filter>
     </ClCompile>
     <ClCompile Include="BaseCharacter.cpp">
       <Filter>Actor\Character</Filter>
@@ -186,34 +189,34 @@
       <Filter>Actor\Character</Filter>
     </ClCompile>
     <ClCompile Include="TipsyTroopLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage1</Filter>
+      <Filter>Level\4. SubBossStage\Stage1</Filter>
     </ClCompile>
     <ClCompile Include="ChipsBettiganLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage2</Filter>
+      <Filter>Level\4. SubBossStage\Stage2</Filter>
     </ClCompile>
     <ClCompile Include="MrWeezyLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage3</Filter>
+      <Filter>Level\4. SubBossStage\Stage3</Filter>
     </ClCompile>
     <ClCompile Include="HopusPocusLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage5</Filter>
+      <Filter>Level\4. SubBossStage\Stage5</Filter>
     </ClCompile>
     <ClCompile Include="PipandDotLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage4</Filter>
+      <Filter>Level\4. SubBossStage\Stage4</Filter>
     </ClCompile>
     <ClCompile Include="PhearLapLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage6</Filter>
+      <Filter>Level\4. SubBossStage\Stage6</Filter>
     </ClCompile>
     <ClCompile Include="PiroulettaLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage7</Filter>
+      <Filter>Level\4. SubBossStage\Stage7</Filter>
     </ClCompile>
     <ClCompile Include="MangosteenLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage8</Filter>
+      <Filter>Level\4. SubBossStage\Stage8</Filter>
     </ClCompile>
     <ClCompile Include="MrChimesLevel.cpp">
-      <Filter>Level\3. SubBossStage\Stage9</Filter>
+      <Filter>Level\4. SubBossStage\Stage9</Filter>
     </ClCompile>
     <ClCompile Include="KingDiceLevel.cpp">
-      <Filter>Level\4. BossStage</Filter>
+      <Filter>Level\5. BossStage</Filter>
     </ClCompile>
     <ClCompile Include="PeaShot.cpp">
       <Filter>Actor\Character\Weapon</Filter>
@@ -222,7 +225,7 @@
       <Filter>Actor\Character\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="TutorialLevel.cpp">
-      <Filter>Level\1. Tutorial</Filter>
+      <Filter>Level\2. Tutorial</Filter>
     </ClCompile>
     <ClCompile Include="ContentLevel.cpp">
       <Filter>Level</Filter>
@@ -240,13 +243,13 @@
       <Filter>Level\0. Title\Object</Filter>
     </ClCompile>
     <ClCompile Include="TutorialMap.cpp">
-      <Filter>Level\1. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\Object</Filter>
     </ClCompile>
     <ClCompile Include="KingDiceBackground.cpp">
-      <Filter>Level\4. BossStage\Object</Filter>
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
     <ClCompile Include="KingDiceTable.cpp">
-      <Filter>Level\4. BossStage\Object</Filter>
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -31,5 +31,14 @@ enum class CharacterState
 
 enum class AttackDirection
 {
-
+	Left_Up,
+	Left_DiagonalUp,
+	Left_Straight,
+	Left_DiagonalDown,
+	Left_Down,
+	Right_Up,
+	Right_Diagonal_Up,
+	Right_Straight,
+	Right_Diagonal_Down,
+	Right_Down,
 };
