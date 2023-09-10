@@ -5,6 +5,8 @@
 // Ό³Έν :
 class LogoLevel : public ContentLevel
 {
+	friend class Logo_Mdhr;
+
 public:
 	// constrcuter destructer
 	LogoLevel();

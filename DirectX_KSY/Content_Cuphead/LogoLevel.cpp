@@ -21,6 +21,11 @@ void LogoLevel::Start()
 void LogoLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+
+	if (true == Logo->Renderer->IsCurAnimationEnd())
+	{
+		GameEngineCore::ChangeLevel("TitleLevel");
+	}
 }
 
 void LogoLevel::LevelStart(GameEngineLevel* _PrevLevel)

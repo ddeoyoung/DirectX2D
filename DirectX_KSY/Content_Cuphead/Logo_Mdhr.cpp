@@ -36,8 +36,8 @@ void Logo_Mdhr::Start()
 
 void Logo_Mdhr::Update(float _Delta)
 {
-	if (true == Renderer->IsCurAnimationEnd())
-	{
-		GameEngineCore::ChangeLevel("TitleLevel");
-	}
+	//if (true == Renderer->IsCurAnimationEnd())
+	//{
+	//	GameEngineCore::ChangeLevel("TitleLevel");
+	//}
 }

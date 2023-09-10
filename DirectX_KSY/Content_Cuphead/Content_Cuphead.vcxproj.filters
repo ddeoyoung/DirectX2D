@@ -70,6 +70,9 @@
     <Filter Include="Level\1. StoryBook">
       <UniqueIdentifier>{0d1eb0f5-e930-4c04-a14d-965b9f4225d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\1. StoryBook\Object">
+      <UniqueIdentifier>{f1a1a6e1-c343-41fd-b3e4-c708631505f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -161,6 +164,15 @@
     <ClInclude Include="KingDiceTable.h">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
+    <ClInclude Include="IntroLevel.h">
+      <Filter>Level\1. StoryBook</Filter>
+    </ClInclude>
+    <ClInclude Include="OutroLevel.h">
+      <Filter>Level\1. StoryBook</Filter>
+    </ClInclude>
+    <ClInclude Include="StoryBook.h">
+      <Filter>Level\1. StoryBook\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -250,6 +262,15 @@
     </ClCompile>
     <ClCompile Include="KingDiceTable.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroLevel.cpp">
+      <Filter>Level\1. StoryBook</Filter>
+    </ClCompile>
+    <ClCompile Include="OutroLevel.cpp">
+      <Filter>Level\1. StoryBook</Filter>
+    </ClCompile>
+    <ClCompile Include="StoryBook.cpp">
+      <Filter>Level\1. StoryBook\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
