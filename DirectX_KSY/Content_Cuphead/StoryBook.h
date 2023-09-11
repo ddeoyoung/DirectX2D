@@ -21,6 +21,7 @@ protected:
 
 private:
 	int PageNumber = 1;
+	float PageDur = 0.0f;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
 };

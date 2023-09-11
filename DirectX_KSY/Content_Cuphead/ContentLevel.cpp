@@ -15,6 +15,14 @@ void ContentLevel::Start()
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 }
 
+
+//TitleLevel
+//IntroLevel
+//TutorialLevel
+//OverWorldLevel
+//PlayLevel
+//OutroLevel
+
 void ContentLevel::Update(float _Delta)
 {
 	if (true == GameEngineInput::IsDown(VK_F1))
@@ -24,18 +32,24 @@ void ContentLevel::Update(float _Delta)
 
 	if (true == GameEngineInput::IsDown(VK_F2))
 	{
-		GameEngineCore::ChangeLevel("TutorialLevel");
+		GameEngineCore::ChangeLevel("IntroLevel");
 	}
 
 	if (true == GameEngineInput::IsDown(VK_F3))
 	{
-		GameEngineCore::ChangeLevel("OverWorldLevel");
+		GameEngineCore::ChangeLevel("TutorialLevel");
 	}
 
 	if (true == GameEngineInput::IsDown(VK_F4))
 	{
+		GameEngineCore::ChangeLevel("OverWorldLevel");
+	}
+
+	if (true == GameEngineInput::IsDown(VK_F5))
+	{
 		GameEngineCore::ChangeLevel("PlayLevel");
 	}
+
 }
 
 void ContentLevel::LevelStart(GameEngineLevel* _PrevLevel)

@@ -55,18 +55,6 @@ void BaseCharacter::RunUpdate(float _Delta)
 		MovePos = float4::RIGHT * _Delta * RunSpeed;
 	}
 
-	if (Dir == ActorDir::Up && true == GameEngineInput::IsDown(VK_UP) 
-		|| Dir == ActorDir::Up && true == GameEngineInput::IsPress(VK_UP))
-	{
-		MovePos = float4::UP * _Delta * RunSpeed;
-	}
-
-	if (Dir == ActorDir::Down && true == GameEngineInput::IsDown(VK_DOWN) 
-		|| Dir == ActorDir::Down && true == GameEngineInput::IsPress(VK_DOWN))
-	{
-		MovePos = float4::DOWN * _Delta * RunSpeed;
-	}
-
 	if (true == GameEngineInput::IsDown(VK_LSHIFT))
 	{
 		ChangeState(CharacterState::Dash);

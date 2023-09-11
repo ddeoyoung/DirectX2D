@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "TutorialMap.h"
 
+TutorialMap* TutorialMap::TutorialBack;
+
 TutorialMap::TutorialMap()
 {
 }
@@ -42,4 +44,13 @@ void TutorialMap::Start()
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
 	Renderer->SetSprite("tutorial_room_front_layer_0001.png");
+}
+
+GameEngineColor TutorialMap::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
+{
+	_Pos.Y *= -1.0f;
+
+	std::shared_ptr<GameEngineTexture> Texture = GameEngineTexture::Find("TutorialBitMap.png");
+
+	return Texture->GetColor(_Pos, _DefaultColor);
 }

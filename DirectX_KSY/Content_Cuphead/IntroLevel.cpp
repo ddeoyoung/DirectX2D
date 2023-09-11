@@ -13,12 +13,12 @@ IntroLevel::~IntroLevel()
 
 void IntroLevel::Start()
 {
-
+	ContentLevel::Start();
 }
 
 void IntroLevel::Update(float _Delta)
 {
-
+	ContentLevel::Update(_Delta);
 }
 
 void IntroLevel::LevelStart(GameEngineLevel* _PrevLevel)
