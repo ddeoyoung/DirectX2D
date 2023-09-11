@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+#define RUNSPEED 400.0f
+
 // Ό³Έν :
 class BaseCharacter : public GameEngineActor
 {
@@ -67,6 +69,7 @@ protected:
 	void Update(float _Delta) override;
 
 	void DirCheck();
+	GameEngineColor GetGroundColor();
 
 	ActorDir Dir = ActorDir::None;
 

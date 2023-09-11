@@ -40,7 +40,7 @@ void BaseCharacter::RunUpdate(float _Delta)
 {
 	DirCheck();
 
-	float RunSpeed = 400.0f;
+	float RunSpeed = RUNSPEED;
 	float4 MovePos = 0.0f;
 
 	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT) 
@@ -182,21 +182,41 @@ void BaseCharacter::JumpStart()
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
-	float JumpTimer = 0.0f;
+	//float JumpTimer = 0.0f;
 	float4 JumpPos = float4::ZERO;
 	float4 JumpGravityForce = float4::ZERO;
+	float4 MovePos = float4::ZERO;
 
-	if (true == GameEngineInput::IsPress('Z') && 0.2f >= JumpTimer)
+	if (true == GameEngineInput::IsPress('Z')/* && 0.2f >= JumpTimer*/)
 	{
-		JumpPos.Y += 1500.0f * _Delta;
+		JumpPos.Y += 1600.0f * _Delta;
 	}
 
-	Transform.AddLocalPosition(JumpPos);
+	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT)
+		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT))
+	{
+		MovePos = float4::LEFT * _Delta * RUNSPEED;
+	}
 
+	if (Dir == ActorDir::Right && true == GameEngineInput::IsDown(VK_RIGHT)
+		|| Dir == ActorDir::Right && true == GameEngineInput::IsPress(VK_RIGHT))
+	{
+		MovePos = float4::RIGHT * _Delta * RUNSPEED;
+	}
 
+	MovePos += JumpPos;
+	Transform.AddLocalPosition(MovePos);
+
+	if (true == GameEngineInput::IsPress(VK_LSHIFT))
+	{
+		ChangeState(CharacterState::Dash);
+	}
+	
+
+	// 땅에 닿으면 Idle이 되도록 수정
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
-		JumpTimer = 0.0f;
+		//JumpTimer = 0.0f;
 		ChangeState(CharacterState::Idle);
 	}
 }
