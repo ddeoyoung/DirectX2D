@@ -29,20 +29,10 @@ void StoryBook::Start()
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
 
 	// Intro
-	Renderer->CreateAnimation("Page0", "Page0", 0.03f);
-	//Renderer->SetEndEvent("Page0", [](GameEngineSpriteRenderer* _Render)
-	//	{
-	//		_Render->ChangeAnimation("Page1");
-	//	});
-
-	Renderer->CreateAnimation("Page1", "Page1", 0.03f);
-	//Renderer->SetEndEvent("Page1", [](GameEngineSpriteRenderer* _Render)
-	//	{
-	//		_Render->ChangeAnimation("Page2");
-	//	});
-
-	Renderer->CreateAnimation("Page2", "Page2", 0.03f, false);
-	Renderer->CreateAnimation("Page3", "Page3", 0.03f, false);
+	Renderer->CreateAnimation("Page0", "Page0", 0.03f, 1, 100, false);
+	Renderer->CreateAnimation("Page1", "Page1", 0.03f, 1, 24, false);
+	Renderer->CreateAnimation("Page2", "Page2", 0.03f, 1, 23, false);
+	Renderer->CreateAnimation("Page3", "Page3", 0.03f, 1, 23, false);
 	Renderer->CreateAnimation("Page4", "Page4", 0.03f, false);
 	Renderer->CreateAnimation("Page5", "Page5", 0.03f, false);
 	Renderer->CreateAnimation("Page6", "Page6", 0.03f, false);
