@@ -178,18 +178,22 @@ void BaseCharacter::DashUpdate(float _Delta)
 void BaseCharacter::JumpStart()
 {
 	ChangeAnimationState("Jump");
+	JumpTimer = 0.15f;
 }
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
-	//float JumpTimer = 0.0f;
 	float4 JumpPos = float4::ZERO;
 	float4 JumpGravityForce = float4::ZERO;
 	float4 MovePos = float4::ZERO;
 
-	if (true == GameEngineInput::IsPress('Z')/* && 0.2f >= JumpTimer*/)
+	JumpTimer -= _Delta;
+
+	DirCheck();
+
+	if (true == GameEngineInput::IsPress('Z') && 0.0f <= JumpTimer)
 	{
-		JumpPos.Y += 1600.0f * _Delta;
+		JumpPos.Y += 1800.0f * _Delta;
 	}
 
 	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT)

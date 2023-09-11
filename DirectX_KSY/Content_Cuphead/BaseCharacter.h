@@ -71,6 +71,8 @@ protected:
 	void DirCheck();
 	GameEngineColor GetGroundColor();
 
+	float JumpTimer = 0.0f;
+
 	ActorDir Dir = ActorDir::None;
 
 	CharacterState State = CharacterState::None;
