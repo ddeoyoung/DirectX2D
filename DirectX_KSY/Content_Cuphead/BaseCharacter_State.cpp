@@ -182,8 +182,6 @@ void BaseCharacter::JumpStart()
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
-
-	
 	float JumpTimer = 0.0f;
 	float4 JumpPos = float4::ZERO;
 	float4 JumpGravityForce = float4::ZERO;

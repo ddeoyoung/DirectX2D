@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+#define PAGEDUR 0.03f
+
 // Ό³Έν :
 class StoryBook : public GameEngineActor
 {
