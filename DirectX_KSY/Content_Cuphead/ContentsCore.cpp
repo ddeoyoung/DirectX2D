@@ -26,7 +26,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 
-	GameEngineCore::ChangeLevel("IntroLevel");
+	GameEngineCore::ChangeLevel("LogoLevel");
 }
 
 void ContentsCore::Update(float _Delta)
