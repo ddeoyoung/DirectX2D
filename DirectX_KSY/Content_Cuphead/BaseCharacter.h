@@ -1,7 +1,7 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
-#define RUNSPEED 400.0f
+#define RUNSPEED 500.0f
 
 // Ό³Έν :
 class BaseCharacter : public GameEngineActor

@@ -36,7 +36,7 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Idle", "Idle");
 
 	// Run
-	MainRenderer->CreateAnimation("Cuphead_Run_Normal",		"Normal");
+	MainRenderer->CreateAnimation("Cuphead_Run_Normal",		"Normal", 0.05f);
 	MainRenderer->CreateAnimation("Cuphead_Run_Shoot",		"Shoot");
 
 	// Aim
