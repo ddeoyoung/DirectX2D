@@ -201,6 +201,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="KingDice.cpp" />
     <ClCompile Include="KingDiceBackground.cpp">
       <SubType>
       </SubType>
@@ -329,6 +330,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="KingDice.h" />
     <ClInclude Include="KingDiceBackground.h">
       <SubType>
       </SubType>

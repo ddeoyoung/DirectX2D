@@ -31,7 +31,7 @@ protected:
 	void AimStart();
 	void AimUpdate(float _Delta);
 
-	void ShootStart();
+	void ShootStart(); 
 	void ShootUpdate(float _Delta);
 
 	void DuckStart();
