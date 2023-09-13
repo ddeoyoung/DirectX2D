@@ -247,6 +247,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="GameEngineTileMap.cpp" />
     <ClCompile Include="GameEngineTransform.cpp">
       <SubType>
       </SubType>
@@ -350,6 +351,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GameEngineTileMap.h" />
     <ClInclude Include="GameEngineTransform.h">
       <SubType>
       </SubType>
