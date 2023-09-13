@@ -4,6 +4,8 @@
 void BaseCharacter::IdleStart()
 {
 	ChangeAnimationState("Idle");
+
+	IsJump = false;
 }
 
 void BaseCharacter::IdleUpdate(float _Delta)
@@ -172,6 +174,11 @@ void BaseCharacter::DashUpdate(float _Delta)
 		break;
 	}
 
+	if (true == IsJump)
+	{
+		MovePos.Y -= _Delta * GravityForce.Y;
+	}
+
 	Transform.AddLocalPosition(MovePos);
 }
 
@@ -179,6 +186,7 @@ void BaseCharacter::JumpStart()
 {
 	ChangeAnimationState("Jump");
 	JumpTimer = 0.15f;
+	IsJump = true;
 }
 
 void BaseCharacter::JumpUpdate(float _Delta)
@@ -220,7 +228,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	// 땅에 닿으면 Idle이 되도록 수정
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
-		//JumpTimer = 0.0f;
+		IsJump = false;
 		ChangeState(CharacterState::Idle);
 	}
 }

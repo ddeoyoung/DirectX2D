@@ -127,7 +127,15 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 	// Dash
 	if (_StateName == "Dash")
 	{
-		AnimationName += "_Ground";
+		if (IsJump == false)
+		{
+			AnimationName += "_Ground";
+		}
+
+		else
+		{
+			AnimationName += "_Air";
+		}
 	}
 
 	CurState = _StateName;

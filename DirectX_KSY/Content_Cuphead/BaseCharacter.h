@@ -2,6 +2,7 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 #define RUNSPEED 500.0f
+#define GRAVITYFORCE 2200.0f
 
 // Ό³Έν :
 class BaseCharacter : public GameEngineActor
@@ -72,6 +73,8 @@ protected:
 	GameEngineColor GetGroundColor();
 
 	float JumpTimer = 0.0f;
+
+	bool IsJump = false;
 
 	ActorDir Dir = ActorDir::None;
 
