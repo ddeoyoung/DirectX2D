@@ -70,15 +70,18 @@ protected:
 	void Update(float _Delta) override;
 
 	void DirCheck();
+
 	GameEngineColor GetGroundColor();
 
 	float JumpTimer = 0.0f;
 
 	bool IsJump = false;
+	bool IsShoot = false;
 
 	ActorDir Dir = ActorDir::None;
-
+	AttackDir AttDir = AttackDir::None;
 	CharacterState State = CharacterState::None;
+
 	std::string CurState = "";
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;

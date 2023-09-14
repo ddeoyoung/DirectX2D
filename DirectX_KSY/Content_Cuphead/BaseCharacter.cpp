@@ -24,7 +24,7 @@ void BaseCharacter::Update(float _Delta)
 
 	if (PixelColor != GameEngineColor::RED)
 	{
-		GravityForce.Y -= _Delta * GRAVITYFORCE;
+		GravityForce.Y -= _Delta * 2200.0f;
 		Transform.AddLocalPosition(GravityForce * _Delta);
 	}
 
@@ -140,15 +140,18 @@ void BaseCharacter::ChangeAnimationState(const std::string& _StateName) {}
 void BaseCharacter::DirCheck()
 {
 	ActorDir CheckDir = Dir;
+	AttackDir CheckAttDir = AttDir;
 
 	if (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
 	{
 		CheckDir = ActorDir::Left;
+		CheckAttDir = AttackDir::Left_Straight;
 		Transform.SetLocalScale({ -1.0f, 1.0f });
 	}
 	if (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
 	{
 		CheckDir = ActorDir::Right;
+		CheckAttDir = AttackDir::Right_Straight;
 		Transform.SetLocalScale({ 1.0f, 1.0f });
 	}
 	if (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP))
@@ -160,9 +163,10 @@ void BaseCharacter::DirCheck()
 		CheckDir = ActorDir::Down;
 	}
 
-	if (CheckDir != Dir)
+	if (CheckDir != Dir || CheckAttDir != AttDir)
 	{
 		Dir = CheckDir;
+		AttDir = CheckAttDir;
 		ChangeAnimationState(CurState);
 	}
 }

@@ -63,8 +63,8 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Duck_Shoot", "Duck_Shoot");
 
 	// Dash
-	MainRenderer->CreateAnimation("Cuphead_Dash_Ground",	"Dash_Ground", 0.05f);
-	MainRenderer->CreateAnimation("Cuphead_Dash_Air",		"Dash_Air", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Dash_Ground",	"Dash_Ground", 0.03f);
+	MainRenderer->CreateAnimation("Cuphead_Dash_Air",		"Dash_Air", 0.03f);
 
 	// Jump
 	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump", 0.06f);
@@ -108,20 +108,6 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Run")
 	{
 		AnimationName += "_Normal";
-
-		switch (Dir)
-		{
-		case ActorDir::Left:
-			break;
-		case ActorDir::Right:
-			break;
-		case ActorDir::Up:
-			break;
-		case ActorDir::Down:
-			break;
-		default:
-			break;
-		}
 	}
 
 	// Dash
@@ -135,6 +121,54 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 		else
 		{
 			AnimationName += "_Air";
+		}
+	}
+
+	// Aim
+	if (_StateName == "Aim")
+	{
+		AnimationName += "_Straight";
+	}
+
+	// Shoot
+	if (_StateName == "Shoot")
+	{
+		switch (AttDir)
+		{
+		case AttackDir::None:
+			break;
+		case AttackDir::Left_Up:
+			AnimationName += "_Up";
+			break;
+		case AttackDir::Left_DiagonalUp:
+			AnimationName += "_Diagonal_Up";
+			break;
+		case AttackDir::Left_Straight:
+			AnimationName += "_Straight";
+			break;
+		case AttackDir::Left_DiagonalDown:
+			AnimationName += "_Diagonal_Down";
+			break;
+		case AttackDir::Left_Down:
+			AnimationName += "_Down";
+			break;
+		case AttackDir::Right_Up:
+			AnimationName += "_Up";
+			break;
+		case AttackDir::Right_Diagonal_Up:
+			AnimationName += "_Diagonal_Up";
+			break;
+		case AttackDir::Right_Straight:
+			AnimationName += "_Straight";
+			break;
+		case AttackDir::Right_Diagonal_Down:
+			AnimationName += "_Diagonal_Down";
+			break;
+		case AttackDir::Right_Down:
+			AnimationName += "_Down";
+			break;
+		default:
+			break;
 		}
 	}
 

@@ -30,6 +30,16 @@ void BaseCharacter::IdleUpdate(float _Delta)
 	{
 		ChangeState(CharacterState::Jump);
 	}
+
+	if (true == GameEngineInput::IsDown('X'))
+	{
+		ChangeState(CharacterState::Shoot);
+	}
+
+	if (true == GameEngineInput::IsDown('C'))
+	{
+		ChangeState(CharacterState::Aim);
+	}
 }
 
 
@@ -83,7 +93,10 @@ void BaseCharacter::AimStart()
 
 void BaseCharacter::AimUpdate(float _Delta)
 {
-
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		//ChangeState(CharacterState::Idle);
+	}
 }
 
 void BaseCharacter::ShootStart()
@@ -94,6 +107,39 @@ void BaseCharacter::ShootStart()
 void BaseCharacter::ShootUpdate(float _Delta)
 {
 
+	DirCheck();
+
+	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT)
+		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT))
+	{
+		AttDir = AttackDir::Left_Straight;
+	}
+
+	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_UP)
+		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_UP))
+	{
+		AttDir = AttackDir::Left_Up;
+	}
+
+	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_DOWN)
+		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_DOWN))
+	{
+		AttDir = AttackDir::Left_Down;
+	}
+
+	if ( Dir == ActorDir::Left
+		&& (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT) )
+		&& (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP) ))
+	{
+		AttDir = AttackDir::Left_DiagonalUp;
+	}
+
+	if (Dir == ActorDir::Left
+		&& (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+		&& (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN)))
+	{
+		AttDir = AttackDir::Left_DiagonalDown;
+	}
 }
 
 void BaseCharacter::DuckStart()
@@ -159,7 +205,7 @@ void BaseCharacter::DashUpdate(float _Delta)
 		ChangeState(CharacterState::Idle);
 	}
 
-	float DashSpeed = 800.0f;
+	float DashSpeed = 1000.0f;
 	float4 MovePos = 0.0f;
 
 	switch (Dir)

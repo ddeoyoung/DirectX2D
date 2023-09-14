@@ -29,8 +29,9 @@ enum class CharacterState
 	Max,
 };
 
-enum class AttackDirection
+enum class AttackDir
 {
+	None,
 	Left_Up,
 	Left_DiagonalUp,
 	Left_Straight,
