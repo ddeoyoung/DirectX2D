@@ -142,26 +142,107 @@ void BaseCharacter::DirCheck()
 	ActorDir CheckDir = Dir;
 	AttackDir CheckAttDir = AttDir;
 
-	if (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+	// Left Straight
+	if (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT) 
+		&& (true == GameEngineInput::IsUp(VK_UP) || true == GameEngineInput::IsFree(VK_UP))
+		&& (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
+		)
 	{
 		CheckDir = ActorDir::Left;
 		CheckAttDir = AttackDir::Left_Straight;
 		Transform.SetLocalScale({ -1.0f, 1.0f });
 	}
-	if (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
+
+	// Right Straight
+	if (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT)
+		&& (true == GameEngineInput::IsUp(VK_UP) || true == GameEngineInput::IsFree(VK_UP))
+		&& (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
+		)
 	{
 		CheckDir = ActorDir::Right;
 		CheckAttDir = AttackDir::Right_Straight;
 		Transform.SetLocalScale({ 1.0f, 1.0f });
 	}
+
+	// Up
 	if (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP))
 	{
 		CheckDir = ActorDir::Up;
+
+		if (Dir == ActorDir::Left)
+		{
+			CheckAttDir = AttackDir::Left_Up;
+			Transform.SetLocalScale({ -1.0f, 1.0f });
+		}
+
+		if (Dir == ActorDir::Right)
+		{
+			CheckAttDir = AttackDir::Right_Up;
+			Transform.SetLocalScale({ 1.0f, 1.0f });
+		}
 	}
+
+	// Down
 	if (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
 	{
 		CheckDir = ActorDir::Down;
+
+		if (Dir == ActorDir::Left)
+		{
+			CheckAttDir = AttackDir::Left_Down;
+			Transform.SetLocalScale({ -1.0f, 1.0f });
+		}
+
+		if (Dir == ActorDir::Right)
+		{
+			CheckAttDir = AttackDir::Right_Down;
+			Transform.SetLocalScale({ 1.0f, 1.0f });
+		}
 	}
+
+	// Left Diagonal Up
+	if ( (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+		&& (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP))
+		)
+	{
+		CheckDir = ActorDir::Left;
+		CheckAttDir = AttackDir::Left_Diagonal_Up;
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+	}
+
+	// Right Diagonal Up
+	if ((true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
+		&& (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP))
+		)
+	{
+		CheckDir = ActorDir::Right;
+		CheckAttDir = AttackDir::Right_Diagonal_Up;
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+	// Left Diagonal Down
+	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+		&& (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+		)
+	{
+		CheckDir = ActorDir::Left;
+		CheckAttDir = AttackDir::Left_Diagonal_Down;
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+	}
+
+	// Right Diagonal Down
+	if ((true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
+		&& (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+		)
+	{
+		CheckDir = ActorDir::Right;
+		CheckAttDir = AttackDir::Right_Diagonal_Down;
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+
+
+
 
 	if (CheckDir != Dir || CheckAttDir != AttDir)
 	{

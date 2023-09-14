@@ -140,13 +140,13 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 		case AttackDir::Left_Up:
 			AnimationName += "_Up";
 			break;
-		case AttackDir::Left_DiagonalUp:
+		case AttackDir::Left_Diagonal_Up:
 			AnimationName += "_Diagonal_Up";
 			break;
 		case AttackDir::Left_Straight:
 			AnimationName += "_Straight";
 			break;
-		case AttackDir::Left_DiagonalDown:
+		case AttackDir::Left_Diagonal_Down:
 			AnimationName += "_Diagonal_Down";
 			break;
 		case AttackDir::Left_Down:

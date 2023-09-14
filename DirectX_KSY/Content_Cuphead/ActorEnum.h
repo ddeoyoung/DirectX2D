@@ -33,9 +33,9 @@ enum class AttackDir
 {
 	None,
 	Left_Up,
-	Left_DiagonalUp,
+	Left_Diagonal_Up,
 	Left_Straight,
-	Left_DiagonalDown,
+	Left_Diagonal_Down,
 	Left_Down,
 	Right_Up,
 	Right_Diagonal_Up,
