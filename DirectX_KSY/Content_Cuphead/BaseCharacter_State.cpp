@@ -12,7 +12,6 @@ void BaseCharacter::IdleUpdate(float _Delta)
 {
 	if (true == GameEngineInput::IsPress(VK_LEFT) || true == GameEngineInput::IsPress(VK_RIGHT))
 	{
-		DirCheck();
 		ChangeState(CharacterState::Run);
 	}
 
@@ -50,8 +49,6 @@ void BaseCharacter::RunStart()
 
 void BaseCharacter::RunUpdate(float _Delta)
 {
-	DirCheck();
-
 	float RunSpeed = RUNSPEED;
 	float4 MovePos = 0.0f;
 
@@ -103,7 +100,6 @@ void BaseCharacter::AimStart()
 
 void BaseCharacter::AimUpdate(float _Delta)
 {
-	DirCheck();
 	if (true == GameEngineInput::IsUp('C') || true == GameEngineInput::IsFree('C'))
 	{
 		ChangeState(CharacterState::Idle);
@@ -117,8 +113,6 @@ void BaseCharacter::ShootStart()
 
 void BaseCharacter::ShootUpdate(float _Delta)
 {
-	DirCheck();
-
 	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
 	{
 		ChangeState(CharacterState::Idle);
@@ -177,8 +171,6 @@ void BaseCharacter::DuckShootStart()
 
 void BaseCharacter::DuckShootUpdate(float _Delta)
 {
-	DirCheck();
-
 	if (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
 	{
 		ChangeState(CharacterState::Idle);
@@ -244,8 +236,6 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	float4 MovePos = float4::ZERO;
 
 	JumpTimer -= _Delta;
-
-	DirCheck();
 
 	if (true == GameEngineInput::IsPress('Z') && 0.0f <= JumpTimer)
 	{

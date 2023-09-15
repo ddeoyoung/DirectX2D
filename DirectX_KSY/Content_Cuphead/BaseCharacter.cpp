@@ -20,6 +20,8 @@ void BaseCharacter::Update(float _Delta)
 {
 	StateUpdate(_Delta);
 
+	DirCheck();
+
 	GameEngineColor PixelColor = KingDiceTable::KDTable->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
 
 	if (PixelColor != GameEngineColor::RED)
