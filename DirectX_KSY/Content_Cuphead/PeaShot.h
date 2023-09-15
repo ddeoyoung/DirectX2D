@@ -2,18 +2,18 @@
 #include "BaseWeapon.h"
 
 // Ό³Έν :
-class PeaShot : public BaseWeapon
+class Peashot : public BaseWeapon
 {
 public:
 	// constrcuter destructer
-	PeaShot();
-	~PeaShot();
+	Peashot();
+	~Peashot();
 
 	// delete Function
-	PeaShot(const PeaShot& _Other) = delete;
-	PeaShot(PeaShot&& _Other) noexcept = delete;
-	PeaShot& operator=(const PeaShot& _Other) = delete;
-	PeaShot& operator=(PeaShot&& _Other) noexcept = delete;
+	Peashot(const Peashot& _Other) = delete;
+	Peashot(Peashot&& _Other) noexcept = delete;
+	Peashot& operator=(const Peashot& _Other) = delete;
+	Peashot& operator=(Peashot&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

@@ -1,15 +1,16 @@
 #include "PreCompile.h"
-#include "PeaShot.h"
+#include "Peashot.h"
+#include "BaseCharacter.h"
 
-PeaShot::PeaShot()
+Peashot::Peashot()
 {
 }
 
-PeaShot::~PeaShot()
+Peashot::~Peashot()
 {
 }
 
-void PeaShot::Start()
+void Peashot::Start()
 {
 	BaseWeapon::Start();
 
@@ -39,10 +40,12 @@ void PeaShot::Start()
 
 	MainRenderer->ChangeAnimation("Peashot_Attack");
 	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->Transform.SetLocalPosition({ 500.0f, -300.0f });
+	//MainRenderer->Transform.SetLocalPosition({ 500.0f, -300.0f });
 }
 
-void PeaShot::Update(float _Delta)
+void Peashot::Update(float _Delta)
 {
+	BaseWeapon::Update(_Delta);
+
 
 }

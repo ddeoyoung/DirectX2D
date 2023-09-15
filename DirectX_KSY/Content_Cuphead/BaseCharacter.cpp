@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "BaseCharacter.h"
+#include "Peashot.h"
 
 #include "KingDiceTable.h"
 

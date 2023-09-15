@@ -134,9 +134,6 @@
     <ClInclude Include="KingDiceLevel.h">
       <Filter>Level\5. BossStage</Filter>
     </ClInclude>
-    <ClInclude Include="PeaShot.h">
-      <Filter>Actor\Character\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="BaseWeapon.h">
       <Filter>Actor\Character\Weapon</Filter>
     </ClInclude>
@@ -178,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="KingDice.h">
       <Filter>Level\5. BossStage\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Peashot.h">
+      <Filter>Actor\Character\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,7 +236,7 @@
     <ClCompile Include="KingDiceLevel.cpp">
       <Filter>Level\5. BossStage</Filter>
     </ClCompile>
-    <ClCompile Include="PeaShot.cpp">
+    <ClCompile Include="Peashot.cpp">
       <Filter>Actor\Character\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="BaseWeapon.cpp">
@@ -280,6 +280,9 @@
     </ClCompile>
     <ClCompile Include="KingDice.cpp">
       <Filter>Level\5. BossStage\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseWeapon_State.cpp">
+      <Filter>Actor\Character\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

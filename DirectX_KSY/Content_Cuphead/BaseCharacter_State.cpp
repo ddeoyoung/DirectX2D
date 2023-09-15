@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "BaseCharacter.h"
+#include "Peashot.h"
 
 void BaseCharacter::IdleStart()
 {
@@ -109,6 +110,13 @@ void BaseCharacter::AimUpdate(float _Delta)
 void BaseCharacter::ShootStart()
 {
 	ChangeAnimationState("Shoot");
+
+	std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
+	float4 BulletPos = Transform.GetWorldPosition(); 
+
+	BulletPos += BULLETSTARTPOS;
+
+	Bullet->Transform.SetLocalPosition(BulletPos);
 }
 
 void BaseCharacter::ShootUpdate(float _Delta)

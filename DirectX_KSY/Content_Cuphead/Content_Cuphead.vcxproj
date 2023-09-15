@@ -176,6 +176,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BaseWeapon_State.cpp" />
     <ClCompile Include="ChipsBettiganLevel.cpp">
       <SubType>
       </SubType>
@@ -242,7 +243,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PeaShot.cpp">
+    <ClCompile Include="Peashot.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -371,7 +372,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PeaShot.h">
+    <ClInclude Include="Peashot.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -43,3 +43,11 @@ enum class AttackDir
 	Right_Diagonal_Down,
 	Right_Down,
 };
+
+enum class AttackState
+{
+	None,
+	Spark,
+	Attack,
+	Death,
+};
