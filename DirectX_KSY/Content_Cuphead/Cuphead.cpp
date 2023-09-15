@@ -125,17 +125,19 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 	}
 
 	// Aim
-	if (_StateName == "Aim")
-	{
-		AnimationName += "_Straight";
-	}
+	//if (_StateName == "Aim")
+	//{
+	//	AnimationName += "_Straight";
+	//}
 
+	// Aim
 	// Shoot
-	if (_StateName == "Shoot")
+	if (_StateName == "Shoot" || _StateName == "Aim")
 	{
 		switch (AttDir)
 		{
 		case AttackDir::None:
+			AnimationName += "_Straight"; // ±âº»°ª
 			break;
 		case AttackDir::Left_Up:
 			AnimationName += "_Up";
