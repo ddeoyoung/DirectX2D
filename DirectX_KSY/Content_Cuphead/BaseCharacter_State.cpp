@@ -103,6 +103,7 @@ void BaseCharacter::AimStart()
 
 void BaseCharacter::AimUpdate(float _Delta)
 {
+	DirCheck();
 	if (true == GameEngineInput::IsUp('C') || true == GameEngineInput::IsFree('C'))
 	{
 		ChangeState(CharacterState::Idle);
@@ -116,43 +117,7 @@ void BaseCharacter::ShootStart()
 
 void BaseCharacter::ShootUpdate(float _Delta)
 {
-
 	DirCheck();
-
-	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT)
-		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT))
-	{
-		AttDir = AttackDir::Left_Straight;
-	}
-
-	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_UP)
-		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_UP))
-	{
-		AttDir = AttackDir::Left_Up;
-	}
-
-	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_DOWN)
-		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_DOWN))
-	{
-		AttDir = AttackDir::Left_Down;
-	}
-
-	if ( Dir == ActorDir::Left
-		&& (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT) )
-		&& (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP) ))
-	{
-		AttDir = AttackDir::Left_Diagonal_Up;
-	}
-
-	if (Dir == ActorDir::Left
-		&& (true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
-		&& (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN)))
-	{
-		AttDir = AttackDir::Left_Diagonal_Down;
-	}
-
-
-
 
 	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
 	{
@@ -172,9 +137,23 @@ void BaseCharacter::DuckUpdate(float _Delta)
 		ChangeState(CharacterState::DuckIdle);
 	}
 
+	// Idle
 	if (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
 	{
 		ChangeState(CharacterState::Idle);
+	}
+	
+	// Aim
+	if (true == GameEngineInput::IsDown('C') || true == GameEngineInput::IsPress('C'))
+	{
+		ChangeState(CharacterState::Aim);
+	}
+
+	// Duck Shoot
+	if ((true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+		&& (true == GameEngineInput::IsDown('X') || true == GameEngineInput::IsPress('X')))
+	{
+		ChangeState(CharacterState::DuckShoot);
 	}
 }
 
@@ -198,7 +177,12 @@ void BaseCharacter::DuckShootStart()
 
 void BaseCharacter::DuckShootUpdate(float _Delta)
 {
+	DirCheck();
 
+	if (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN))
+	{
+		ChangeState(CharacterState::Idle);
+	}
 }
 
 void BaseCharacter::HitStart()
