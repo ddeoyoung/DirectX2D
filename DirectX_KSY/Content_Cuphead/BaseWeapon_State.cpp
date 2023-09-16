@@ -23,17 +23,47 @@ void BaseWeapon::AttackStart()
 
 void BaseWeapon::AttackUpdate(float _Delta)
 {
+	AttackDirCheck();
+
 	float AttackSpeed = ATTACKSPEED;
 	float4 MovePos = 0.0f;
 
-	if (AttDir == AttackDir::Left_Straight)
+	switch (AttDir)
 	{
-		MovePos = float4::LEFT * _Delta * ATTACKSPEED;
-	}
-
-	if (AttDir == AttackDir::Right_Straight)
-	{
-		MovePos = float4::RIGHT * _Delta * ATTACKSPEED;
+	case AttackDir::None:
+		break;
+	case AttackDir::Left_Up:
+		MovePos = float4::UP * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Left_Diagonal_Up:
+		MovePos = (float4::LEFT + float4::UP) * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Left_Straight:
+		MovePos = float4::LEFT * _Delta * AttackSpeed;
+		break; 
+	case AttackDir::Left_Diagonal_Down:
+		MovePos = (float4::LEFT + float4::DOWN) * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Left_Down:
+		MovePos = float4::DOWN * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Right_Up:
+		MovePos = float4::UP * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Right_Diagonal_Up:
+		MovePos = (float4::RIGHT + float4::UP) * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Right_Straight:
+		MovePos = float4::RIGHT * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Right_Diagonal_Down:
+		MovePos = (float4::RIGHT + float4::DOWN) * _Delta * AttackSpeed;
+		break;
+	case AttackDir::Right_Down:
+		MovePos = float4::DOWN * _Delta * AttackSpeed;
+		break;
+	default:
+		break;
 	}
 
 	Transform.AddLocalPosition(MovePos);

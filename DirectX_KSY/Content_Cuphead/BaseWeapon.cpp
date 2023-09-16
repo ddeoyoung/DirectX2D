@@ -63,3 +63,54 @@ void BaseWeapon::StateUpdate(float _Delta)
 }
 
 void BaseWeapon::ChangeAnimationState(const std::string& _StateName) {}
+
+void BaseWeapon::AttackDirCheck()
+{
+	switch (AttDir)
+	{
+	case AttackDir::None:
+		break;
+	case AttackDir::Left_Up:
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, -90.0f });
+		break;
+	case AttackDir::Left_Diagonal_Up:
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, -45.0f });
+		break;
+	case AttackDir::Left_Straight:
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+		//Transform.SetLocalRotation({ 0.0f, 0.0f, 0.0f });
+		break;
+	case AttackDir::Left_Diagonal_Down:
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, 225.0f });
+		break;
+	case AttackDir::Left_Down:
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, 270.0f });
+		break;
+	case AttackDir::Right_Up:
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, 90.0f });
+		break;
+	case AttackDir::Right_Diagonal_Up:
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, 45.0f });
+		break;
+	case AttackDir::Right_Straight:
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+		//Transform.SetLocalRotation({ 0.0f, 0.0f, 0.0f });
+		break;
+	case AttackDir::Right_Diagonal_Down:
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, -45.0f });
+		break;
+	case AttackDir::Right_Down:
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+		Transform.SetLocalRotation({ 0.0f, 0.0f, -90.0f });
+		break;
+	default:
+		break;
+	}
+}
