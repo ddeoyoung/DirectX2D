@@ -1,7 +1,8 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
-#define ATTACKSPEED 800.0f
+// Speed
+#define ATTACKSPEED 1200.0f
 
 // Attack Start Pos
 #define ATTACK_RIGHT	{ 70.0f, 80.0f }

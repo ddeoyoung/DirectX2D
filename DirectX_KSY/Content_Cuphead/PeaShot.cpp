@@ -32,7 +32,7 @@ void Peashot::Start()
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::PlayerShoot);
 
-	MainRenderer->CreateAnimation("Peashot_Spark", "Peashot_Spark", 0.05f, false);
+	MainRenderer->CreateAnimation("Peashot_Spark", "Peashot_Spark", 0.04f, false);
 	MainRenderer->CreateAnimation("Peashot_Attack", "Peashot_Attack");
 	MainRenderer->CreateAnimation("Peashot_Death", "Peashot_Death");
 	MainRenderer->CreateAnimation("Peashot_EX", "Peashot_EX");

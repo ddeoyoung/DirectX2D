@@ -4,6 +4,8 @@
 #define RUNSPEED 500.0f
 #define GRAVITYFORCE 2200.0f
 
+#define SHOOT_DURATION 0.2f
+
 // Ό³Έν :
 class BaseCharacter : public GameEngineActor
 {
@@ -84,7 +86,9 @@ protected:
 	GameEngineColor GetGroundColor();
 
 	float JumpTimer = 0.0f;
+	float ShootDur = 0.0f;
 
+	bool IsRun = false;
 	bool IsJump = false;
 	bool IsShoot = false;
 
