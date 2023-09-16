@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+#define ATTACKSPEED 800.0f
+
 // Ό³Έν :
 class BaseWeapon : public GameEngineActor
 {
@@ -14,6 +16,11 @@ public:
 	BaseWeapon(BaseWeapon&& _Other) noexcept = delete;
 	BaseWeapon& operator=(const BaseWeapon& _Other) = delete;
 	BaseWeapon& operator=(BaseWeapon&& _Other) noexcept = delete;
+
+	void SetAttackDir(AttackDir _AttDir)
+	{
+		AttDir = _AttDir;
+	}
 	
 protected:
 	void ChangeState(AttackState _State);
@@ -33,9 +40,14 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void AttackDirCheck();
+
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 
 	AttackState State = AttackState::None;
+	AttackDir AttDir = AttackDir::None;
+
+	std::string CurState = "";
 
 private:
 };

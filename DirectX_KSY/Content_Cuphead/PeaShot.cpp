@@ -32,20 +32,28 @@ void Peashot::Start()
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::PlayerShoot);
 
-	MainRenderer->CreateAnimation("Peashot_Spark", "Peashot_Spark");
+	MainRenderer->CreateAnimation("Peashot_Spark", "Peashot_Spark", 0.05f, false);
 	MainRenderer->CreateAnimation("Peashot_Attack", "Peashot_Attack");
 	MainRenderer->CreateAnimation("Peashot_Death", "Peashot_Death");
 	MainRenderer->CreateAnimation("Peashot_EX", "Peashot_EX");
 	MainRenderer->CreateAnimation("Peashot_EX_Death", "Peashot_EX_Death");
-
-	MainRenderer->ChangeAnimation("Peashot_Attack");
+	MainRenderer->ChangeAnimation("Peashot_Spark");
 	MainRenderer->AutoSpriteSizeOn();
-	//MainRenderer->Transform.SetLocalPosition({ 500.0f, -300.0f });
+
+	ChangeState(AttackState::Spark);
 }
 
 void Peashot::Update(float _Delta)
 {
 	BaseWeapon::Update(_Delta);
+}
 
+void Peashot::ChangeAnimationState(const std::string& _StateName)
+{
+	std::string AnimationName = "Peashot_";
+	AnimationName += _StateName;
 
+	CurState = _StateName;
+
+	MainRenderer->ChangeAnimation(AnimationName);
 }

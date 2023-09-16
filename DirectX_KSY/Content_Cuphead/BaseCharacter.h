@@ -20,6 +20,16 @@ public:
 	BaseCharacter& operator=(const BaseCharacter& _Other) = delete;
 	BaseCharacter& operator=(BaseCharacter&& _Other) noexcept = delete;
 
+	ActorDir GetPlayerDir()
+	{
+		return Dir;
+	}
+
+	AttackDir GetPlayerAttDir()
+	{
+		return AttDir;
+	}
+
 protected:
 	void ChangeState(CharacterState _State);
 	void StateUpdate(float _Delta);

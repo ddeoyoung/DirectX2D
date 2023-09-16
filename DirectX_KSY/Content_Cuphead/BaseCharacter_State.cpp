@@ -113,10 +113,9 @@ void BaseCharacter::ShootStart()
 
 	std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
 	float4 BulletPos = Transform.GetWorldPosition(); 
-
 	BulletPos += BULLETSTARTPOS;
-
 	Bullet->Transform.SetLocalPosition(BulletPos);
+	Bullet->SetAttackDir(AttDir);
 }
 
 void BaseCharacter::ShootUpdate(float _Delta)

@@ -256,6 +256,7 @@ void BaseCharacter::DirCheck()
 		Transform.SetLocalScale({ 1.0f, 1.0f });
 	}
 
+
 	if (CheckDir != Dir || CheckAttDir != AttDir)
 	{
 		Dir = CheckDir;

@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "BaseWeapon.h"
+#include "BaseCharacter.h"
 
 BaseWeapon::BaseWeapon()
 {
@@ -16,7 +17,7 @@ void BaseWeapon::Start()
 
 void BaseWeapon::Update(float _Delta)
 {
-
+	StateUpdate(_Delta);
 }
 
 void BaseWeapon::ChangeState(AttackState _State)

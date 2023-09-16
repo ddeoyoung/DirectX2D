@@ -19,6 +19,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void ChangeAnimationState(const std::string& _StateName);
+
 private:
 
 };
