@@ -245,6 +245,8 @@ void BaseCharacter::JumpStart()
 	ChangeAnimationState("Jump");
 	JumpTimer = 0.15f;
 	IsJump = true;
+	
+	JumpHeight.Y = 1600.0f;
 }
 
 void BaseCharacter::JumpUpdate(float _Delta)
@@ -255,25 +257,35 @@ void BaseCharacter::JumpUpdate(float _Delta)
 
 	JumpTimer -= _Delta;
 
-	if (true == GameEngineInput::IsPress('Z') && 0.0f <= JumpTimer)
+	if (true == GameEngineInput::IsPress('X') && 0.2f >= JumpTimer)
 	{
-		JumpPos.Y += 1800.0f * _Delta;
+		JumpHeight.Y += 2600.0f * _Delta;
 	}
 
 	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT)
 		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT))
 	{
 		MovePos = float4::LEFT * _Delta * RUNSPEED;
+		Transform.AddLocalPosition(MovePos);
 	}
 
 	if (Dir == ActorDir::Right && true == GameEngineInput::IsDown(VK_RIGHT)
 		|| Dir == ActorDir::Right && true == GameEngineInput::IsPress(VK_RIGHT))
 	{
 		MovePos = float4::RIGHT * _Delta * RUNSPEED;
+		Transform.AddLocalPosition(MovePos);
 	}
 
-	MovePos += JumpPos;
-	Transform.AddLocalPosition(MovePos);
+	if (true == IsJump)
+	{
+		if (JumpHeight.Y >= -1600.0f)
+		{
+			JumpHeight.Y += -3300.0f * _Delta;
+		}
+
+		Transform.AddLocalPosition(JumpHeight * _Delta);
+	}
+
 
 	if (true == GameEngineInput::IsPress(VK_LSHIFT))
 	{

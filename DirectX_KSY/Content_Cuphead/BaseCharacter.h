@@ -100,7 +100,8 @@ protected:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 
-	float4 GravityForce = { 0.0f, 0.0f, 0.0f, 1.0f };
+	float4 GravityForce = float4::ZERO;
+	float4 JumpHeight = float4::ZERO;;
 
 private:
 };
