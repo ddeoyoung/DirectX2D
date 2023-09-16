@@ -4,8 +4,6 @@
 #define RUNSPEED 500.0f
 #define GRAVITYFORCE 2200.0f
 
-#define BULLETSTARTPOS { 40.0f, 70.0f }
-
 // Ό³Έν :
 class BaseCharacter : public GameEngineActor
 {

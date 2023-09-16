@@ -114,3 +114,50 @@ void BaseWeapon::AttackDirCheck()
 		break;
 	}
 }
+
+
+void BaseWeapon::SetAttackPos(float4 _Pos)
+{
+	float4 PlayerPos = _Pos;
+	float4 AttackPos = PlayerPos;
+
+	switch (AttDir)
+	{
+	case AttackDir::None:
+		break;
+	case AttackDir::Left_Up:
+		AttackPos += ATTACK_LEFT_UP;
+		break;
+	case AttackDir::Left_Diagonal_Up:
+		AttackPos += ATTACK_LEFT_DIAGONAL_UP;
+		break;
+	case AttackDir::Left_Straight:
+		AttackPos += ATTACK_LEFT;
+		break;
+	case AttackDir::Left_Diagonal_Down:
+		AttackPos += ATTACK_LEFT_DIAGONAL_DOWN;
+		break;
+	case AttackDir::Left_Down:
+		AttackPos += ATTACK_LEFT_DOWN;
+		break;
+	case AttackDir::Right_Up:
+		AttackPos += ATTACK_RIGHT_UP;
+		break;
+	case AttackDir::Right_Diagonal_Up:
+		AttackPos += ATTACK_RIGHT_DIAGONAL_UP;
+		break;
+	case AttackDir::Right_Straight:
+		AttackPos += ATTACK_RIGHT;
+		break;
+	case AttackDir::Right_Diagonal_Down:
+		AttackPos += ATTACK_RIGHT_DIAGONAL_DOWN;
+		break;
+	case AttackDir::Right_Down:
+		AttackPos += ATTACK_RIGHT_DOWN;
+		break;
+	default:
+		break;
+	}
+
+	Transform.SetLocalPosition(AttackPos);
+}

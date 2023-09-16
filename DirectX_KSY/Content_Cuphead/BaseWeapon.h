@@ -3,6 +3,19 @@
 
 #define ATTACKSPEED 800.0f
 
+// Attack Start Pos
+#define ATTACK_RIGHT	{ 70.0f, 80.0f }
+#define ATTACK_RIGHT_DIAGONAL_UP	{ 70.0f, 120.0f }
+#define ATTACK_RIGHT_DIAGONAL_DOWN	{ 70.0f, 40.0f }
+#define ATTACK_RIGHT_UP { 20.0f, 160.0f }
+#define ATTACK_RIGHT_DOWN	{ 20.0f, 20.0f }
+
+#define ATTACK_LEFT	{ -70.0f, 80.0f }
+#define ATTACK_LEFT_DIAGONAL_UP { -70.0f, 120.0f }
+#define ATTACK_LEFT_DIAGONAL_DOWN	{ -70.0f, 40.0f }
+#define ATTACK_LEFT_UP { -20.0f, 160.0f }
+#define ATTACK_LEFT_DOWN	{ -20.0f, 20.0f }
+
 // Ό³Έν :
 class BaseWeapon : public GameEngineActor
 {
@@ -21,6 +34,8 @@ public:
 	{
 		AttDir = _AttDir;
 	}
+
+	void SetAttackPos(float4 _Pos);
 	
 protected:
 	void ChangeState(AttackState _State);

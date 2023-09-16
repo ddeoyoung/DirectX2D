@@ -112,10 +112,10 @@ void BaseCharacter::ShootStart()
 	ChangeAnimationState("Shoot");
 
 	std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
-	float4 BulletPos = Transform.GetWorldPosition(); 
-	BulletPos += BULLETSTARTPOS;
-	Bullet->Transform.SetLocalPosition(BulletPos);
-	Bullet->SetAttackDir(AttDir);
+	float4 PlayerPos = Transform.GetWorldPosition();
+
+	Bullet->SetAttackDir(AttDir); // 크기, 회전
+	Bullet->SetAttackPos(PlayerPos); // 이동
 }
 
 void BaseCharacter::ShootUpdate(float _Delta)
