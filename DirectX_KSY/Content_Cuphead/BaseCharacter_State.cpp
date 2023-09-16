@@ -114,8 +114,10 @@ void BaseCharacter::ShootStart()
 	std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
 	float4 PlayerPos = Transform.GetWorldPosition();
 
-	Bullet->SetAttackDir(AttDir); // 크기, 회전
-	Bullet->SetAttackPos(PlayerPos); // 이동
+	//Bullet->SetAttackDir(AttDir); // 크기, 회전
+	//Bullet->SetAttackPos(PlayerPos); // 이동
+
+	Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
 }
 
 void BaseCharacter::ShootUpdate(float _Delta)

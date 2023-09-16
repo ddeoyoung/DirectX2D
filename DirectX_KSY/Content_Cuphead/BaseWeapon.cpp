@@ -115,10 +115,11 @@ void BaseWeapon::AttackDirCheck()
 	}
 }
 
-
-void BaseWeapon::SetAttackPos(float4 _Pos)
+void BaseWeapon::SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos)
 {
-	float4 PlayerPos = _Pos;
+	AttDir = _AttDir;
+	PlayerPos = _Pos;
+
 	float4 AttackPos = PlayerPos;
 
 	switch (AttDir)

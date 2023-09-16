@@ -35,7 +35,7 @@ public:
 		AttDir = _AttDir;
 	}
 
-	void SetAttackPos(float4 _Pos);
+	void SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos);
 	
 protected:
 	void ChangeState(AttackState _State);
@@ -61,6 +61,8 @@ protected:
 
 	AttackState State = AttackState::None;
 	AttackDir AttDir = AttackDir::None;
+
+	float4 PlayerPos = float4::ZERO;
 
 	std::string CurState = "";
 
