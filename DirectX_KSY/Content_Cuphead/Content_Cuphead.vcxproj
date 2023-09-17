@@ -181,6 +181,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ContentBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ContentLevel.cpp">
       <SubType>
       </SubType>
@@ -306,6 +310,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ChipsBettiganLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ContentBackground.h">
       <SubType>
       </SubType>
     </ClInclude>

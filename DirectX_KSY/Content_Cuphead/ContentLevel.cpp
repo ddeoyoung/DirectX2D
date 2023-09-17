@@ -11,7 +11,8 @@ ContentLevel::~ContentLevel()
 
 void ContentLevel::Start()
 {
-	GetMainCamera()->Transform.SetLocalPosition({ 0.0f, 0.0f, -500.0f });
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 }
 

@@ -26,7 +26,6 @@ void TutorialLevel::Update(float _Delta)
 void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	Back = CreateActor<TutorialMap>();
-	//Player = CreateActor<Cuphead>();
 }
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)

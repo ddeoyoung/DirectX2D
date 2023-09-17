@@ -19,9 +19,6 @@
     <Filter Include="Actor\Character">
       <UniqueIdentifier>{2a2990b4-20f8-4cf4-a0d6-e4643869c91f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor\Character\Weapon">
-      <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\2. Tutorial">
       <UniqueIdentifier>{11567a07-478f-45cb-a101-28f1beb0195f}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,12 @@
     </Filter>
     <Filter Include="Level\5. BossStage\Boss">
       <UniqueIdentifier>{6ffc84d5-21a8-4ff1-b5b9-c695a330085e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Map">
+      <UniqueIdentifier>{f6bd1788-9273-4f24-9421-59ce400bf711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Weapon">
+      <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +138,7 @@
       <Filter>Level\5. BossStage</Filter>
     </ClInclude>
     <ClInclude Include="BaseWeapon.h">
-      <Filter>Actor\Character\Weapon</Filter>
+      <Filter>Actor\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="TutorialLevel.h">
       <Filter>Level\2. Tutorial</Filter>
@@ -177,7 +180,10 @@
       <Filter>Level\5. BossStage\Boss</Filter>
     </ClInclude>
     <ClInclude Include="Peashot.h">
-      <Filter>Actor\Character\Weapon</Filter>
+      <Filter>Actor\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentBackground.h">
+      <Filter>Actor\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,10 +243,10 @@
       <Filter>Level\5. BossStage</Filter>
     </ClCompile>
     <ClCompile Include="Peashot.cpp">
-      <Filter>Actor\Character\Weapon</Filter>
+      <Filter>Actor\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="BaseWeapon.cpp">
-      <Filter>Actor\Character\Weapon</Filter>
+      <Filter>Actor\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="TutorialLevel.cpp">
       <Filter>Level\2. Tutorial</Filter>
@@ -282,7 +288,10 @@
       <Filter>Level\5. BossStage\Boss</Filter>
     </ClCompile>
     <ClCompile Include="BaseWeapon_State.cpp">
-      <Filter>Actor\Character\Weapon</Filter>
+      <Filter>Actor\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentBackground.cpp">
+      <Filter>Actor\Map</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

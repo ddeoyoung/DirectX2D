@@ -30,7 +30,6 @@ void KingDiceTable::Start()
 
 	float4 Pos = Texture->GetScale().Half();
 	Pos.Y *= -1.0f;
-	Pos.Y -= 241.0f;
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
 	Renderer->SetSprite("kd_bg_table.png");
