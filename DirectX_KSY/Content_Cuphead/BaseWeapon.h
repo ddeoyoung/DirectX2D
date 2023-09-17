@@ -17,6 +17,11 @@
 #define ATTACK_LEFT_UP { -20.0f, 160.0f }
 #define ATTACK_LEFT_DOWN	{ -20.0f, 20.0f }
 
+#define RUN_ATTACK_RIGHT	{ 90.0f, 80.0f }
+#define RUN_ATTACK_RIGHT_DIAGONAL_UP	{ 110.0f, 130.0f }
+#define RUN_ATTACK_LEFT	{ -90.0f, 80.0f }
+#define RUN_ATTACK_LEFT_DIAGONAL_UP { -110.0f, 130.0f }
+
 // Ό³Έν :
 class BaseWeapon : public GameEngineActor
 {
@@ -36,7 +41,7 @@ public:
 		AttDir = _AttDir;
 	}
 
-	void SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos);
+	void SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos, bool _IsMove = false);
 	
 protected:
 	void ChangeState(AttackState _State);

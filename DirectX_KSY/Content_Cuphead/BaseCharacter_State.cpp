@@ -154,30 +154,9 @@ void BaseCharacter::RunShootStart()
 
 void BaseCharacter::RunShootUpdate(float _Delta)
 {
-	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
-	{
-		IsRunShoot = false;
-		ChangeState(CharacterState::Idle);
-	}
-
 	IsRunShoot = IsMoveCheck();
 
-	if (false == IsRunShoot)
-	{
-		ChangeState(CharacterState::Shoot);
-	}
-
-	if (true == GameEngineInput::IsPress('X') && ShootDur >= SHOOT_DURATION)
-	{
-		std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
-		float4 PlayerPos = Transform.GetWorldPosition();
-		Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
-
-		ShootDur = 0.0f;
-	}
-
-	ShootDur += _Delta;
-
+	// Run
 	float RunSpeed = RUNSPEED;
 	float4 MovePos = 0.0f;
 
@@ -194,6 +173,31 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 	}
 
 	Transform.AddLocalPosition(MovePos);
+
+	// Shoot
+	if (true == GameEngineInput::IsPress('X') && true == IsRunShoot && ShootDur >= SHOOT_DURATION)
+	{
+		std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
+		float4 PlayerPos = Transform.GetWorldPosition();
+		Bullet->SetAttackDirAndPos(AttDir, PlayerPos, IsRunShoot);
+
+		ShootDur = 0.0f;
+	}
+
+	ShootDur += _Delta;
+
+	// Shoot End
+	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
+	{
+		IsRunShoot = false;
+		ChangeState(CharacterState::Idle);
+	}
+
+	// Run End
+	if (false == IsRunShoot)
+	{
+		ChangeState(CharacterState::Shoot);
+	}
 }
 
 void BaseCharacter::DuckStart()
