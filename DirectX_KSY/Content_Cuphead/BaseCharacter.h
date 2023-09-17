@@ -41,6 +41,9 @@ protected:
 	void RunStart();
 	void RunUpdate(float _Delta);
 
+	void RunShootStart();
+	void RunShootUpdate(float _Delta);
+
 	void AimStart();
 	void AimUpdate(float _Delta);
 
@@ -83,12 +86,15 @@ protected:
 
 	void DirCheck();
 
+	bool IsMoveCheck();
+
 	GameEngineColor GetGroundColor();
 
 	float JumpTimer = 0.0f;
 	float ShootDur = 0.0f;
 
 	bool IsRun = false;
+	bool IsRunShoot = false;
 	bool IsJump = false;
 	bool IsShoot = false;
 

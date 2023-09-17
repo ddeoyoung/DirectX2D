@@ -51,6 +51,9 @@ void BaseCharacter::ChangeState(CharacterState _State)
 		case CharacterState::Run:
 			RunStart();
 			break;
+		case CharacterState::RunShoot:
+			RunShootStart();
+			break;
 		case CharacterState::Aim:
 			AimStart();
 			break;
@@ -107,6 +110,8 @@ void BaseCharacter::StateUpdate(float _Delta)
 		return IdleUpdate(_Delta);
 	case CharacterState::Run:
 		return RunUpdate(_Delta);
+	case CharacterState::RunShoot:
+		return RunShootUpdate(_Delta);
 	case CharacterState::Aim:
 		return AimUpdate(_Delta);
 	case CharacterState::Shoot:
@@ -262,5 +267,14 @@ void BaseCharacter::DirCheck()
 		Dir = CheckDir;
 		AttDir = CheckAttDir;
 		ChangeAnimationState(CurState);
+	}
+}
+
+bool BaseCharacter::IsMoveCheck()
+{
+	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+		|| (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT)))
+	{
+		return true;
 	}
 }

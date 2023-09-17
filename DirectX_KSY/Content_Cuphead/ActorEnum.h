@@ -14,6 +14,7 @@ enum class CharacterState
 	None,
 	Idle,
 	Run,
+	RunShoot,
 	Aim,
 	Shoot,
 	Duck,
