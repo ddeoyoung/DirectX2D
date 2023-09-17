@@ -5,8 +5,6 @@
 void BaseCharacter::IdleStart()
 {
 	ChangeAnimationState("Idle");
-
-	IsJump = false;
 }
 
 void BaseCharacter::IdleUpdate(float _Delta)
@@ -150,6 +148,8 @@ void BaseCharacter::ShootUpdate(float _Delta)
 void BaseCharacter::RunShootStart()
 {
 	ChangeAnimationState("Run_Shoot");
+
+	ShootDur = 0.0f;
 }
 
 void BaseCharacter::RunShootUpdate(float _Delta)
@@ -190,6 +190,7 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
 	{
 		IsRunShoot = false;
+		IsRun = false;
 		ChangeState(CharacterState::Idle);
 	}
 

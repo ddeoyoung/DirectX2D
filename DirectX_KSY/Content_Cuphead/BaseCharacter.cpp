@@ -150,6 +150,11 @@ void BaseCharacter::DirCheck()
 	ActorDir CheckDir = Dir;
 	AttackDir CheckAttDir = AttDir;
 
+	// Intro 상태일 때, 이동 불가
+	if (CurState == "Intro")
+	{
+		return;
+	}
 
 	// 아무 방향키도 누르지 않은 상태면 ActorDir를 따름
 	if ((false == GameEngineInput::IsDown(VK_LEFT) || false == GameEngineInput::IsPress(VK_LEFT))
