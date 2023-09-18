@@ -79,6 +79,12 @@
     <Filter Include="Actor\Weapon">
       <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage2\Object">
+      <UniqueIdentifier>{58b9728b-e69f-49c5-ad76-5118b635abe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage2\Boss">
+      <UniqueIdentifier>{f0ab76a6-c00a-49f0-a070-5500e6346d39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -160,12 +166,6 @@
     </ClInclude>
     <ClInclude Include="TutorialMap.h">
       <Filter>Level\2. Tutorial\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="KingDiceBackground.h">
-      <Filter>Level\5. BossStage\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="KingDiceTable.h">
-      <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
     <ClInclude Include="IntroLevel.h">
       <Filter>Level\1. StoryBook</Filter>
@@ -268,12 +268,6 @@
     </ClCompile>
     <ClCompile Include="TutorialMap.cpp">
       <Filter>Level\2. Tutorial\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="KingDiceBackground.cpp">
-      <Filter>Level\5. BossStage\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="KingDiceTable.cpp">
-      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
     <ClCompile Include="IntroLevel.cpp">
       <Filter>Level\1. StoryBook</Filter>

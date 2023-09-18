@@ -2,7 +2,7 @@
 #include "BaseCharacter.h"
 #include "Peashot.h"
 
-#include "KingDiceTable.h"
+#include "ContentBackground.h"
 
 BaseCharacter::BaseCharacter()
 {
@@ -23,7 +23,7 @@ void BaseCharacter::Update(float _Delta)
 
 	DirCheck();
 
-	GameEngineColor PixelColor = KingDiceTable::KDTable->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
+	/*GameEngineColor PixelColor = KingDiceTable::KDTable->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
 
 	if (PixelColor != GameEngineColor::RED)
 	{
@@ -34,7 +34,9 @@ void BaseCharacter::Update(float _Delta)
 	else
 	{
 		GravityForce = 0.0f;
-	}
+	}*/
+
+	//GameEngineColor PixelColor = 
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)

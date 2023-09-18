@@ -1,7 +1,8 @@
 #pragma once
+#include "ContentLevel.h"
 
 // Ό³Έν :
-class ChipsBettiganLevel
+class ChipsBettiganLevel : public ContentLevel
 {
 public:
 	// constrcuter destructer
@@ -15,6 +16,11 @@ public:
 	ChipsBettiganLevel& operator=(ChipsBettiganLevel&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
+	void Update(float _Delta) override;
+
+	void LevelStart(GameEngineLevel* _PrevLevel) override;
+	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
 

@@ -207,15 +207,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="KingDice.cpp" />
-    <ClCompile Include="KingDiceBackground.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="KingDiceLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="KingDiceTable.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -340,15 +332,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="KingDice.h" />
-    <ClInclude Include="KingDiceBackground.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="KingDiceLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="KingDiceTable.h">
       <SubType>
       </SubType>
     </ClInclude>

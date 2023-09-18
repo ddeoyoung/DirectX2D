@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "PlayLevel.h"
 
-#include "KingDiceBackground.h"
-#include "KingDiceTable.h"
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 
@@ -29,19 +27,9 @@ void PlayLevel::Update(float _Delta)
 
 void PlayLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
-	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
-
-	// Background
-	std::shared_ptr<KingDiceBackground> Background = CreateActor<KingDiceBackground>();
-	std::shared_ptr<KingDiceTable> Table = CreateActor<KingDiceTable>();
-
 	// Player
 	std::shared_ptr<BaseCharacter> Player = CreateActor<Cuphead>();
 	Player->Transform.SetLocalPosition({ 250, -550});
-
-	//std::shared_ptr<BaseWeapon> Weapon = CreateActor<Peashot>();
 }
 
 void PlayLevel::LevelEnd(GameEngineLevel* _NextLevel)

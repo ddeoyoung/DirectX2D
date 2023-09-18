@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "ContentLevel.h"
 
+ContentLevel* ContentLevel::CurLevel = nullptr;
+
 ContentLevel::ContentLevel()
 {
 }
@@ -55,7 +57,7 @@ void ContentLevel::Update(float _Delta)
 
 void ContentLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-
+	CurLevel = this;
 }
 
 void ContentLevel::LevelEnd(GameEngineLevel* _NextLevel)
