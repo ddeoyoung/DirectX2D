@@ -211,6 +211,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="KingDice_State.cpp" />
     <ClCompile Include="LogoLevel.cpp">
       <SubType>
       </SubType>

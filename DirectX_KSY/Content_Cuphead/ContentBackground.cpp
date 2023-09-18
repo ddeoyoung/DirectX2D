@@ -29,7 +29,7 @@ void ContentBackground::BackgroundInit(std::string_view _SpriteName)
 		return;
 	}
 
-	Renderer = CreateComponent<GameEngineSpriteRenderer>();
+	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Background);
 	Renderer->SetSprite(Background);
 	Texture = GameEngineTexture::Find(Background);
 

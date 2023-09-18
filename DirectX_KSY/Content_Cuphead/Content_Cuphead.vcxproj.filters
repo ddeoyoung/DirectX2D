@@ -287,5 +287,8 @@
     <ClCompile Include="ContentBackground.cpp">
       <Filter>Actor\Map</Filter>
     </ClCompile>
+    <ClCompile Include="KingDice_State.cpp">
+      <Filter>Level\5. BossStage\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

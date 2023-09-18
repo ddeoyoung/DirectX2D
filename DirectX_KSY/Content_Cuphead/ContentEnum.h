@@ -6,5 +6,7 @@ enum class RenderOrder
 	BackgroundObject,
 	PlayerShoot,
 	Play,
+	Frontground,
+	FrontgroundObject,
 };
 

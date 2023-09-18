@@ -54,16 +54,19 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
 	CurLevelBackground->BackgroundInit("kd_bg_painting.png");
-	CurLevelBackground->BackgroundInit("kd_bg_table.png");
-	//CurLevelBackground->BackgroundInit("kd_bg_table_pixel.bmp");
+
+	// Boss
+	std::shared_ptr<KingDice> Boss = CreateActor<KingDice>();
+	//Boss->Transform.SetLocalPosition({ 700, -400 });
+
+	// Frontground
+	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
+	Frontground->BackgroundInit("kd_bg_table.png");
 
 	// Player
 	std::shared_ptr<BaseCharacter> Player = CreateActor<Cuphead>();
 	Player->Transform.SetLocalPosition({ 250, -550 });
 
-	// Boss
-	std::shared_ptr<KingDice> Boss = CreateActor<KingDice>();
-	//Boss->Transform.SetLocalPosition({ 700, -400 });
 }
 
 void KingDiceLevel::LevelEnd(GameEngineLevel* _NextLevel)
