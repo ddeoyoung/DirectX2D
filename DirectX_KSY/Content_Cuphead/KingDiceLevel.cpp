@@ -36,14 +36,14 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Background\\kd_bg_painting.png");
 
-		// 페인팅 배경
+		// 페인팅 배경(위)
 		GameEngineTexture::Load(Dir.GetStringPath());
 		GameEngineSprite::CreateSingle("kd_bg_painting.png");
 
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Table");
 
-		// 테이블 배경
+		// 테이블 배경(아래)
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table.png");
 		GameEngineSprite::CreateSingle("kd_bg_table.png");
 

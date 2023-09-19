@@ -80,7 +80,7 @@ void BaseCharacter::RunUpdate(float _Delta)
 		ChangeState(CharacterState::Shoot);
 	}
 
-	if (true == GameEngineInput::IsDown('C'))
+	if (true == GameEngineInput::IsDown('C') || true == GameEngineInput::IsPress('C'))
 	{
 		ChangeState(CharacterState::Aim);
 	}
@@ -96,15 +96,23 @@ void BaseCharacter::RunUpdate(float _Delta)
 void BaseCharacter::AimStart()
 {
 	ChangeAnimationState("Aim");
+
+	IsAim = true;
 }
 
 void BaseCharacter::AimUpdate(float _Delta)
 {
 	if (true == GameEngineInput::IsUp('C') || true == GameEngineInput::IsFree('C'))
 	{
+		IsAim = false;
 		ChangeState(CharacterState::Idle);
 	}
 
+	if (true == GameEngineInput::IsDown('X'))
+	{
+		IsAim = true;
+		ChangeState(CharacterState::Shoot);
+	}
 }
 
 void BaseCharacter::ShootStart()

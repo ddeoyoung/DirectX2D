@@ -294,6 +294,18 @@ bool BaseCharacter::IsMoveCheck()
 	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
 		|| (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT)))
 	{
+		if (true == GameEngineInput::IsDown('C') || true == GameEngineInput::IsPress('C'))
+		{
+			IsAim = true;
+
+			return false;
+		}
+
+		else
+		{
+			IsAim = false;
+		}
+
 		return true;
 	}
 }
