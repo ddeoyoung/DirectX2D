@@ -93,7 +93,7 @@ protected:
 	GameEngineColor GetGroundColor();
 
 	float JumpTimer = 0.0f;
-	float ShootDur = 0.0f;
+	float ShootInterval = 0.0f;
 
 	bool IsRun = false;
 	bool IsRunShoot = false;

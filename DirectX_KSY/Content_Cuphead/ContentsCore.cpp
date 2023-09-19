@@ -30,7 +30,7 @@ void ContentsCore::Start()
 	// Test Level
 	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
 
-	GameEngineCore::ChangeLevel("KingDiceLevel");
+	GameEngineCore::ChangeLevel("TutorialLevel");
 }
 
 void ContentsCore::Update(float _Delta)

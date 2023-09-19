@@ -164,9 +164,6 @@
     <ClInclude Include="TitleBackground.h">
       <Filter>Level\0. Title\Object</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialMap.h">
-      <Filter>Level\2. Tutorial\Object</Filter>
-    </ClInclude>
     <ClInclude Include="IntroLevel.h">
       <Filter>Level\1. StoryBook</Filter>
     </ClInclude>
@@ -265,9 +262,6 @@
     </ClCompile>
     <ClCompile Include="TitleBackground.cpp">
       <Filter>Level\0. Title\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="TutorialMap.cpp">
-      <Filter>Level\2. Tutorial\Object</Filter>
     </ClCompile>
     <ClCompile Include="IntroLevel.cpp">
       <Filter>Level\1. StoryBook</Filter>

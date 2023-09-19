@@ -115,7 +115,7 @@ void BaseCharacter::ShootStart()
 	float4 PlayerPos = Transform.GetWorldPosition();
 	Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
 
-	ShootDur = 0.0f;
+	ShootInterval = 0.0f;
 }
 
 void BaseCharacter::ShootUpdate(float _Delta)
@@ -127,16 +127,16 @@ void BaseCharacter::ShootUpdate(float _Delta)
 		ChangeState(CharacterState::Idle);
 	}
 
-	if (true == GameEngineInput::IsPress('X') && ShootDur >= SHOOT_INTERVAL)
+	if (true == GameEngineInput::IsPress('X') && ShootInterval >= SHOOT_INTERVAL)
 	{
 		std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
 		float4 PlayerPos = Transform.GetWorldPosition();
 		Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
 
-		ShootDur = 0.0f;
+		ShootInterval = 0.0f;
 	}
 
-	ShootDur += _Delta;
+	ShootInterval += _Delta;
 
 
 	if (true == IsRunShoot)
@@ -150,7 +150,7 @@ void BaseCharacter::RunShootStart()
 {
 	ChangeAnimationState("Run_Shoot");
 
-	ShootDur = 0.0f;
+	ShootInterval = 0.0f;
 }
 
 void BaseCharacter::RunShootUpdate(float _Delta)
@@ -176,16 +176,16 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 	Transform.AddLocalPosition(MovePos);
 
 	// Shoot
-	if (true == GameEngineInput::IsPress('X') && true == IsRunShoot && ShootDur >= SHOOT_INTERVAL)
+	if (true == GameEngineInput::IsPress('X') && true == IsRunShoot && ShootInterval >= SHOOT_INTERVAL)
 	{
 		std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
 		float4 PlayerPos = Transform.GetWorldPosition();
 		Bullet->SetAttackDirAndPos(AttDir, PlayerPos, IsRunShoot);
 
-		ShootDur = 0.0f;
+		ShootInterval = 0.0f;
 	}
 
-	ShootDur += _Delta;
+	ShootInterval += _Delta;
 
 	// Shoot End
 	if ((true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
