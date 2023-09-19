@@ -55,6 +55,9 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevelBackground = CreateActor<ContentBackground>();
 	CurLevelBackground->BackgroundInit("kd_bg_painting.png");
 
+	CurLevelPixelBackground = CreateActor<ContentBackground>();
+	CurLevelPixelBackground->PixelBackgroundInit("kd_bg_table_pixel.bmp");
+
 	// Boss
 	std::shared_ptr<KingDice> Boss = CreateActor<KingDice>();
 

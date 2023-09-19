@@ -7,6 +7,7 @@
 #define SHOOT_INTERVAL 0.2f
 
 // Ό³Έν :
+class ContentLevel;
 class BaseCharacter : public GameEngineActor
 {
 public:
@@ -88,6 +89,7 @@ protected:
 
 	bool IsMoveCheck();
 
+	void Gravity(float _Delta);
 	GameEngineColor GetGroundColor();
 
 	float JumpTimer = 0.0f;

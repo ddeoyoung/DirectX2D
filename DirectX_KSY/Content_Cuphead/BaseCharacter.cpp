@@ -2,6 +2,7 @@
 #include "BaseCharacter.h"
 #include "Peashot.h"
 
+#include "ContentLevel.h"
 #include "ContentBackground.h"
 
 BaseCharacter::BaseCharacter()
@@ -36,7 +37,18 @@ void BaseCharacter::Update(float _Delta)
 		GravityForce = 0.0f;
 	}*/
 
-	//GameEngineColor PixelColor = 
+	GameEngineColor GroundColor = GetGroundColor();
+
+	if (GroundColor != GameEngineColor::RED)
+	{
+		GravityForce.Y -= _Delta * 2200.0f;
+		Transform.AddLocalPosition(GravityForce * _Delta);
+	}
+
+	else
+	{
+		GravityForce = 0.0f;
+	}
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)
@@ -284,4 +296,18 @@ bool BaseCharacter::IsMoveCheck()
 	{
 		return true;
 	}
+}
+
+void BaseCharacter::Gravity(float _Delta)
+{
+
+}
+
+GameEngineColor BaseCharacter::GetGroundColor()
+{
+	float4 PlayerPos = Transform.GetWorldPosition();
+
+	GameEngineColor GroundColor = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(PlayerPos, GameEngineColor::RED);
+
+	return GroundColor;
 }

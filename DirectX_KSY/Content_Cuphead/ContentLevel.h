@@ -5,7 +5,9 @@
 class ContentBackground;
 class ContentLevel : public GameEngineLevel
 {
+public:
 	static ContentLevel* CurLevel;
+
 public:
 	// constrcuter destructer
 	ContentLevel();
@@ -22,6 +24,11 @@ public:
 		return CurLevelBackground;
 	}
 
+	std::shared_ptr<ContentBackground> GetCurLevelPixelBackground()
+	{
+		return CurLevelPixelBackground;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -30,6 +37,8 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 	std::shared_ptr<ContentBackground> CurLevelBackground = nullptr;
+	std::shared_ptr<ContentBackground> CurLevelPixelBackground = nullptr;
+
 private:
 };
 

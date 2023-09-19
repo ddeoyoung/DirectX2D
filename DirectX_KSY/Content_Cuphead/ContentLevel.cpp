@@ -1,7 +1,6 @@
 #include "PreCompile.h"
 #include "ContentLevel.h"
 
-ContentLevel* ContentLevel::CurLevel = nullptr;
 
 ContentLevel::ContentLevel()
 {
@@ -10,6 +9,8 @@ ContentLevel::ContentLevel()
 ContentLevel::~ContentLevel()
 {
 }
+
+ContentLevel* ContentLevel::CurLevel = nullptr;
 
 void ContentLevel::Start()
 {

@@ -16,6 +16,7 @@ public:
 	ContentBackground& operator=(ContentBackground&& _Other) noexcept = delete;
 
 	void BackgroundInit(std::string_view _SpriteName);
+	void PixelBackgroundInit(std::string_view _SpriteName);
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor);
 
@@ -25,8 +26,10 @@ protected:
 
 private:
 	std::string Background = "";
+	std::string PixelBackground = "";
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 
 	std::shared_ptr<GameEngineTexture> Texture = nullptr;
+	std::shared_ptr<GameEngineTexture> PixelTexture = nullptr;
 };
 
