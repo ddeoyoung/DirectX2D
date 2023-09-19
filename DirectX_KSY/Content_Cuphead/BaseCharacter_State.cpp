@@ -188,18 +188,23 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 	ShootDur += _Delta;
 
 	// Shoot End
-	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
+	if ((true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
+		&& ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
+			|| (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))) )
 	{
 		IsRunShoot = false;
-		IsRun = false;
-		ChangeState(CharacterState::Idle);
+		//IsRun = true;
+		ChangeState(CharacterState::Run);
 	}
 
 	// Run End
-	if (false == IsRunShoot)
+	if (false == IsRunShoot
+		&& ((true == GameEngineInput::IsDown('X') || true == GameEngineInput::IsPress('X')))
+		)
 	{
 		ChangeState(CharacterState::Shoot);
 	}
+
 }
 
 void BaseCharacter::DuckStart()
