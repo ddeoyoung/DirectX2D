@@ -57,7 +57,6 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Boss
 	std::shared_ptr<KingDice> Boss = CreateActor<KingDice>();
-	//Boss->Transform.SetLocalPosition({ 700, -400 });
 
 	// Frontground
 	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();

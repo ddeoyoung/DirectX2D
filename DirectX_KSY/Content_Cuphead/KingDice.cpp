@@ -31,23 +31,27 @@ void KingDice::Start()
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
-	MainRenderer->CreateAnimation("KingDice_Intro_Hand", "KingDice_Intro_Hand", 0.04f, false);
-	MainRenderer->SetEndEvent("KingDice_Intro_Hand", [](GameEngineSpriteRenderer* _Renderer)
+	MainRenderer->CreateAnimation("KingDice_IntroHand", "KingDice_IntroHand", 0.04f, false);
+	MainRenderer->SetEndEvent("KingDice_IntroHand", [](GameEngineSpriteRenderer* _Renderer)
 		{
-			_Renderer->ChangeAnimation("KingDice_Intro_Body");
+			_Renderer->ChangeAnimation("KingDice_IntroBody");
 		});
-	MainRenderer->CreateAnimation("KingDice_Intro_Body", "KingDice_Intro_Body", 0.04f, false);
+	MainRenderer->CreateAnimation("KingDice_IntroBody", "KingDice_IntroBody", 0.04f, false);
+	MainRenderer->SetEndEvent("KingDice_IntroBody", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_Idle");
+		});
 	MainRenderer->CreateAnimation("KingDice_Idle", "KingDice_Idle", 0.05f);
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal");
 	MainRenderer->CreateAnimation("KingDice_CameraEat", "KingDice_CameraEat");
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
-	MainRenderer->ChangeAnimation("KingDice_Idle");
+	MainRenderer->ChangeAnimation("KingDice_IntroHand");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	Transform.SetLocalPosition({HalfWindowScale.X + 20.0f, -HalfWindowScale.Y -40.0f});
+	Transform.SetLocalPosition({HalfWindowScale.X + 20.0f, -HalfWindowScale.Y -45.0f});
 }
 
 void KingDice::Update(float _Delta)

@@ -4,7 +4,7 @@
 #define RUNSPEED 500.0f
 #define GRAVITYFORCE 2200.0f
 
-#define SHOOT_DURATION 0.2f
+#define SHOOT_INTERVAL 0.2f
 
 // Ό³Έν :
 class BaseCharacter : public GameEngineActor
