@@ -23,22 +23,8 @@ void BaseCharacter::Start()
 void BaseCharacter::Update(float _Delta)
 {
 	StateUpdate(_Delta);
-
 	DirCheck();
-
-	GameEngineColor GroundColor = GetGroundColor();
-
-	if (GroundColor != GameEngineColor::RED)
-	{
-		GravityForce.Y -= _Delta * 2200.0f;
-		Transform.AddLocalPosition(GravityForce * _Delta);
-	}
-
-	else
-	{
-		GravityForce = 0.0f;
-	}
-
+	Gravity(_Delta);
 	LerpCamera(_Delta);
 }
 
@@ -305,7 +291,18 @@ bool BaseCharacter::IsMoveCheck()
 
 void BaseCharacter::Gravity(float _Delta)
 {
+	GameEngineColor GroundColor = GetGroundColor();
+	 
+	if (GroundColor != GameEngineColor::RED)
+	{
+		GravityForce.Y -= _Delta * 2200.0f;
+		Transform.AddLocalPosition(GravityForce * _Delta);
+	}
 
+	else
+	{
+		GravityForce = 0.0f;
+	}
 }
 
 GameEngineColor BaseCharacter::GetGroundColor()
@@ -338,7 +335,7 @@ void BaseCharacter::LerpCamera(float _Delta)
 
 }
 
-GameEngineColor BaseCharacter::GetPixel()
+GameEngineColor BaseCharacter::GetPixelColor()
 {
 	return GameEngineColor::RED;
 }
