@@ -38,7 +38,7 @@ void TutorialLevel::Start()
 	}
 
 	// Back Layer
-	std::shared_ptr<ContentBackground> BackLayer = CreateActor<ContentBackground>();
+	BackLayer = CreateActor<ContentBackground>();
 	BackLayer->BackgroundInit("tutorial_room_back_layer_0001.png");
 
 	// Background
@@ -49,17 +49,19 @@ void TutorialLevel::Start()
 	CurLevelPixelBackground->PixelBackgroundInit("TutorialBitMap.png");
 
 	// Front Layer
-	std::shared_ptr<ContentBackground> FrontLayer = CreateActor<ContentBackground>();
+	FrontLayer = CreateActor<ContentBackground>();
 	FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
 
 	// Player
-	std::shared_ptr<BaseCharacter> Player = CreateActor<Cuphead>();
+	Player = CreateActor<Cuphead>();
 	Player->Transform.SetLocalPosition({ 250, -550 });
 }
 
 void TutorialLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+
+	SetLayerPos();
 }
 
 void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -70,4 +72,15 @@ void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+}
+
+void TutorialLevel::SetLayerPos()
+{
+	// BackLayer, FrontLayer -> Camera 따라가야함
+	float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+	float4 WindowScaleHalf = GameEngineCore::MainWindow.GetScale().Half();
+	float4 LayerPos = { CameraPos.X - WindowScaleHalf.X, CameraPos.Y + WindowScaleHalf.Y };
+
+	BackLayer->Transform.SetLocalPosition(LayerPos);
+	FrontLayer->Transform.SetLocalPosition(LayerPos);
 }

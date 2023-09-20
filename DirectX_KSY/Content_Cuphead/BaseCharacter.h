@@ -86,13 +86,15 @@ protected:
 	void Update(float _Delta) override;
 
 	void DirCheck();
-
 	bool IsMoveCheck();
 
 	void Gravity(float _Delta);
 	GameEngineColor GetGroundColor();
 
+	void LerpCamera(float _Delta);
+
 	float JumpTimer = 0.0f;
+
 	float ShootInterval = 0.0f;
 
 	bool IsRun = false;

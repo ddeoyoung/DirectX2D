@@ -49,6 +49,8 @@ void BaseCharacter::Update(float _Delta)
 	{
 		GravityForce = 0.0f;
 	}
+
+	LerpCamera(_Delta);
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)
@@ -308,6 +310,8 @@ bool BaseCharacter::IsMoveCheck()
 
 		return true;
 	}
+
+	return false;
 }
 
 void BaseCharacter::Gravity(float _Delta)
@@ -322,4 +326,26 @@ GameEngineColor BaseCharacter::GetGroundColor()
 	GameEngineColor GroundColor = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(PlayerPos, GameEngineColor::RED);
 
 	return GroundColor;
+}
+
+void BaseCharacter::LerpCamera(float _Delta)
+{
+	float CameraSpeed = 2.5f;
+	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+	float4 TutorialMapScale = { 6900 , 720 };
+	// WindowScaleHalf = { 640, 360 }
+
+	float4 CameraPos = GetLevel()->GetMainCamera()->Transform.GetWorldPosition(); // Start
+	float4 PlayerPos = Transform.GetWorldPosition(); // End
+	float4 MovePos = float4::LerpClamp(CameraPos, PlayerPos, CameraSpeed * _Delta);
+
+	// 카메라 Y 고정
+	MovePos.Y = CameraPos.Y;
+
+	if (MovePos.iX() >= /*640.0f*/ WindowScale.hX() 
+		&& MovePos.iX() <= TutorialMapScale.iX() - WindowScale.hX())
+	{
+		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
+	}
+
 }

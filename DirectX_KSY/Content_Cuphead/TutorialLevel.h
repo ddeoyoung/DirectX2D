@@ -23,7 +23,10 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
-	std::shared_ptr<class TutorialMap> Back = nullptr;
+	std::shared_ptr<ContentBackground> BackLayer = nullptr;
+	std::shared_ptr<ContentBackground> FrontLayer = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
+
+	void SetLayerPos();
 };
 
