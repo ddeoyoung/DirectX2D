@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include "ContentBackground.h"
 
 // Ό³Έν :
 class ContentBackground;
@@ -24,9 +25,20 @@ public:
 		return CurLevelBackground;
 	}
 
+
 	std::shared_ptr<ContentBackground> GetCurLevelPixelBackground()
 	{
 		return CurLevelPixelBackground;
+	}
+
+	float4 GetCurLevelPixelScale()
+	{
+		return CurLevelPixelBackground->Transform.GetLocalScale();
+	}
+
+	std::string GetCurLevelName()
+	{
+		return CurLevel->GetName();
 	}
 
 protected:

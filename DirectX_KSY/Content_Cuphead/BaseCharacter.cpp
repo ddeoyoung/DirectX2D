@@ -5,6 +5,8 @@
 #include "ContentLevel.h"
 #include "ContentBackground.h"
 
+#include <GameEngineCore/GameEngineTexture.h>
+
 BaseCharacter::BaseCharacter()
 {
 }
@@ -23,19 +25,6 @@ void BaseCharacter::Update(float _Delta)
 	StateUpdate(_Delta);
 
 	DirCheck();
-
-	/*GameEngineColor PixelColor = KingDiceTable::KDTable->GetColor(Transform.GetWorldPosition(), GameEngineColor::RED);
-
-	if (PixelColor != GameEngineColor::RED)
-	{
-		GravityForce.Y -= _Delta * 2200.0f;
-		Transform.AddLocalPosition(GravityForce * _Delta);
-	}
-
-	else
-	{
-		GravityForce = 0.0f;
-	}*/
 
 	GameEngineColor GroundColor = GetGroundColor();
 
@@ -332,8 +321,7 @@ void BaseCharacter::LerpCamera(float _Delta)
 {
 	float CameraSpeed = 2.5f;
 	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-	float4 TutorialMapScale = { 6900 , 720 };
-	// WindowScaleHalf = { 640, 360 }
+	float4 TextureScale = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetPixelTextureScale();
 
 	float4 CameraPos = GetLevel()->GetMainCamera()->Transform.GetWorldPosition(); // Start
 	float4 PlayerPos = Transform.GetWorldPosition(); // End
@@ -342,10 +330,15 @@ void BaseCharacter::LerpCamera(float _Delta)
 	// 카메라 Y 고정
 	MovePos.Y = CameraPos.Y;
 
-	if (MovePos.iX() >= /*640.0f*/ WindowScale.hX() 
-		&& MovePos.iX() <= TutorialMapScale.iX() - WindowScale.hX())
+	if (MovePos.iX() > WindowScale.hX()
+		&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
 	{
 		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
 	}
 
+}
+
+GameEngineColor BaseCharacter::GetPixel()
+{
+	return GameEngineColor::RED;
 }

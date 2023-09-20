@@ -90,6 +90,7 @@ protected:
 
 	void Gravity(float _Delta);
 	GameEngineColor GetGroundColor();
+	GameEngineColor GetPixel();
 
 	void LerpCamera(float _Delta);
 

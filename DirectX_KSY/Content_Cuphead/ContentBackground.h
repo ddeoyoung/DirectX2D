@@ -20,6 +20,14 @@ public:
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor);
 
+	float4 GetPixelTextureScale()
+	{
+		if (nullptr != PixelTexture)
+		{
+			return PixelTexture->GetScale();
+		}
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -27,8 +35,8 @@ protected:
 private:
 	std::string Background = "";
 	std::string PixelBackground = "";
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 	std::shared_ptr<GameEngineTexture> Texture = nullptr;
 	std::shared_ptr<GameEngineTexture> PixelTexture = nullptr;
 };
