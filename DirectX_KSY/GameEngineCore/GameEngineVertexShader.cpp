@@ -1,11 +1,11 @@
 #include "PreCompile.h"
 #include "GameEngineVertexShader.h"
 
-GameEngineVertexShader::GameEngineVertexShader() 
+GameEngineVertexShader::GameEngineVertexShader()
 {
 }
 
-GameEngineVertexShader::~GameEngineVertexShader() 
+GameEngineVertexShader::~GameEngineVertexShader()
 {
 	if (nullptr != ShaderPtr)
 	{
@@ -15,9 +15,9 @@ GameEngineVertexShader::~GameEngineVertexShader()
 }
 
 void GameEngineVertexShader::ShaderLoad(
-	std::string_view _Path, 
-	std::string_view _EntryPoint, 
-	UINT _VersionHight, 
+	std::string_view _Path,
+	std::string_view _EntryPoint,
+	UINT _VersionHight,
 	UINT _VersionLow)
 {
 	std::wstring UniPath = GameEngineString::AnsiToUnicode(_Path);
@@ -75,6 +75,8 @@ void GameEngineVertexShader::ShaderLoad(
 	{
 		MsgBoxAssert("버텍스 쉐이더 생성에 실패했습니다.");
 	}
+
+	ResHelper.ShaderResCheck(EntryName, BinaryCode);
 }
 
 void GameEngineVertexShader::Setting()
