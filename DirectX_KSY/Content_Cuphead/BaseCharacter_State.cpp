@@ -128,7 +128,7 @@ void BaseCharacter::ShootStart()
 
 void BaseCharacter::ShootUpdate(float _Delta)
 {
-	IsRunShoot = IsMoveCheck();
+	IsRunShoot = MoveCheck();
 
 	if (true == GameEngineInput::IsUp('X') || true == GameEngineInput::IsFree('X'))
 	{
@@ -163,7 +163,7 @@ void BaseCharacter::RunShootStart()
 
 void BaseCharacter::RunShootUpdate(float _Delta)
 {
-	IsRunShoot = IsMoveCheck();
+	IsRunShoot = MoveCheck();
 
 	// Run
 	float RunSpeed = RUNSPEED;

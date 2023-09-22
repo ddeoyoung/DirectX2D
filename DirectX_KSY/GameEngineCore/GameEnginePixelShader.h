@@ -3,7 +3,7 @@
 #include "GameEngineResources.h"
 
 // Ό³Έν :
-class GameEnginePixelShader : public GameEngineResources<GameEnginePixelShader> , public GameEngineShader
+class GameEnginePixelShader : public GameEngineResources<GameEnginePixelShader>, public GameEngineShader
 {
 	friend class GameEngineInputLayOut;
 
@@ -35,7 +35,6 @@ public:
 protected:
 
 private:
-	std::string EntryName = "";
 	ID3D11PixelShader* ShaderPtr = nullptr;
 
 	void ShaderLoad(std::string_view _Path, std::string_view _EntryPoint, UINT _VersionHight = 5, UINT _VersionLow = 0);

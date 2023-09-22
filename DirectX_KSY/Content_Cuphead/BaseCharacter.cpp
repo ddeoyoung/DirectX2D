@@ -26,6 +26,8 @@ void BaseCharacter::Update(float _Delta)
 	DirCheck();
 	Gravity(_Delta);
 	LerpCamera(_Delta);
+
+	MoveCheck();
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)
@@ -266,7 +268,7 @@ void BaseCharacter::DirCheck()
 	}
 }
 
-bool BaseCharacter::IsMoveCheck()
+bool BaseCharacter::MoveCheck()
 {
 	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
 		|| (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT)))
@@ -286,16 +288,24 @@ bool BaseCharacter::IsMoveCheck()
 		return true;
 	}
 
+
+	//GameEngineColor Color = GetPixelColor();
+
+	//if (Color == GameEngineColor::RED)
+	//{
+	//	int a = 0;
+	//}
+
 	return false;
 }
 
 void BaseCharacter::Gravity(float _Delta)
 {
-	GameEngineColor GroundColor = GetGroundColor();
+	GameEngineColor GroundColor = GetPixelColor(float4::ZERO);
 	 
 	if (GroundColor != GameEngineColor::RED)
 	{
-		GravityForce.Y -= _Delta * 2200.0f;
+		GravityForce.Y -= _Delta * GRAVITYFORCE;
 		Transform.AddLocalPosition(GravityForce * _Delta);
 	}
 
@@ -303,15 +313,6 @@ void BaseCharacter::Gravity(float _Delta)
 	{
 		GravityForce = 0.0f;
 	}
-}
-
-GameEngineColor BaseCharacter::GetGroundColor()
-{
-	float4 PlayerPos = Transform.GetWorldPosition();
-
-	GameEngineColor GroundColor = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(PlayerPos, GameEngineColor::RED);
-
-	return GroundColor;
 }
 
 void BaseCharacter::LerpCamera(float _Delta)
@@ -335,7 +336,12 @@ void BaseCharacter::LerpCamera(float _Delta)
 
 }
 
-GameEngineColor BaseCharacter::GetPixelColor()
+GameEngineColor BaseCharacter::GetPixelColor(float4 _Pos)
 {
-	return GameEngineColor::RED;
+	float4 PlayerPos = Transform.GetWorldPosition();
+	float4 CheckPos = PlayerPos + _Pos;
+
+	GameEngineColor Color = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(CheckPos, GameEngineColor::RED);
+
+	return Color;
 }

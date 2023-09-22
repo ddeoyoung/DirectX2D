@@ -98,6 +98,12 @@
     <ClCompile Include="GameEngineShaderResHelper.cpp">
       <Filter>Resources\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineMesh.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineMaterial.cpp">
+      <Filter>Rendering\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -197,6 +203,12 @@
     <ClInclude Include="GameEngineShaderResHelper.h">
       <Filter>Resources\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineMesh.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineMaterial.h">
+      <Filter>Rendering\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -249,6 +261,12 @@
     </Filter>
     <Filter Include="Rendering\Contents">
       <UniqueIdentifier>{b2d4bc1c-d2c3-4b13-96e9-5f7181127cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Mesh">
+      <UniqueIdentifier>{ae0be9ae-dd86-4269-9be2-1380a62967aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering\Material">
+      <UniqueIdentifier>{9d8fcd68-5eb2-49f4-b57f-24292e3f2cec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
