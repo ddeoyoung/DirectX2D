@@ -43,9 +43,19 @@ void KingDice::Start()
 		});
 	MainRenderer->CreateAnimation("KingDice_Idle", "KingDice_Idle", 0.05f);
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal");
-	MainRenderer->CreateAnimation("KingDice_CameraEat", "KingDice_CameraEat");
+	MainRenderer->CreateAnimation("KingDice_CameraEat_First", "KingDice_CameraEat_First", 0.06f);
+	MainRenderer->SetEndEvent("KingDice_CameraEat_First", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Transform.SetWorldPosition({ 640 , 200 });
+			_Renderer->SetPivotType(PivotType::Top);
+			_Renderer->SetRenderOrder(RenderOrder::Max);
+			_Renderer->ChangeAnimation("KingDice_CameraEat_Second");
+		});
+
+	MainRenderer->CreateAnimation("KingDice_CameraEat_Second", "KingDice_CameraEat_Second", 0.1f);
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
-	MainRenderer->ChangeAnimation("KingDice_IntroHand");
+	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink");
+	MainRenderer->ChangeAnimation("KingDice_CameraEat_First");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
@@ -77,14 +87,19 @@ void KingDice::ChangeState(KingDiceState _State)
 			IdleStart();
 			break;
 		case KingDiceState::Wink:
+			WinkStart();
 			break;
 		case KingDiceState::Curious:
+			CuriousStart();
 			break;
 		case KingDiceState::Reveal:
+			RevealStart();
 			break;
 		case KingDiceState::CameraEat:
+			CameraEatStart();
 			break;
 		case KingDiceState::Death:
+			DeathStart();
 			break;
 		default:
 			break;
@@ -96,5 +111,44 @@ void KingDice::ChangeState(KingDiceState _State)
 
 void KingDice::StateUpdate(float _Delta)
 {
+	switch (State)
+	{
+	case KingDiceState::None:
+		break;
+	case KingDiceState::IntroHand:
+		return IntroHandUpdate(_Delta);
+	case KingDiceState::IntroBody:
+		return IntroBodyUpdate(_Delta);
+	case KingDiceState::Idle:
+		return IdleUpdate(_Delta);
+	case KingDiceState::Wink:
+		return WinkUpdate(_Delta);
+	case KingDiceState::Curious:
+		return CuriousUpdate(_Delta);
+	case KingDiceState::Reveal:
+		return RevealUpdate(_Delta);
+	case KingDiceState::CameraEat:
+		return CameraEatUpdate(_Delta);
+	case KingDiceState::Death:
+		return DeathUpdate(_Delta);
+	default:
+		break;
+	}
+}
 
+void KingDice::ChangeAnimationState(const std::string& _StateName)
+{
+	std::string AnimationName = "KingDice_";
+	AnimationName += _StateName;
+
+
+	// CameraEat
+	if (_StateName == "CameraEat")
+	{
+		AnimationName += "_First";
+	}
+
+
+	CurState = _StateName;
+	MainRenderer->ChangeAnimation(AnimationName);
 }

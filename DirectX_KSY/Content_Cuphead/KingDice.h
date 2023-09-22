@@ -29,12 +29,6 @@ public:
 	KingDice& operator=(KingDice&& _Other) noexcept = delete;
 
 protected:
-	void Start() override;
-	void Update(float _Delta) override;
-
-	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
-
-protected:
 	void ChangeState(KingDiceState _State);
 	void StateUpdate(float _Delta);
 	void ChangeAnimationState(const std::string& _StateName);
@@ -63,7 +57,16 @@ protected:
 	void DeathStart();
 	void DeathUpdate(float _Delta);
 
-private:
+protected:
+	void Start() override;
+	void Update(float _Delta) override;
+
+	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
+
+	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+
+private:
+
 };
 

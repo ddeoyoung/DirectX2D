@@ -8,5 +8,6 @@ enum class RenderOrder
 	Play,
 	Frontground,
 	FrontgroundObject,
+	Max,
 };
 
