@@ -31,6 +31,7 @@ void KingDice::Start()
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
+	// Intro
 	MainRenderer->CreateAnimation("KingDice_IntroHand", "KingDice_IntroHand", 0.04f, false);
 	MainRenderer->SetEndEvent("KingDice_IntroHand", [](GameEngineSpriteRenderer* _Renderer)
 		{
@@ -41,21 +42,32 @@ void KingDice::Start()
 		{
 			_Renderer->ChangeAnimation("KingDice_Idle");
 		});
+
+	// Idle
 	MainRenderer->CreateAnimation("KingDice_Idle", "KingDice_Idle", 0.05f);
-	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal");
-	MainRenderer->CreateAnimation("KingDice_CameraEat_First", "KingDice_CameraEat_First", 0.06f);
+
+	// CameraEat
+	MainRenderer->CreateAnimation("KingDice_CameraEat_First", "KingDice_CameraEat_First", 0.06f, false);
 	MainRenderer->SetEndEvent("KingDice_CameraEat_First", [](GameEngineSpriteRenderer* _Renderer)
 		{
-			_Renderer->Transform.SetWorldPosition({ 640 , 200 });
+			_Renderer->Transform.AddLocalPosition({ 0 , 600 });
 			_Renderer->SetPivotType(PivotType::Top);
 			_Renderer->SetRenderOrder(RenderOrder::Max);
 			_Renderer->ChangeAnimation("KingDice_CameraEat_Second");
 		});
 
-	MainRenderer->CreateAnimation("KingDice_CameraEat_Second", "KingDice_CameraEat_Second", 0.1f);
-	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
+	MainRenderer->CreateAnimation("KingDice_CameraEat_Second", "KingDice_CameraEat_Second", 0.06f, false);
+	MainRenderer->SetEndEvent("KingDice_CameraEat_Second", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Transform.AddLocalPosition({ 0 , -600 });
+			_Renderer->SetPivotType(PivotType::Bottom);
+			//_Renderer->SetRenderOrder(RenderOrder::Play);
+		});
+
+	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal");
 	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink");
-	MainRenderer->ChangeAnimation("KingDice_CameraEat_First");
+	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
+	MainRenderer->ChangeAnimation("KingDice_IntroHand");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
