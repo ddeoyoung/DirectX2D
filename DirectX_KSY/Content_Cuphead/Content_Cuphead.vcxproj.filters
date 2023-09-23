@@ -187,6 +187,9 @@
     <ClInclude Include="ContentBackground.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="KD_Chips.h">
+      <Filter>Level\5. BossStage\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -288,6 +291,9 @@
     </ClCompile>
     <ClCompile Include="ContentBackground.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="KD_Chips.cpp">
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -50,7 +50,7 @@ void KingDice::Start()
 	MainRenderer->CreateAnimation("KingDice_CameraEat_First", "KingDice_CameraEat_First", 0.06f, false);
 	MainRenderer->SetEndEvent("KingDice_CameraEat_First", [](GameEngineSpriteRenderer* _Renderer)
 		{
-			_Renderer->Transform.AddLocalPosition({ 0 , 600 });
+			_Renderer->Transform.SetLocalPosition({ 0 , 600 });
 			_Renderer->SetPivotType(PivotType::Top);
 			_Renderer->SetRenderOrder(RenderOrder::Max);
 			_Renderer->ChangeAnimation("KingDice_CameraEat_Second");
@@ -59,7 +59,8 @@ void KingDice::Start()
 	MainRenderer->CreateAnimation("KingDice_CameraEat_Second", "KingDice_CameraEat_Second", 0.06f, false);
 	MainRenderer->SetEndEvent("KingDice_CameraEat_Second", [](GameEngineSpriteRenderer* _Renderer)
 		{
-			_Renderer->Transform.AddLocalPosition({ 0 , -600 });
+			float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half(); 
+			_Renderer->Transform.SetLocalPosition({ HalfWindowScale.X + 20.0f, -HalfWindowScale.Y - 45.0f });
 			_Renderer->SetPivotType(PivotType::Bottom);
 			//_Renderer->SetRenderOrder(RenderOrder::Play);
 		});
@@ -67,7 +68,7 @@ void KingDice::Start()
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal");
 	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink");
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
-	MainRenderer->ChangeAnimation("KingDice_IntroHand");
+	MainRenderer->ChangeAnimation("KingDice_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);

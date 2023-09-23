@@ -24,7 +24,7 @@ void ContentLevel::Start()
 //IntroLevel
 //TutorialLevel
 //OverWorldLevel
-//PlayLevel
+//KingDiceLevel
 //OutroLevel
 
 void ContentLevel::Update(float _Delta)
@@ -51,7 +51,7 @@ void ContentLevel::Update(float _Delta)
 
 	if (true == GameEngineInput::IsDown(VK_F5))
 	{
-		GameEngineCore::ChangeLevel("PlayLevel");
+		GameEngineCore::ChangeLevel("KingDiceLevel");
 	}
 
 }
