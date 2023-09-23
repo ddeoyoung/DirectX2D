@@ -53,6 +53,22 @@ public:
 		}
 	}
 
+	void RenderOn()
+	{
+		if (nullptr != Renderer)
+		{
+			Renderer->On();
+		}
+	}
+
+	void RenderOff()
+	{
+		if (nullptr != Renderer)
+		{
+			Renderer->Off();
+		}
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

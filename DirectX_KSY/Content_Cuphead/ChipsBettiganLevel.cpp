@@ -2,11 +2,10 @@
 #include "ChipsBettiganLevel.h"
 
 #include "ContentBackground.h"
+#include "ContentActor.h"
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 #include "ChipsBettigan.h"
-
-#include "ContentActor.h"
 
 ChipsBettiganLevel::ChipsBettiganLevel()
 {
@@ -36,17 +35,18 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		// Far Background
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\ChipsBettigan\\StageObject\\poker_bg_far.png");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\ChipsBettigan\\StageObject");
 
-		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\poker_bg_far.png");
 		GameEngineSprite::CreateSingle("poker_bg_far.png");
 
 		// Main Background (Table)
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\ChipsBettigan\\StageObject\\poker_bg_main.png");
-
-		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\poker_bg_main.png");
 		GameEngineSprite::CreateSingle("poker_bg_main.png");
+
+		// Pixel Background
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\poker_bg_main_pixel.png");
+		GameEngineSprite::CreateSingle("poker_bg_main_pixel.png");
 	}
 
 	// Frontground
@@ -63,18 +63,24 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
-	//CurLevelBackground->BackgroundInit("poker_bg_far.png");
-	//CurLevelBackground->Transform.SetLocalPosition({ -80, 40 });
 	CurLevelBackground->BackgroundInit("poker_bg_far.png", { -80, 40 });
 
 	// Main Background
 	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("poker_bg_main.png");
-	CurLevelBackground->Transform.SetLocalPosition({ -80, 40 });
+	CurLevelBackground->BackgroundInit("poker_bg_main.png", { -80, 40 });
+
+	// Pixel Background
+	CurLevelPixelBackground = CreateActor<ContentBackground>();
+	CurLevelPixelBackground->PixelBackgroundInit("poker_bg_main_pixel.png");
+
+	// Player
+	std::shared_ptr<BaseCharacter> Player = CreateActor<Cuphead>();
+	Player->Transform.SetLocalPosition({ 250, -550 });
 
 	// Frontground
 	std::shared_ptr<ContentActor> Chip = CreateActor<ContentActor>();
 	Chip->SpriteInit("poker_fg_chips.png", { 300, -700 });
+
 }
 
 void ChipsBettiganLevel::LevelEnd(GameEngineLevel* _NextLevel)
