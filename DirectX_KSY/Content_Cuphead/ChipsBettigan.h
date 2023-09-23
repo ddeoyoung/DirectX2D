@@ -1,8 +1,8 @@
 #pragma once
-
+#include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class ChipsBettigan
+class ChipsBettigan : public GameEngineActor
 {
 public:
 	// constrcuter destructer
