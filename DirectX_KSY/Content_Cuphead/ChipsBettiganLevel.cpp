@@ -7,6 +7,9 @@
 #include "Cuphead.h"
 #include "ChipsBettigan.h"
 
+#include "CigSmoke.h"
+#include "TopSmoke.h"
+
 ChipsBettiganLevel::ChipsBettiganLevel()
 {
 }
@@ -47,6 +50,16 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		// Pixel Background
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\poker_bg_main_pixel.png");
 		GameEngineSprite::CreateSingle("poker_bg_main_pixel.png");
+
+
+		// Cigarette Smoke
+		// Top Smoke
+		//std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
+		//for (size_t i = 0; i < Directorys.size(); i++)
+		//{
+		//	GameEngineDirectory& Dir = Directorys[i];
+		//	GameEngineSprite::CreateFolder(Dir.GetStringPath());
+		//}
 	}
 
 	// Frontground
@@ -89,15 +102,18 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	Boss = CreateActor<ChipsBettigan>();
 
 	// Frontground
-	std::shared_ptr<ContentActor> Chip = CreateActor<ContentActor>(RenderOrder::FrontgroundObject);
+	std::shared_ptr<ContentActor> Chip = CreateActor<ContentActor>();
 	Chip->SpriteInit("poker_fg_chips.png", { 300, -700 });
 
 	std::shared_ptr<ContentActor> Hand = CreateActor<ContentActor>();
 	Hand->SpriteInit("poker_fg_hands.png", { 50, -700 });
 
-	std::shared_ptr<ContentActor> Arm = CreateActor<ContentActor>(RenderOrder::FrontgroundObject);
+	std::shared_ptr<ContentActor> Arm = CreateActor<ContentActor>();
 	Arm->SpriteInit("poker_fg_arm.png", { 1100, -520 });
 
+	// Smoke
+	std::shared_ptr<CigSmoke> CiggaretteSmoke = CreateActor<CigSmoke>();
+	std::shared_ptr<TopSmoke> BackgroundSmoke = CreateActor<TopSmoke>();
 }
 
 void ChipsBettiganLevel::LevelEnd(GameEngineLevel* _NextLevel)

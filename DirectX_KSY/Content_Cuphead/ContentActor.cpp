@@ -20,3 +20,11 @@ void ContentActor::SpriteInit(const std::string_view& Texture,  const float4 Pos
 
 	Transform.SetLocalPosition(Position);
 }
+
+void ContentActor::AnimationInit()
+{
+	if (nullptr == StaticRenderer)
+	{
+		StaticRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	}
+}

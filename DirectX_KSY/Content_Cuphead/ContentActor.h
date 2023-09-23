@@ -16,6 +16,7 @@ public:
 	ContentActor& operator=(ContentActor&& _Other) noexcept = delete;
 
 	void SpriteInit(const std::string_view& Texture,  const float4 Position, int Order = 0, float ScaleRatio = 1.0f);
+	void AnimationInit();
 
 protected:
 

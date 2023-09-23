@@ -1,7 +1,8 @@
 #pragma once
+#include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class CigSmoke
+class CigSmoke : public GameEngineActor
 {
 public:
 	// constrcuter destructer
@@ -15,6 +16,10 @@ public:
 	CigSmoke& operator=(CigSmoke&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
+	void Update(float _Delta) override;
+
+	std::shared_ptr<class GameEngineSpriteRenderer> Renderer = nullptr;
 
 private:
 
