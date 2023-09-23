@@ -54,6 +54,11 @@ void ContentLevel::Update(float _Delta)
 		GameEngineCore::ChangeLevel("KingDiceLevel");
 	}
 
+	if (true == GameEngineInput::IsDown(VK_F6))
+	{
+		GameEngineCore::ChangeLevel("ChipsBettiganLevel");
+	}
+
 }
 
 void ContentLevel::LevelStart(GameEngineLevel* _PrevLevel)

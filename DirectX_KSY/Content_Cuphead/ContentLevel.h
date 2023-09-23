@@ -36,10 +36,17 @@ public:
 		return CurLevelPixelBackground->Transform.GetLocalScale();
 	}
 
+	float4 GetCurLevelBackScale()
+	{
+		return CurLevelBackground->Transform.GetLocalScale();
+	}
+
 	std::string GetCurLevelName()
 	{
 		return CurLevel->GetName();
 	}
+
+
 
 protected:
 	void Start() override;
