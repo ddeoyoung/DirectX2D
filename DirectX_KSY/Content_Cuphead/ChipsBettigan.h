@@ -1,6 +1,15 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+enum class ChipsState
+{
+	None,
+	Intro,
+	Idle,
+	Spin,
+	Death,
+};
+
 // Ό³Έν :
 class ChipsBettigan : public GameEngineActor
 {
@@ -16,6 +25,18 @@ public:
 	ChipsBettigan& operator=(ChipsBettigan&& _Other) noexcept = delete;
 
 protected:
+	void ChangeState(ChipsState _State);
+	void StateUpdate(float _Delta);
+	void ChangeAnimationState(const std::string& _StateName);
+
+protected:
+	void Start() override;
+	void Update(float _Delta) override;
+
+	std::string CurState = "";
+	ChipsState State = ChipsState::None;
+
+	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 
 private:
 
