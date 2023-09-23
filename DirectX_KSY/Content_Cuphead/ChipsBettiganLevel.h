@@ -25,8 +25,5 @@ protected:
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
 
-	std::shared_ptr<class BaseCharacter> Player = nullptr;
-	std::shared_ptr<class ChipsBettigan> Boss = nullptr;
-
 };
 

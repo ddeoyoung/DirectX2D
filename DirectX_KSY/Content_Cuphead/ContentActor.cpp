@@ -9,7 +9,7 @@ ContentActor::~ContentActor()
 {
 }
 
-void ContentActor::SpriteInit(const std::string_view& Texture,  const float4 Position, int Order, float ScaleRatio)
+void ContentActor::SpriteInit(const std::string_view& Texture,  const float4 Position, float ScaleRatio, int Order)
 {
 	if (nullptr == StaticRenderer)
 	{
