@@ -6,7 +6,7 @@
 #include "TutorialLevel.h"
 #include "OverWorldLevel.h"
 #include "KingDiceLevel.h"
-#include "PlayLevel.h"
+#include "ChipsBettiganLevel.h"
 #include "OutroLevel.h"
 
 ContentsCore::ContentsCore()
@@ -25,12 +25,10 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");
 	GameEngineCore::CreateLevel<OverWorldLevel>("OverWorldLevel");
 	GameEngineCore::CreateLevel<KingDiceLevel>("KingDiceLevel");
+	GameEngineCore::CreateLevel<ChipsBettiganLevel>("ChipsBettiganLevel");
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 
-	// Test Level
-	GameEngineCore::CreateLevel<PlayLevel>("PlayLevel");
-
-	GameEngineCore::ChangeLevel("KingDiceLevel");
+	GameEngineCore::ChangeLevel("ChipsBettiganLevel");
 }
 
 void ContentsCore::Update(float _Delta)

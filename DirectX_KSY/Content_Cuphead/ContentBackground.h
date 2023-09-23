@@ -16,6 +16,7 @@ public:
 	ContentBackground& operator=(ContentBackground&& _Other) noexcept = delete;
 
 	void BackgroundInit(std::string_view _SpriteName);
+	void BackgroundInit(std::string_view _SpriteName, float4 _Pos);
 	void PixelBackgroundInit(std::string_view _SpriteName);
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor);
@@ -25,6 +26,30 @@ public:
 		if (nullptr != PixelTexture)
 		{
 			return PixelTexture->GetScale();
+		}
+	}
+
+	float4 GetTextureScale()
+	{
+		if (nullptr != Texture)
+		{
+			return Texture->GetScale();
+		}
+	}
+
+	std::shared_ptr<GameEngineTexture> GetTexture()
+	{
+		if (nullptr != Texture)
+		{
+			return Texture;
+		}
+	}
+
+	std::shared_ptr<GameEngineTexture> GetPixelTexture()
+	{
+		if (nullptr != PixelTexture)
+		{
+			return PixelTexture;
 		}
 	}
 

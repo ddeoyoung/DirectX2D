@@ -39,6 +39,27 @@ void ContentBackground::BackgroundInit(std::string_view _SpriteName)
 	Renderer->Transform.SetLocalPosition(Scale);
 }
 
+void ContentBackground::BackgroundInit(std::string_view _SpriteName, float4 _Pos)
+{
+	Background = _SpriteName;
+
+	if (nullptr == GameEngineSprite::Find(Background))
+	{
+		MsgBoxAssert(Background + "의 배경이 로드되지 않았습니다.");
+		return;
+	}
+
+	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Background);
+	Renderer->SetSprite(Background);
+	Texture = GameEngineTexture::Find(Background);
+
+	float4 Scale = Texture->GetScale().Half();
+	Scale.Y *= -1.0f;
+	Scale += _Pos;
+
+	Renderer->Transform.SetLocalPosition(Scale);
+}
+
 void ContentBackground::PixelBackgroundInit(std::string_view _SpriteName)
 {
 	PixelBackground = _SpriteName;

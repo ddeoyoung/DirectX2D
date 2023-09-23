@@ -103,9 +103,6 @@
     <ClInclude Include="OverWorldLevel.h">
       <Filter>Level\3. OverWorld</Filter>
     </ClInclude>
-    <ClInclude Include="PlayLevel.h">
-      <Filter>Level\5. BossStage</Filter>
-    </ClInclude>
     <ClInclude Include="BaseCharacter.h">
       <Filter>Actor\Character</Filter>
     </ClInclude>
@@ -190,6 +187,18 @@
     <ClInclude Include="KD_Chips.h">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
+    <ClInclude Include="ChipsBettigan.h">
+      <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="TopSmoke.h">
+      <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CigSmoke.h">
+      <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentActor.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -204,9 +213,6 @@
     </ClCompile>
     <ClCompile Include="OverWorldLevel.cpp">
       <Filter>Level\3. OverWorld</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayLevel.cpp">
-      <Filter>Level\5. BossStage</Filter>
     </ClCompile>
     <ClCompile Include="BaseCharacter.cpp">
       <Filter>Actor\Character</Filter>
@@ -294,6 +300,21 @@
     </ClCompile>
     <ClCompile Include="KD_Chips.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ChipsBettigan.cpp">
+      <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="ChipsBettigan_State.cpp">
+      <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="TopSmoke.cpp">
+      <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CigSmoke.cpp">
+      <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentActor.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
