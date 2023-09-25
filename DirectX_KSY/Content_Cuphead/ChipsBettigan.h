@@ -29,6 +29,18 @@ protected:
 	void StateUpdate(float _Delta);
 	void ChangeAnimationState(const std::string& _StateName);
 
+	void IntroStart();
+	void IntroUpdate(float _Delta);
+
+	void IdleStart();
+	void IdleUpdate(float _Delta);
+
+	void SpinStart();
+	void SpinUpdate(float _Delta);
+
+	void DeathStart();
+	void DeathUpdate(float _Delta);
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

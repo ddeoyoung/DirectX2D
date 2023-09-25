@@ -50,16 +50,6 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		// Pixel Background
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\poker_bg_main_pixel.png");
 		GameEngineSprite::CreateSingle("poker_bg_main_pixel.png");
-
-
-		// Cigarette Smoke
-		// Top Smoke
-		//std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
-		//for (size_t i = 0; i < Directorys.size(); i++)
-		//{
-		//	GameEngineDirectory& Dir = Directorys[i];
-		//	GameEngineSprite::CreateFolder(Dir.GetStringPath());
-		//}
 	}
 
 	// Frontground

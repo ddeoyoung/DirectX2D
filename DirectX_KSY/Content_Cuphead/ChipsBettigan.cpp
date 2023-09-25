@@ -42,15 +42,61 @@ void ChipsBettigan::Start()
 
 void ChipsBettigan::Update(float _Delta)
 {
-
+	StateUpdate(_Delta);
 }
 
 void ChipsBettigan::ChangeState(ChipsState _State)
 {
+	if (_State != State)
+	{
+		switch (State)
+		{
+		case ChipsState::None:
+			break;
+		case ChipsState::Intro:
+			IntroStart();
+			break;
+		case ChipsState::Idle:
+			IdleStart();
+			break;
+		case ChipsState::Spin:
+			SpinStart();
+			break;
+		case ChipsState::Death:
+			DeathStart();
+			break;
+		default:
+			break;
+		}
+	}
 
+	State = _State;
 }
 
 void ChipsBettigan::StateUpdate(float _Delta)
 {
+	switch (State)
+	{
+	case ChipsState::None:
+		break;
+	case ChipsState::Intro:
+		return IntroUpdate(_Delta);
+	case ChipsState::Idle:
+		return IdleUpdate(_Delta);
+	case ChipsState::Spin:
+		return SpinUpdate(_Delta);
+	case ChipsState::Death:
+		return DeathUpdate(_Delta);
+	default:
+		break;
+	}
+}
 
+void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
+{
+	std::string AnimationName = "Chips_";
+	AnimationName += _StateName;
+
+	CurState = _StateName;
+	MainRenderer->ChangeAnimation(AnimationName);
 }
