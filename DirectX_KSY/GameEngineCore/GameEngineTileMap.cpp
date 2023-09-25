@@ -1,204 +1,92 @@
+#pragma once
 #include "PreCompile.h"
-#include "GameEngineTileMap.h"
-#include "GameEngineTransform.h"
-#include "GameEngineConstantBuffer.h"
-#include "GameEngineCamera.h"
-#include "GameEngineSampler.h"
+#include "GameEngineRenderer.h"
+#include "GameEngineSpriteRenderer.h"
 
-GameEngineTileMap::GameEngineTileMap()
+class Tile
 {
-}
+public:
+	SpriteData Data;
+	int Index = -1;
+};
 
-GameEngineTileMap::~GameEngineTileMap()
+class CreateTileParameter
 {
-}
+public:
+	size_t TileCountX = 10;
+	size_t TileCountY = 10;
+	float4 TileScale = { 50, 50 };
+	std::string_view SpriteName = "";
+};
 
-void GameEngineTileMap::CreateTileMap(const CreateTileParameter& _Parameter)
+
+class SetTileParameterIndex
 {
-	Tiles.resize(_Parameter.TileCountY);
+public:
+	size_t X = -1;
+	size_t Y = -1;
+	unsigned int Index = 0;
+	std::string_view SpriteName = "";
+};
 
-	for (size_t i = 0; i < _Parameter.TileCountY; i++)
-	{
-		Tiles[i].resize(_Parameter.TileCountX);
-	}
-
-	DefaultSprite = GameEngineSprite::Find(_Parameter.SpriteName);
-
-	TileData = _Parameter;
-	TileData.TileScale.Z = 1.0f;
-}
-
-void GameEngineTileMap::SetTilePos(const SetTileParameterPos& _Parameter)
+class SetTileParameterPos
 {
+public:
+	float4 Pos;
+	unsigned int Index = 0;
+	std::string_view SpriteName = "";
 
-	SetTileParameterIndex Parameter;
-	Parameter.X = static_cast<size_t>(_Parameter.Pos.X / TileData.TileScale.X);
-	Parameter.Y = static_cast<size_t>(_Parameter.Pos.Y / TileData.TileScale.Y);
-	Parameter.Index = _Parameter.Index;
-	Parameter.SpriteName = _Parameter.SpriteName;
+	SetTileParameterPos(float4 _Pos, unsigned int _Index = 0, std::string_view _SpriteName = "")
+		: Pos(_Pos), Index(_Index), SpriteName(_SpriteName)
+	{
+	}
+};
 
-	SetTileIndex(Parameter);
-}
 
-void GameEngineTileMap::SetTileIndex(const SetTileParameterIndex& _Parameter)
+// 설명 :
+class GameEngineTileMap : public GameEngineSpriteRenderer
 {
-	if (Tiles.size() <= _Parameter.Y)
+public:
+	// constrcuter destructer
+	GameEngineTileMap();
+	~GameEngineTileMap();
+
+	// delete Function
+	GameEngineTileMap(const GameEngineTileMap& _Other) = delete;
+	GameEngineTileMap(GameEngineTileMap&& _Other) noexcept = delete;
+	GameEngineTileMap& operator=(const GameEngineTileMap& _Other) = delete;
+	GameEngineTileMap& operator=(GameEngineTileMap&& _Other) noexcept = delete;
+
+	//                       100           100            50 50 
+	void CreateTileMap(const CreateTileParameter& _Parameter);
+	// void SetTile(size_t _TileCountX, size_t _TileCountY, float4 TileScale);
+
+	//size_t X;
+	//size_t Y;
+	//unsigned int Index = 0;
+	//std::string_view SpriteName = "";
+	void SetTileIndex(const SetTileParameterIndex& _Parameter);
+
+	void SetTilePos(const SetTileParameterPos& _Parameter);
+
+	void ExpandRenderedTileMap(int _Size)
 	{
-		MsgBoxAssert("타일 인덱스를 Y 오버했습니다.");
+		TileMapExpansionSize = _Size;
 	}
 
-	if (Tiles[_Parameter.Y].size() <= _Parameter.X)
-	{
-		MsgBoxAssert("타일 인덱스를 X 오버했습니다.");
-	}
+	std::shared_ptr<class GameEngineSampler> Sampler;
 
-	Tile& CurTile = Tiles[_Parameter.Y][_Parameter.X];
+protected:
+	void Start();
+	void Render(GameEngineCamera* _Camera, float _Delta) override;
 
-	if (_Parameter.SpriteName.empty())
-	{
-		CurTile.Data = DefaultSprite->GetSpriteData(_Parameter.Index);
-	}
-	else
-	{
-		std::shared_ptr<GameEngineSprite> FindSprite = GameEngineSprite::Find(_Parameter.SpriteName);
-		CurTile.Data = FindSprite->GetSpriteData(_Parameter.Index);
-	}
+private:
+	CreateTileParameter TileData;
 
-	CurTile.Index = _Parameter.Index;
-}
+	std::shared_ptr<GameEngineSprite> DefaultSprite;
 
-void GameEngineTileMap::Render(GameEngineCamera* _Camera, float _Delta)
-{
-	ResSetting();
+	std::vector<std::vector<Tile>> Tiles;
 
-	float4 CameraPos = _Camera->Transform.GetWorldPosition();
-	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+	int TileMapExpansionSize = 0;
+};
 
-	float4 ScreenLeftTop;
-
-	ScreenLeftTop.X = CameraPos.X - WindowScale.hX();
-	ScreenLeftTop.Y = CameraPos.Y + WindowScale.hY();
-
-	int StartX = static_cast<int>(ScreenLeftTop.X / TileData.TileScale.X);
-	int StartY = static_cast<int>(-ScreenLeftTop.Y / TileData.TileScale.Y);
-	int EndX = StartX + static_cast<int>(WindowScale.X / TileData.TileScale.X) + TileMapExpansionSize;
-	int EndY = StartY + static_cast<int>(WindowScale.Y / TileData.TileScale.Y) + TileMapExpansionSize;
-	StartX -= TileMapExpansionSize;
-	StartY -= TileMapExpansionSize;
-
-	if (0 > StartX)
-	{
-		StartX = 0;
-	}
-
-	if (0 > StartY)
-	{
-		StartY = 0;
-	}
-
-	if (TileData.TileCountX < StartX)
-	{
-		StartX = static_cast<int>(TileData.TileCountX);
-	}
-
-	if (TileData.TileCountY < StartY)
-	{
-		StartY = static_cast<int>(TileData.TileCountY);
-	}
-
-	if (0 > EndX)
-	{
-		EndX = 0;
-	}
-
-	if (0 > EndY)
-	{
-		EndY = 0;
-	}
-
-	if (TileData.TileCountX < EndX)
-	{
-		EndX = static_cast<int>(TileData.TileCountX);
-	}
-
-	if (TileData.TileCountY < EndY)
-	{
-		EndY = static_cast<int>(TileData.TileCountY);
-	}
-
-	TransformData Data;
-	for (size_t y = StartY; y < EndY; y++)
-	{
-		for (size_t x = StartX; x < EndX; x++)
-		{
-			if (0 > Tiles[y][x].Index)
-			{
-				continue;
-			}
-
-			// 이게 100 x 100번 만큼
-			//if (카메라에 나오지 않는다면)
-			//{
-			//	continue;
-			//}
-
-			std::shared_ptr<GameEngineConstantBuffer> TransBuffer = GameEngineConstantBuffer::CreateAndFind(sizeof(TransformData), "TransformData", {});
-
-			if (nullptr != TransBuffer)
-			{
-				float4 Pos;
-				Pos = Transform.GetWorldPosition();
-				Pos.X += TileData.TileScale.X * x + TileData.TileScale.hX();
-				Pos.Y -= TileData.TileScale.Y * y + TileData.TileScale.hY();
-
-				Data = Transform.GetConstTransformDataRef();
-				Data.Position = Pos;
-				Data.Scale = TileData.TileScale;
-				Data.LocalCalculation(); // 로컬 월드 생성
-
-				Data.ParentMatrix = Transform.GetConstTransformDataRef().WorldMatrix;
-				Data.WorldMatrix = Data.LocalWorldMatrix * Data.ParentMatrix;
-				Data.WorldViewProjectionCalculation();
-				// 내 행렬을 전부다 계산하고 넘긴다.
-
-				TransBuffer->ChangeData(Data);
-				TransBuffer->VSSetting(0);
-			}
-
-			SpriteData& TileSprite = Tiles[y][x].Data;
-
-			//std::shared_ptr<GameEngineConstantBuffer> SpriteBuffer = GameEngineConstantBuffer::CreateAndFind(sizeof(float4), "SpriteData");
-			//if (nullptr != SpriteBuffer)
-			//{
-			//	SpriteBuffer->ChangeData(TileSprite.SpritePivot);
-			//	SpriteBuffer->Setting(1);
-			//}
-
-			// Tiles[y][x].Data.Texture->PSSetting(0);
-
-			if (nullptr == Sampler)
-			{
-				MsgBoxAssert("존재하지 않는 샘플러를 사용하려고 했습니다.");
-			}
-			Sampler->PSSetting(0);
-
-			Draw();
-		}
-	}
-}
-
-
-void GameEngineTileMap::SetSamplerState(SAMPLER_OBJECT _Option)
-{
-	switch (_Option)
-	{
-	case SAMPLER_OBJECT::LINEAR:
-		Sampler = GameEngineSampler::Find("LINEAR");
-		break;
-	case SAMPLER_OBJECT::POINT:
-		Sampler = GameEngineSampler::Find("POINT");
-		break;
-	default:
-		break;
-	}
-}

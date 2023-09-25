@@ -71,9 +71,6 @@
     <ClCompile Include="GameEngineConstantBuffer.cpp">
       <Filter>Resources\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineSpriteRenderer.cpp">
-      <Filter>Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngineRenderTarget.cpp">
       <Filter>Resources\Texture</Filter>
     </ClCompile>
@@ -102,7 +99,19 @@
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineMaterial.cpp">
-      <Filter>Rendering\Material</Filter>
+      <Filter>Resources\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineSpriteRenderer.cpp">
+      <Filter>Rendering\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineUIRenderer.cpp">
+      <Filter>Rendering\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderUnit.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineDebugCore.cpp">
+      <Filter>Debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,9 +206,6 @@
     <ClInclude Include="GameEngineTileMap.h">
       <Filter>Rendering\Contents</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineSpriteRenderer.h">
-      <Filter>Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngineShaderResHelper.h">
       <Filter>Resources\Shader</Filter>
     </ClInclude>
@@ -207,7 +213,22 @@
       <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineMaterial.h">
-      <Filter>Rendering\Material</Filter>
+      <Filter>Resources\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineSpriteRenderer.h">
+      <Filter>Rendering\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineUIRenderer.h">
+      <Filter>Rendering\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderUnit.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineEnum.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineDebugCore.h">
+      <Filter>Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,8 +286,14 @@
     <Filter Include="Resources\Mesh">
       <UniqueIdentifier>{ae0be9ae-dd86-4269-9be2-1380a62967aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rendering\Material">
+    <Filter Include="Debug">
+      <UniqueIdentifier>{4b9ad063-d23a-4b49-87df-29dc7918a0e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Material">
       <UniqueIdentifier>{9d8fcd68-5eb2-49f4-b57f-24292e3f2cec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{ff82508d-3737-40c6-8800-64433d57c76c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
