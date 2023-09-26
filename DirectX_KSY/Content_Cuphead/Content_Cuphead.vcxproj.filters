@@ -85,6 +85,12 @@
     <Filter Include="Global">
       <UniqueIdentifier>{d99aee84-6dd1-46c7-84e4-1c5264984631}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage1\Boss">
+      <UniqueIdentifier>{04523b26-05b6-4017-919b-dcd36a6ed5fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage1\Object">
+      <UniqueIdentifier>{9aeced3b-01cd-4579-9d94-a4afd5f3a715}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -195,6 +201,15 @@
     </ClInclude>
     <ClInclude Include="ContentActor.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Martini.h">
+      <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Scotch.h">
+      <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Rum.h">
+      <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +327,15 @@
     </ClCompile>
     <ClCompile Include="ContentActor.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Martini.cpp">
+      <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Scotch.cpp">
+      <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Rum.cpp">
+      <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
