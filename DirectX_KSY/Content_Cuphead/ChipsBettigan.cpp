@@ -32,6 +32,15 @@ void ChipsBettigan::Start()
 
 	MainRenderer->CreateAnimation("Chips_Intro", "Chips_Intro");
 	MainRenderer->CreateAnimation("Chips_Idle", "Chips_Idle", 0.05f);
+	MainRenderer->CreateAnimation("Chips_Spin_Head", "Chips_Spin_Head");
+	MainRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
+	MainRenderer->CreateAnimation("Chips_Spin_Bottom", "Chips_Spin_Bottom");
+	MainRenderer->CreateAnimation("Chips_Death_Fall", "Chips_Death_Fall");
+	MainRenderer->SetEndEvent("Chips_Death_Fall", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Chips_Death_HeadCrash");
+		});
+	MainRenderer->CreateAnimation("Chips_Death_HeadCrash", "Chips_Death_HeadCrash");
 	MainRenderer->ChangeAnimation("Chips_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();

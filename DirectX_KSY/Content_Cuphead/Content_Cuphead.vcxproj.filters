@@ -73,9 +73,6 @@
     <Filter Include="Level\5. BossStage\Boss">
       <UniqueIdentifier>{6ffc84d5-21a8-4ff1-b5b9-c695a330085e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor\Map">
-      <UniqueIdentifier>{f6bd1788-9273-4f24-9421-59ce400bf711}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Actor\Weapon">
       <UniqueIdentifier>{1400e6be-a78a-4d6a-a545-4e31ac28ce07}</UniqueIdentifier>
     </Filter>

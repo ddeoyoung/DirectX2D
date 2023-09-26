@@ -85,7 +85,7 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevelPixelBackground->PixelBackgroundInit("poker_bg_main_pixel.png");
 
 	// Player
-	Player = CreateActor<Cuphead>(RenderOrder::Play);
+	Player = CreateActor<Cuphead>();
 	Player->Transform.SetLocalPosition({ 250, -550 });
 
 	// Boss

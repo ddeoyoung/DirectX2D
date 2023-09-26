@@ -69,16 +69,21 @@ public:
 		}
 	}
 
+	std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
+	{
+		return Renderer;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
+	std::shared_ptr<GameEngineTexture> Texture = nullptr;
+	std::shared_ptr<GameEngineTexture> PixelTexture = nullptr;
 private:
 	std::string Background = "";
 	std::string PixelBackground = "";
 
-	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
-	std::shared_ptr<GameEngineTexture> Texture = nullptr;
-	std::shared_ptr<GameEngineTexture> PixelTexture = nullptr;
 };
 

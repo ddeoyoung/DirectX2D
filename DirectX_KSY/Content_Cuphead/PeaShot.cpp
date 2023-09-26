@@ -37,7 +37,6 @@ void Peashot::Start()
 	MainRenderer->CreateAnimation("Peashot_Death", "Peashot_Death");
 	MainRenderer->CreateAnimation("Peashot_EX", "Peashot_EX");
 	MainRenderer->CreateAnimation("Peashot_EX_Death", "Peashot_EX_Death");
-	MainRenderer->ChangeAnimation("Peashot_Spark");
 	MainRenderer->AutoSpriteSizeOn();
 
 	ChangeState(AttackState::Spark);
