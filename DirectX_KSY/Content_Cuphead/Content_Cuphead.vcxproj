@@ -299,6 +299,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TipsyTroopLevel_Load.cpp" />
     <ClCompile Include="TitleBackground.cpp">
       <SubType>
       </SubType>

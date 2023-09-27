@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 #include "ContentBackground.h"
+#include "ContentActor.h"
 
 // Ό³Έν :
 class ContentBackground;

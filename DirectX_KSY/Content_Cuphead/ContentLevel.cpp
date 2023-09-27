@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "ContentLevel.h"
 
-#include "ContentBackground.h"
-#include "ContentActor.h"
 
 ContentLevel::ContentLevel()
 {

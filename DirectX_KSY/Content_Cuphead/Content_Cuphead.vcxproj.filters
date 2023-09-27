@@ -337,5 +337,8 @@
     <ClCompile Include="Rum.cpp">
       <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="TipsyTroopLevel_Load.cpp">
+      <Filter>Level\4. SubBossStage\Stage1</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
