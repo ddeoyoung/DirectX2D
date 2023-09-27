@@ -4,6 +4,7 @@
 enum class TipsyActorOrder
 {
 	Foreground = 20,
+	Blend,
 };
 
 // Ό³Έν :
@@ -30,8 +31,9 @@ protected:
 	void LevelStartTextureLoad();
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
-
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
-	std::shared_ptr<class ChipsBettigan> Boss = nullptr;
+	std::shared_ptr<class Martini> BossMartini = nullptr;
+	std::shared_ptr<class Rum> BossRum = nullptr;
+	std::shared_ptr<class Scotch> BossScotch = nullptr;
 };
 

@@ -4,6 +4,10 @@
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 
+#include "Martini.h"
+#include "Rum.h"
+#include "Scotch.h"
+
 TipsyTroopLevel::TipsyTroopLevel()
 {
 }
@@ -58,7 +62,7 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	SpotLight2->SpriteInit("kingdice_alcohol_bg_spotlight_table2.png", { 900, -200 });
 
 	std::shared_ptr<ContentActor> SpotLight1 = CreateActor<ContentActor>();
-	SpotLight1->SpriteInit("kingdice_alcohol_bg_spotlight_table1.png", { 300, -250 });
+	SpotLight1->SpriteInit("kingdice_alcohol_bg_spotlight_table1.png", { 300, -220 });
 
 
 	// Ground Background
@@ -80,6 +84,15 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	std::shared_ptr<ContentActor> Foreground = CreateActor<ContentActor>();
 	Foreground->SpriteInit("kingdice_alcohol_bg_Foreground.png", { 620, -520 }, TipsyActorOrder::Foreground);
 
+	// Blend
+	std::shared_ptr<ContentActor> Vignette = CreateActor<ContentActor>();
+	Vignette->SpriteInit("kingdice_alcohol_bg_vignette.png", { 620, -320 }, TipsyActorOrder::Blend);
+
+
+	// Boss
+	BossMartini = CreateActor<Martini>();
+	BossScotch = CreateActor<Scotch>();
+	BossRum = CreateActor<Rum>();
 
 }
 
