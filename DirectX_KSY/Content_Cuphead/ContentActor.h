@@ -15,7 +15,15 @@ public:
 	ContentActor& operator=(const ContentActor& _Other) = delete;
 	ContentActor& operator=(ContentActor&& _Other) noexcept = delete;
 
-	void SpriteInit(const std::string_view& Texture,  const float4 Position, int Order = 0, float ScaleRatio = 1.0f);
+
+	void SpriteInit(const std::string_view& _Texture,  const float4 _Position, int _Order = 0, float _ScaleRatio = 1.0f);
+
+	template<typename EnumType>
+	void SpriteInit(const std::string_view& _Texture, const float4 _Position, EnumType _Order = 0, float _ScaleRatio = 1.0f)
+	{
+		return SpriteInit(_Texture, _Position, static_cast<int>(_Order), _ScaleRatio);
+	}
+
 	void AnimationInit();
 
 protected:

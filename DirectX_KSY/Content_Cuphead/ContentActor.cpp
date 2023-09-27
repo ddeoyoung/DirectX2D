@@ -9,16 +9,16 @@ ContentActor::~ContentActor()
 {
 }
 
-void ContentActor::SpriteInit(const std::string_view& Texture,  const float4 Position, int Order, float ScaleRatio)
+void ContentActor::SpriteInit(const std::string_view& _Texture,  const float4 _Position, int _Order, float _ScaleRatio)
 {
 	if (nullptr == StaticRenderer)
 	{
-		StaticRenderer = CreateComponent<GameEngineSpriteRenderer>(Order);
+		StaticRenderer = CreateComponent<GameEngineSpriteRenderer>(_Order);
 	}
-	StaticRenderer->SetSprite(Texture);
-	StaticRenderer->SetAutoScaleRatio(ScaleRatio);
+	StaticRenderer->SetSprite(_Texture);
+	StaticRenderer->SetAutoScaleRatio(_ScaleRatio);
 
-	Transform.SetLocalPosition(Position);
+	Transform.SetLocalPosition(_Position);
 }
 
 void ContentActor::AnimationInit()
