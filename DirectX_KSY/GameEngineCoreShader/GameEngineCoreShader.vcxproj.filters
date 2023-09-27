@@ -6,6 +6,8 @@
     <FxCompile Include="Transform.fx">
       <Filter>Header</Filter>
     </FxCompile>
+    <FxCompile Include="RenderBase.fx" />
+    <FxCompile Include="DebugColorShader.fx" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
