@@ -35,17 +35,30 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Table 1~4
 	std::shared_ptr<ContentActor> Table4 = CreateActor<ContentActor>();
-	Table4->SpriteInit("kingdice_alcohol_bg_table4.png", { 550, -250 });
+	Table4->SpriteInit("kingdice_alcohol_bg_table4.png", { 550, -230 });
 
 	std::shared_ptr<ContentActor> Table3 = CreateActor<ContentActor>();
-	Table3->SpriteInit("kingdice_alcohol_bg_table3.png", { 350, -380 });
+	Table3->SpriteInit("kingdice_alcohol_bg_table3.png", { 280, -350 });
 
 	std::shared_ptr<ContentActor> Table2 = CreateActor<ContentActor>();
-	Table2->SpriteInit("kingdice_alcohol_bg_table2.png", { 1000, -450 });
+	Table2->SpriteInit("kingdice_alcohol_bg_table2.png", { 900, -450 });
 
 	std::shared_ptr<ContentActor> Table1 = CreateActor<ContentActor>();
 	Table1->SpriteInit("kingdice_alcohol_bg_table1.png", { 300, -500 });
 
+
+	// SpotLight 1~4
+	std::shared_ptr<ContentActor> SpotLight4 = CreateActor<ContentActor>();
+	SpotLight4->SpriteInit("kingdice_alcohol_bg_spotlight_table4.png", { 550, -100 });
+
+	std::shared_ptr<ContentActor> SpotLight3 = CreateActor<ContentActor>();
+	SpotLight3->SpriteInit("kingdice_alcohol_bg_spotlight_table3.png", { 350, -100 });
+
+	std::shared_ptr<ContentActor> SpotLight2 = CreateActor<ContentActor>();
+	SpotLight2->SpriteInit("kingdice_alcohol_bg_spotlight_table2.png", { 900, -200 });
+
+	std::shared_ptr<ContentActor> SpotLight1 = CreateActor<ContentActor>();
+	SpotLight1->SpriteInit("kingdice_alcohol_bg_spotlight_table1.png", { 300, -250 });
 
 
 	// Ground Background
@@ -59,6 +72,14 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Player
 	Player = CreateActor<Cuphead>();
 	Player->Transform.SetLocalPosition({ 250, -550 });
+
+	// Frontground
+	std::shared_ptr<ContentActor> LeftPlant = CreateActor<ContentActor>();
+	LeftPlant->SpriteInit("kingdice_alcohol_bg_left_plant.png", { 70, -210 });
+
+	std::shared_ptr<ContentActor> Foreground = CreateActor<ContentActor>();
+	Foreground->SpriteInit("kingdice_alcohol_bg_Foreground.png", { 620, -520 }, TipsyActorOrder::Foreground);
+
 
 }
 

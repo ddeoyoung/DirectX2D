@@ -1,6 +1,11 @@
 #pragma once
 #include "ContentLevel.h"
 
+enum class TipsyActorOrder
+{
+	Foreground = 20,
+};
+
 // Ό³Έν :
 class TipsyTroopLevel : public ContentLevel
 {

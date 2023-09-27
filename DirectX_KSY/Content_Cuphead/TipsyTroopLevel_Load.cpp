@@ -111,4 +111,56 @@ void TipsyTroopLevel::LevelStartTextureLoad()
 		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_tired_demon.png");
 	}
 
+	// Background Object - Others
+	if (nullptr == GameEngineSprite::Find("kingdice_alcohol_bg_potted_plant.png"))
+	{
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\TipsyTroop\\StageObject");
+
+		// Potted Plants
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_potted_plant.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_potted_plant.png");
+
+		// Cigar Ashtray
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_cigar_ashtray.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_cigar_ashtray.png");
+
+		// Drinks 1
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_drinks_table1.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_drinks_table1.png");
+
+		// Drinks 2
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_drinks_table2.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_drinks_table2.png");
+	}
+
+	// Frontground
+	if (nullptr == GameEngineSprite::Find("kingdice_alcohol_bg_left_plant.png"))
+	{
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\TipsyTroop\\StageObject");
+
+		// Left Plant
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_left_plant.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_left_plant.png");
+
+		// Foreground Plant
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_Foreground.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_Foreground.png");
+	}
+
+	// Blend
+	if (nullptr == GameEngineSprite::Find("kingdice_alcohol_bg_vignette.png"))
+	{
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\TipsyTroop\\StageObject");
+
+		// Vignette
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kingdice_alcohol_bg_vignette.png");
+		GameEngineSprite::CreateSingle("kingdice_alcohol_bg_vignette.png");
+	}
+
 }
