@@ -1,7 +1,8 @@
 #pragma once
+#include "ContentLevel.h"
 
 // Ό³Έν :
-class TipsyTroopLevel
+class TipsyTroopLevel : public ContentLevel
 {
 public:
 	// constrcuter destructer
@@ -15,8 +16,15 @@ public:
 	TipsyTroopLevel& operator=(TipsyTroopLevel&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
+	void Update(float _Delta) override;
 
+	void LevelStart(GameEngineLevel* _PrevLevel) override;
+	void LevelEnd(GameEngineLevel* _NextLevel) override;
 private:
+	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
 
+	std::shared_ptr<class BaseCharacter> Player = nullptr;
+	std::shared_ptr<class ChipsBettigan> Boss = nullptr;
 };
 

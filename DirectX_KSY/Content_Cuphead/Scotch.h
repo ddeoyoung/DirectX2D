@@ -1,7 +1,8 @@
 #pragma once
+#include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class Scotch
+class Scotch : public GameEngineActor
 {
 public:
 	// constrcuter destructer
