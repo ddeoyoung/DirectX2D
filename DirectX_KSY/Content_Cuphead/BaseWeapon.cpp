@@ -75,7 +75,7 @@ void BaseWeapon::AttackDirCheck()
 		Transform.SetLocalRotation({ 0.0f, 0.0f, -90.0f });
 		break;
 	case AttackDir::Left_Diagonal_Up:
-		Transform.SetLocalScale({ -1.0f, 1.0f });
+		Transform.SetLocalScale({ -1.0f, -1.0f });
 		Transform.SetLocalRotation({ 0.0f, 0.0f, -45.0f });
 		break;
 	case AttackDir::Left_Straight:

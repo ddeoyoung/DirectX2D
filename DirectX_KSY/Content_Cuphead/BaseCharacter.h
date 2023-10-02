@@ -110,6 +110,7 @@ protected:
 	std::string CurState = "";
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineCollision> PlayerCollision = nullptr;
 
 	float4 GravityForce = float4::ZERO;
 	float4 JumpHeight = float4::ZERO;;

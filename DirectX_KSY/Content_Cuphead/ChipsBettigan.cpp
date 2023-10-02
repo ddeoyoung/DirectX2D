@@ -47,11 +47,31 @@ void ChipsBettigan::Start()
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
 	Transform.SetLocalPosition({ 1000 , -650 });
+
+
+	// Create Collision
+	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
+
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Idle");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+
+	BossCollision->Transform.SetLocalScale(Scale);
+	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
 }
 
 void ChipsBettigan::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+
+	// Test Code
+	{
+		bool TestBool = BossCollision->Collision(CollisionOrder::PlayerAttack);
+
+		if (true == TestBool)
+		{
+			int a = 0;
+		}
+	}
 }
 
 void ChipsBettigan::ChangeState(ChipsState _State)

@@ -40,31 +40,100 @@ void Martini::Start()
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
 	Transform.SetLocalPosition({ 850 , -700 });
+
+
+	// Create Collision
+	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
+
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Martini_Idle");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+
+	BossCollision->Transform.SetLocalScale(Scale);
+	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
+
+
+	//TestEvent.Enter = std::bind(&Martini::ChangeState, this, MartiniState::Death);
 }
 
 void Martini::Update(float _Delta)
 {
+	StateUpdate(_Delta);
 
+	//{
+	//	bool TestBool = BossCollision->CollisionEvent(CollisionOrder::PlayerAttack, TestEvent);
+
+	//	if (true == TestBool)
+	//	{
+	//		int a = 0;
+	//	}
+	//}
+
+	{
+		bool TestBool = BossCollision->Collision(CollisionOrder::PlayerAttack);
+
+		if (true == TestBool)
+		{
+			int a = 0;
+		}
+	}
 }
 
 void Martini::ChangeState(MartiniState _State)
 {
+	int a = 0;
 
+	if (State != _State)
+	{
+		switch (State)
+		{
+		case MartiniState::None:
+			break;
+		case MartiniState::Idle:
+			IdleStart();
+			break;
+		case MartiniState::Attack:
+			AttackStart();
+			break;
+		case MartiniState::Death:
+			DeathStart();
+			break;
+		default:
+			break;
+		}
+	}
+
+	State = _State;
 }
 
 void Martini::StateUpdate(float _Delta)
 {
-
+	switch (State)
+	{
+	case MartiniState::None:
+		break;
+	case MartiniState::Idle:
+		return IdleUpdate(_Delta);
+	case MartiniState::Attack:
+		return AttackUpdate(_Delta);
+	case MartiniState::Death:
+		return DeathUpdate(_Delta);
+	default:
+		break;
+	}
 }
 
 void Martini::ChangeAnimationState(const std::string& _StateName)
 {
+	std::string AnimationName = "Martini_";
+	AnimationName += _StateName;
 
+	CurState = _StateName;
+	MainRenderer->ChangeAnimation(AnimationName);
 }
 
 void Martini::IdleStart()
 {
-
+	ChangeAnimationState("Idle");
 }
 
 void Martini::IdleUpdate(float _Delta)
@@ -74,7 +143,7 @@ void Martini::IdleUpdate(float _Delta)
 
 void Martini::AttackStart()
 {
-
+	ChangeAnimationState("Attack");
 }
 
 void Martini::AttackUpdate(float _Delta)
@@ -84,7 +153,7 @@ void Martini::AttackUpdate(float _Delta)
 
 void Martini::DeathStart()
 {
-
+	ChangeAnimationState("Death");
 }
 
 void Martini::DeathUpdate(float _Delta)

@@ -49,6 +49,8 @@ void Peashot::Start()
 void Peashot::Update(float _Delta)
 {
 	BaseWeapon::Update(_Delta);
+
+	//AttackCollision->Collision(CollisionOrder::Boss, std::bind(&Peashot::Test, this));
 }
 
 void Peashot::ChangeAnimationState(const std::string& _StateName)

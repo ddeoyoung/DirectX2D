@@ -70,11 +70,14 @@ void Cuphead::Start()
 	// Jump
 	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump", 0.06f);
 
-
-
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
+
+
+	// Create Collision
+	PlayerCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Player);
+	PlayerCollision->Transform.SetLocalScale({ 80, 100 });
+	PlayerCollision->Transform.SetLocalPosition({ 0, 70 });
 
 	ChangeState(CharacterState::Intro);
 }

@@ -64,6 +64,7 @@ protected:
 	void AttackDirCheck();
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 	AttackState State = AttackState::None;
 	AttackDir AttDir = AttackDir::None;

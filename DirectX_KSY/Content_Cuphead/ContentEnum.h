@@ -11,3 +11,10 @@ enum class RenderOrder
 	Max,
 };
 
+enum class CollisionOrder
+{
+	Player,
+	PlayerAttack,
+	Boss,
+	BossAttack,
+};

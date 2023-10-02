@@ -36,7 +36,7 @@ protected:
 
 	void DeathStart();
 	void DeathUpdate(float _Delta);
-
+	
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -44,7 +44,11 @@ protected:
 	std::string CurState = "";
 	MartiniState State = MartiniState::None;
 
+	// Test Code
+	EventParameter TestEvent;
+
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
 

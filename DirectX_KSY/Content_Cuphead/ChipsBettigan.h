@@ -49,6 +49,7 @@ protected:
 	ChipsState State = ChipsState::None;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
 
