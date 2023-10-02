@@ -39,6 +39,10 @@ void Peashot::Start()
 	MainRenderer->CreateAnimation("Peashot_EX_Death", "Peashot_EX_Death");
 	MainRenderer->AutoSpriteSizeOn();
 
+	// Create Collision
+	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::PlayerAttack);
+	AttackCollision->Transform.SetLocalScale({ 60, 20 });
+
 	ChangeState(AttackState::Spark);
 }
 
