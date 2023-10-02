@@ -32,12 +32,14 @@ void Rum::Start()
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
 	MainRenderer->CreateAnimation("Rum_Idle", "Rum_Idle", 0.06f);
+	MainRenderer->CreateAnimation("Rum_Attack", "Rum_Attack", 0.06f);
+	MainRenderer->CreateAnimation("Rum_Death", "Rum_Death", 0.05f);
 	MainRenderer->ChangeAnimation("Rum_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->SetPivotType(PivotType::Bottom);
+	MainRenderer->SetPivotType(PivotType::RightBottom);
 
-	Transform.SetLocalPosition({ 950 , -700 });
+	Transform.SetLocalPosition({ 1100 , -700 });
 }
 
 void Rum::Update(float _Delta)

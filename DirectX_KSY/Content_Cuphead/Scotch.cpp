@@ -31,7 +31,9 @@ void Scotch::Start()
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
 	MainRenderer->CreateAnimation("Scotch_Idle", "Scotch_Idle", 0.07f);
-	MainRenderer->ChangeAnimation("Scotch_Idle");
+	MainRenderer->CreateAnimation("Scotch_Attack", "Scotch_Attack", 0.07f);
+	MainRenderer->CreateAnimation("Scotch_Death", "Scotch_Death", 0.05f);
+	MainRenderer->ChangeAnimation("Scotch_Death");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);

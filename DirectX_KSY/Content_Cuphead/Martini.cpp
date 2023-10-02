@@ -30,8 +30,10 @@ void Martini::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-
+	
 	MainRenderer->CreateAnimation("Martini_Idle", "Martini_Idle", 0.05f);
+	MainRenderer->CreateAnimation("Martini_Attack", "Martini_Attack", 0.04f);
+	MainRenderer->CreateAnimation("Martini_Death", "Martini_Death", 0.05f);
 	MainRenderer->ChangeAnimation("Martini_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();
