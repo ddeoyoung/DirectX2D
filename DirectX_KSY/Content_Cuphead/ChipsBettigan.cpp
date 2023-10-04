@@ -31,6 +31,10 @@ void ChipsBettigan::Start()
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
 	MainRenderer->CreateAnimation("Chips_Intro", "Chips_Intro");
+	MainRenderer->SetEndEvent("Chips_Intro", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Chips_Idle");
+		});
 	MainRenderer->CreateAnimation("Chips_Idle", "Chips_Idle", 0.05f);
 	MainRenderer->CreateAnimation("Chips_Spin_Head", "Chips_Spin_Head");
 	MainRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
@@ -41,13 +45,12 @@ void ChipsBettigan::Start()
 			_Renderer->ChangeAnimation("Chips_Death_HeadCrash");
 		});
 	MainRenderer->CreateAnimation("Chips_Death_HeadCrash", "Chips_Death_HeadCrash");
-	MainRenderer->ChangeAnimation("Chips_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
-
 	Transform.SetLocalPosition({ 1000 , -650 });
 
+	ChangeState(ChipsState::Idle);
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -78,7 +81,7 @@ void ChipsBettigan::ChangeState(ChipsState _State)
 {
 	if (_State != State)
 	{
-		switch (State)
+		switch (_State)
 		{
 		case ChipsState::None:
 			break;
@@ -126,6 +129,17 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 	std::string AnimationName = "Chips_";
 	AnimationName += _StateName;
 
+	if (_StateName == "Spin")
+	{
+		AnimationName += "_Head";
+	}
+
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
+}
+
+// Head Middle Bottom 따로 랜덤한 순서로 공격
+void ChipsBettigan::SpinAttack()
+{
+
 }

@@ -45,6 +45,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void SpinAttack();
+
 	std::string CurState = "";
 	ChipsState State = ChipsState::None;
 
@@ -52,6 +54,6 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-
+	float MainTimer = 0.0f;
 };
 

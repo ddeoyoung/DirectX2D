@@ -5,8 +5,6 @@
 #include "ContentLevel.h"
 #include "ContentBackground.h"
 
-#include <GameEngineCore/GameEngineTexture.h>
-
 BaseCharacter::BaseCharacter()
 {
 }

@@ -84,7 +84,7 @@ void Martini::ChangeState(MartiniState _State)
 
 	if (State != _State)
 	{
-		switch (State)
+		switch (_State)
 		{
 		case MartiniState::None:
 			break;

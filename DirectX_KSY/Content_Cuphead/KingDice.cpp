@@ -86,7 +86,7 @@ void KingDice::ChangeState(KingDiceState _State)
 {
 	if (_State != State)
 	{
-		switch (State)
+		switch (_State)
 		{
 		case KingDiceState::None:
 			break;
