@@ -34,7 +34,7 @@ void Peashot::Start()
 
 	MainRenderer->CreateAnimation("Peashot_Spark", "Peashot_Spark", 0.04f, false);
 	MainRenderer->CreateAnimation("Peashot_Attack", "Peashot_Attack", 0.05f);
-	MainRenderer->CreateAnimation("Peashot_Death", "Peashot_Death");
+	MainRenderer->CreateAnimation("Peashot_Death", "Peashot_Death", 0.05f, false);
 	MainRenderer->CreateAnimation("Peashot_EX", "Peashot_EX");
 	MainRenderer->CreateAnimation("Peashot_EX_Death", "Peashot_EX_Death");
 	MainRenderer->AutoSpriteSizeOn();
@@ -49,8 +49,6 @@ void Peashot::Start()
 void Peashot::Update(float _Delta)
 {
 	BaseWeapon::Update(_Delta);
-
-	//AttackCollision->Collision(CollisionOrder::Boss, std::bind(&Peashot::Test, this));
 }
 
 void Peashot::ChangeAnimationState(const std::string& _StateName)

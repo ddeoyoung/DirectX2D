@@ -211,6 +211,9 @@
     <ClInclude Include="Rum.h">
       <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="Attack_Chips.h">
+      <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -339,6 +342,9 @@
     </ClCompile>
     <ClCompile Include="TipsyTroopLevel_Load.cpp">
       <Filter>Level\4. SubBossStage\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Chips.cpp">
+      <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

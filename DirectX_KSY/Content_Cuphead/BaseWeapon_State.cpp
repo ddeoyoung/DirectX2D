@@ -67,6 +67,18 @@ void BaseWeapon::AttackUpdate(float _Delta)
 	}
 
 	Transform.AddLocalPosition(MovePos);
+
+
+
+	// Test Code
+	{
+		bool IsAttacked = AttackCollision->Collision(CollisionOrder::Boss);
+
+		if (true == IsAttacked)
+		{
+			ChangeState(AttackState::Death);
+		}
+	}
 }
 
 void BaseWeapon::DeathStart()
@@ -76,5 +88,8 @@ void BaseWeapon::DeathStart()
 
 void BaseWeapon::DeathUpdate(float _Delta)
 {
-
+	if (true == MainRenderer->IsCurAnimationEnd() && nullptr != MainRenderer)
+	{
+		Death();
+	}
 }

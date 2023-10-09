@@ -53,7 +53,13 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
+	std::shared_ptr<class GameEngineSpriteRenderer> MiddleRenderer = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> BottomRenderer = nullptr;
+
 private:
 	float MainTimer = 0.0f;
+
+	// Attack
+	float StretchTimer = 0.0f;
 };
 

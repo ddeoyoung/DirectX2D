@@ -37,8 +37,8 @@ void ChipsBettigan::Start()
 		});
 	MainRenderer->CreateAnimation("Chips_Idle", "Chips_Idle", 0.05f);
 	MainRenderer->CreateAnimation("Chips_Spin_Head", "Chips_Spin_Head");
-	MainRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
-	MainRenderer->CreateAnimation("Chips_Spin_Bottom", "Chips_Spin_Bottom");
+	//MainRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
+	//MainRenderer->CreateAnimation("Chips_Spin_Bottom", "Chips_Spin_Bottom");
 	MainRenderer->CreateAnimation("Chips_Death_Fall", "Chips_Death_Fall");
 	MainRenderer->SetEndEvent("Chips_Death_Fall", [](GameEngineSpriteRenderer* _Renderer)
 		{
@@ -51,6 +51,20 @@ void ChipsBettigan::Start()
 	Transform.SetLocalPosition({ 1000 , -650 });
 
 	ChangeState(ChipsState::Idle);
+
+
+	// Boss Attack - Middle, Bottom
+	//MiddleRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	//BottomRenderer = CreateComponent<GameEngineSpriteRenderer>();
+
+	//MiddleRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
+	//BottomRenderer->CreateAnimation("Chips_Spin_Bottom", "Chips_Spin_Bottom");
+
+	//MiddleRenderer->AutoSpriteSizeOn();
+	//BottomRenderer->AutoSpriteSizeOn();
+	//MiddleRenderer->Transform.SetLocalPosition( { 0, -100.0f } );
+	//BottomRenderer->Transform.SetLocalPosition( { 0, -300.0f } );
+
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -132,14 +146,18 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Spin")
 	{
 		AnimationName += "_Head";
+
+		//MiddleRenderer->ChangeAnimation("Chips_Spin_Middle");
+		//BottomRenderer->ChangeAnimation("Chips_Spin_Bottom");
 	}
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
 }
 
-// Head Middle Bottom 따로 랜덤한 순서로 공격
+// Head, Middle, Bottom 분리해서 공격
 void ChipsBettigan::SpinAttack()
 {
+	// Middle, Bottom => BossAttack
 
 }
