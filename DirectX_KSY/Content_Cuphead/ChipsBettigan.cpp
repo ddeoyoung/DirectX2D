@@ -17,7 +17,7 @@ void ChipsBettigan::Start()
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\Stage\\ChipsBettigan\\Boss");
-
+		
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 
 		for (size_t i = 0; i < Directorys.size(); i++)
@@ -71,9 +71,12 @@ void ChipsBettigan::Start()
 
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 80.0f, 60.0f };
 
+	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
+	BossCollision->Off();
 }
 
 void ChipsBettigan::Update(float _Delta)
