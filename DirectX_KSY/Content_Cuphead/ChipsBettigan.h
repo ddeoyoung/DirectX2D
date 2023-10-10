@@ -57,6 +57,8 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MiddleRenderer = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> BottomRenderer = nullptr;
 
+	std::vector<std::shared_ptr<class Attack_Chips>> ChipSet;
+
 private:
 	float MainTimer = 0.0f;
 

@@ -157,10 +157,39 @@ void ChipsBettigan::SpinAttack()
 
 void ChipsBettigan::CreateChips()
 {
-	std::shared_ptr<Attack_Chips> Chips = GetLevel()->CreateActor<Attack_Chips>();
+	float4 TextureScale = { 250, 550 };
 	float4 BossPos = Transform.GetWorldPosition();
+	float4 BottomPos = { BossPos.X, BossPos.Y - TextureScale.ihY() };
 
-	Chips->SetChips(BossPos);
 
-	//Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
+	// Bottom
+	std::shared_ptr<Attack_Chips> Chips1 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips1->SetChips(BottomPos, "Bottom");
+	ChipSet.push_back(Chips1);
+
+	std::shared_ptr<Attack_Chips> Chips2 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips2->SetChips({ BottomPos.X , BottomPos.Y + 40 }, "Bottom");
+	ChipSet.push_back(Chips2);
+
+	std::shared_ptr<Attack_Chips> Chips3 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips3->SetChips({ BottomPos.X , BottomPos.Y + 80 }, "Bottom");
+	ChipSet.push_back(Chips3);
+
+	std::shared_ptr<Attack_Chips> Chips4 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips4->SetChips({ BottomPos.X , BottomPos.Y + 120 }, "Bottom");
+	ChipSet.push_back(Chips4);
+
+
+	// Middle
+	std::shared_ptr<Attack_Chips> Chips5 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips5->SetChips({ BottomPos.X , BottomPos.Y + 160 }, "Middle");
+	ChipSet.push_back(Chips5);
+
+	std::shared_ptr<Attack_Chips> Chips6 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips6->SetChips({ BottomPos.X , BottomPos.Y + 200 }, "Middle");
+	ChipSet.push_back(Chips6);
+
+	std::shared_ptr<Attack_Chips> Chips7 = GetLevel()->CreateActor<Attack_Chips>();
+	Chips7->SetChips({ BottomPos.X , BottomPos.Y + 240 }, "Middle");
+	ChipSet.push_back(Chips7);
 }

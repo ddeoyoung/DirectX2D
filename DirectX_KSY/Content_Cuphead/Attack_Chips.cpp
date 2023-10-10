@@ -41,7 +41,11 @@ void Attack_Chips::Update(float _Delta)
 
 }
 
-void Attack_Chips::SetChips(float4 _BossPos)
+void Attack_Chips::SetChips(float4 _BossPos, const std::string& _ChipType)
 {
+	float4 ChipPos = _BossPos;
+	std::string ChipType = "Chips_Spin_" + _ChipType;
 
+	MainRenderer->Transform.SetLocalPosition(ChipPos);
+	MainRenderer->ChangeAnimation(ChipType);
 }

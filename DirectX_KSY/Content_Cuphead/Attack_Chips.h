@@ -15,7 +15,7 @@ public:
 	Attack_Chips& operator=(const Attack_Chips& _Other) = delete;
 	Attack_Chips& operator=(Attack_Chips&& _Other) noexcept = delete;
 
-	void SetChips(float4 _BossPos);
+	void SetChips(float4 _BossPos, const std::string& _ChipType);
 
 protected:
 	void Start() override;
