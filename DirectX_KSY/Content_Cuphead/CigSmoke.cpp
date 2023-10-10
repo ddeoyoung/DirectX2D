@@ -27,13 +27,14 @@ void CigSmoke::Start()
 	}
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
+	Renderer->SetMaterial("2DTextureOver");
 
 	Renderer->CreateAnimation("CigSmoke", "CigSmoke");
 	Renderer->ChangeAnimation("CigSmoke");
 	Renderer->AutoSpriteSizeOn();
 	Renderer->SetPivotType(PivotType::Bottom);
 
-	Renderer->Transform.SetLocalPosition({ 815, -170 });
+	Renderer->Transform.SetLocalPosition({ 813, -145 });
 }
 
 void CigSmoke::Update(float _Delta)

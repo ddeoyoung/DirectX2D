@@ -27,6 +27,7 @@ void TopSmoke::Start()
 	}
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
+	Renderer->SetMaterial("2DTextureOver");
 
 	Renderer->CreateAnimation("TopSmoke", "TopSmoke");
 	Renderer->ChangeAnimation("TopSmoke");
