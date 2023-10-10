@@ -88,8 +88,5 @@ void BaseWeapon::DeathStart()
 
 void BaseWeapon::DeathUpdate(float _Delta)
 {
-	if (true == MainRenderer->IsCurAnimationEnd() && nullptr != MainRenderer)
-	{
-		Death();
-	}
+
 }

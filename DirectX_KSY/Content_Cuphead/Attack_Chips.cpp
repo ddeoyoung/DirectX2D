@@ -40,3 +40,8 @@ void Attack_Chips::Update(float _Delta)
 {
 
 }
+
+void Attack_Chips::SetChips(float4 _BossPos)
+{
+
+}

@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "ChipsBettigan.h"
+#include "Attack_Chips.h"
 
 ChipsBettigan::ChipsBettigan()
 {
@@ -82,16 +83,6 @@ void ChipsBettigan::Start()
 void ChipsBettigan::Update(float _Delta)
 {
 	StateUpdate(_Delta);
-
-	// Test Code
-	{
-		bool TestBool = BossCollision->Collision(CollisionOrder::PlayerAttack);
-
-		if (true == TestBool)
-		{
-			int a = 0;
-		}
-	}
 }
 
 void ChipsBettigan::ChangeState(ChipsState _State)
@@ -162,5 +153,14 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 void ChipsBettigan::SpinAttack()
 {
 	// Middle, Bottom => BossAttack
+}
 
+void ChipsBettigan::CreateChips()
+{
+	std::shared_ptr<Attack_Chips> Chips = GetLevel()->CreateActor<Attack_Chips>();
+	float4 BossPos = Transform.GetWorldPosition();
+
+	Chips->SetChips(BossPos);
+
+	//Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
 }

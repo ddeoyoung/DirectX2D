@@ -46,6 +46,7 @@ protected:
 	void Update(float _Delta) override;
 
 	void SpinAttack();
+	void CreateChips();
 
 	std::string CurState = "";
 	ChipsState State = ChipsState::None;

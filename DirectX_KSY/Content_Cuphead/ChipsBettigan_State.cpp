@@ -34,7 +34,7 @@ void ChipsBettigan::SpinStart()
 {
 	ChangeAnimationState("Spin");
 
-	// 본체는 Head
+	// Head
 	Transform.AddLocalPosition({ 0, 280 });
 
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Spin_Head");
@@ -44,6 +44,11 @@ void ChipsBettigan::SpinStart()
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
 
 	StretchTimer = 1.0f;
+
+
+	// Middle
+	// 공격용 칩 생성
+	SpinAttack();
 }
 
 void ChipsBettigan::SpinUpdate(float _Delta)
