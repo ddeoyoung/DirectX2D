@@ -17,20 +17,20 @@ void ChipsBettigan::IdleStart()
 {
 	ChangeAnimationState("Idle");
 
-	MainTimer = 0.0f;
+	IdleTimer = 0.0f;
 
 	CheckIdleDir();
 }
 
 void ChipsBettigan::IdleUpdate(float _Delta)
 {
-	if (MainTimer > 3.0f)
+	if (IdleTimer > 3.0f)
 	{
-		ChangeState(ChipsState::Spin);
-		MainTimer = 0.0f;
+		ChangeState(ChipsState::Death);
+		IdleTimer = 0.0f;
 	}
 
-	MainTimer += _Delta;
+	IdleTimer += _Delta;
 }
 
 void ChipsBettigan::SpinStart()
@@ -99,9 +99,20 @@ void ChipsBettigan::SpinUpdate(float _Delta)
 void ChipsBettigan::DeathStart()
 {
 	ChangeAnimationState("Death");
+
+	DeathFallTimer = 0.6f;
+	Transform.AddLocalPosition({ 0, 260.0f });
 }
 
 void ChipsBettigan::DeathUpdate(float _Delta)
 {
+	float4 MovePos = { 0.0f, FALLSPEED * _Delta};
 
+	// Death Fall
+	if (DeathFallTimer > 0.0f)
+	{
+		Transform.AddLocalPosition(MovePos);
+	}
+
+	DeathFallTimer -= _Delta;
 }

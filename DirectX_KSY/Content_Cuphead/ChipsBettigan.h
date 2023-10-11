@@ -4,6 +4,7 @@
 // Speed
 #define STRETCHSPEED 160.0f
 #define ATTACKSPEED -600.0f
+#define FALLSPEED -520.0f
 #define ATTACKTIME 1.5f
 
 enum class ChipsState
@@ -68,9 +69,10 @@ protected:
 private:
 	int SpinDir = 1;
 
-	float MainTimer = 0.0f;
+	float IdleTimer = 0.0f;
 	float StretchTimer = 0.0f;
 	float AttackTimer = 0.0f;
+	float DeathFallTimer = 0.0f;
 
 	bool IsStretch = false;
 	bool IsSpinEnd = false;

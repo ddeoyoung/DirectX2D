@@ -43,7 +43,12 @@ void ChipsBettigan::Start()
 		{
 			_Renderer->ChangeAnimation("Chips_Death_HeadCrash");
 		});
-	MainRenderer->CreateAnimation("Chips_Death_HeadCrash", "Chips_Death_HeadCrash");
+	MainRenderer->CreateAnimation("Chips_Death_HeadCrash", "Chips_Death_HeadCrash", false);
+	MainRenderer->SetEndEvent("Chips_Death_HeadCrash", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Chips_Death_Finish");
+		});
+	MainRenderer->CreateAnimation("Chips_Death_Finish", "Chips_Death_Finish");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
@@ -124,6 +129,11 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Spin")
 	{
 		AnimationName += "_Head";
+	}
+
+	if (_StateName == "Death")
+	{
+		AnimationName += "_Fall";
 	}
 
 	CurState = _StateName;
