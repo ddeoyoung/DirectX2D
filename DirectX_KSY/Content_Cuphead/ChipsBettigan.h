@@ -1,6 +1,9 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+// Speed
+#define STRETCHSPEED 160.0f
+
 enum class ChipsState
 {
 	None,
@@ -47,6 +50,7 @@ protected:
 
 	void SpinAttack();
 	void CreateChips();
+	void StretchChips(float _Delta);
 
 	std::string CurState = "";
 	ChipsState State = ChipsState::None;

@@ -35,36 +35,24 @@ void ChipsBettigan::SpinStart()
 {
 	ChangeAnimationState("Spin");
 
+	StretchTimer = 1.0f;
+
 	// Head
 	Transform.AddLocalPosition({ 0, 260 });
-
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Spin_Head");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
-
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
 
-	StretchTimer = 1.0f;
-
-	// 공격용 칩 생성 (Middle, Bottom)
+	// Middle, Bottom (공격용 칩 생성)
 	CreateChips();
 }
 
 void ChipsBettigan::SpinUpdate(float _Delta)
 {
-	float StretchSpeed = 160.0f;
-	float4 MovePos = { 0.0f, StretchSpeed * _Delta };
-
 	if (StretchTimer > 0.0f)
 	{
-		Transform.AddLocalPosition(MovePos);
-
-		for (int i = 0; i < ChipSet.size(); i++)
-		{
-			float ChipSpeed = 15.0f * (i + 1);
-			float4 MoveChipPos = { 0.0f, ChipSpeed * _Delta};
-			ChipSet[i]->Transform.AddLocalPosition(MoveChipPos);
-		}
+		StretchChips(_Delta);
 	}
 
 	StretchTimer -= _Delta;

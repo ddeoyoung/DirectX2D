@@ -193,3 +193,19 @@ void ChipsBettigan::CreateChips()
 	Chips7->SetChips({ BottomPos.X , BottomPos.Y + 240 }, "Middle");
 	ChipSet.push_back(Chips7);
 }
+
+void ChipsBettigan::StretchChips(float _Delta)
+{
+	float4 MovePos = { 0.0f, STRETCHSPEED * _Delta };
+
+	// Head
+	Transform.AddLocalPosition(MovePos);
+
+	// Middle, Bottom
+	for (int i = 0; i < ChipSet.size(); i++)
+	{
+		float ChipSpeed = 15.0f * (i + 1);
+		float4 MoveChipPos = { 0.0f, ChipSpeed * _Delta };
+		ChipSet[i]->Transform.AddLocalPosition(MoveChipPos);
+	}
+}
