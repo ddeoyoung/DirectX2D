@@ -23,6 +23,8 @@ protected:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 
+	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
+
 private:
 
 };

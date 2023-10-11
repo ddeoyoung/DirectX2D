@@ -46,6 +46,19 @@ void Attack_Chips::SetChips(float4 _BossPos, const std::string& _ChipType)
 	float4 ChipPos = _BossPos;
 	std::string ChipType = "Chips_Spin_" + _ChipType;
 
+	// Animation
 	MainRenderer->Transform.SetLocalPosition(ChipPos);
 	MainRenderer->ChangeAnimation(ChipType);
+
+	// Collision
+	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
+
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Spin_Middle");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	ChipPos.Y += Scale.ihY();
+
+	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
+	AttackCollision->Transform.SetLocalScale(Scale);
+	AttackCollision->Transform.SetLocalPosition(ChipPos);
+	AttackCollision->Off();
 }

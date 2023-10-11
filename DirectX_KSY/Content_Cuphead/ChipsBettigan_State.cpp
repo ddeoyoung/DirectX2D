@@ -55,10 +55,10 @@ void ChipsBettigan::SpinStart()
 
 void ChipsBettigan::SpinUpdate(float _Delta)
 {
-	// Stretch
+	// Stretch Up
 	if (StretchTimer > 0.0f)
 	{
-		StretchChips(_Delta);
+		StretchChips(_Delta, IsStretch);
 	}
 
 	StretchTimer -= _Delta;
@@ -72,6 +72,13 @@ void ChipsBettigan::SpinUpdate(float _Delta)
 	if (true == IsStretch)
 	{
 		SpinAttack(_Delta);
+	}
+
+
+	// Stretch Down
+	if (true == SecondAttack)
+	{
+		StretchChips(_Delta, IsStretch);
 	}
 }
 

@@ -50,9 +50,10 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	void SpinAttack(float _Delta);
 	void CreateChips();
-	void StretchChips(float _Delta);
+	void StretchChips(float _Delta, bool _IsStretch);
+	void SpinAttack(float _Delta);
+	void DeathChips();
 
 	std::string CurState = "";
 	ChipsState State = ChipsState::None;

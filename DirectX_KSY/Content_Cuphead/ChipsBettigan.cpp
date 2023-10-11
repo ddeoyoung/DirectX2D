@@ -130,49 +130,6 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 	MainRenderer->ChangeAnimation(AnimationName);
 }
 
-// Head, Middle, Bottom 분리해서 공격
-void ChipsBettigan::SpinAttack(float _Delta)
-{
-	float4 MovePos = { -600.0f * _Delta, 0.0f };
-
-	if (false == FirstAttack && AttackTimer > 0.0f)
-	{
-		Transform.AddLocalPosition(MovePos);
-
-		ChipSet[0]->Transform.AddLocalPosition(MovePos);
-		ChipSet[1]->Transform.AddLocalPosition(MovePos);
-		ChipSet[2]->Transform.AddLocalPosition(MovePos);
-		ChipSet[3]->Transform.AddLocalPosition(MovePos);
-
-		AttackTimer -= _Delta;
-	}
-
-	if (false == FirstAttack && AttackTimer < 0.0f)
-	{
-		AttackTimer = ATTACKTIME;
-		FirstAttack = true;
-	}
-
-	// Second
-	if (true == FirstAttack && false == SecondAttack && AttackTimer > 0.0f)
-	{
-		ChipSet[4]->Transform.AddLocalPosition(MovePos);
-		ChipSet[5]->Transform.AddLocalPosition(MovePos);
-		ChipSet[6]->Transform.AddLocalPosition(MovePos);
-
-		AttackTimer -= _Delta;
-	}
-
-	if (true == FirstAttack && false == SecondAttack && AttackTimer < 0.0f)
-	{
-		AttackTimer = ATTACKTIME;
-		SecondAttack = true;
-	}
-
-	// Third
-
-}
-
 void ChipsBettigan::CreateChips()
 {
 	float4 TextureScale = { 250, 550 };
@@ -212,9 +169,23 @@ void ChipsBettigan::CreateChips()
 	ChipSet.push_back(Chips7);
 }
 
-void ChipsBettigan::StretchChips(float _Delta)
+// IsStretch = false : Up
+// IsStretch = true : Down
+void ChipsBettigan::StretchChips(float _Delta, bool _IsStretch)
 {
-	float4 MovePos = { 0.0f, STRETCHSPEED * _Delta };
+	int CheckDir = 0;
+
+	if (false == _IsStretch)
+	{
+		CheckDir = 1;
+	}
+
+	if (true == _IsStretch)
+	{
+		CheckDir = -1;
+	}
+
+	float4 MovePos = { 0.0f, STRETCHSPEED * _Delta * CheckDir };
 
 	// Head
 	Transform.AddLocalPosition(MovePos);
@@ -223,7 +194,58 @@ void ChipsBettigan::StretchChips(float _Delta)
 	for (int i = 0; i < ChipSet.size(); i++)
 	{
 		float ChipSpeed = 15.0f * (i + 1);
-		float4 MoveChipPos = { 0.0f, ChipSpeed * _Delta };
+		float4 MoveChipPos = { 0.0f, ChipSpeed * _Delta * CheckDir };
 		ChipSet[i]->Transform.AddLocalPosition(MoveChipPos);
+	}
+}
+
+
+// Head, Middle, Bottom 분리해서 공격
+void ChipsBettigan::SpinAttack(float _Delta)
+{
+	float4 MovePos = { -600.0f * _Delta, 0.0f };
+
+	// First
+	if (false == FirstAttack && AttackTimer > 0.0f)
+	{
+		Transform.AddLocalPosition(MovePos);
+
+		ChipSet[0]->Transform.AddLocalPosition(MovePos);
+		ChipSet[1]->Transform.AddLocalPosition(MovePos);
+		ChipSet[2]->Transform.AddLocalPosition(MovePos);
+		ChipSet[3]->Transform.AddLocalPosition(MovePos);
+
+		AttackTimer -= _Delta;
+	}
+
+	if (false == FirstAttack && AttackTimer < 0.0f)
+	{
+		AttackTimer = ATTACKTIME;
+		FirstAttack = true;
+	}
+
+	// Second
+	if (true == FirstAttack && false == SecondAttack && AttackTimer > 0.0f)
+	{
+		ChipSet[4]->Transform.AddLocalPosition(MovePos);
+		ChipSet[5]->Transform.AddLocalPosition(MovePos);
+		ChipSet[6]->Transform.AddLocalPosition(MovePos);
+
+		AttackTimer -= _Delta;
+	}
+
+	if (true == FirstAttack && false == SecondAttack && AttackTimer < 0.0f)
+	{
+		AttackTimer = ATTACKTIME;
+		SecondAttack = true;
+	}
+
+}
+
+void ChipsBettigan::DeathChips()
+{
+	for (int i = 0; i < ChipSet.size(); i++)
+	{
+		ChipSet[i]->Death();
 	}
 }
