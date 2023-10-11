@@ -3,7 +3,7 @@
 
 // Speed
 #define STRETCHSPEED 160.0f
-#define ATTACKSPEED 200.0f
+#define ATTACKSPEED -600.0f
 #define ATTACKTIME 1.5f
 
 enum class ChipsState
@@ -54,6 +54,8 @@ protected:
 	void StretchChips(float _Delta, bool _IsStretch);
 	void SpinAttack(float _Delta);
 	void DeathChips();
+	void CheckIdleDir();
+	bool CheckAttackDir();
 
 	std::string CurState = "";
 	ChipsState State = ChipsState::None;
@@ -64,11 +66,15 @@ protected:
 	std::vector<std::shared_ptr<class Attack_Chips>> ChipSet;
 
 private:
+	int SpinDir = 1;
+
 	float MainTimer = 0.0f;
 	float StretchTimer = 0.0f;
 	float AttackTimer = 0.0f;
 
 	bool IsStretch = false;
+	bool IsSpinEnd = false;
+	bool IsMove = false;
 
 	bool FirstAttack = false;
 	bool SecondAttack = false;

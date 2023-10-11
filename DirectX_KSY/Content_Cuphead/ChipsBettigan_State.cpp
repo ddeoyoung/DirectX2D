@@ -18,6 +18,8 @@ void ChipsBettigan::IdleStart()
 	ChangeAnimationState("Idle");
 
 	MainTimer = 0.0f;
+
+	CheckIdleDir();
 }
 
 void ChipsBettigan::IdleUpdate(float _Delta)
@@ -35,15 +37,18 @@ void ChipsBettigan::SpinStart()
 {
 	ChangeAnimationState("Spin");
 
+	CheckAttackDir();
+
 	StretchTimer = 1.0f;
 	AttackTimer = ATTACKTIME;
 	IsStretch = false;
 	FirstAttack = false;
 	SecondAttack = false;
 	ThirdAttack = false;
+	IsSpinEnd = false;
 
 	// Head
-	Transform.AddLocalPosition({ 0, 260 });
+	Transform.AddLocalPosition({ 0, 260.0f });
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Spin_Head");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
 	BossCollision->Transform.SetLocalScale(Scale);
@@ -63,22 +68,31 @@ void ChipsBettigan::SpinUpdate(float _Delta)
 
 	StretchTimer -= _Delta;
 
-	if (StretchTimer < 0.0f)
+	if (StretchTimer < 0.0f && false == IsSpinEnd)
 	{
 		IsStretch = true;
 	}
 
+
 	// Attack
-	if (true == IsStretch)
+	if (true == IsStretch && false == IsSpinEnd)
 	{
 		SpinAttack(_Delta);
 	}
 
-
 	// Stretch Down
 	if (true == SecondAttack)
 	{
-		StretchChips(_Delta, IsStretch);
+		StretchTimer = 1.0f;
+		IsSpinEnd = true;
+		SecondAttack = false;
+	}
+
+	if (StretchTimer < 0.0f && true == IsSpinEnd)
+	{
+		DeathChips();
+		Transform.AddLocalPosition({ 0, -260.0f });
+		ChangeState(ChipsState::Idle);
 	}
 }
 

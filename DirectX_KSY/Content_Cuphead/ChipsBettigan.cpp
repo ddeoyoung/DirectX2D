@@ -136,7 +136,6 @@ void ChipsBettigan::CreateChips()
 	float4 BossPos = Transform.GetWorldPosition();
 	float4 BottomPos = { BossPos.X, BossPos.Y - TextureScale.ihY() };
 
-
 	// Bottom
 	std::shared_ptr<Attack_Chips> Chips1 = GetLevel()->CreateActor<Attack_Chips>();
 	Chips1->SetChips(BottomPos, "Bottom");
@@ -169,23 +168,21 @@ void ChipsBettigan::CreateChips()
 	ChipSet.push_back(Chips7);
 }
 
-// IsStretch = false : Up
-// IsStretch = true : Down
 void ChipsBettigan::StretchChips(float _Delta, bool _IsStretch)
 {
-	int CheckDir = 0;
-
+	// Stretch Up
 	if (false == _IsStretch)
 	{
-		CheckDir = 1;
+		SpinDir = 1;
 	}
 
+	// Stretch Down
 	if (true == _IsStretch)
 	{
-		CheckDir = -1;
+		SpinDir = -1;
 	}
 
-	float4 MovePos = { 0.0f, STRETCHSPEED * _Delta * CheckDir };
+	float4 MovePos = { 0.0f, STRETCHSPEED * _Delta * SpinDir };
 
 	// Head
 	Transform.AddLocalPosition(MovePos);
@@ -194,7 +191,7 @@ void ChipsBettigan::StretchChips(float _Delta, bool _IsStretch)
 	for (int i = 0; i < ChipSet.size(); i++)
 	{
 		float ChipSpeed = 15.0f * (i + 1);
-		float4 MoveChipPos = { 0.0f, ChipSpeed * _Delta * CheckDir };
+		float4 MoveChipPos = { 0.0f, ChipSpeed * _Delta * SpinDir };
 		ChipSet[i]->Transform.AddLocalPosition(MoveChipPos);
 	}
 }
@@ -203,7 +200,19 @@ void ChipsBettigan::StretchChips(float _Delta, bool _IsStretch)
 // Head, Middle, Bottom 분리해서 공격
 void ChipsBettigan::SpinAttack(float _Delta)
 {
-	float4 MovePos = { -600.0f * _Delta, 0.0f };
+	int Dir = 1;
+
+	if (true == IsMove)
+	{
+		Dir = 1;
+	}
+
+	if (false == IsMove)
+	{
+		Dir = -1;
+	}
+
+	float4 MovePos = { Dir * ATTACKSPEED * _Delta, 0.0f };
 
 	// First
 	if (false == FirstAttack && AttackTimer > 0.0f)
@@ -247,5 +256,38 @@ void ChipsBettigan::DeathChips()
 	for (int i = 0; i < ChipSet.size(); i++)
 	{
 		ChipSet[i]->Death();
+	}
+
+	ChipSet.clear();
+}
+
+void ChipsBettigan::CheckIdleDir()
+{
+	if (IsMove == false)
+	{
+		// Right
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+	if (IsMove == true)
+	{
+		// Left
+		// 기본
+		Transform.SetLocalScale({ -1.0f , 1.0f });
+	}
+}
+
+bool ChipsBettigan::CheckAttackDir()
+{
+	if (false == IsMove)
+	{
+		IsMove = true;
+		return true;
+	}
+	
+	if (true == IsMove)
+	{
+		IsMove = false;
+		return false;
 	}
 }
