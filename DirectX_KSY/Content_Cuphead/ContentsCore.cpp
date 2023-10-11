@@ -23,7 +23,6 @@ ContentsCore::~ContentsCore()
 void ContentsCore::Start()
 {
 	ContentRes();
-	GameEngineRenderTarget::IsDepth = false;
 
 	GameEngineCore::CreateLevel<LogoLevel>("LogoLevel");
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
@@ -49,6 +48,8 @@ void ContentsCore::Release()
 
 void ContentsCore::ContentRes()
 {
+	GameEngineRenderTarget::IsDepth = false;
+
 	// OverRay
 	{
 		D3D11_BLEND_DESC Desc = {};

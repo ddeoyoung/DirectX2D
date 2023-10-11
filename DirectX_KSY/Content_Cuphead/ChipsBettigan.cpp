@@ -38,8 +38,6 @@ void ChipsBettigan::Start()
 		});
 	MainRenderer->CreateAnimation("Chips_Idle", "Chips_Idle", 0.05f);
 	MainRenderer->CreateAnimation("Chips_Spin_Head", "Chips_Spin_Head");
-	//MainRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
-	//MainRenderer->CreateAnimation("Chips_Spin_Bottom", "Chips_Spin_Bottom");
 	MainRenderer->CreateAnimation("Chips_Death_Fall", "Chips_Death_Fall");
 	MainRenderer->SetEndEvent("Chips_Death_Fall", [](GameEngineSpriteRenderer* _Renderer)
 		{
@@ -49,23 +47,9 @@ void ChipsBettigan::Start()
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
-	Transform.SetLocalPosition({ 1000 , -650 });
+	Transform.SetLocalPosition({ 1100 , -650 });
 
 	ChangeState(ChipsState::Idle);
-
-
-	// Boss Attack - Middle, Bottom
-	//MiddleRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	//BottomRenderer = CreateComponent<GameEngineSpriteRenderer>();
-
-	//MiddleRenderer->CreateAnimation("Chips_Spin_Middle", "Chips_Spin_Middle");
-	//BottomRenderer->CreateAnimation("Chips_Spin_Bottom", "Chips_Spin_Bottom");
-
-	//MiddleRenderer->AutoSpriteSizeOn();
-	//BottomRenderer->AutoSpriteSizeOn();
-	//MiddleRenderer->Transform.SetLocalPosition( { 0, -100.0f } );
-	//BottomRenderer->Transform.SetLocalPosition( { 0, -300.0f } );
-
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -140,9 +124,6 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Spin")
 	{
 		AnimationName += "_Head";
-
-		//MiddleRenderer->ChangeAnimation("Chips_Spin_Middle");
-		//BottomRenderer->ChangeAnimation("Chips_Spin_Bottom");
 	}
 
 	CurState = _StateName;
@@ -150,9 +131,46 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 }
 
 // Head, Middle, Bottom 분리해서 공격
-void ChipsBettigan::SpinAttack()
+void ChipsBettigan::SpinAttack(float _Delta)
 {
-	// Middle, Bottom => BossAttack
+	float4 MovePos = { -600.0f * _Delta, 0.0f };
+
+	if (false == FirstAttack && AttackTimer > 0.0f)
+	{
+		Transform.AddLocalPosition(MovePos);
+
+		ChipSet[0]->Transform.AddLocalPosition(MovePos);
+		ChipSet[1]->Transform.AddLocalPosition(MovePos);
+		ChipSet[2]->Transform.AddLocalPosition(MovePos);
+		ChipSet[3]->Transform.AddLocalPosition(MovePos);
+
+		AttackTimer -= _Delta;
+	}
+
+	if (false == FirstAttack && AttackTimer < 0.0f)
+	{
+		AttackTimer = ATTACKTIME;
+		FirstAttack = true;
+	}
+
+	// Second
+	if (true == FirstAttack && false == SecondAttack && AttackTimer > 0.0f)
+	{
+		ChipSet[4]->Transform.AddLocalPosition(MovePos);
+		ChipSet[5]->Transform.AddLocalPosition(MovePos);
+		ChipSet[6]->Transform.AddLocalPosition(MovePos);
+
+		AttackTimer -= _Delta;
+	}
+
+	if (true == FirstAttack && false == SecondAttack && AttackTimer < 0.0f)
+	{
+		AttackTimer = ATTACKTIME;
+		SecondAttack = true;
+	}
+
+	// Third
+
 }
 
 void ChipsBettigan::CreateChips()

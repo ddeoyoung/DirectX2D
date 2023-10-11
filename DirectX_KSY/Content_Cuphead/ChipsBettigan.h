@@ -3,6 +3,8 @@
 
 // Speed
 #define STRETCHSPEED 160.0f
+#define ATTACKSPEED 200.0f
+#define ATTACKTIME 1.5f
 
 enum class ChipsState
 {
@@ -48,7 +50,7 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	void SpinAttack();
+	void SpinAttack(float _Delta);
 	void CreateChips();
 	void StretchChips(float _Delta);
 
@@ -58,15 +60,17 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
-	std::shared_ptr<class GameEngineSpriteRenderer> MiddleRenderer = nullptr;
-	std::shared_ptr<class GameEngineSpriteRenderer> BottomRenderer = nullptr;
-
 	std::vector<std::shared_ptr<class Attack_Chips>> ChipSet;
 
 private:
 	float MainTimer = 0.0f;
-
-	// Attack
 	float StretchTimer = 0.0f;
+	float AttackTimer = 0.0f;
+
+	bool IsStretch = false;
+
+	bool FirstAttack = false;
+	bool SecondAttack = false;
+	bool ThirdAttack = false;
 };
 

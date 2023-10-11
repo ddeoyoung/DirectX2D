@@ -36,6 +36,11 @@ void ChipsBettigan::SpinStart()
 	ChangeAnimationState("Spin");
 
 	StretchTimer = 1.0f;
+	AttackTimer = ATTACKTIME;
+	IsStretch = false;
+	FirstAttack = false;
+	SecondAttack = false;
+	ThirdAttack = false;
 
 	// Head
 	Transform.AddLocalPosition({ 0, 260 });
@@ -50,12 +55,24 @@ void ChipsBettigan::SpinStart()
 
 void ChipsBettigan::SpinUpdate(float _Delta)
 {
+	// Stretch
 	if (StretchTimer > 0.0f)
 	{
 		StretchChips(_Delta);
 	}
 
 	StretchTimer -= _Delta;
+
+	if (StretchTimer < 0.0f)
+	{
+		IsStretch = true;
+	}
+
+	// Attack
+	if (true == IsStretch)
+	{
+		SpinAttack(_Delta);
+	}
 }
 
 void ChipsBettigan::DeathStart()
