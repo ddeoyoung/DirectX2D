@@ -23,6 +23,7 @@ ContentsCore::~ContentsCore()
 void ContentsCore::Start()
 {
 	ContentRes();
+	GameEngineRenderTarget::IsDepth = false;
 
 	GameEngineCore::CreateLevel<LogoLevel>("LogoLevel");
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");

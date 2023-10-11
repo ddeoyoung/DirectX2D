@@ -8,13 +8,13 @@
 #pragma comment(lib, "..\\GameEngineCore\\ThirdParty\\DirectXTex\\lib\\Release\\DirectXTex.lib")
 #endif
 
-const GameEngineColor GameEngineColor::RED = {255, 0, 0, 255 };
+const GameEngineColor GameEngineColor::RED = { 255, 0, 0, 255 };
 
-GameEngineTexture::GameEngineTexture() 
+GameEngineTexture::GameEngineTexture()
 {
 }
 
-GameEngineTexture::~GameEngineTexture() 
+GameEngineTexture::~GameEngineTexture()
 {
 	if (nullptr != SRV)
 	{
@@ -60,6 +60,57 @@ void GameEngineTexture::CreateRenderTargetView()
 
 }
 
+// 쉐이더 세팅용
+void GameEngineTexture::CreateShaderResourceView()
+{
+	if (nullptr != SRV)
+	{
+		return;
+	}
+
+	if (nullptr == Texture2D)
+	{
+		MsgBoxAssert("만들어지지 않은 텍스처로 쉐이더 리소스 뷰 생성하려고 했습니다.");
+		return;
+	}
+
+	// 이미지를 수정할수 있는 권한을 '만든다'
+
+	HRESULT Result = GameEngineCore::GetDevice()->CreateShaderResourceView(Texture2D, nullptr, &SRV);
+
+	if (S_OK != Result)
+	{
+		MsgBoxAssert("쉐이더 리소스 뷰 생성에 실패했습니다.");
+		return;
+	}
+
+}
+
+// 깊버거 세팅용
+void GameEngineTexture::CreateDepthStencilView()
+{
+	if (nullptr != DSV)
+	{
+		return;
+	}
+
+	if (nullptr == Texture2D)
+	{
+		MsgBoxAssert("만들어지지 않은 텍스처로 쉐이더 리소스 뷰 생성하려고 했습니다.");
+		return;
+	}
+
+	// 이미지를 수정할수 있는 권한을 '만든다'
+
+	HRESULT Result = GameEngineCore::GetDevice()->CreateDepthStencilView(Texture2D, nullptr, &DSV);
+
+	if (S_OK != Result)
+	{
+		MsgBoxAssert("쉐이더 리소스 뷰 생성에 실패했습니다.");
+		return;
+	}
+}
+
 void GameEngineTexture::ResLoad(std::string_view _Path)
 {
 	// 팩토리니 어뎁터니 
@@ -86,9 +137,9 @@ void GameEngineTexture::ResLoad(std::string_view _Path)
 		{
 			MsgBoxAssert("텍스처 로드에 실패했습니다." + std::string(_Path.data()));
 		}
-		
+
 	}
-	else if(S_OK != DirectX::LoadFromWICFile(wPath.c_str(), DirectX::WIC_FLAGS_NONE, &Data, Image))
+	else if (S_OK != DirectX::LoadFromWICFile(wPath.c_str(), DirectX::WIC_FLAGS_NONE, &Data, Image))
 	{
 		MsgBoxAssert("텍스처 로드에 실패했습니다." + std::string(_Path.data()));
 	}
@@ -119,6 +170,42 @@ void GameEngineTexture::VSSetting(UINT _Slot)
 void GameEngineTexture::PSSetting(UINT _Slot)
 {
 	GameEngineCore::GetContext()->PSSetShaderResources(_Slot, 1, &SRV);
+}
+
+void GameEngineTexture::ResCreate(ID3D11Texture2D* _Res)
+{
+	Texture2D = _Res;
+
+	Texture2D->GetDesc(&Desc);
+
+	CreateRenderTargetView();
+
+	int a = 0;
+}
+
+void GameEngineTexture::ResCreate(const D3D11_TEXTURE2D_DESC& _Desc)
+{
+	Desc = _Desc;
+
+	if (S_OK != GameEngineCore::GetDevice()->CreateTexture2D(&Desc, nullptr, &Texture2D))
+	{
+		MsgBoxAssert("if (S_OK != GameEngineCore::GetDevice()->CreateTexture2D(&Desc, nullptr, &Texture2D))");
+	}
+
+	if (D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET & Desc.BindFlags)
+	{
+		CreateRenderTargetView();
+	}
+
+	if (D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE & Desc.BindFlags)
+	{
+		CreateShaderResourceView();
+	}
+
+	if (D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL & Desc.BindFlags)
+	{
+		CreateDepthStencilView();
+	}
 }
 
 GameEngineColor GameEngineTexture::GetColor(unsigned int _X, unsigned int _Y, GameEngineColor _DefaultColor)
@@ -152,6 +239,16 @@ GameEngineColor GameEngineTexture::GetColor(unsigned int _X, unsigned int _Y, Ga
 
 	switch (Fmt)
 	{
+	case DXGI_FORMAT_B8G8R8A8_UNORM:
+	{
+		GameEngineColor ResultColor;
+		Ptr += ((_Y * GetScale().iX()) + _X) * 4;
+		ResultColor.B = Ptr[0];
+		ResultColor.G = Ptr[1];
+		ResultColor.R = Ptr[2];
+		ResultColor.A = Ptr[3];
+		return ResultColor;
+	}
 	case DXGI_FORMAT_R8G8B8A8_TYPELESS:
 	case DXGI_FORMAT_R8G8B8A8_UNORM:
 	case DXGI_FORMAT_R8G8B8A8_UNORM_SRGB:
