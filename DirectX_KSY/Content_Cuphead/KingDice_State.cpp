@@ -32,7 +32,7 @@ void KingDice::IdleUpdate(float _Delta)
 	if (IdleTimer > 2.0f)
 	{
 		MainRenderer->SetRenderOrder(RenderOrder::Max);
-		Transform.AddLocalPosition({ 0 , -230 });
+		Transform.AddLocalPosition({ 0 , -247 });
 		ChangeState(KingDiceState::Reveal);
 	}
 

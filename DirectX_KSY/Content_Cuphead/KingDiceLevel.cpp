@@ -67,7 +67,7 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Frontground
 	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
-	Frontground->BackgroundInit("kd_bg_table2.png", { -80, -220 });
+	Frontground->BackgroundInit("kd_bg_table2.png", { -60, -220 });
 
 	std::shared_ptr<KD_Chips> Chips = CreateActor<KD_Chips>();
 
