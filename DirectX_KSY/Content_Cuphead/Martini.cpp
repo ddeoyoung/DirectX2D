@@ -47,35 +47,17 @@ void Martini::Start()
 
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Martini_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 60, 80 };
 
+	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
-
-
-	//TestEvent.Enter = std::bind(&Martini::ChangeState, this, MartiniState::Death);
+	BossCollision->Off();
 }
 
 void Martini::Update(float _Delta)
 {
 	StateUpdate(_Delta);
-
-	//{
-	//	bool TestBool = BossCollision->CollisionEvent(CollisionOrder::PlayerAttack, TestEvent);
-
-	//	if (true == TestBool)
-	//	{
-	//		int a = 0;
-	//	}
-	//}
-
-	{
-		bool TestBool = BossCollision->Collision(CollisionOrder::PlayerAttack);
-
-		if (true == TestBool)
-		{
-			int a = 0;
-		}
-	}
 }
 
 void Martini::ChangeState(MartiniState _State)

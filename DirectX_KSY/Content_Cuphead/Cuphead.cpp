@@ -70,6 +70,14 @@ void Cuphead::Start()
 	// Jump
 	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump", 0.06f);
 
+	// Hit
+	MainRenderer->CreateAnimation("Cuphead_Hit_Ground", "Cuphead_Hit_Ground", 0.05f, false);
+	MainRenderer->CreateAnimation("Cuphead_Hit_Air", "Cuphead_Hit_Air", 0.05f, false);
+
+	// Parry
+	MainRenderer->CreateAnimation("Cuphead_Parry", "Cuphead_Parry", 0.05f, false);
+	MainRenderer->CreateAnimation("Cuphead_Parry_Pink", "Cuphead_Parry_Pink", 0.05f, false);
+
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
@@ -191,6 +199,20 @@ void Cuphead::ChangeAnimationState(const std::string& _StateName)
 			break;
 		default:
 			break;
+		}
+	}
+
+	// Hit
+	if (_StateName == "Hit")
+	{
+		if (IsJump == false)
+		{
+			AnimationName += "_Ground";
+		}
+
+		else
+		{
+			AnimationName += "_Air";
 		}
 	}
 

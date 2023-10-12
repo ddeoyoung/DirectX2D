@@ -48,6 +48,9 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table.png");
 		GameEngineSprite::CreateSingle("kd_bg_table.png");
 
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table2.png");
+		GameEngineSprite::CreateSingle("kd_bg_table2.png");
+
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table_pixel.bmp");
 		GameEngineSprite::CreateSingle("kd_bg_table_pixel.bmp");
 	}
@@ -64,7 +67,7 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Frontground
 	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
-	Frontground->BackgroundInit("kd_bg_table.png");
+	Frontground->BackgroundInit("kd_bg_table2.png", { -80, -220 });
 
 	std::shared_ptr<KD_Chips> Chips = CreateActor<KD_Chips>();
 

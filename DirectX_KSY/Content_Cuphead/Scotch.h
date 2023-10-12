@@ -45,6 +45,7 @@ protected:
 	ScotchState State = ScotchState::None;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
 

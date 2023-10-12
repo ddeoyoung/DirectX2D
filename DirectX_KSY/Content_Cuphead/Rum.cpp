@@ -40,11 +40,24 @@ void Rum::Start()
 	MainRenderer->SetPivotType(PivotType::RightBottom);
 
 	Transform.SetLocalPosition({ 1100 , -700 });
+
+
+	// Create Collision
+	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
+
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Rum_Idle");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 60, 60 };
+
+	BossCollision->SetCollisionType(ColType::AABBBOX2D);
+	BossCollision->Transform.SetLocalScale(Scale);
+	BossCollision->Transform.SetLocalPosition({ -120, Scale.hY() });
+	BossCollision->Off();
 }
 
 void Rum::Update(float _Delta)
 {
-
+	StateUpdate(_Delta);
 }
 
 void Rum::ChangeState(RumState _State)

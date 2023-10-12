@@ -24,18 +24,19 @@ void KingDice::IntroBodyUpdate(float _Delta)
 void KingDice::IdleStart()
 {
 	ChangeAnimationState("Idle");
-
-	//IdleTimer = 0.0f;
+	IdleTimer = 0.0f;
 }
 
 void KingDice::IdleUpdate(float _Delta)
 {
-	//if (IdleTimer > 2.0f)
-	//{
-	//	ChangeState(KingDiceState::Reveal);
-	//}
+	if (IdleTimer > 2.0f)
+	{
+		MainRenderer->SetRenderOrder(RenderOrder::Max);
+		Transform.AddLocalPosition({ 0 , -230 });
+		ChangeState(KingDiceState::Reveal);
+	}
 
-	//IdleTimer += _Delta;
+	IdleTimer += _Delta;
 
 	if (true == GameEngineInput::IsDown('P'))
 	{
