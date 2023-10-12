@@ -68,6 +68,7 @@ protected:
 
 private:
 	int SpinDir = 1;
+	int BossHP = 20;
 
 	float IdleTimer = 0.0f;
 	float StretchTimer = 0.0f;

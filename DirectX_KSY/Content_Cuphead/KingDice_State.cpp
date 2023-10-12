@@ -24,11 +24,23 @@ void KingDice::IntroBodyUpdate(float _Delta)
 void KingDice::IdleStart()
 {
 	ChangeAnimationState("Idle");
+
+	//IdleTimer = 0.0f;
 }
 
 void KingDice::IdleUpdate(float _Delta)
 {
+	//if (IdleTimer > 2.0f)
+	//{
+	//	ChangeState(KingDiceState::Reveal);
+	//}
 
+	//IdleTimer += _Delta;
+
+	if (true == GameEngineInput::IsDown('P'))
+	{
+		ChangeState(KingDiceState::CameraEat);
+	}
 }
 
 void KingDice::WinkStart()
@@ -68,7 +80,7 @@ void KingDice::CameraEatStart()
 
 void KingDice::CameraEatUpdate(float _Delta)
 {
-
+	//GameEngineCore::ChangeLevel("ChipsBettiganLevel");
 }
 
 void KingDice::DeathStart()

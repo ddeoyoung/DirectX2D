@@ -34,7 +34,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<ChipsBettiganLevel>("ChipsBettiganLevel");
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 
-	GameEngineCore::ChangeLevel("ChipsBettiganLevel");
+	GameEngineCore::ChangeLevel("KingDiceLevel");
 }
 
 void ContentsCore::Update(float _Delta)

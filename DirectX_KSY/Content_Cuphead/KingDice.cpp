@@ -36,11 +36,13 @@ void KingDice::Start()
 	MainRenderer->SetEndEvent("KingDice_IntroHand", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("KingDice_IntroBody");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::IntroBody);
 		});
 	MainRenderer->CreateAnimation("KingDice_IntroBody", "KingDice_IntroBody", 0.04f, false);
 	MainRenderer->SetEndEvent("KingDice_IntroBody", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("KingDice_Idle");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::Idle);
 		});
 
 	// Idle
@@ -63,9 +65,11 @@ void KingDice::Start()
 			_Renderer->Transform.SetLocalPosition({ HalfWindowScale.X + 20.0f, -HalfWindowScale.Y - 45.0f });
 			_Renderer->SetPivotType(PivotType::Bottom);
 			//_Renderer->SetRenderOrder(RenderOrder::Play);
+			//_Renderer->GetParent<KingDice>()->SetState(KingDiceState::CameraEat);
+			_Renderer->GetParent<KingDice>()->SetSubStage();
 		});
 
-	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal");
+	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f, false);
 	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink");
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 	MainRenderer->ChangeAnimation("KingDice_Idle");
@@ -73,13 +77,15 @@ void KingDice::Start()
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
+	ChangeState(KingDiceState::IntroHand);
+
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({HalfWindowScale.X + 20.0f, -HalfWindowScale.Y -45.0f});
 }
 
 void KingDice::Update(float _Delta)
 {
-
+	StateUpdate(_Delta);
 }
 
 void KingDice::ChangeState(KingDiceState _State)
@@ -164,4 +170,9 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
+}
+
+void KingDice::SetSubStage()
+{
+	GameEngineCore::ChangeLevel("ChipsBettiganLevel");
 }

@@ -28,6 +28,23 @@ public:
 	KingDice& operator=(const KingDice& _Other) = delete;
 	KingDice& operator=(KingDice&& _Other) noexcept = delete;
 
+	std::string GetCurState()
+	{
+		return CurState;
+	}
+
+	void SetCurState(std::string _CurState)
+	{
+		CurState = _CurState;
+	}
+
+	void SetState(KingDiceState _State)
+	{
+		State = _State;
+	}
+
+	void SetSubStage();
+
 protected:
 	void ChangeState(KingDiceState _State);
 	void StateUpdate(float _Delta);
@@ -67,6 +84,6 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 
 private:
-
+	float IdleTimer = 0.0f;
 };
 

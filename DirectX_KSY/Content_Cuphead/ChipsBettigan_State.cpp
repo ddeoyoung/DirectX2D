@@ -26,7 +26,7 @@ void ChipsBettigan::IdleUpdate(float _Delta)
 {
 	if (IdleTimer > 3.0f)
 	{
-		ChangeState(ChipsState::Death);
+		ChangeState(ChipsState::Spin);
 		IdleTimer = 0.0f;
 	}
 
@@ -92,6 +92,11 @@ void ChipsBettigan::SpinUpdate(float _Delta)
 	{
 		DeathChips();
 		Transform.AddLocalPosition({ 0, -260.0f });
+		std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Idle");
+		float4 Scale = Texture->GetSpriteData(0).GetScale();
+		Scale -= { 80.0f, 60.0f };
+		BossCollision->Transform.SetLocalScale(Scale);
+		BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
 		ChangeState(ChipsState::Idle);
 	}
 }

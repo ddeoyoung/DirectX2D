@@ -72,6 +72,11 @@ void ChipsBettigan::Start()
 void ChipsBettigan::Update(float _Delta)
 {
 	StateUpdate(_Delta);
+
+	if (BossHP <= 0)
+	{
+		ChangeState(ChipsState::Death);
+	}
 }
 
 void ChipsBettigan::ChangeState(ChipsState _State)
