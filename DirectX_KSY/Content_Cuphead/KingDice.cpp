@@ -69,7 +69,7 @@ void KingDice::Start()
 		});
 
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f, false);
-	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink");
+	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.07f);
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
 	// Test
@@ -78,7 +78,7 @@ void KingDice::Start()
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
-	ChangeState(KingDiceState::IntroHand);
+	ChangeState(KingDiceState::Wink);
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	//Transform.SetLocalPosition({HalfWindowScale.X + 20.0f, -HalfWindowScale.Y -45.0f});
