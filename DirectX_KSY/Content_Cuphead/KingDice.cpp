@@ -70,6 +70,16 @@ void KingDice::Start()
 
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f, false);
 	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.07f);
+
+	MainRenderer->CreateAnimation("KingDice_Curious_Start", "KingDice_Curious_Start");
+	MainRenderer->SetEndEvent("KingDice_Curious_Start", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_Curious_Body");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::Curious);
+		});
+	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body", 1.0f);
+	//MainRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head");
+
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
 	// Test
@@ -78,7 +88,7 @@ void KingDice::Start()
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
-	ChangeState(KingDiceState::Wink);
+	ChangeState(KingDiceState::Curious);
 
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	//Transform.SetLocalPosition({HalfWindowScale.X + 20.0f, -HalfWindowScale.Y -45.0f});
@@ -169,6 +179,11 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 		AnimationName += "_First";
 	}
 
+	// Curious
+	if (_StateName == "Curious")
+	{
+		AnimationName += "_Start";
+	}
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);

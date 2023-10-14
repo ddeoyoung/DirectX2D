@@ -29,10 +29,10 @@ void KingDice::IdleStart()
 
 void KingDice::IdleUpdate(float _Delta)
 {
-	if (IdleTimer > 2.0f)
+	if (IdleTimer > 3.0f)
 	{
-		//Transform.AddLocalPosition({ 0 , -247 });
-		//ChangeState(KingDiceState::Reveal);
+		Transform.AddLocalPosition({ 0 , -247 });
+		ChangeState(KingDiceState::Reveal);
 	}
 
 	IdleTimer += _Delta;
