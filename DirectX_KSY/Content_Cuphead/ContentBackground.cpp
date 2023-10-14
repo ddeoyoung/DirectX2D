@@ -11,12 +11,12 @@ ContentBackground::~ContentBackground()
 
 void ContentBackground::Start()
 {
-
+	ContentActor::Start();
 }
 
 void ContentBackground::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }
 
 void ContentBackground::BackgroundInit(std::string_view _SpriteName)

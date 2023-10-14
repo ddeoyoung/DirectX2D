@@ -11,6 +11,7 @@ Logo_Mdhr::~Logo_Mdhr()
 
 void Logo_Mdhr::Start()
 {
+	ContentActor::Start();
 
 	if (nullptr == GameEngineSprite::Find("Logo"))
 	{
@@ -36,8 +37,5 @@ void Logo_Mdhr::Start()
 
 void Logo_Mdhr::Update(float _Delta)
 {
-	//if (true == Renderer->IsCurAnimationEnd())
-	//{
-	//	GameEngineCore::ChangeLevel("TitleLevel");
-	//}
+	ContentActor::Update(_Delta);
 }

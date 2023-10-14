@@ -15,11 +15,13 @@ BaseCharacter::~BaseCharacter()
 
 void BaseCharacter::Start()
 {
-	
+	ContentActor::Start();
 }
 
 void BaseCharacter::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	StateUpdate(_Delta);
 	DirCheck();
 	Gravity(_Delta);

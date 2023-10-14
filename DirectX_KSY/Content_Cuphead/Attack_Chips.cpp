@@ -11,6 +11,8 @@ Attack_Chips::~Attack_Chips()
 
 void Attack_Chips::Start()
 {
+	ContentActor::Start();
+
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("CigSmoke"))
 	{
@@ -38,7 +40,7 @@ void Attack_Chips::Start()
 
 void Attack_Chips::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }
 
 void Attack_Chips::SetChips(float4 _BossPos, const std::string& _ChipType)

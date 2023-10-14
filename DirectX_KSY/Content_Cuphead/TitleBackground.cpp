@@ -11,6 +11,8 @@ TitleBackground::~TitleBackground()
 
 void TitleBackground::Start()
 {
+	ContentActor::Start();
+
 	if (nullptr == GameEngineSprite::Find("title_screen_background.png"))
 	{
 		GameEngineDirectory Dir;
@@ -34,6 +36,8 @@ void TitleBackground::Start()
 
 void TitleBackground::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	PressKeyTime += _Delta;
 
 	if (1.0f <= PressKeyTime)

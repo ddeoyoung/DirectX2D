@@ -11,6 +11,8 @@ KingDice::~KingDice()
 
 void KingDice::Start()
 {
+	ContentActor::Start();
+
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("KingDice_Idle"))
 	{
@@ -97,6 +99,8 @@ void KingDice::Start()
 
 void KingDice::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	StateUpdate(_Delta);
 }
 

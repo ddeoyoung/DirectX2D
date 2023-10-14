@@ -12,11 +12,13 @@ BaseWeapon::~BaseWeapon()
 
 void BaseWeapon::Start()
 {
-
+	ContentActor::Start();
 }
 
 void BaseWeapon::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	StateUpdate(_Delta);
 }
 

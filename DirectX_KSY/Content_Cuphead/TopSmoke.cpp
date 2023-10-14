@@ -11,6 +11,7 @@ TopSmoke::~TopSmoke()
 
 void TopSmoke::Start()
 {
+	ContentActor::Start();
 
 	if (nullptr == GameEngineSprite::Find("TopSmoke"))
 	{
@@ -39,5 +40,5 @@ void TopSmoke::Start()
 
 void TopSmoke::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }

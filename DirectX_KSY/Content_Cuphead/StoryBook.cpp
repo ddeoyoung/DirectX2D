@@ -11,6 +11,8 @@ StoryBook::~StoryBook()
 
 void StoryBook::Start()
 {
+	ContentActor::Start();
+
 	if (nullptr == GameEngineSprite::Find("Page0"))
 	{
 		GameEngineDirectory Dir;
@@ -110,9 +112,5 @@ void StoryBook::Start()
 
 void StoryBook::Update(float _Delta)
 {
-	//if (true == Renderer->IsCurAnimationEnd() && PageNumber <= 10)
-	//{
-	//	Renderer->ChangeAnimation("Page" + std::to_string(PageNumber++));
-	//	PageDur = 0.0f;
-	//}
+	ContentActor::Update(_Delta);
 }

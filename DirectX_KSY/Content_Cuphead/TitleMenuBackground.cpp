@@ -11,6 +11,8 @@ TitleMenuBackground::~TitleMenuBackground()
 
 void TitleMenuBackground::Start()
 {
+	ContentActor::Start();
+
 	if (nullptr == GameEngineSprite::Find("cuphead_secondary_title_screen.png"))
 	{
 		GameEngineDirectory Dir;
@@ -27,5 +29,5 @@ void TitleMenuBackground::Start()
 
 void TitleMenuBackground::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }

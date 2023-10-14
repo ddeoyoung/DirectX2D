@@ -12,6 +12,8 @@ Martini::~Martini()
 
 void Martini::Start()
 {
+	ContentActor::Start();
+
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("Martini_Idle"))
 	{
@@ -57,6 +59,8 @@ void Martini::Start()
 
 void Martini::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	StateUpdate(_Delta);
 }
 

@@ -11,6 +11,8 @@ Scotch::~Scotch()
 
 void Scotch::Start()
 {
+	ContentActor::Start();
+
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("Scotch_Idle"))
 	{
@@ -54,6 +56,8 @@ void Scotch::Start()
 
 void Scotch::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	StateUpdate(_Delta);
 }
 

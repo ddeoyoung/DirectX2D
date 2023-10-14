@@ -11,6 +11,8 @@ KD_Chips::~KD_Chips()
 
 void KD_Chips::Start()
 {
+	ContentActor::Start();
+
 	// KingDice Frontground Chips
 	if (nullptr == GameEngineSprite::Find("kd_fg_chips_right.png"))
 	{
@@ -42,5 +44,5 @@ void KD_Chips::Start()
 
 void KD_Chips::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }

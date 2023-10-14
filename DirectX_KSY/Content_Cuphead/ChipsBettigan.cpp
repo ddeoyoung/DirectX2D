@@ -12,6 +12,8 @@ ChipsBettigan::~ChipsBettigan()
 
 void ChipsBettigan::Start()
 {
+	ContentActor::Start();
+
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("Chips_Idle"))
 	{
@@ -71,6 +73,8 @@ void ChipsBettigan::Start()
 
 void ChipsBettigan::Update(float _Delta)
 {
+	ContentActor::Start();
+
 	StateUpdate(_Delta);
 
 	if (BossHP <= 0)

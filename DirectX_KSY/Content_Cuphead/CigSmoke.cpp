@@ -11,6 +11,7 @@ CigSmoke::~CigSmoke()
 
 void CigSmoke::Start()
 {
+	ContentActor::Start();
 
 	if (nullptr == GameEngineSprite::Find("CigSmoke"))
 	{
@@ -39,5 +40,5 @@ void CigSmoke::Start()
 
 void CigSmoke::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }

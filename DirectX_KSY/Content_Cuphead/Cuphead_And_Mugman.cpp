@@ -11,6 +11,8 @@ Cuphead_And_Mugman::~Cuphead_And_Mugman()
 
 void Cuphead_And_Mugman::Start()
 {
+	ContentActor::Start();
+
 	if (nullptr == GameEngineSprite::Find("Cuphead_And_Mugman"))
 	{
 		GameEngineDirectory Dir;
@@ -38,5 +40,5 @@ void Cuphead_And_Mugman::Start()
 
 void Cuphead_And_Mugman::Update(float _Delta)
 {
-
+	ContentActor::Update(_Delta);
 }

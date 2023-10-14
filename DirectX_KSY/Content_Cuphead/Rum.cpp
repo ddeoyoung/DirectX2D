@@ -12,6 +12,8 @@ Rum::~Rum()
 
 void Rum::Start()
 {
+	ContentActor::Start();
+
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("Rum_Idle"))
 	{
@@ -57,6 +59,8 @@ void Rum::Start()
 
 void Rum::Update(float _Delta)
 {
+	ContentActor::Update(_Delta);
+
 	StateUpdate(_Delta);
 }
 
