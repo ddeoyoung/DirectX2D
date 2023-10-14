@@ -15,7 +15,7 @@ enum class KingDiceState
 };
 
 // Ό³Έν :
-class KingDice : public GameEngineActor
+class KingDice : public ContentActor
 {
 public:
 	// constrcuter destructer

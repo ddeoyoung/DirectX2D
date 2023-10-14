@@ -29,32 +29,32 @@ void ContentLevel::Start()
 
 void ContentLevel::Update(float _Delta)
 {
-	if (true == GameEngineInput::IsDown(VK_F1))
+	if (true == GameEngineInput::IsDown(VK_F1, this))
 	{
 		GameEngineCore::ChangeLevel("TitleLevel");
 	}
 
-	if (true == GameEngineInput::IsDown(VK_F2))
+	if (true == GameEngineInput::IsDown(VK_F2, this))
 	{
 		GameEngineCore::ChangeLevel("IntroLevel");
 	}
 
-	if (true == GameEngineInput::IsDown(VK_F3))
+	if (true == GameEngineInput::IsDown(VK_F3, this))
 	{
 		GameEngineCore::ChangeLevel("TutorialLevel");
 	}
 
-	if (true == GameEngineInput::IsDown(VK_F4))
+	if (true == GameEngineInput::IsDown(VK_F4, this))
 	{
 		GameEngineCore::ChangeLevel("OverWorldLevel");
 	}
 
-	if (true == GameEngineInput::IsDown(VK_F5))
+	if (true == GameEngineInput::IsDown(VK_F5, this))
 	{
 		GameEngineCore::ChangeLevel("KingDiceLevel");
 	}
 
-	if (true == GameEngineInput::IsDown(VK_F6))
+	if (true == GameEngineInput::IsDown(VK_F6, this))
 	{
 		GameEngineCore::ChangeLevel("ChipsBettiganLevel");
 	}

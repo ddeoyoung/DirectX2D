@@ -2,7 +2,7 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class KD_Chips : public GameEngineActor
+class KD_Chips : public ContentActor
 {
 public:
 	// constrcuter destructer

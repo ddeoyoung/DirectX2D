@@ -77,8 +77,8 @@ void KingDice::Start()
 			_Renderer->ChangeAnimation("KingDice_Curious_Body");
 			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::Curious);
 		});
-	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body", 1.0f);
-	//MainRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head");
+	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body");
+	MainRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head");
 
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 

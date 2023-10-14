@@ -148,8 +148,8 @@ void BaseCharacter::DirCheck()
 	}
 
 	// 아무 방향키도 누르지 않은 상태면 ActorDir를 따름
-	if ((false == GameEngineInput::IsDown(VK_LEFT) || false == GameEngineInput::IsPress(VK_LEFT))
-		&& (false == GameEngineInput::IsDown(VK_RIGHT) || false == GameEngineInput::IsPress(VK_RIGHT)))
+	if ((false == GameEngineInput::IsDown(VK_LEFT, this) || false == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (false == GameEngineInput::IsDown(VK_RIGHT, this) || false == GameEngineInput::IsPress(VK_RIGHT, this)))
 	{
 		switch (Dir)
 		{
@@ -166,9 +166,9 @@ void BaseCharacter::DirCheck()
 
 
 	// Left Straight
-	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT)) 
-		&& (true == GameEngineInput::IsUp(VK_UP) || true == GameEngineInput::IsFree(VK_UP))
-		&& (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN)))
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (true == GameEngineInput::IsUp(VK_UP, this) || true == GameEngineInput::IsFree(VK_UP, this))
+		&& (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this)))
 	{
 		CheckDir = ActorDir::Left;
 		CheckAttDir = AttackDir::Left_Straight;
@@ -176,9 +176,9 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Right Straight
-	if ((true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
-		&& (true == GameEngineInput::IsUp(VK_UP) || true == GameEngineInput::IsFree(VK_UP))
-		&& (true == GameEngineInput::IsUp(VK_DOWN) || true == GameEngineInput::IsFree(VK_DOWN)))
+	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
+		&& (true == GameEngineInput::IsUp(VK_UP, this) || true == GameEngineInput::IsFree(VK_UP, this))
+		&& (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this)))
 	{
 		CheckDir = ActorDir::Right;
 		CheckAttDir = AttackDir::Right_Straight;
@@ -186,7 +186,7 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Up
-	if (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP))
+	if (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this))
 	{
 		CheckDir = ActorDir::Up;
 
@@ -204,7 +204,7 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Down
-	if (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN))
+	if (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this))
 	{
 		CheckDir = ActorDir::Down;
 
@@ -222,8 +222,8 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Left Diagonal Up
-	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
-		&& (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP)))
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this)))
 	{
 		CheckDir = ActorDir::Left;
 		CheckAttDir = AttackDir::Left_Diagonal_Up;
@@ -231,8 +231,8 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Right Diagonal Up
-	if ((true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
-		&& (true == GameEngineInput::IsDown(VK_UP) || true == GameEngineInput::IsPress(VK_UP)))
+	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
+		&& (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this)))
 	{
 		CheckDir = ActorDir::Right;
 		CheckAttDir = AttackDir::Right_Diagonal_Up;
@@ -240,8 +240,8 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Left Diagonal Down
-	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
-		&& (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN)))
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this)))
 	{
 		CheckDir = ActorDir::Left;
 		CheckAttDir = AttackDir::Left_Diagonal_Down;
@@ -249,8 +249,8 @@ void BaseCharacter::DirCheck()
 	}
 
 	// Right Diagonal Down
-	if ((true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT))
-		&& (true == GameEngineInput::IsDown(VK_DOWN) || true == GameEngineInput::IsPress(VK_DOWN)))
+	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
+		&& (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this)))
 	{
 		CheckDir = ActorDir::Right;
 		CheckAttDir = AttackDir::Right_Diagonal_Down;
@@ -268,10 +268,10 @@ void BaseCharacter::DirCheck()
 
 bool BaseCharacter::MoveCheck()
 {
-	if ((true == GameEngineInput::IsDown(VK_LEFT) || true == GameEngineInput::IsPress(VK_LEFT))
-		|| (true == GameEngineInput::IsDown(VK_RIGHT) || true == GameEngineInput::IsPress(VK_RIGHT)))
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		|| (true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this)))
 	{
-		if (true == GameEngineInput::IsDown('C') || true == GameEngineInput::IsPress('C'))
+		if (true == GameEngineInput::IsDown('C', this) || true == GameEngineInput::IsPress('C', this))
 		{
 			IsAim = true;
 

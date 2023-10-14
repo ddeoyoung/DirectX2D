@@ -10,7 +10,7 @@ enum class MartiniState
 };
 
 // Ό³Έν :
-class Martini : public GameEngineActor
+class Martini : public ContentActor
 {
 public:
 	// constrcuter destructer

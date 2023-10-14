@@ -10,7 +10,7 @@ enum class ScotchState
 };
 
 // Ό³Έν :
-class Scotch : public GameEngineActor
+class Scotch : public ContentActor
 {
 public:
 	// constrcuter destructer

@@ -23,7 +23,7 @@
 #define RUN_ATTACK_LEFT_DIAGONAL_UP { -110.0f, 130.0f }
 
 // Ό³Έν :
-class BaseWeapon : public GameEngineActor
+class BaseWeapon : public ContentActor
 {
 public:
 	// constrcuter destructer

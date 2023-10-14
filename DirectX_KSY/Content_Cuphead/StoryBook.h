@@ -4,7 +4,7 @@
 #define PAGEDUR 0.03f
 
 // Ό³Έν :
-class StoryBook : public GameEngineActor
+class StoryBook : public ContentActor
 {
 public:
 	// constrcuter destructer

@@ -2,7 +2,7 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class Logo_Mdhr : public GameEngineActor
+class Logo_Mdhr : public ContentActor
 {
 	friend class LogoLevel;
 public:

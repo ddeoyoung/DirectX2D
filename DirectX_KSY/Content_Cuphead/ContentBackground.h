@@ -2,7 +2,7 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class ContentBackground : public GameEngineActor
+class ContentBackground : public ContentActor
 {
 public:
 	// constrcuter destructer

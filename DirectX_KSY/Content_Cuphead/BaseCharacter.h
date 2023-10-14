@@ -8,7 +8,7 @@
 
 // Ό³Έν :
 class ContentLevel;
-class BaseCharacter : public GameEngineActor
+class BaseCharacter : public ContentActor
 {
 public:
 	// constrcuter destructer

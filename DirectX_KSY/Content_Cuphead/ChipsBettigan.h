@@ -17,7 +17,7 @@ enum class ChipsState
 };
 
 // Ό³Έν :
-class ChipsBettigan : public GameEngineActor
+class ChipsBettigan : public ContentActor
 {
 public:
 	// constrcuter destructer

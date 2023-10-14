@@ -2,7 +2,7 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class CigSmoke : public GameEngineActor
+class CigSmoke : public ContentActor
 {
 public:
 	// constrcuter destructer

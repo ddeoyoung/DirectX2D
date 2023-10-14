@@ -37,7 +37,7 @@ void KingDice::IdleUpdate(float _Delta)
 
 	IdleTimer += _Delta;
 
-	if (true == GameEngineInput::IsDown('P'))
+	if (true == GameEngineInput::IsDown('P', this))
 	{
 		ChangeState(KingDiceState::CameraEat);
 	}

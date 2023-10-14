@@ -9,6 +9,16 @@ ContentActor::~ContentActor()
 {
 }
 
+void ContentActor::Start()
+{
+	GameEngineInput::AddInputObject(this);
+}
+
+void ContentActor::Update(float _Delta)
+{
+
+}
+
 void ContentActor::SpriteInit(const std::string_view& _Texture,  const float4 _Position, int _Order, float _ScaleRatio)
 {
 	if (nullptr == StaticRenderer)

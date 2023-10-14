@@ -22,14 +22,14 @@ void TitleLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
 
-	if (GameEngineInput::IsPress('P'))
+	if (GameEngineInput::IsPress('P', this))
 	{
 		Back->Off();
 		CupheadAndMugman->Off();
 		MenuBack->On();
 	}
 
-	if (GameEngineInput::IsPress('Z'))
+	if (GameEngineInput::IsPress('Z', this))
 	{
 		GameEngineCore::ChangeLevel("IntroLevel");
 	}

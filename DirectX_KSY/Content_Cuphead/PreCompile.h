@@ -22,3 +22,5 @@
 
 #include "ContentEnum.h"
 #include "ActorEnum.h"
+#include "ContentActor.h"
+#include "ContentBackground.h"

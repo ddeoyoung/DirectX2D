@@ -10,7 +10,7 @@ enum class RumState
 };
 
 // Ό³Έν :
-class Rum : public GameEngineActor
+class Rum : public ContentActor
 {
 public:
 	// constrcuter destructer

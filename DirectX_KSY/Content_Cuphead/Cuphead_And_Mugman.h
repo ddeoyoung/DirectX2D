@@ -2,7 +2,7 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 // Ό³Έν :
-class Cuphead_And_Mugman : public GameEngineActor
+class Cuphead_And_Mugman : public ContentActor
 {
 public:
 	// constrcuter destructer
