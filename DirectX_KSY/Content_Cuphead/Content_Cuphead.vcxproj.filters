@@ -223,6 +223,9 @@
     <ClInclude Include="DashDust.h">
       <Filter>Actor\Character\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Dice.h">
+      <Filter>Level\5. BossStage\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -360,6 +363,9 @@
     </ClCompile>
     <ClCompile Include="DashDust.cpp">
       <Filter>Actor\Character\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Dice.cpp">
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

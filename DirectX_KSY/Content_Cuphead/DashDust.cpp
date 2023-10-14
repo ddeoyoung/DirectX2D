@@ -14,7 +14,7 @@ void DashDust::Start()
 	ContentActor::Start();
 
 	// Create Sprite Folder
-	if (nullptr == GameEngineSprite::Find("Peashot_Spark"))
+	if (nullptr == GameEngineSprite::Find("Dash_Dust"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");

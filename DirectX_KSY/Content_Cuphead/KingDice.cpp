@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "KingDice.h"
+#include "Dice.h"
 
 KingDice::KingDice()
 {
