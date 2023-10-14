@@ -82,7 +82,7 @@ void KingDice::Start()
 			_Renderer->GetParent<KingDice>()->GetHeadRender()->On();
 		});
 
-	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body", 0.05f);
+	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body");
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
 	MainRenderer->SetRenderOrder(RenderOrder::Max);

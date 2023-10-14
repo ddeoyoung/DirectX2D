@@ -215,11 +215,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="DashDust.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HopusPocusLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="IntroLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="JumpDust.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -370,11 +378,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="DashDust.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HopusPocusLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="IntroLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="JumpDust.h">
       <SubType>
       </SubType>
     </ClInclude>

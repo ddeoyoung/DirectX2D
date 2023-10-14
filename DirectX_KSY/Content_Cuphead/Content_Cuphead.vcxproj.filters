@@ -91,6 +91,9 @@
     <Filter Include="Level\4. SubBossStage\Stage1\Object">
       <UniqueIdentifier>{9aeced3b-01cd-4579-9d94-a4afd5f3a715}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Character\Effect">
+      <UniqueIdentifier>{4435ad7d-5283-4b69-a073-893bb5b7b480}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -213,6 +216,12 @@
     </ClInclude>
     <ClInclude Include="Attack_Chips.h">
       <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpDust.h">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="DashDust.h">
+      <Filter>Actor\Character\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +354,12 @@
     </ClCompile>
     <ClCompile Include="Attack_Chips.cpp">
       <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpDust.cpp">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="DashDust.cpp">
+      <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

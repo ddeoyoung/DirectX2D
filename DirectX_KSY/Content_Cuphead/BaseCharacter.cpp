@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "BaseCharacter.h"
 #include "Peashot.h"
+#include "JumpDust.h"
+#include "DashDust.h"
 
 #include "ContentLevel.h"
 #include "ContentBackground.h"
@@ -288,14 +290,6 @@ bool BaseCharacter::MoveCheck()
 		return true;
 	}
 
-
-	//GameEngineColor Color = GetPixelColor();
-
-	//if (Color == GameEngineColor::RED)
-	//{
-	//	int a = 0;
-	//}
-
 	return false;
 }
 
@@ -344,4 +338,25 @@ GameEngineColor BaseCharacter::GetPixelColor(float4 _Pos)
 	GameEngineColor Color = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(CheckPos, GameEngineColor::RED);
 
 	return Color;
+}
+
+void BaseCharacter::CreateJumpDust()
+{
+	if (true == IsJump)
+	{
+		return;
+	}
+
+	std::shared_ptr<JumpDust> Dust = GetLevel()->CreateActor<JumpDust>();
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 DustPos = PlayerPos;
+
+	DustPos += float4{ 0, -120 };
+
+	Dust->Transform.SetLocalPosition(DustPos);
+}
+
+void BaseCharacter::CreateDashDust()
+{
+
 }

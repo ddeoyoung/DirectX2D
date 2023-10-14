@@ -88,6 +88,9 @@ protected:
 	void DirCheck();
 	bool MoveCheck();
 
+	void CreateJumpDust();
+	void CreateDashDust();
+
 	void Gravity(float _Delta);
 	//bool PixelCheck();
 	void LerpCamera(float _Delta);
