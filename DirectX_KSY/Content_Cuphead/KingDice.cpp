@@ -32,6 +32,7 @@ void KingDice::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	HeadRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
 	// Intro
 	MainRenderer->CreateAnimation("KingDice_IntroHand", "KingDice_IntroHand", 0.04f, false);
@@ -78,17 +79,24 @@ void KingDice::Start()
 		{
 			_Renderer->ChangeAnimation("KingDice_Curious_Body");
 			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::Curious);
+			_Renderer->GetParent<KingDice>()->GetHeadRender()->On();
 		});
-	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body");
-	MainRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head");
 
+	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body", 0.05f);
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
-	// Test
 	MainRenderer->SetRenderOrder(RenderOrder::Max);
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
+
+
+	// Curious Head
+	HeadRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head", 0.05f);
+	HeadRenderer->ChangeAnimation("KingDice_Curious_Head");
+	HeadRenderer->SetRenderOrder(RenderOrder::Max);
+	HeadRenderer->AutoSpriteSizeOn();
+	HeadRenderer->SetPivotType(PivotType::Bottom);
+	HeadRenderer->Off();
 
 	ChangeState(KingDiceState::Curious);
 

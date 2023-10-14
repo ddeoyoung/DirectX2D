@@ -45,6 +45,11 @@ public:
 
 	void SetSubStage();
 
+	std::shared_ptr<class GameEngineSpriteRenderer> GetHeadRender()
+	{
+		return HeadRenderer;
+	}
+
 protected:
 	void ChangeState(KingDiceState _State);
 	void StateUpdate(float _Delta);
@@ -82,8 +87,10 @@ protected:
 	KingDiceState State = KingDiceState::None;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> HeadRenderer = nullptr;
 
 private:
 	float IdleTimer = 0.0f;
+	float CuriousTimer = 0.0f;
 };
 

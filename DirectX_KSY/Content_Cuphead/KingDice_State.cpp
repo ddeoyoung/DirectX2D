@@ -56,11 +56,18 @@ void KingDice::WinkUpdate(float _Delta)
 void KingDice::CuriousStart()
 {
 	ChangeAnimationState("Curious");
+	CuriousTimer = 0.0f;
 }
 
 void KingDice::CuriousUpdate(float _Delta)
 {
+	if (CuriousTimer > 3.0f)
+	{
+		HeadRenderer->Off();
+		ChangeState(KingDiceState::Wink);
+	}
 
+	CuriousTimer += _Delta;
 }
 
 void KingDice::RevealStart()
