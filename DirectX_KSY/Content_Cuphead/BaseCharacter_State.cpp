@@ -258,6 +258,16 @@ void BaseCharacter::DuckShootUpdate(float _Delta)
 	}
 }
 
+void BaseCharacter::FallStart()
+{
+	ChangeAnimationState("Fall");
+}
+
+void BaseCharacter::FallUpdate(float _Delta)
+{
+	
+}
+
 void BaseCharacter::HitStart()
 {
 	ChangeAnimationState("Hit");
@@ -341,15 +351,10 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		ChangeState(CharacterState::Dash);
 	}
 
-	//if (true == MainRenderer->IsCurAnimationEnd())
-	//{
-	//	IsJump = false;
-	//	ChangeState(CharacterState::Idle);
-	//}
-
 	if (JumpHeight.Y <= 0.0f && true == IsGround)
 	{
 		IsJump = false;
+		CreateJumpDust();
 		ChangeState(CharacterState::Idle);
 	}
 

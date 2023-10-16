@@ -73,6 +73,9 @@ protected:
 	void JumpStart();
 	void JumpUpdate(float _Delta);
 
+	void FallStart();
+	void FallUpdate(float _Delta);
+
 	void ParryStart();
 	void ParryUpdate(float _Delta);
 
@@ -92,6 +95,7 @@ protected:
 	void DirCheck();
 	bool MoveCheck();
 
+	void CreateRunDust();
 	void CreateJumpDust();
 	void CreateDashDust();
 

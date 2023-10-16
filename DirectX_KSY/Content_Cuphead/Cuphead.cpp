@@ -70,6 +70,9 @@ void Cuphead::Start()
 	// Jump
 	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump", 0.04f);
 
+	// Fall
+	MainRenderer->CreateAnimation("Cuphead_Fall", "Fall", 0.04f);
+
 	// Hit
 	MainRenderer->CreateAnimation("Cuphead_Hit_Ground", "Cuphead_Hit_Ground", 0.05f, false);
 	MainRenderer->CreateAnimation("Cuphead_Hit_Air", "Cuphead_Hit_Air", 0.05f, false);

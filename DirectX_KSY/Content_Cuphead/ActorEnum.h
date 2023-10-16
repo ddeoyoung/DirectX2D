@@ -23,6 +23,7 @@ enum class CharacterState
 	Hit,
 	Dash,
 	Jump,
+	Fall,
 	Parry,
 	Intro,
 	Ghost,
