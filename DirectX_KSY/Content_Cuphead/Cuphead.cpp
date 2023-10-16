@@ -68,7 +68,7 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Dash_Air",		"Dash_Air", 0.04f);
 
 	// Jump
-	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump", 0.06f);
+	MainRenderer->CreateAnimation("Cuphead_Jump", "Jump", 0.04f);
 
 	// Hit
 	MainRenderer->CreateAnimation("Cuphead_Hit_Ground", "Cuphead_Hit_Ground", 0.05f, false);

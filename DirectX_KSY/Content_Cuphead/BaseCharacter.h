@@ -3,6 +3,7 @@
 
 #define LEFTCHECKPOS { -40.0f, 40.0f }
 #define RIGHTCHECKPOS { 40.0f, 40.0f }
+#define BOTTOMCHECKPOS { 0.0f, -20.0f }
 
 #define RUNSPEED 500.0f
 #define GRAVITYFORCE 2200.0f
@@ -102,6 +103,7 @@ protected:
 	float JumpTimer = 0.0f;
 	float ShootInterval = 0.0f;
 
+	bool IsGround = false;
 	bool IsRun = false;
 	bool IsRunShoot = false;
 	bool IsJump = false;
@@ -118,7 +120,7 @@ protected:
 	std::shared_ptr<class GameEngineCollision> PlayerCollision = nullptr;
 
 	float4 GravityForce = float4::ZERO;
-	float4 JumpHeight = float4::ZERO;;
+	float4 JumpHeight = float4::ZERO;
 
 private:
 };

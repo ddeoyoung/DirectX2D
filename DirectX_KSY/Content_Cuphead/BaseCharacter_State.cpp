@@ -340,12 +340,19 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	{
 		ChangeState(CharacterState::Dash);
 	}
-	
-	if (true == MainRenderer->IsCurAnimationEnd())
+
+	//if (true == MainRenderer->IsCurAnimationEnd())
+	//{
+	//	IsJump = false;
+	//	ChangeState(CharacterState::Idle);
+	//}
+
+	if (JumpHeight.Y <= 0.0f && true == IsGround)
 	{
 		IsJump = false;
 		ChangeState(CharacterState::Idle);
 	}
+
 }
 
 void BaseCharacter::ParryStart()

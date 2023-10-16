@@ -31,7 +31,6 @@ void KingDice::IdleUpdate(float _Delta)
 {
 	if (IdleTimer > 3.0f)
 	{
-		Transform.AddLocalPosition({ 0 , -247 });
 		ChangeState(KingDiceState::Reveal);
 	}
 
@@ -56,28 +55,29 @@ void KingDice::WinkUpdate(float _Delta)
 void KingDice::CuriousStart()
 {
 	ChangeAnimationState("Curious");
-	//CuriousTimer = 0.0f;
 }
 
 void KingDice::CuriousUpdate(float _Delta)
 {
-	//if (CuriousTimer > 3.0f)
-	//{
-	//	HeadRenderer->Off();
-	//	ChangeState(KingDiceState::Wink);
-	//}
 
-	//CuriousTimer += _Delta;
 }
 
 void KingDice::RevealStart()
 {
 	ChangeAnimationState("Reveal");
+
+	Transform.AddLocalPosition({ 0 , -247 });
+
+	// Dice »ý¼º
 }
 
 void KingDice::RevealUpdate(float _Delta)
 {
-
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		Transform.AddLocalPosition({ 0 , 247 });
+		ChangeState(KingDiceState::Idle);
+	}
 }
 
 void KingDice::CameraEatStart()
@@ -87,7 +87,7 @@ void KingDice::CameraEatStart()
 
 void KingDice::CameraEatUpdate(float _Delta)
 {
-	//GameEngineCore::ChangeLevel("ChipsBettiganLevel");
+
 }
 
 void KingDice::DeathStart()

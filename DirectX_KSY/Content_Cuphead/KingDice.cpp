@@ -30,6 +30,9 @@ void KingDice::Start()
 		}
 	}
 
+	// Set Position
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Transform.SetLocalPosition({ HalfWindowScale.X + 27.0f, -HalfWindowScale.Y - 28.0f });
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
@@ -72,9 +75,13 @@ void KingDice::Start()
 			_Renderer->GetParent<KingDice>()->SetSubStage();
 		});
 
+	// Reveal
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f, false);
+
+	// Wink
 	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.07f);
 
+	// Curious
 	MainRenderer->CreateAnimation("KingDice_Curious_Start", "KingDice_Curious_Start");
 	MainRenderer->SetEndEvent("KingDice_Curious_Start", [](GameEngineSpriteRenderer* _Renderer)
 		{
@@ -84,6 +91,8 @@ void KingDice::Start()
 		});
 
 	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body");
+
+	// Death
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
 	MainRenderer->SetRenderOrder(RenderOrder::Max);
@@ -99,11 +108,8 @@ void KingDice::Start()
 	HeadRenderer->SetPivotType(PivotType::Bottom);
 	HeadRenderer->Off();
 
-	ChangeState(KingDiceState::Curious);
 
-	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
-	//Transform.SetLocalPosition({HalfWindowScale.X + 20.0f, -HalfWindowScale.Y -45.0f});
-	Transform.SetLocalPosition({ HalfWindowScale.X + 27.0f, -HalfWindowScale.Y - 28.0f });
+	ChangeState(KingDiceState::Reveal);
 }
 
 void KingDice::Update(float _Delta)
