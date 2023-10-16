@@ -1,8 +1,6 @@
 #include "PreCompile.h"
 #include "BaseCharacter.h"
 #include "Peashot.h"
-#include "JumpDust.h"
-#include "DashDust.h"
 
 #include "ContentLevel.h"
 #include "ContentBackground.h"
@@ -340,23 +338,29 @@ GameEngineColor BaseCharacter::GetPixelColor(float4 _Pos)
 	return Color;
 }
 
-void BaseCharacter::CreateJumpDust()
+void BaseCharacter::PixelCheck(float _Delta)
 {
-	if (true == IsJump)
+	float4 PlayerPos = Transform.GetWorldPosition();
+	float4 CheckPos = float4::ZERO;
+	float4 MovePos = float4::ZERO;
+
+	if (GameEngineInput::IsPress(VK_LEFT, this))
 	{
-		return;
+		MovePos = float4::LEFT * _Delta * RUNSPEED;
+		CheckPos = LEFTCHECKPOS;
 	}
 
-	std::shared_ptr<JumpDust> Dust = GetLevel()->CreateActor<JumpDust>();
-	float4 PlayerPos = Transform.GetLocalPosition();
-	float4 DustPos = PlayerPos;
+	if (GameEngineInput::IsPress(VK_RIGHT, this))
+	{
+		MovePos = float4::RIGHT * _Delta * RUNSPEED;
+		CheckPos = RIGHTCHECKPOS;
+	}
 
-	DustPos += float4{ 0, -120 };
+	//GameEngineColor Color = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(PlayerPos + CheckPos, GameEngineColor::RED);
+	GameEngineColor Color = GetPixelColor(CheckPos);
 
-	Dust->Transform.SetLocalPosition(DustPos);
-}
-
-void BaseCharacter::CreateDashDust()
-{
-
+	if (GameEngineColor::RED != Color)
+	{
+		Transform.AddLocalPosition(MovePos);
+	}
 }

@@ -37,8 +37,8 @@ void Cuphead::Start()
 
 	// Run
 	MainRenderer->CreateAnimation("Cuphead_Run_Normal",		"Normal", 0.05f);
-	MainRenderer->CreateAnimation("Cuphead_Run_Shoot",		"Run_Shoot_Straight");
-	MainRenderer->CreateAnimation("Cuphead_Run_Shoot_Diagonal_Up",	"Run_Shoot_Diagonal_Up");
+	MainRenderer->CreateAnimation("Cuphead_Run_Shoot",		"Run_Shoot_Straight", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Run_Shoot_Diagonal_Up",	"Run_Shoot_Diagonal_Up", 0.05f);
 
 	// Aim
 	MainRenderer->CreateAnimation("Cuphead_Aim_Straight",		"Aim_Straight");
@@ -48,11 +48,11 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Aim_Diagonal_Down",	"Aim_Diagonal_Down");
 
 	// Shoot
-	MainRenderer->CreateAnimation("Cuphead_Shoot_Straight",		"Shoot_Straight");
-	MainRenderer->CreateAnimation("Cuphead_Shoot_Up",			"Shoot_Up");
-	MainRenderer->CreateAnimation("Cuphead_Shoot_Down",			"Shoot_Down");
-	MainRenderer->CreateAnimation("Cuphead_Shoot_Diagonal_Up",	"Shoot_Diagonal_Up");
-	MainRenderer->CreateAnimation("Cuphead_Shoot_Diagonal_Down","Shoot_Diagonal_Down");
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Straight",		"Shoot_Straight", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Up",			"Shoot_Up", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Down",			"Shoot_Down", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Diagonal_Up",	"Shoot_Diagonal_Up", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Shoot_Diagonal_Down","Shoot_Diagonal_Down", 0.05f);
 
 	// Intro
 	MainRenderer->CreateAnimation("Cuphead_Intro_Type_A", "Intro_Type_A", 0.05f);

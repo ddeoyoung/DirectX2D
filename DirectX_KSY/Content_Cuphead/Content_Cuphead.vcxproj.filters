@@ -367,5 +367,8 @@
     <ClCompile Include="Dice.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
+    <ClCompile Include="BaseCharacter_Effect.cpp">
+      <Filter>Actor\Character</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

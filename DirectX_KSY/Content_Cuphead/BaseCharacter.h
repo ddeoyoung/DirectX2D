@@ -1,6 +1,9 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+#define LEFTCHECKPOS { -40.0f, 40.0f }
+#define RIGHTCHECKPOS { 40.0f, 40.0f }
+
 #define RUNSPEED 500.0f
 #define GRAVITYFORCE 2200.0f
 
@@ -92,9 +95,8 @@ protected:
 	void CreateDashDust();
 
 	void Gravity(float _Delta);
-	//bool PixelCheck();
 	void LerpCamera(float _Delta);
-
+	void PixelCheck(float _Delta);
 	GameEngineColor GetPixelColor(float4 _Pos);
 
 	float JumpTimer = 0.0f;

@@ -175,6 +175,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BaseCharacter_Effect.cpp" />
     <ClCompile Include="BaseCharacter_State.cpp" />
     <ClCompile Include="BaseWeapon.cpp">
       <SubType>

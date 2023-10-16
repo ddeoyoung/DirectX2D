@@ -48,22 +48,7 @@ void BaseCharacter::RunStart()
 
 void BaseCharacter::RunUpdate(float _Delta)
 {
-	float RunSpeed = RUNSPEED;
-	float4 MovePos = 0.0f;
-
-	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT, this)
-		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT, this))
-	{
-		MovePos = float4::LEFT * _Delta * RunSpeed;
-	}
-
-	if (Dir == ActorDir::Right && true == GameEngineInput::IsDown(VK_RIGHT, this)
-		|| Dir == ActorDir::Right && true == GameEngineInput::IsPress(VK_RIGHT, this))
-	{
-		MovePos = float4::RIGHT * _Delta * RunSpeed;
-	}
-
-	Transform.AddLocalPosition(MovePos);
+	PixelCheck(_Delta);
 
 	if (true == GameEngineInput::IsDown(VK_LSHIFT, this))
 	{
@@ -85,12 +70,12 @@ void BaseCharacter::RunUpdate(float _Delta)
 		ChangeState(CharacterState::Aim);
 	}
 
-	if (float4::ZERO == MovePos)
+	if (true == GameEngineInput::IsFree(VK_LEFT, this)
+		&& true == GameEngineInput::IsFree(VK_RIGHT, this))
 	{
 		ChangeState(CharacterState::Idle);
 		return;
 	}
-
 }
 
 void BaseCharacter::AimStart()
@@ -163,6 +148,8 @@ void BaseCharacter::RunShootStart()
 
 void BaseCharacter::RunShootUpdate(float _Delta)
 {
+	PixelCheck(_Delta);
+
 	IsRunShoot = MoveCheck();
 
 	// Run
@@ -181,7 +168,6 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 		MovePos = float4::RIGHT * _Delta * RunSpeed;
 	}
 
-	Transform.AddLocalPosition(MovePos);
 
 	// Shoot
 	if (true == GameEngineInput::IsPress('X', this) && true == IsRunShoot && ShootInterval >= SHOOT_INTERVAL)
@@ -201,7 +187,6 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 			|| (true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))) )
 	{
 		IsRunShoot = false;
-		//IsRun = true;
 		ChangeState(CharacterState::Run);
 	}
 
@@ -329,29 +314,16 @@ void BaseCharacter::JumpStart()
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
+	PixelCheck(_Delta);
+
 	float4 JumpPos = float4::ZERO;
 	float4 JumpGravityForce = float4::ZERO;
-	float4 MovePos = float4::ZERO;
 
 	JumpTimer -= _Delta;
 
 	if (true == GameEngineInput::IsPress('X', this) && 0.2f >= JumpTimer)
 	{
 		JumpHeight.Y += 2600.0f * _Delta;
-	}
-
-	if (Dir == ActorDir::Left && true == GameEngineInput::IsDown(VK_LEFT, this)
-		|| Dir == ActorDir::Left && true == GameEngineInput::IsPress(VK_LEFT, this))
-	{
-		MovePos = float4::LEFT * _Delta * RUNSPEED;
-		Transform.AddLocalPosition(MovePos);
-	}
-
-	if (Dir == ActorDir::Right && true == GameEngineInput::IsDown(VK_RIGHT, this)
-		|| Dir == ActorDir::Right && true == GameEngineInput::IsPress(VK_RIGHT, this))
-	{
-		MovePos = float4::RIGHT * _Delta * RUNSPEED;
-		Transform.AddLocalPosition(MovePos);
 	}
 
 	if (true == IsJump)
@@ -364,14 +336,11 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		Transform.AddLocalPosition(JumpHeight * _Delta);
 	}
 
-
 	if (true == GameEngineInput::IsPress(VK_LSHIFT, this))
 	{
 		ChangeState(CharacterState::Dash);
 	}
 	
-
-	// 땅에 닿으면 Idle이 되도록 수정
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		IsJump = false;
