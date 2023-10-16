@@ -1,7 +1,7 @@
 #pragma once
 
 // Ό³Έν :
-class Dice : ContentActor
+class Dice : public ContentActor
 {
 public:
 	// constrcuter destructer

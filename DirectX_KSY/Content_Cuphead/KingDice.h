@@ -89,8 +89,11 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> HeadRenderer = nullptr;
 
+	std::shared_ptr<class Dice> PinkDice = nullptr;
+
 private:
 	float IdleTimer = 0.0f;
 	float CuriousTimer = 0.0f;
+	float ShowDiceTimer = 0.0f;
 };
 

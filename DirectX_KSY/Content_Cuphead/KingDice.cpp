@@ -71,7 +71,7 @@ void KingDice::Start()
 			float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half(); 
 			_Renderer->Transform.SetLocalPosition({ HalfWindowScale.X + 20.0f, -HalfWindowScale.Y - 45.0f });
 			_Renderer->SetPivotType(PivotType::Bottom);
-			//_Renderer->GetParent<KingDice>()->SetState(KingDiceState::CameraEat);
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::CameraEat);
 			_Renderer->GetParent<KingDice>()->SetSubStage();
 		});
 
@@ -109,7 +109,7 @@ void KingDice::Start()
 	HeadRenderer->Off();
 
 
-	ChangeState(KingDiceState::Reveal);
+	ChangeState(KingDiceState::Idle);
 }
 
 void KingDice::Update(float _Delta)

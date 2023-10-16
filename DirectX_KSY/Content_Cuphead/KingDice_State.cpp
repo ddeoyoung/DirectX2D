@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "KingDice.h"
+#include "Dice.h"
 
 void KingDice::IntroHandStart()
 {
@@ -69,10 +70,23 @@ void KingDice::RevealStart()
 	Transform.AddLocalPosition({ 0 , -247 });
 
 	// Dice »ý¼º
+	PinkDice = GetLevel()->CreateActor<Dice>();
+	PinkDice->Transform.SetLocalPosition({ 660.0f, -500.0f });
+	PinkDice->Off();
+
+	ShowDiceTimer = 1.0f;
 }
 
 void KingDice::RevealUpdate(float _Delta)
 {
+	ShowDiceTimer -= _Delta;
+
+	if (ShowDiceTimer <= 0.0f)
+	{
+		PinkDice->On();
+	}
+
+
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		Transform.AddLocalPosition({ 0 , 247 });
