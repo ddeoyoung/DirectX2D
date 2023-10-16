@@ -356,7 +356,6 @@ void BaseCharacter::PixelCheck(float _Delta)
 		CheckPos = RIGHTCHECKPOS;
 	}
 
-	//GameEngineColor Color = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(PlayerPos + CheckPos, GameEngineColor::RED);
 	GameEngineColor Color = GetPixelColor(CheckPos);
 
 	if (GameEngineColor::RED != Color)

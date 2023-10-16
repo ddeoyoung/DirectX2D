@@ -3,8 +3,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include <iostream>
 
-
-
+std::function<LRESULT(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)> GameEngineWindow::MsgFunction;
 HINSTANCE GameEngineWindow::Instance = nullptr;
 bool GameEngineWindow::IsWindowUpdate = true;
 bool GameEngineWindow::IsFocusValue = false;
@@ -107,6 +106,13 @@ void GameEngineWindow::InitInstance()
 
 LRESULT CALLBACK GameEngineWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	// 뭔가 니가 처리하기전에
+	if (nullptr != MsgFunction)
+	{
+		if (MsgFunction(hWnd, message, wParam, lParam))
+			return true;
+	}
+
 	switch (message)
 	{
 	case WM_SETFOCUS:
@@ -251,7 +257,7 @@ void GameEngineWindow::SetPosAndScale(const float4& _Pos, const float4& _Scale)
 	RECT Rc = { 0, 0, _Scale.iX(), _Scale.iY() };
 
 
-	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW,FALSE);
+	AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
 
 	//                          100        100         500          500
 	SetWindowPos(hWnd, nullptr, _Pos.iX(), _Pos.iY(), Rc.right - Rc.left, Rc.bottom - Rc.top, SWP_NOZORDER);
