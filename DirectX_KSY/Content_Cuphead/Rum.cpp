@@ -49,11 +49,11 @@ void Rum::Start()
 
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Rum_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
-	Scale -= { 60, 60 };
+	Scale -= { 100, 80 };
 
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
-	BossCollision->Transform.SetLocalPosition({ -120, Scale.hY() });
+	BossCollision->Transform.SetLocalPosition({ -120, Scale.hY() + 20.0f });
 	BossCollision->Off();
 }
 

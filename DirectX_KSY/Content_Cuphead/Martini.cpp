@@ -49,11 +49,11 @@ void Martini::Start()
 
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Martini_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
-	Scale -= { 60, 80 };
+	Scale -= { 80, 260 };
 
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
-	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
+	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 200.0f });
 	BossCollision->Off();
 }
 
