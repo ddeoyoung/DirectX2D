@@ -229,6 +229,15 @@
     <ClInclude Include="RunDust.h">
       <Filter>Actor\Character\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Attack_Olive.h">
+      <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_Liquid.h">
+      <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_Spew.h">
+      <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -377,5 +386,14 @@
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Content_Resources.cpp" />
+    <ClCompile Include="Attack_Olive.cpp">
+      <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Liquid.cpp">
+      <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Spew.cpp">
+      <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
