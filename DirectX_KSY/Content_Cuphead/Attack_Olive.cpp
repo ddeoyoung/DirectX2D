@@ -31,7 +31,14 @@ void Attack_Olive::Start()
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
+	MainRenderer->CreateAnimation("Olive_Appear", "Olive_Appear", false);
+	MainRenderer->SetEndEvent("Olive_Appear", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Olive_Idle");
+		});
 	MainRenderer->CreateAnimation("Olive_Idle", "Olive_Idle");
+	MainRenderer->CreateAnimation("Olive_Attack", "Olive_Attack");
+	MainRenderer->CreateAnimation("Olive_Death", "Olive_Death");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
@@ -40,4 +47,54 @@ void Attack_Olive::Start()
 void Attack_Olive::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	StateUpdate(_Delta);
+}
+
+void Attack_Olive::ChangeState(OliveState _State)
+{
+
+}
+
+void Attack_Olive::StateUpdate(float _Delta)
+{
+
+}
+
+void Attack_Olive::ChangeAnimationState(const std::string& _StateName)
+{
+
+}
+
+void Attack_Olive::AppearStart(){ }
+void Attack_Olive::AppearUpdate(float _Delta){ }
+
+void Attack_Olive::IdleStart()
+{
+
+}
+
+void Attack_Olive::IdleUpdate(float _Delta)
+{
+
+}
+
+void Attack_Olive::AttackStart()
+{
+
+}
+
+void Attack_Olive::AttackUpdate(float _Delta)
+{
+
+}
+
+void Attack_Olive::DeathStart()
+{
+
+}
+
+void Attack_Olive::DeathUpdate(float _Delta)
+{
+
 }

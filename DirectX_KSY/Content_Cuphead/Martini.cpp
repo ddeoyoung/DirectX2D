@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Martini.h"
+#include "Attack_Olive.h"
 
 Martini::Martini()
 {
@@ -55,6 +56,9 @@ void Martini::Start()
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 200.0f });
 	BossCollision->Off();
+
+
+	ChangeState(MartiniState::Idle);
 }
 
 void Martini::Update(float _Delta)
@@ -120,11 +124,18 @@ void Martini::ChangeAnimationState(const std::string& _StateName)
 void Martini::IdleStart()
 {
 	ChangeAnimationState("Idle");
+
+	IdleTimer = 3.0f;
 }
 
 void Martini::IdleUpdate(float _Delta)
 {
+	IdleTimer -= _Delta;
 
+	if (IdleTimer < 0.0f)
+	{
+		ChangeState(MartiniState::Attack);
+	}
 }
 
 void Martini::AttackStart()
@@ -134,7 +145,10 @@ void Martini::AttackStart()
 
 void Martini::AttackUpdate(float _Delta)
 {
-
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(MartiniState::Idle);
+	}
 }
 
 void Martini::DeathStart()
