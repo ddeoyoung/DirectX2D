@@ -18,7 +18,7 @@ void RunDust::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Cuphead\\Jump");
+		Dir.MoveChild("ContentsResources\\Texture\\Cuphead\\Run");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 

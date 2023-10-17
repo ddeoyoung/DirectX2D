@@ -104,6 +104,7 @@ protected:
 	void PixelCheck(float _Delta);
 	GameEngineColor GetPixelColor(float4 _Pos);
 
+	float RunDustTimer = 0.0f;
 	float JumpTimer = 0.0f;
 	float ShootInterval = 0.0f;
 

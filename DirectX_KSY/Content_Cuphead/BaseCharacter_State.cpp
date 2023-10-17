@@ -44,11 +44,21 @@ void BaseCharacter::IdleUpdate(float _Delta)
 void BaseCharacter::RunStart()
 {
 	ChangeAnimationState("Run");
+
+	RunDustTimer = 0.3f;
 }
 
 void BaseCharacter::RunUpdate(float _Delta)
 {
 	PixelCheck(_Delta);
+
+	RunDustTimer -= _Delta;
+
+	if (RunDustTimer < 0.0f)
+	{
+		CreateRunDust();
+		RunDustTimer = 0.3f;
+	}
 
 	if (true == GameEngineInput::IsDown(VK_LSHIFT, this))
 	{

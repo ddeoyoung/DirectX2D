@@ -6,15 +6,10 @@
 
 void BaseCharacter::CreateRunDust()
 {
-	if (false == IsRun)
-	{
-		return;
-	}
-
 	std::shared_ptr<RunDust> Dust = GetLevel()->CreateActor<RunDust>();
 	float4 PlayerPos = Transform.GetLocalPosition();
 	float4 DustPos = PlayerPos;
-	DustPos += float4{ 0, 0 };
+	DustPos += float4{ 0, -10 };
 
 	Dust->Transform.SetLocalPosition(DustPos);
 }
