@@ -6,12 +6,12 @@
 
 void BaseCharacter::CreateRunDust()
 {
-	std::shared_ptr<RunDust> Dust = GetLevel()->CreateActor<RunDust>();
+	RunEffect = GetLevel()->CreateActor<RunDust>();
 	float4 PlayerPos = Transform.GetLocalPosition();
 	float4 DustPos = PlayerPos;
 	DustPos += float4{ 0, -10 };
 
-	Dust->Transform.SetLocalPosition(DustPos);
+	RunEffect->Transform.SetLocalPosition(DustPos);
 }
 
 void BaseCharacter::CreateJumpDust()
@@ -21,15 +21,35 @@ void BaseCharacter::CreateJumpDust()
 		return;
 	}
 
-	std::shared_ptr<JumpDust> Dust = GetLevel()->CreateActor<JumpDust>();
+	JumpEffect = GetLevel()->CreateActor<JumpDust>();
 	float4 PlayerPos = Transform.GetLocalPosition();
 	float4 DustPos = PlayerPos;
 	DustPos += float4{ 0, -20 };
 
-	Dust->Transform.SetLocalPosition(DustPos);
+	JumpEffect->Transform.SetLocalPosition(DustPos);
 }
 
 void BaseCharacter::CreateDashDust()
 {
+	DashEffect = GetLevel()->CreateActor<DashDust>();
 
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 DustPos = PlayerPos;
+	ActorDir PlayerDir = GetPlayerDir();
+
+	switch (PlayerDir)
+	{
+	case ActorDir::Left:
+		DustPos += float4{ 20.0f, -20.0f };
+		DashEffect->Transform.SetLocalPosition(DustPos);
+		DashEffect->Transform.SetLocalScale({ -1.0f, 1.0f });
+		break;
+	case ActorDir::Right:
+		DustPos += float4{ -20.0f, -20.0f };
+		DashEffect->Transform.SetLocalPosition(DustPos);
+		DashEffect->Transform.SetLocalScale({ 1.0f, 1.0f });
+		break;
+	default:
+		break;
+	}
 }

@@ -31,7 +31,7 @@ void DashDust::Start()
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
-	MainRenderer->CreateAnimation("Dash_Dust", "Dash_Dust", false);
+	MainRenderer->CreateAnimation("Dash_Dust", "Dash_Dust", 0.07f, false);
 	MainRenderer->ChangeAnimation("Dash_Dust");
 
 	MainRenderer->AutoSpriteSizeOn();

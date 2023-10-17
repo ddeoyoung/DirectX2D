@@ -104,10 +104,6 @@ protected:
 	void PixelCheck(float _Delta);
 	GameEngineColor GetPixelColor(float4 _Pos);
 
-	float RunDustTimer = 0.0f;
-	float JumpTimer = 0.0f;
-	float ShootInterval = 0.0f;
-
 	bool IsGround = false;
 	bool IsRun = false;
 	bool IsRunShoot = false;
@@ -124,9 +120,18 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> PlayerCollision = nullptr;
 
-	float4 GravityForce = float4::ZERO;
-	float4 JumpHeight = float4::ZERO;
+	std::shared_ptr<class RunDust> RunEffect = nullptr;
+	std::shared_ptr<class JumpDust> JumpEffect = nullptr;
+	std::shared_ptr<class DashDust> DashEffect = nullptr;
 
 private:
+	int DashCount = 0;
+
+	float RunDustTimer = 0.0f;
+	float JumpTimer = 0.0f;
+	float ShootInterval = 0.0f;
+
+	float4 GravityForce = float4::ZERO;
+	float4 JumpHeight = float4::ZERO;
 };
 

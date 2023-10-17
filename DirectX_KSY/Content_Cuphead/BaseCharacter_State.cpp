@@ -291,15 +291,13 @@ void BaseCharacter::HitUpdate(float _Delta)
 void BaseCharacter::DashStart()
 {
 	ChangeAnimationState("Dash");
+
+	DashCount = 1;
 }
 
 void BaseCharacter::DashUpdate(float _Delta)
 {
-	if (true == MainRenderer->IsCurAnimationEnd())
-	{
-		ChangeState(CharacterState::Idle);
-	}
-
+	// Dash
 	float DashSpeed = 1000.0f;
 	float4 MovePos = 0.0f;
 
@@ -321,6 +319,19 @@ void BaseCharacter::DashUpdate(float _Delta)
 	}
 
 	Transform.AddLocalPosition(MovePos);
+
+	// Dash Effect
+	if (DashCount == 1)
+	{
+		CreateDashDust();
+		DashCount = 0;
+	}
+
+	// ChangeState
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(CharacterState::Idle);
+	}
 }
 
 void BaseCharacter::JumpStart()
