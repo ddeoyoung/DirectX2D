@@ -94,6 +94,9 @@
     <Filter Include="Actor\Character\Effect">
       <UniqueIdentifier>{4435ad7d-5283-4b69-a073-893bb5b7b480}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IMGUI">
+      <UniqueIdentifier>{7e56d453-1fd5-4181-9eb6-8eb9c2afdc53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -237,6 +240,9 @@
     </ClInclude>
     <ClInclude Include="Attack_Spew.h">
       <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentGUI.h">
+      <Filter>IMGUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -394,6 +400,9 @@
     </ClCompile>
     <ClCompile Include="Attack_Spew.cpp">
       <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentGUI.cpp">
+      <Filter>IMGUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

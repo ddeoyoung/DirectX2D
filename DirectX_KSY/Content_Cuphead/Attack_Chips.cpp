@@ -62,5 +62,4 @@ void Attack_Chips::SetChips(float4 _BossPos, const std::string& _ChipType)
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
 	AttackCollision->Transform.SetLocalPosition(ChipPos);
-	AttackCollision->Off();
 }

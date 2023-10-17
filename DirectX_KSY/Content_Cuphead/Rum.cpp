@@ -54,7 +54,6 @@ void Rum::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ -120, Scale.hY() + 20.0f });
-	BossCollision->Off();
 }
 
 void Rum::Update(float _Delta)
@@ -66,17 +65,53 @@ void Rum::Update(float _Delta)
 
 void Rum::ChangeState(RumState _State)
 {
+	if (State != _State)
+	{
+		switch (State)
+		{
+		case RumState::None:
+			break;
+		case RumState::Idle:
+			IdleStart();
+			break;
+		case RumState::Attack:
+			AttackStart();
+			break;
+		case RumState::Death:
+			DeathStart();
+			break;
+		default:
+			break;
+		}
+	}
 
+	State = _State;
 }
 
 void Rum::StateUpdate(float _Delta)
 {
-
+	switch (State)
+	{
+	case RumState::None:
+		break;
+	case RumState::Idle:
+		return IdleUpdate(_Delta);
+	case RumState::Attack:
+		return AttackUpdate(_Delta);
+	case RumState::Death:
+		return DeathUpdate(_Delta);
+	default:
+		break;
+	}
 }
 
 void Rum::ChangeAnimationState(const std::string& _StateName)
 {
+	std::string AnimationName = "Rum_";
+	AnimationName += _StateName;
 
+	CurState = _StateName;
+	MainRenderer->ChangeAnimation(AnimationName);
 }
 
 void Rum::IdleStart()

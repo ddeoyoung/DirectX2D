@@ -55,7 +55,6 @@ void Martini::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 200.0f });
-	BossCollision->Off();
 
 
 	ChangeState(MartiniState::Idle);
@@ -70,8 +69,6 @@ void Martini::Update(float _Delta)
 
 void Martini::ChangeState(MartiniState _State)
 {
-	int a = 0;
-
 	if (State != _State)
 	{
 		switch (_State)

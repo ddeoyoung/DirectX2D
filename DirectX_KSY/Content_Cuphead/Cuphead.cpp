@@ -90,7 +90,6 @@ void Cuphead::Start()
 	PlayerCollision->SetCollisionType(ColType::AABBBOX2D);
 	PlayerCollision->Transform.SetLocalScale({ 80, 100 });
 	PlayerCollision->Transform.SetLocalPosition({ 0, 70 });
-	PlayerCollision->Off();
 
 	ChangeState(CharacterState::Intro);
 }

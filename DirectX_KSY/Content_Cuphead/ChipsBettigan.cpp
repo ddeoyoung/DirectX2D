@@ -68,7 +68,6 @@ void ChipsBettigan::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
-	BossCollision->Off();
 }
 
 void ChipsBettigan::Update(float _Delta)

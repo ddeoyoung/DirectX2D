@@ -52,7 +52,6 @@ void Scotch::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 80.0f });
-	BossCollision->Off();
 }
 
 void Scotch::Update(float _Delta)
@@ -64,12 +63,41 @@ void Scotch::Update(float _Delta)
 
 void Scotch::ChangeState(ScotchState _State)
 {
+	if (State != _State)
+	{
+		switch (State)
+		{
+		case ScotchState::None:
+			break;
+		case ScotchState::Idle:
+			break;
+		case ScotchState::Attack:
+			break;
+		case ScotchState::Death:
+			break;
+		default:
+			break;
+		}
+	}
 
+	State = _State;
 }
 
 void Scotch::StateUpdate(float _Delta)
 {
-
+	switch (State)
+	{
+	case ScotchState::None:
+		break;
+	case ScotchState::Idle:
+		return IdleUpdate(_Delta);
+	case ScotchState::Attack:
+		return AttackUpdate(_Delta);
+	case ScotchState::Death:
+		return DeathUpdate(_Delta);
+	default:
+		break;
+	}
 }
 
 void Scotch::ChangeAnimationState(const std::string& _StateName)

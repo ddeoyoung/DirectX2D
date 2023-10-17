@@ -48,7 +48,6 @@ void Peashot::Start()
 	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::PlayerAttack);
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale({ 60, 20 });
-	AttackCollision->Off();
 
 	ChangeState(AttackState::Spark);
 }

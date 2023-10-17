@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "ContentBackground.h"
 #include "ContentActor.h"
+#include "ContentGUI.h"
 
 // Ό³Έν :
 class ContentBackground;

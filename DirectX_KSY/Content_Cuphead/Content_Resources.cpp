@@ -1,9 +1,14 @@
 #include "PreCompile.h"
 #include "ContentsCore.h"
 
+#include <GameEngineCore/GameEngineGUI.h>
+
+#include "ContentGUI.h"
+
 void ContentsCore::ContentRes()
 {
 	GameEngineRenderTarget::IsDepth = false;
+	GameEngineLevel::IsDebug = false;
 
 	// OverRay
 	{
@@ -29,4 +34,7 @@ void ContentsCore::ContentRes()
 		Mat->SetPixelShader("TextureShader_PS");
 		Mat->SetBlendState("OverRay");
 	}
+
+	// IMGUI
+	GameEngineGUI::CreateGUIWindow<ContentGUI>("ContentGUI");
 }
