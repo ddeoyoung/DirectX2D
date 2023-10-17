@@ -376,5 +376,6 @@
     <ClCompile Include="RunDust.cpp">
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="Content_Resources.cpp" />
   </ItemGroup>
 </Project>

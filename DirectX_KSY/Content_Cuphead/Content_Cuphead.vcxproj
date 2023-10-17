@@ -208,6 +208,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentsCore.cpp" />
+    <ClCompile Include="Content_Resources.cpp" />
     <ClCompile Include="Cuphead.cpp">
       <SubType>
       </SubType>
