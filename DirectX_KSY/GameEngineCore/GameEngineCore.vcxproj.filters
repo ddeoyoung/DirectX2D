@@ -140,6 +140,9 @@
     <ClCompile Include="GameEngineGUI.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineState.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -290,6 +293,9 @@
     <ClInclude Include="GameEngineGUI.h">
       <Filter>GUI</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineState.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -360,6 +366,9 @@
     </Filter>
     <Filter Include="GUI\imgui">
       <UniqueIdentifier>{52773ec3-c135-4c75-9bf7-97a89ca5efd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{68182859-35be-4e99-ab28-d1a008ada707}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
