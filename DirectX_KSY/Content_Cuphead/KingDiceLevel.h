@@ -28,5 +28,6 @@ protected:
 private:
 	std::shared_ptr<class KingDice> Boss = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
+	std::shared_ptr<class Marker> Roulette_Marker = nullptr;
 };
 

@@ -5,6 +5,7 @@
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 #include "KingDice.h"
+#include "Marker.h"
 
 
 KingDiceLevel::KingDiceLevel()
@@ -31,9 +32,12 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	LevelStartTextureLoad();
 	LevelStartTextureSet();
+
+	// Marker
+	Roulette_Marker = CreateActor<Marker>();
 	
 	// Boss
-	Boss = CreateActor<KingDice>(RenderOrder::Play);
+	Boss = CreateActor<KingDice>();
 
 	// Player
 	Player = CreateActor<Cuphead>();

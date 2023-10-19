@@ -314,15 +314,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Roulette_Cleared.cpp">
+    <ClCompile Include="HeathUp.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Roulette_HeathUp.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Roulette_Marker.cpp">
+    <ClCompile Include="Marker.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -503,15 +499,11 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PreCompile.h" />
-    <ClInclude Include="Roulette_Cleared.h">
+    <ClInclude Include="HeathUp.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Roulette_HeathUp.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Roulette_Marker.h">
+    <ClInclude Include="Marker.h">
       <SubType>
       </SubType>
     </ClInclude>

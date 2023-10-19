@@ -94,9 +94,6 @@
     <Filter Include="Actor\Character\Effect">
       <UniqueIdentifier>{4435ad7d-5283-4b69-a073-893bb5b7b480}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\5. BossStage\Object\Roulette">
-      <UniqueIdentifier>{09f55bea-578f-44a6-a9cb-4e03e4db303e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -241,14 +238,11 @@
     <ClInclude Include="ContentGUI.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Roulette_Cleared.h">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
+    <ClInclude Include="HeathUp.h">
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Roulette_Marker.h">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClInclude>
-    <ClInclude Include="Roulette_HeathUp.h">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
+    <ClInclude Include="Marker.h">
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -407,17 +401,14 @@
     <ClCompile Include="ContentGUI.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="Roulette_Cleared.cpp">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClCompile>
-    <ClCompile Include="Roulette_Marker.cpp">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClCompile>
-    <ClCompile Include="Roulette_HeathUp.cpp">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClCompile>
     <ClCompile Include="KingDiceLevel_Load.cpp">
       <Filter>Level\5. BossStage</Filter>
+    </ClCompile>
+    <ClCompile Include="HeathUp.cpp">
+      <Filter>Level\5. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Marker.cpp">
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
