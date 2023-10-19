@@ -35,7 +35,8 @@ void Cuphead_And_Mugman::Start()
 	Renderer->AutoSpriteSizeOn();
 	Renderer->SetPivotType(PivotType::Bottom);
 
-	Renderer->Transform.SetLocalPosition({ 0.0f, -400.0f });
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Renderer->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y -400.0f });
 }
 
 void Cuphead_And_Mugman::Update(float _Delta)

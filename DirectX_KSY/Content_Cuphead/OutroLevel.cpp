@@ -23,10 +23,12 @@ void OutroLevel::Update(float _Delta)
 
 void OutroLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	ContentLevel::LevelStart(_PrevLevel);
+
 	Storybook = CreateActor<StoryBook>();
 }
 
 void OutroLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-
+	ContentLevel::LevelEnd(_NextLevel);
 }

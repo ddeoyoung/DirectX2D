@@ -29,9 +29,12 @@ void TitleBackground::Start()
 	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Background);
 	Renderer->SetSprite("title_screen_background.png");
 
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Renderer->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y});
+
 	PressKeyRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::BackgroundObject);
 	PressKeyRenderer->SetSprite("PressAnyButton.png");
-	PressKeyRenderer->Transform.AddLocalPosition({ 0.0f, -200.0f });
+	PressKeyRenderer->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y -200.0f });
 }
 
 void TitleBackground::Update(float _Delta)

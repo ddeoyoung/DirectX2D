@@ -31,8 +31,10 @@ void Logo_Mdhr::Start()
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
 	Renderer->CreateAnimation("Logo", "Logo", 0.03f);
 	Renderer->ChangeAnimation("Logo");
+	Renderer->AutoSpriteSizeOn();
 
-	Renderer->Transform.SetLocalScale({1280, 720});
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Renderer->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 }
 
 void Logo_Mdhr::Update(float _Delta)

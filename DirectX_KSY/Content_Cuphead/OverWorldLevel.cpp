@@ -21,10 +21,10 @@ void OverWorldLevel::Update(float _Delta)
 
 void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-
+	ContentLevel::LevelStart(_PrevLevel);
 }
 
 void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-
+	ContentLevel::LevelEnd(_NextLevel);
 }

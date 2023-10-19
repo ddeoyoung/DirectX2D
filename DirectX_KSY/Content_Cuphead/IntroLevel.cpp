@@ -23,10 +23,12 @@ void IntroLevel::Update(float _Delta)
 
 void IntroLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	ContentLevel::LevelStart(_PrevLevel);
+
 	Storybook = CreateActor<StoryBook>();
 }
 
 void IntroLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-
+	ContentLevel::LevelEnd(_NextLevel);
 }

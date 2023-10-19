@@ -25,6 +25,9 @@ void TitleMenuBackground::Start()
 
 	Renderer = CreateComponent<GameEngineSpriteRenderer>();
 	Renderer->SetSprite("cuphead_secondary_title_screen.png");
+
+	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
+	Renderer->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y });
 }
 
 void TitleMenuBackground::Update(float _Delta)

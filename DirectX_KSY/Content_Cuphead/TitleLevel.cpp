@@ -38,6 +38,8 @@ void TitleLevel::Update(float _Delta)
 
 void TitleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
+	ContentLevel::LevelStart(_PrevLevel);
+
 	Back = CreateActor<TitleBackground>();
 	CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
 	MenuBack = CreateActor<TitleMenuBackground>();
@@ -46,5 +48,5 @@ void TitleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 void TitleLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
-	
+	ContentLevel::LevelEnd(_NextLevel);
 }

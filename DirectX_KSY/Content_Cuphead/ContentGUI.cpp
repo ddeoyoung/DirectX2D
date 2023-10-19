@@ -34,14 +34,44 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 
 	// Level Change
 	ImGui::Text("Level Change");
+	if (ImGui::Button("Logo Level"))
+	{
+		GameEngineCore::ChangeLevel("LogoLevel");
+	}
+
+	if (ImGui::Button("Title Level"))
+	{
+		GameEngineCore::ChangeLevel("TitleLevel");
+	}
+
+	if (ImGui::Button("Intro Level"))
+	{
+		GameEngineCore::ChangeLevel("IntroLevel");
+	}
+
 	if (ImGui::Button("Tutorial Level"))
 	{
 		GameEngineCore::ChangeLevel("TutorialLevel");
 	}
 
+	if (ImGui::Button("OverWorld Level"))
+	{
+		GameEngineCore::ChangeLevel("OverWorldLevel");
+	}
+
 	if (ImGui::Button("KingDice Level"))
 	{
 		GameEngineCore::ChangeLevel("KingDiceLevel");
+	}
+
+	if (ImGui::Button("TipsyTroop Level"))
+	{
+		GameEngineCore::ChangeLevel("TipsyTroopLevel");
+	}
+
+	if (ImGui::Button("ChipsBettigan Level"))
+	{
+		GameEngineCore::ChangeLevel("ChipsBettiganLevel");
 	}
 
 }
