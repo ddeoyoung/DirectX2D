@@ -18,7 +18,7 @@ void Roulette_Heart::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Heart");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Heart\\");
 
 		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_heart_01.png");
 		GameEngineSprite::CreateSingle("kd_gb_heart_01.png");
@@ -49,7 +49,7 @@ void Roulette_Heart::Start()
 	}
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundObject);
-	MainRenderer->SetSprite("kd_gb_heart_01.png");
+	//MainRenderer->SetSprite("kd_gb_heart_01.png");
 }
 
 void Roulette_Heart::Update(float _Delta)

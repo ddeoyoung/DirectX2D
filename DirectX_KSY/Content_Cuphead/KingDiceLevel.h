@@ -23,8 +23,10 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 	void LevelStartTextureLoad();
+	void LevelStartTextureSet();
 
 private:
 	std::shared_ptr<class KingDice> Boss = nullptr;
+	std::shared_ptr<class BaseCharacter> Player = nullptr;
 };
 

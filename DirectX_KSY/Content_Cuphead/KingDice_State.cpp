@@ -74,7 +74,7 @@ void KingDice::RevealStart()
 	PinkDice->Transform.SetLocalPosition({ 660.0f, -500.0f });
 	PinkDice->Off();
 
-	ShowDiceTimer = 1.0f;
+	ShowDiceTimer = 1.5f;
 
 	IsDiceOn = true;
 }
