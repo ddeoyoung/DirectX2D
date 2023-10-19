@@ -95,7 +95,7 @@ void KingDice::Start()
 	// Death
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
-	MainRenderer->SetRenderOrder(RenderOrder::Max);
+	//MainRenderer->SetRenderOrder(RenderOrder::Max);
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
@@ -103,7 +103,7 @@ void KingDice::Start()
 	// Curious Head
 	HeadRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head", 0.05f);
 	HeadRenderer->ChangeAnimation("KingDice_Curious_Head");
-	HeadRenderer->SetRenderOrder(RenderOrder::Max);
+	//HeadRenderer->SetRenderOrder(RenderOrder::Max);
 	HeadRenderer->AutoSpriteSizeOn();
 	HeadRenderer->SetPivotType(PivotType::Bottom);
 	HeadRenderer->Off();

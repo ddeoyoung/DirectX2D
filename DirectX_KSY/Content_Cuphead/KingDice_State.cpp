@@ -30,7 +30,7 @@ void KingDice::IdleStart()
 
 void KingDice::IdleUpdate(float _Delta)
 {
-	if (IdleTimer > 3.0f)
+	if (false == IsDiceOn && IdleTimer > 3.0f)
 	{
 		ChangeState(KingDiceState::Reveal);
 	}
@@ -75,6 +75,8 @@ void KingDice::RevealStart()
 	PinkDice->Off();
 
 	ShowDiceTimer = 1.0f;
+
+	IsDiceOn = true;
 }
 
 void KingDice::RevealUpdate(float _Delta)

@@ -95,5 +95,7 @@ private:
 	float IdleTimer = 0.0f;
 	float CuriousTimer = 0.0f;
 	float ShowDiceTimer = 0.0f;
+
+	bool IsDiceOn = false;
 };
 

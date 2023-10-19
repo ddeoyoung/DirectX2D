@@ -6,6 +6,7 @@
 #include "Cuphead.h"
 #include "KingDice.h"
 #include "KD_Chips.h"
+#include "Roulette_Heart.h"
 
 
 KingDiceLevel::KingDiceLevel()
@@ -30,30 +31,7 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	ContentLevel::LevelStart(_PrevLevel);
 
-	// Background
-	if (nullptr == GameEngineSprite::Find("kd_bg_painting.png"))
-	{
-		GameEngineDirectory Dir;
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Background\\kd_bg_painting.png");
-
-		// 페인팅 배경(위)
-		GameEngineTexture::Load(Dir.GetStringPath());
-		GameEngineSprite::CreateSingle("kd_bg_painting.png");
-
-		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Table");
-
-		// 테이블 배경(아래)
-		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table.png");
-		GameEngineSprite::CreateSingle("kd_bg_table.png");
-
-		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table2.png");
-		GameEngineSprite::CreateSingle("kd_bg_table2.png");
-
-		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table_pixel.bmp");
-		GameEngineSprite::CreateSingle("kd_bg_table_pixel.bmp");
-	}
+	LevelStartTextureLoad();
 
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
@@ -62,14 +40,13 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
 	CurLevelPixelBackground->PixelBackgroundInit("kd_bg_table_pixel.bmp");
 
-	// Boss
-	Boss = CreateActor<KingDice>();
-
 	// Frontground
 	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
 	Frontground->BackgroundInit("kd_bg_table2.png", { -60, -220 });
-
 	std::shared_ptr<KD_Chips> Chips = CreateActor<KD_Chips>();
+
+	// Boss
+	Boss = CreateActor<KingDice>();
 
 	// Player
 	std::shared_ptr<BaseCharacter> Player = CreateActor<Cuphead>();
