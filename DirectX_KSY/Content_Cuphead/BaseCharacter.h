@@ -110,6 +110,7 @@ protected:
 	bool IsJump = false;
 	bool IsShoot = false;
 	bool IsAim = false;
+	bool IsParry = false;
 
 	ActorDir Dir = ActorDir::None;
 	AttackDir AttDir = AttackDir::None;

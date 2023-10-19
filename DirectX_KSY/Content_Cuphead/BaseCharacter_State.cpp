@@ -339,6 +339,7 @@ void BaseCharacter::JumpStart()
 	ChangeAnimationState("Jump");
 	JumpTimer = 0.15f;
 	IsJump = true;
+	IsParry = false;
 	
 	JumpHeight.Y = 1600.0f;
 }
@@ -370,6 +371,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	if (true == GameEngineInput::IsPress(VK_LSHIFT, this))
 	{
 		ChangeState(CharacterState::Dash);
+		return;
 	}
 
 	if (JumpHeight.Y <= 0.0f && true == IsGround)
@@ -377,8 +379,18 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		IsJump = false;
 		CreateJumpDust();
 		ChangeState(CharacterState::Idle);
+		return;
 	}
 
+
+	// Parry
+	IsParry = PlayerCollision->Collision(CollisionOrder::Parry);
+
+	if (true == IsJump && true == IsParry && true == GameEngineInput::IsPress('Z', this))
+	{
+		ChangeState(CharacterState::Parry);
+		return;
+	}
 }
 
 void BaseCharacter::ParryStart()
@@ -388,7 +400,7 @@ void BaseCharacter::ParryStart()
 
 void BaseCharacter::ParryUpdate(float _Delta)
 {
-
+	PixelCheck(_Delta);
 }
 
 void BaseCharacter::IntroStart()

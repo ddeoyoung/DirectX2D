@@ -42,6 +42,16 @@ void Dice::Start()
 
 	MainRenderer->ChangeAnimation("Dice_Idle");
 	MainRenderer->AutoSpriteSizeOn();
+
+
+	// Parry Collision
+	ParryCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Parry);
+
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Dice_Idle");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+
+	ParryCollision->SetCollisionType(ColType::AABBBOX2D);
+	ParryCollision->Transform.SetLocalScale(Scale);
 }
 
 void Dice::Update(float _Delta)

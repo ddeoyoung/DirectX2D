@@ -17,4 +17,5 @@ enum class CollisionOrder
 	PlayerAttack,
 	Boss,
 	BossAttack,
+	Parry,
 };
