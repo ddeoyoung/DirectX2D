@@ -6,7 +6,6 @@
 #include "Cuphead.h"
 #include "KingDice.h"
 #include "KD_Chips.h"
-#include "Roulette_Heart.h"
 
 
 KingDiceLevel::KingDiceLevel()

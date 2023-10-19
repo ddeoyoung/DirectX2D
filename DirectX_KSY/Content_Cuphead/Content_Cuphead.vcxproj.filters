@@ -244,19 +244,10 @@
     <ClInclude Include="ContentGUI.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Roulette_Odds.h">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClInclude>
-    <ClInclude Include="Roulette_Heart.h">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClInclude>
     <ClInclude Include="Roulette_Cleared.h">
       <Filter>Level\5. BossStage\Object\Roulette</Filter>
     </ClInclude>
     <ClInclude Include="Roulette_Marker.h">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClInclude>
-    <ClInclude Include="Roulette_Spaces.h">
       <Filter>Level\5. BossStage\Object\Roulette</Filter>
     </ClInclude>
     <ClInclude Include="Roulette_HeathUp.h">
@@ -422,19 +413,10 @@
     <ClCompile Include="ContentGUI.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="Roulette_Odds.cpp">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClCompile>
-    <ClCompile Include="Roulette_Heart.cpp">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClCompile>
     <ClCompile Include="Roulette_Cleared.cpp">
       <Filter>Level\5. BossStage\Object\Roulette</Filter>
     </ClCompile>
     <ClCompile Include="Roulette_Marker.cpp">
-      <Filter>Level\5. BossStage\Object\Roulette</Filter>
-    </ClCompile>
-    <ClCompile Include="Roulette_Spaces.cpp">
       <Filter>Level\5. BossStage\Object\Roulette</Filter>
     </ClCompile>
     <ClCompile Include="Roulette_HeathUp.cpp">

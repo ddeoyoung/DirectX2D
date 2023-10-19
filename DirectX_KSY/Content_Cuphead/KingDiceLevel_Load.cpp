@@ -142,6 +142,44 @@ void KingDiceLevel::LevelStartTextureLoad()
 		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_space_start_over.png");
 		GameEngineSprite::CreateSingle("kd_gb_space_start_over.png");
 	}
+
+	// KingDice Roulette Cleared
+	if (nullptr == GameEngineSprite::Find("kd_gb_cleared_01.png"))
+	{
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Cleared\\");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_01.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_01.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_02.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_02.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_03.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_03.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_04.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_04.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_05.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_05.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_06.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_06.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_07.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_07.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_08.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_08.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_09.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_09.png");
+
+		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_cleared_start_over.png");
+		GameEngineSprite::CreateSingle("kd_gb_cleared_start_over.png");
+	}
 }
 
 void KingDiceLevel::LevelStartTextureSet()
@@ -226,4 +264,46 @@ void KingDiceLevel::LevelStartTextureSet()
 	std::shared_ptr<ContentActor> SpaceFinishComplete = CreateActor<ContentActor>();
 	SpaceFinishComplete->SpriteInit("kd_gb_space_fin_complete.png", { 1055, -295 });
 	SpaceFinishComplete->Off();
+
+
+	// KingDice Roulette Cleared
+	std::shared_ptr<ContentActor> Clear1 = CreateActor<ContentActor>();
+	Clear1->SpriteInit("kd_gb_cleared_01.png", { 300, -352 });
+	Clear1->Off();
+
+	std::shared_ptr<ContentActor> Clear2 = CreateActor<ContentActor>();
+	Clear2->SpriteInit("kd_gb_cleared_02.png", { 342, -408 });
+	Clear2->Off();
+
+	std::shared_ptr<ContentActor> Clear3 = CreateActor<ContentActor>();
+	Clear3->SpriteInit("kd_gb_cleared_03.png", { 400, -456 });
+	Clear3->Off();
+
+	std::shared_ptr<ContentActor> Clear4 = CreateActor<ContentActor>();
+	Clear4->SpriteInit("kd_gb_cleared_04.png", { 533, -517 });
+	Clear4->Off();
+
+	std::shared_ptr<ContentActor> Clear5 = CreateActor<ContentActor>();
+	Clear5->SpriteInit("kd_gb_cleared_05.png", { 607, -530 });
+	Clear5->Off();
+
+	std::shared_ptr<ContentActor> Clear6 = CreateActor<ContentActor>();
+	Clear6->SpriteInit("kd_gb_cleared_06.png", { 678, -535 });
+	Clear6->Off();
+
+	std::shared_ptr<ContentActor> Clear7 = CreateActor<ContentActor>();
+	Clear7->SpriteInit("kd_gb_cleared_07.png", { 819, -511 });
+	Clear7->Off();
+
+	std::shared_ptr<ContentActor> Clear8 = CreateActor<ContentActor>();
+	Clear8->SpriteInit("kd_gb_cleared_08.png", { 882, -487 });
+	Clear8->Off();
+
+	std::shared_ptr<ContentActor> Clear9 = CreateActor<ContentActor>();
+	Clear9->SpriteInit("kd_gb_cleared_09.png", { 940, -450 });
+	Clear9->Off();
+
+	std::shared_ptr<ContentActor> ClearStartOver = CreateActor<ContentActor>();
+	ClearStartOver->SpriteInit("kd_gb_cleared_start_over.png", { 1025, -353 });
+	ClearStartOver->Off();
 }

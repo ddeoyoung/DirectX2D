@@ -322,23 +322,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Roulette_Heart.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Roulette_HeathUp.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="Roulette_Marker.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Roulette_Odds.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Roulette_Spaces.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -527,23 +515,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Roulette_Heart.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Roulette_HeathUp.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Roulette_Marker.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Roulette_Odds.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Roulette_Spaces.h">
       <SubType>
       </SubType>
     </ClInclude>
