@@ -193,9 +193,6 @@
     <ClInclude Include="ContentBackground.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="KD_Chips.h">
-      <Filter>Level\5. BossStage\Object</Filter>
-    </ClInclude>
     <ClInclude Include="ChipsBettigan.h">
       <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>
     </ClInclude>
@@ -351,9 +348,6 @@
     </ClCompile>
     <ClCompile Include="ContentBackground.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="KD_Chips.cpp">
-      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
     <ClCompile Include="ChipsBettigan.cpp">
       <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>

@@ -1,6 +1,5 @@
 #include "PreCompile.h"
 #include "KingDiceLevel.h"
-#include "KD_Chips.h"
 
 void KingDiceLevel::LevelStartTextureLoad()
 {
@@ -28,6 +27,27 @@ void KingDiceLevel::LevelStartTextureLoad()
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table_pixel.bmp");
 		GameEngineSprite::CreateSingle("kd_bg_table_pixel.bmp");
 	}
+
+
+	// Frontground
+	if (nullptr == GameEngineSprite::Find("kd_fg_chips_right.png"))
+	{
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Frontground\\kd_fg_chips_right.png");
+
+		// Right
+		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineSprite::CreateSingle("kd_fg_chips_right.png");
+
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Frontground\\kd_fg_chips_left.png");
+
+		// Left
+		GameEngineTexture::Load(Dir.GetStringPath());
+		GameEngineSprite::CreateSingle("kd_fg_chips_left.png");
+	}
+
 
 	// KingDice Roulette Heart
 	if (nullptr == GameEngineSprite::Find("kd_gb_heart_01.png"))
@@ -64,6 +84,7 @@ void KingDiceLevel::LevelStartTextureLoad()
 		GameEngineSprite::CreateSingle("kd_gb_heart_09.png");
 	}
 
+
 	// KingDice Roulette Odds
 	if (nullptr == GameEngineSprite::Find("kd_gb_main_odds_01.png"))
 	{
@@ -98,6 +119,7 @@ void KingDiceLevel::LevelStartTextureLoad()
 		GameEngineTexture::Load(Dir.GetStringPath() + "kd_gb_main_odds_09.png");
 		GameEngineSprite::CreateSingle("kd_gb_main_odds_09.png");
 	}
+
 
 	// KingDice Roulette Spaces
 	if (nullptr == GameEngineSprite::Find("kd_gb_space_01.png"))
@@ -143,6 +165,7 @@ void KingDiceLevel::LevelStartTextureLoad()
 		GameEngineSprite::CreateSingle("kd_gb_space_start_over.png");
 	}
 
+
 	// KingDice Roulette Cleared
 	if (nullptr == GameEngineSprite::Find("kd_gb_cleared_01.png"))
 	{
@@ -182,6 +205,11 @@ void KingDiceLevel::LevelStartTextureLoad()
 	}
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////// Set ////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void KingDiceLevel::LevelStartTextureSet()
 {
 	// Background
@@ -191,10 +219,17 @@ void KingDiceLevel::LevelStartTextureSet()
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
 	CurLevelPixelBackground->PixelBackgroundInit("kd_bg_table_pixel.bmp");
 
+
 	// Frontground
 	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
 	Frontground->BackgroundInit("kd_bg_table2.png", { -60, -220 });
-	std::shared_ptr<KD_Chips> Chips = CreateActor<KD_Chips>();
+
+	std::shared_ptr<ContentActor> ChipsRight = CreateActor<ContentActor>();
+	ChipsRight->SpriteInit("kd_fg_chips_right.png", { 1200 , -690 }, RenderOrder::FrontgroundObject);
+
+	std::shared_ptr<ContentActor> ChipsLeft = CreateActor<ContentActor>();
+	ChipsLeft->SpriteInit("kd_fg_chips_left.png", { 80 , -700 }, RenderOrder::FrontgroundObject);
+
 
 	// Roulette - Heart
 	std::shared_ptr<ContentActor> Heart1 = CreateActor<ContentActor>();
