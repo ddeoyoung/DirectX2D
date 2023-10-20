@@ -41,6 +41,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void CreateOliveDevil();
+
 	std::string CurState = "";
 	MartiniState State = MartiniState::None;
 
@@ -52,5 +54,6 @@ protected:
 
 private:
 	float IdleTimer = 0.0f;
+	float AttackTimer = 0.0f;
 };
 

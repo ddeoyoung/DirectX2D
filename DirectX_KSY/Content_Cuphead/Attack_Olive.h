@@ -24,6 +24,11 @@ public:
 	Attack_Olive& operator=(const Attack_Olive& _Other) = delete;
 	Attack_Olive& operator=(Attack_Olive&& _Other) noexcept = delete;
 
+	void SetState(OliveState _State)
+	{
+		State = _State;
+	}
+
 protected:
 	void ChangeState(OliveState _State);
 	void StateUpdate(float _Delta);
@@ -52,6 +57,7 @@ protected:
 	OliveState State = OliveState::None;
 
 private:
-
+	float IdleTimer = 0.0f;
+	float AttackTimer = 0.0f;
 };
 

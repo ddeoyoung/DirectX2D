@@ -3,6 +3,7 @@
 #include "ContentBackground.h"
 #include "ContentActor.h"
 #include "ContentGUI.h"
+#include "BaseCharacter.h"
 
 // Ό³Έν :
 class ContentBackground;
@@ -48,7 +49,10 @@ public:
 		return CurLevel->GetName();
 	}
 
-
+	std::shared_ptr<BaseCharacter> GetPlayer()
+	{
+		return Player;
+	}
 
 protected:
 	void Start() override;
@@ -59,6 +63,7 @@ protected:
 
 	std::shared_ptr<ContentBackground> CurLevelBackground = nullptr;
 	std::shared_ptr<ContentBackground> CurLevelPixelBackground = nullptr;
+	std::shared_ptr<BaseCharacter> Player = nullptr;
 
 private:
 };

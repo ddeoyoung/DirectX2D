@@ -26,8 +26,17 @@ void BaseCharacter::Update(float _Delta)
 	DirCheck();
 	Gravity(_Delta);
 	LerpCamera(_Delta);
-
 	MoveCheck();
+}
+
+void BaseCharacter::LevelStart(GameEngineLevel* _PrevLevel)
+{
+	
+}
+
+void BaseCharacter::LevelEnd(GameEngineLevel* _NextLevel)
+{
+
 }
 
 void BaseCharacter::ChangeState(CharacterState _State)

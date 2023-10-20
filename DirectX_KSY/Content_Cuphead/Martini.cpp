@@ -138,6 +138,8 @@ void Martini::IdleUpdate(float _Delta)
 void Martini::AttackStart()
 {
 	ChangeAnimationState("Attack");
+
+	AttackTimer = 1.0f;
 }
 
 void Martini::AttackUpdate(float _Delta)
@@ -145,7 +147,16 @@ void Martini::AttackUpdate(float _Delta)
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		ChangeState(MartiniState::Idle);
+		return;
 	}
+
+	if (AttackTimer < 0.0f )
+	{
+		CreateOliveDevil();
+		AttackTimer = 1.0f;
+	}
+	AttackTimer -= _Delta;
+
 }
 
 void Martini::DeathStart()
@@ -156,4 +167,11 @@ void Martini::DeathStart()
 void Martini::DeathUpdate(float _Delta)
 {
 
+}
+
+void Martini::CreateOliveDevil()
+{
+	std::shared_ptr<Attack_Olive> OliveDevil = GetLevel()->CreateActor<Attack_Olive>();
+	float4 Pos = { 844.0f, -110.0f };
+	OliveDevil->Transform.SetLocalPosition(Pos);
 }
