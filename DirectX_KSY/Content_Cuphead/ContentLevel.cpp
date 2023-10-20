@@ -27,8 +27,6 @@ void ContentLevel::Update(float _Delta)
 void ContentLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	CurLevel = this;
-
-	CurLevel->Player = CreateActor<BaseCharacter>();
 }
 
 void ContentLevel::LevelEnd(GameEngineLevel* _NextLevel)
