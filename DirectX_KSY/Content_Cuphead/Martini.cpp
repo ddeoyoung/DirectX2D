@@ -122,7 +122,7 @@ void Martini::IdleStart()
 {
 	ChangeAnimationState("Idle");
 
-	IdleTimer = 3.0f;
+	IdleTimer = 5.0f;
 }
 
 void Martini::IdleUpdate(float _Delta)

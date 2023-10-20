@@ -6,6 +6,7 @@ enum class OliveState
 	None,
 	Appear,
 	Idle,
+	Move,
 	Attack,
 	Death,
 };
@@ -40,6 +41,9 @@ protected:
 	void IdleStart();
 	void IdleUpdate(float _Delta);
 
+	void MoveStart();
+	void MoveUpdate(float _Delta);
+
 	void AttackStart();
 	void AttackUpdate(float _Delta);
 
@@ -59,5 +63,9 @@ protected:
 private:
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
+
+	float MoveDur = 0.0f;
+
+	float4 PlayerPos = float4::ZERO;
 };
 

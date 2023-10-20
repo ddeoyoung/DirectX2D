@@ -1,6 +1,5 @@
 #include "PreCompile.h"
 #include "Attack_Olive.h"
-#include "BaseCharacter.h"
 #include "ContentLevel.h"
 
 Attack_Olive::Attack_Olive()
@@ -42,10 +41,10 @@ void Attack_Olive::Start()
 	MainRenderer->CreateAnimation("Olive_Idle", "Olive_Idle");
 	MainRenderer->CreateAnimation("Olive_Attack", "Olive_Attack");
 	MainRenderer->CreateAnimation("Olive_Death", "Olive_Death");
-	MainRenderer->ChangeAnimation("Olive_Appear");
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
+
+	ChangeState(OliveState::Appear);
 }
 
 void Attack_Olive::Update(float _Delta)
@@ -68,6 +67,9 @@ void Attack_Olive::ChangeState(OliveState _State)
 			break;
 		case OliveState::Idle:
 			IdleStart();
+			break;
+		case OliveState::Move:
+			MoveStart();
 			break;
 		case OliveState::Attack:
 			AttackStart();
@@ -93,6 +95,8 @@ void Attack_Olive::StateUpdate(float _Delta)
 		return AppearUpdate(_Delta);
 	case OliveState::Idle:
 		return IdleUpdate(_Delta);
+	case OliveState::Move:
+		return MoveUpdate(_Delta);
 	case OliveState::Attack:
 		return AttackUpdate(_Delta);
 	case OliveState::Death:
@@ -104,30 +108,69 @@ void Attack_Olive::StateUpdate(float _Delta)
 
 void Attack_Olive::ChangeAnimationState(const std::string& _StateName)
 {
+	std::string AnimationName = "Olive_";
+	AnimationName += _StateName;
 
+	CurState = _StateName;
+	MainRenderer->ChangeAnimation(AnimationName);
 }
 
-void Attack_Olive::AppearStart(){ }
-void Attack_Olive::AppearUpdate(float _Delta){ }
+void Attack_Olive::AppearStart()
+{
+	ChangeAnimationState("Appear");
+}
+
+void Attack_Olive::AppearUpdate(float _Delta)
+{ 
+
+}
 
 void Attack_Olive::IdleStart()
 {
 	ChangeAnimationState("Idle");
 
-	IdleTimer = 1.0f;
+	IdleTimer = 3.0f;
 }
 
 void Attack_Olive::IdleUpdate(float _Delta)
 {
 	IdleTimer -= _Delta;
 
+	if (IdleTimer < 0.0f)
+	{
+		ChangeState(OliveState::Move);
+		return;
+	}
+}
+
+// 플레이어 위치 추적
+void Attack_Olive::MoveStart()
+{
+	PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
+
+	MoveDur = 0.5f;
+}
+
+void Attack_Olive::MoveUpdate(float _Delta)
+{
 	float4 MovePos = float4::ZERO;
 	float4 OlivePos = Transform.GetWorldPosition();
-	float4 PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
 
-	MovePos = PlayerPos - OlivePos;
-	Transform.AddLocalPosition(MovePos * _Delta);
+	MoveDur -= _Delta;
+
+	if (MoveDur > 0.0f)
+	{
+		MovePos = PlayerPos - OlivePos;
+		Transform.AddLocalPosition(MovePos * _Delta);
+	}
+
+	if (MoveDur < 0.0f)
+	{
+		ChangeState(OliveState::Idle);
+		return;
+	}
 }
+
 
 void Attack_Olive::AttackStart()
 {
