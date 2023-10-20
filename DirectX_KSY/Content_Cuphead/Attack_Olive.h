@@ -68,6 +68,8 @@ private:
 
 	float MoveDur = 0.0f;
 
+	int ChangeDir = 1;
+
 	float4 PlayerPos = float4::ZERO;
 };
 

@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Rum.h"
+#include "Attack_Spew.h"
 
 Rum::Rum()
 {
@@ -36,7 +37,6 @@ void Rum::Start()
 	MainRenderer->CreateAnimation("Rum_Idle", "Rum_Idle", 0.06f);
 	MainRenderer->CreateAnimation("Rum_Attack", "Rum_Attack", 0.06f);
 	MainRenderer->CreateAnimation("Rum_Death", "Rum_Death", 0.05f);
-	MainRenderer->ChangeAnimation("Rum_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::RightBottom);
@@ -46,14 +46,15 @@ void Rum::Start()
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
-
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Rum_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
 	Scale -= { 100, 80 };
-
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ -120, Scale.hY() + 20.0f });
+
+
+	ChangeState(RumState::Idle);
 }
 
 void Rum::Update(float _Delta)
@@ -65,9 +66,9 @@ void Rum::Update(float _Delta)
 
 void Rum::ChangeState(RumState _State)
 {
-	if (State != _State)
+	if (_State != State)
 	{
-		switch (State)
+		switch (_State)
 		{
 		case RumState::None:
 			break;
@@ -116,30 +117,60 @@ void Rum::ChangeAnimationState(const std::string& _StateName)
 
 void Rum::IdleStart()
 {
+	ChangeAnimationState("Idle");
 
+	IdleTimer = 7.0f;
 }
 
 void Rum::IdleUpdate(float _Delta)
 {
+	IdleTimer -= _Delta;
 
+	if (IdleTimer < 0.0f)
+	{
+		Transform.AddLocalPosition({ 100.0f, 0.0f });
+		ChangeState(RumState::Attack);
+		return;
+	}
 }
 
 void Rum::AttackStart()
 {
-
+	ChangeAnimationState("Attack");
+	AttackTimer = 1.0f;
 }
 
 void Rum::AttackUpdate(float _Delta)
 {
+	AttackTimer -= _Delta;
+	if (AttackTimer < 0.0f)
+	{
+		CreateSpew();
+		AttackTimer = 1.0f;
+	}
+
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		Transform.AddLocalPosition({ -100.0f, 0.0f });
+		ChangeState(RumState::Idle);
+		return;
+	}
 
 }
 
 void Rum::DeathStart()
 {
-
+	ChangeAnimationState("Death");
 }
 
 void Rum::DeathUpdate(float _Delta)
 {
 
+}
+
+void Rum::CreateSpew()
+{
+	std::shared_ptr<Attack_Spew> Spew = GetLevel()->CreateActor<Attack_Spew>();
+	float4 Pos = { 620, -680 };
+	Spew->Transform.SetLocalPosition(Pos);
 }

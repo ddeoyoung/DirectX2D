@@ -102,12 +102,16 @@ void Scotch::StateUpdate(float _Delta)
 
 void Scotch::ChangeAnimationState(const std::string& _StateName)
 {
+	std::string AnimationName = "Scotch_";
+	AnimationName += _StateName;
 
+	CurState = _StateName;
+	MainRenderer->ChangeAnimation(AnimationName);
 }
 
 void Scotch::IdleStart()
 {
-
+	ChangeAnimationState("Idle");
 }
 
 void Scotch::IdleUpdate(float _Delta)
@@ -117,7 +121,7 @@ void Scotch::IdleUpdate(float _Delta)
 
 void Scotch::AttackStart()
 {
-
+	ChangeAnimationState("Attack");
 }
 
 void Scotch::AttackUpdate(float _Delta)
@@ -127,7 +131,7 @@ void Scotch::AttackUpdate(float _Delta)
 
 void Scotch::DeathStart()
 {
-
+	ChangeAnimationState("Death");
 }
 
 void Scotch::DeathUpdate(float _Delta)

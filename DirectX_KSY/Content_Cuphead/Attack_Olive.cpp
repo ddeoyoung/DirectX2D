@@ -167,11 +167,11 @@ void Attack_Olive::MoveUpdate(float _Delta)
 	float4 OlivePos = Transform.GetWorldPosition();
 
 	MoveDur -= _Delta;
+	MovePos.Y = -50.0f;
 
 	if (MoveDur > 0.0f)
 	{
-		MovePos = PlayerPos - OlivePos;
-		MovePos.Y = -100.0f;
+		MovePos.X = PlayerPos.X - OlivePos.X;
 		Transform.AddLocalPosition(MovePos * _Delta);
 	}
 

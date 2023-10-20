@@ -41,6 +41,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void CreateSpew();
+
 	std::string CurState = "";
 	RumState State = RumState::None;
 
@@ -48,6 +50,7 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-
+	float IdleTimer = 0.0f;
+	float AttackTimer = 0.0f;
 };
 
