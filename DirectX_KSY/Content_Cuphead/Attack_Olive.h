@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore\GameEngineActor.h>
 
+#define OLIVE_MOVE_SPEED 20.0f;
+
 enum class OliveState
 {
 	None,

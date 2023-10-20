@@ -122,7 +122,18 @@ void Martini::IdleStart()
 {
 	ChangeAnimationState("Idle");
 
-	IdleTimer = 5.0f;
+
+	if (false == IsOliveOn)
+	{
+		// 첫 소환
+		IdleTimer = 5.0f;
+	}
+
+	else
+	{
+		// 이후 소환
+		IdleTimer = 8.0f;
+	}
 }
 
 void Martini::IdleUpdate(float _Delta)

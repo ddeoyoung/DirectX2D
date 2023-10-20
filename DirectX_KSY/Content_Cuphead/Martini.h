@@ -55,5 +55,7 @@ protected:
 private:
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
+
+	bool IsOliveOn = false;
 };
 

@@ -42,7 +42,17 @@ void Attack_Olive::Start()
 	MainRenderer->CreateAnimation("Olive_Attack", "Olive_Attack");
 	MainRenderer->CreateAnimation("Olive_Death", "Olive_Death");
 	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->SetPivotType(PivotType::Bottom);
+
+
+	// Create Collision
+	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Olive_Idle");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 50.0f, 30.0f };
+	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
+	AttackCollision->Transform.SetLocalScale(Scale);
+
+
 
 	ChangeState(OliveState::Appear);
 }
@@ -129,7 +139,7 @@ void Attack_Olive::IdleStart()
 {
 	ChangeAnimationState("Idle");
 
-	IdleTimer = 3.0f;
+	IdleTimer = 5.0f;
 }
 
 void Attack_Olive::IdleUpdate(float _Delta)
@@ -148,7 +158,7 @@ void Attack_Olive::MoveStart()
 {
 	PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
 
-	MoveDur = 0.5f;
+	MoveDur = 1.0f;
 }
 
 void Attack_Olive::MoveUpdate(float _Delta)
@@ -161,6 +171,7 @@ void Attack_Olive::MoveUpdate(float _Delta)
 	if (MoveDur > 0.0f)
 	{
 		MovePos = PlayerPos - OlivePos;
+		MovePos.Y = -100.0f;
 		Transform.AddLocalPosition(MovePos * _Delta);
 	}
 
