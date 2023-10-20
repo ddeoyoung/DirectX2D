@@ -40,8 +40,8 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	Boss = CreateActor<KingDice>();
 
 	// Player
-	Player = CreateActor<Cuphead>();
-	Player->Transform.SetLocalPosition({ 250, -550 });
+	CurLevelPlayer = CreateActor<Cuphead>();
+	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
 }
 
 void KingDiceLevel::LevelEnd(GameEngineLevel* _NextLevel)

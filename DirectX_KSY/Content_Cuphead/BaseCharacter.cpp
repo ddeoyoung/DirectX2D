@@ -31,7 +31,7 @@ void BaseCharacter::Update(float _Delta)
 
 void BaseCharacter::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	
+
 }
 
 void BaseCharacter::LevelEnd(GameEngineLevel* _NextLevel)

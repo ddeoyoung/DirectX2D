@@ -49,6 +49,11 @@ public:
 		return CurLevel->GetName();
 	}
 
+	std::shared_ptr<BaseCharacter> GetCurLevelPlayer()
+	{
+		return CurLevelPlayer;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -58,6 +63,7 @@ protected:
 
 	std::shared_ptr<ContentBackground> CurLevelBackground = nullptr;
 	std::shared_ptr<ContentBackground> CurLevelPixelBackground = nullptr;
+	std::shared_ptr<BaseCharacter> CurLevelPlayer = nullptr;
 
 private:
 };

@@ -122,11 +122,11 @@ void Attack_Olive::IdleUpdate(float _Delta)
 	IdleTimer -= _Delta;
 
 	float4 MovePos = float4::ZERO;
-	float4 OlivePos = Transform.GetLocalPosition();
-	//float4 PlayerPos = 
+	float4 OlivePos = Transform.GetWorldPosition();
+	float4 PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
 
-	//MovePos = PlayerPos - OlivePos;
-	//Transform.AddLocalPosition(MovePos * _Delta);
+	MovePos = PlayerPos - OlivePos;
+	Transform.AddLocalPosition(MovePos * _Delta);
 }
 
 void Attack_Olive::AttackStart()

@@ -74,8 +74,8 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevelPixelBackground->PixelBackgroundInit("kingdice_alcohol_bg_Ground_Table_pixel.png");
 
 	// Player
-	Player = CreateActor<Cuphead>();
-	Player->Transform.SetLocalPosition({ 250, -550 });
+	CurLevelPlayer = CreateActor<Cuphead>();
+	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
 
 	// Frontground
 	std::shared_ptr<ContentActor> LeftPlant = CreateActor<ContentActor>();

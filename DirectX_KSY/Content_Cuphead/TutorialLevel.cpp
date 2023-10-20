@@ -53,8 +53,8 @@ void TutorialLevel::Start()
 	FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
 
 	// Player
-	Player = CreateActor<Cuphead>();
-	Player->Transform.SetLocalPosition({ 250, -550 });
+	CurLevelPlayer = CreateActor<Cuphead>();
+	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
 }
 
 void TutorialLevel::Update(float _Delta)
