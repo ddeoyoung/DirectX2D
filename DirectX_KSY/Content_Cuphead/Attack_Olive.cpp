@@ -31,7 +31,6 @@ void Attack_Olive::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-
 	MainRenderer->CreateAnimation("Olive_Appear", "Olive_Appear", false);
 	MainRenderer->SetEndEvent("Olive_Appear", [](GameEngineSpriteRenderer* _Renderer)
 		{
@@ -51,8 +50,6 @@ void Attack_Olive::Start()
 	Scale -= { 50.0f, 30.0f };
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
-
-
 
 	ChangeState(OliveState::Appear);
 }
@@ -157,7 +154,6 @@ void Attack_Olive::IdleUpdate(float _Delta)
 void Attack_Olive::MoveStart()
 {
 	PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
-
 	MoveDur = 1.0f;
 }
 

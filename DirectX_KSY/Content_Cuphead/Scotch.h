@@ -49,6 +49,8 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
+	std::shared_ptr<class Attack_Liquid> Liquid = nullptr;
+
 private:
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;

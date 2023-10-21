@@ -31,8 +31,25 @@ void Attack_Liquid::Start()
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 	MainRenderer->CreateAnimation("Scotch_Attack_Liquid", "Scotch_Attack_Liquid", 0.07f, false);
+	MainRenderer->SetFrameEvent("Scotch_Attack_Liquid", 4, [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->GetParent<Attack_Liquid>()->GetAttackCollision()->On();
+		});
+	MainRenderer->SetEndEvent("Scotch_Attack_Liquid", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+		});
 	MainRenderer->ChangeAnimation("Scotch_Attack_Liquid");
 	MainRenderer->AutoSpriteSizeOn();
+
+	// Create Collision
+	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Scotch_Attack_Liquid");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 360.0f, 100.0f };
+	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
+	AttackCollision->Transform.SetLocalScale(Scale);
+	AttackCollision->Off();
 }
 
 void Attack_Liquid::Update(float _Delta)

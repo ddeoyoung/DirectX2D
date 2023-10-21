@@ -33,16 +33,12 @@ void Rum::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-
 	MainRenderer->CreateAnimation("Rum_Idle", "Rum_Idle", 0.06f);
 	MainRenderer->CreateAnimation("Rum_Attack", "Rum_Attack", 0.06f);
 	MainRenderer->CreateAnimation("Rum_Death", "Rum_Death", 0.05f);
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::RightBottom);
-
 	Transform.SetLocalPosition({ 1100 , -700 });
-
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -118,14 +114,12 @@ void Rum::ChangeAnimationState(const std::string& _StateName)
 void Rum::IdleStart()
 {
 	ChangeAnimationState("Idle");
-
 	IdleTimer = 7.0f;
 }
 
 void Rum::IdleUpdate(float _Delta)
 {
 	IdleTimer -= _Delta;
-
 	if (IdleTimer < 0.0f)
 	{
 		Transform.AddLocalPosition({ 100.0f, 0.0f });

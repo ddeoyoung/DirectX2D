@@ -31,9 +31,22 @@ void Attack_Spew::Start()
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 	MainRenderer->CreateAnimation("Rum_Attack_Spew", "Rum_Attack_Spew", 0.07f, false);
+	MainRenderer->SetEndEvent("Rum_Attack_Spew", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+		});
 	MainRenderer->ChangeAnimation("Rum_Attack_Spew");
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::RightBottom);
+
+	// Create Collision
+	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Rum_Attack_Spew");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 100.0f, 130.0f };
+	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
+	AttackCollision->Transform.SetLocalScale(Scale);
+	AttackCollision->Transform.AddLocalPosition({ -250 , 80});
 }
 
 void Attack_Spew::Update(float _Delta)

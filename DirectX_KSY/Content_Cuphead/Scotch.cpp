@@ -33,27 +33,21 @@ void Scotch::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-
 	MainRenderer->CreateAnimation("Scotch_Idle", "Scotch_Idle", 0.07f);
 	MainRenderer->CreateAnimation("Scotch_Attack", "Scotch_Attack", 0.07f);
 	MainRenderer->CreateAnimation("Scotch_Death", "Scotch_Death", 0.05f);
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
-
 	Transform.SetLocalPosition({ 1150 , -700 });
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
-
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Scotch_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
 	Scale -= { 60.0f, 200.0f };
-
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 80.0f });
-
 
 	ChangeState(ScotchState::Idle);
 }
@@ -125,7 +119,6 @@ void Scotch::IdleStart()
 void Scotch::IdleUpdate(float _Delta)
 {
 	IdleTimer -= _Delta;
-
 	if (IdleTimer < 0.0f)
 	{
 		ChangeState(ScotchState::Attack);
@@ -167,7 +160,7 @@ void Scotch::DeathUpdate(float _Delta)
 
 void Scotch::CreateLiquid()
 {
-	std::shared_ptr<Attack_Liquid> Liquid = GetLevel()->CreateActor<Attack_Liquid>();
+	Liquid = GetLevel()->CreateActor<Attack_Liquid>();
 	float4 PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
 	float4 Pos = { PlayerPos.X , -300 };
 	Liquid->Transform.SetLocalPosition(Pos);

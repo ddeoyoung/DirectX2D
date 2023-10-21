@@ -33,25 +33,20 @@ void Martini::Start()
 
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	
 	MainRenderer->CreateAnimation("Martini_Idle", "Martini_Idle", 0.05f);
 	MainRenderer->CreateAnimation("Martini_Attack", "Martini_Attack", 0.04f);
 	MainRenderer->CreateAnimation("Martini_Death", "Martini_Death", 0.05f);
 	MainRenderer->ChangeAnimation("Martini_Idle");
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
-
 	Transform.SetLocalPosition({ 850 , -700 });
 
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
-
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Martini_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
 	Scale -= { 80, 260 };
-
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 200.0f });
@@ -122,7 +117,6 @@ void Martini::IdleStart()
 {
 	ChangeAnimationState("Idle");
 
-
 	if (false == IsOliveOn)
 	{
 		// √π º“»Ø
@@ -139,7 +133,6 @@ void Martini::IdleStart()
 void Martini::IdleUpdate(float _Delta)
 {
 	IdleTimer -= _Delta;
-
 	if (IdleTimer < 0.0f)
 	{
 		ChangeState(MartiniState::Attack);
@@ -149,7 +142,6 @@ void Martini::IdleUpdate(float _Delta)
 void Martini::AttackStart()
 {
 	ChangeAnimationState("Attack");
-
 	AttackTimer = 1.0f;
 }
 

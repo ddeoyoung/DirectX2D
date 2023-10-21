@@ -15,6 +15,11 @@ public:
 	Attack_Liquid& operator=(const Attack_Liquid& _Other) = delete;
 	Attack_Liquid& operator=(Attack_Liquid&& _Other) noexcept = delete;
 
+	std::shared_ptr<GameEngineCollision> GetAttackCollision()
+	{
+		return AttackCollision;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
