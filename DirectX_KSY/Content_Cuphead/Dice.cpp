@@ -35,10 +35,27 @@ void Dice::Start()
 	MainRenderer->CreateAnimation("Dice_Hit_One", "Dice_Hit_One");
 	MainRenderer->CreateAnimation("Dice_Hit_Two", "Dice_Hit_Two");
 	MainRenderer->CreateAnimation("Dice_Hit_Three", "Dice_Hit_Three");
-	MainRenderer->CreateAnimation("Dice_Death", "Dice_Death");
 	MainRenderer->CreateAnimation("Dice_Death_One", "Dice_Death_One");
+	MainRenderer->SetEndEvent("Dice_Death_One", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Dice_Death");
+		});
 	MainRenderer->CreateAnimation("Dice_Death_Two", "Dice_Death_Two");
+	MainRenderer->SetEndEvent("Dice_Death_Two", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Dice_Death");
+		});
 	MainRenderer->CreateAnimation("Dice_Death_Three", "Dice_Death_Three");
+	MainRenderer->SetEndEvent("Dice_Death_Three", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Dice_Death");
+		});
+	MainRenderer->CreateAnimation("Dice_Death", "Dice_Death");
+	MainRenderer->SetEndEvent("Dice_Death", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+			_Renderer->GetParent<Dice>()->Death();
+		});
 	MainRenderer->AutoSpriteSizeOn();
 
 
@@ -107,6 +124,24 @@ void Dice::ChangeAnimationState(const std::string& _StateName)
 	std::string AnimationName = "Dice_";
 	AnimationName += _StateName;
 
+	if (_StateName == "Hit" || _StateName == "Death")
+	{
+		switch (DiceCount)
+		{
+		case 1:
+			AnimationName += "_One";
+			break;
+		case 2:
+			AnimationName += "_Two";
+			break;
+		case 3:
+			AnimationName += "_Three";
+			break;
+		default:
+			break;
+		}
+	}
+
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName); 
 }
@@ -155,22 +190,8 @@ void Dice::IdleUpdate(float _Delta)
 
 void Dice::HitStart()
 {
-	switch (DiceCount)
-	{
-	case 1:
-		ChangeAnimationState("Hit_One");
-		break;
-	case 2:
-		ChangeAnimationState("Hit_Two");
-		break;
-	case 3:
-		ChangeAnimationState("Hit_Three");
-		break;
-	default:
-		break;
-	}
-
-	HitTimer = 2.0f;
+	ChangeAnimationState("Hit");
+	HitTimer = 1.5f;
 }
 
 void Dice::HitUpdate(float _Delta)

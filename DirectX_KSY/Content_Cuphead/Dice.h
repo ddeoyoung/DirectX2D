@@ -5,9 +5,6 @@ enum class DiceState
 	None,
 	Idle,
 	Hit,
-	//HitOne,
-	//HitTwo,
-	//HitThree,
 	Death,
 };
 
@@ -36,15 +33,6 @@ protected:
 
 	void HitStart();
 	void HitUpdate(float _Delta);
-
-	//void HitOneStart();
-	//void HitOneUpdate(float _Delta);
-
-	//void HitTwoStart();
-	//void HitTwoUpdate(float _Delta);
-
-	//void HitThreeStart();
-	//void HitThreeUpdate(float _Delta);
 
 	void DeathStart();
 	void DeathUpdate(float _Delta);
