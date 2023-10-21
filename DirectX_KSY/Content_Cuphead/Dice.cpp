@@ -71,14 +71,8 @@ void Dice::ChangeState(DiceState _State)
 		case DiceState::Idle:
 			IdleStart();
 			break;
-		case DiceState::HitOne:
-			HitOneStart();
-			break;
-		case DiceState::HitTwo:
-			HitTwoStart();
-			break;
-		case DiceState::HitThree:
-			HitThreeStart();
+		case DiceState::Hit:
+			HitStart();
 			break;
 		case DiceState::Death:
 			DeathStart();
@@ -99,12 +93,8 @@ void Dice::StateUpdate(float _Delta)
 		break;
 	case DiceState::Idle:
 		return IdleUpdate(_Delta);
-	case DiceState::HitOne:
-		return HitOneUpdate(_Delta);
-	case DiceState::HitTwo:
-		return HitTwoUpdate(_Delta);
-	case DiceState::HitThree:
-		return HitThreeUpdate(_Delta);
+	case DiceState::Hit:
+		return HitUpdate(_Delta);
 	case DiceState::Death:
 		return DeathUpdate(_Delta);
 	default:
@@ -125,6 +115,7 @@ void Dice::IdleStart()
 {
 	ChangeAnimationState("Idle");
 	IdleTimer = 0.0f;
+	DiceCount = 0;
 }
 
 void Dice::IdleUpdate(float _Delta)
@@ -143,54 +134,53 @@ void Dice::IdleUpdate(float _Delta)
 		// 2
 		if (IdleTimer > 0.0f && IdleTimer <= 0.4f)
 		{
-			ChangeState(DiceState::HitTwo);
-			return;
+			DiceCount = 2;
 		}
 		// 3
 		else if (IdleTimer > 0.4f && IdleTimer <= 0.8f)
 		{
-			ChangeState(DiceState::HitThree);
-			return;
+			DiceCount = 3;
 		}
 		// 1
 		else if (IdleTimer > 0.8f && IdleTimer <= 1.2f)
 		{
-			ChangeState(DiceState::HitOne);
-			return;
+			DiceCount = 1;
 		}
 
 		IsHit = false;
+		ChangeState(DiceState::Hit);
+		return;
 	}
 }
 
-void Dice::HitOneStart()
+void Dice::HitStart()
 {
-	ChangeAnimationState("Hit_One");
+	switch (DiceCount)
+	{
+	case 1:
+		ChangeAnimationState("Hit_One");
+		break;
+	case 2:
+		ChangeAnimationState("Hit_Two");
+		break;
+	case 3:
+		ChangeAnimationState("Hit_Three");
+		break;
+	default:
+		break;
+	}
+
+	HitTimer = 2.0f;
 }
 
-void Dice::HitOneUpdate(float _Delta)
+void Dice::HitUpdate(float _Delta)
 {
-
-}
-
-void Dice::HitTwoStart()
-{
-	ChangeAnimationState("Hit_Two");
-}
-
-void Dice::HitTwoUpdate(float _Delta)
-{
-
-}
-
-void Dice::HitThreeStart()
-{
-	ChangeAnimationState("Hit_Three");
-}
-
-void Dice::HitThreeUpdate(float _Delta)
-{
-
+	HitTimer -= _Delta;
+	if (HitTimer < 0.0f)
+	{
+		ChangeState(DiceState::Death);
+		return;
+	}
 }
 
 void Dice::DeathStart()
