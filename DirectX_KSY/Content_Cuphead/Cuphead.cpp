@@ -78,8 +78,8 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Hit_Air", "Cuphead_Hit_Air", 0.05f, false);
 
 	// Parry
-	MainRenderer->CreateAnimation("Cuphead_Parry", "Cuphead_Parry", 0.05f, false);
-	MainRenderer->CreateAnimation("Cuphead_Parry_Pink", "Cuphead_Parry_Pink", 0.05f, false);
+	MainRenderer->CreateAnimation("Cuphead_Parry", "Cuphead_Parry", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Parry_Pink", "Cuphead_Parry_Pink", 0.05f);
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);

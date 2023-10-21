@@ -356,33 +356,32 @@ void BaseCharacter::JumpStart()
 	JumpTimer = 0.15f;
 	IsJump = true;
 	IsParry = false;
-	JumpHeight.Y = 1600.0f;
+	JumpHeight.Y = 1200.0f;
 }
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
 	PixelCheck(_Delta);
 
-	float4 JumpPos = float4::ZERO;
-	float4 JumpGravityForce = float4::ZERO;
+	// Jump
+	float JumpForce = 1600.0f;
+	float JumpGravityForce = 3500.0f;
 
 	JumpTimer -= _Delta;
 
-	if (true == GameEngineInput::IsPress('X', this) && 0.2f >= JumpTimer)
+	if (true == GameEngineInput::IsPress('Z', this) && 0.0f < JumpTimer)
 	{
-		JumpHeight.Y += 2600.0f * _Delta;
+		JumpHeight.Y += JumpForce * _Delta;
 	}
 
-	if (true == IsJump)
+	if (JumpTimer < 0.0f)
 	{
-		if (JumpHeight.Y >= -1600.0f)
-		{
-			JumpHeight.Y += -3300.0f * _Delta;
-		}
-
-		Transform.AddLocalPosition(JumpHeight * _Delta);
+		JumpHeight.Y -= JumpGravityForce * _Delta;
 	}
+	Transform.AddLocalPosition(JumpHeight * _Delta);
 
+
+	// Change State
 	if (true == GameEngineInput::IsPress(VK_LSHIFT, this))
 	{
 		ChangeState(CharacterState::Dash);
@@ -411,11 +410,41 @@ void BaseCharacter::JumpUpdate(float _Delta)
 void BaseCharacter::ParryStart()
 {
 	ChangeAnimationState("Parry");
+	ParryTimer = 0.15f;
+	ParryHeight.Y = 2000.0f;
 }
 
 void BaseCharacter::ParryUpdate(float _Delta)
 {
 	PixelCheck(_Delta);
+
+	// Parry
+	float ParryForce = 2000.0f;
+	float ParryGravityForce = 4000.0f;
+
+	ParryTimer -= _Delta;
+
+	if (true == GameEngineInput::IsPress('Z', this) && 0.0f < ParryTimer)
+	{
+		ParryHeight.Y += ParryForce * _Delta;
+	}
+
+	if (ParryTimer < 0.0f)
+	{
+		ParryHeight.Y -= ParryGravityForce * _Delta;
+	}
+	Transform.AddLocalPosition(ParryHeight * _Delta);
+
+
+	// Change State
+	if (ParryHeight.Y <= 0.0f && true == IsGround)
+	{
+		IsParry = false;
+		IsJump = false;
+		CreateJumpDust();
+		ChangeState(CharacterState::Idle);
+		return;
+	}
 }
 
 void BaseCharacter::IntroStart()

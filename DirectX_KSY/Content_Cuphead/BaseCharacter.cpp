@@ -302,7 +302,8 @@ bool BaseCharacter::MoveCheck()
 
 void BaseCharacter::Gravity(float _Delta)
 {
-	GameEngineColor GroundColor = GetPixelColor(float4::ZERO);
+	float4 CheckPos = BOTTOMCHECKPOS;
+	GameEngineColor GroundColor = GetPixelColor(CheckPos);
 	 
 	if (GroundColor != GameEngineColor::RED)
 	{

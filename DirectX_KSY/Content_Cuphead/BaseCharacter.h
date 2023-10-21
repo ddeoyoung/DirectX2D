@@ -3,7 +3,7 @@
 
 #define LEFTCHECKPOS { -40.0f, 40.0f }
 #define RIGHTCHECKPOS { 40.0f, 40.0f }
-#define BOTTOMCHECKPOS { 0.0f, -20.0f }
+#define BOTTOMCHECKPOS { 0.0f, -2.0f }
 
 #define RUNSPEED 500.0f
 #define GRAVITYFORCE 2200.0f
@@ -133,9 +133,11 @@ private:
 
 	float RunDustTimer = 0.0f;
 	float JumpTimer = 0.0f;
+	float ParryTimer = 0.0f;
 	float ShootInterval = 0.0f;
 
 	float4 GravityForce = float4::ZERO;
 	float4 JumpHeight = float4::ZERO;
+	float4 ParryHeight = float4::ZERO;
 };
 
