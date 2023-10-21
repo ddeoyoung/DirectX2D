@@ -41,6 +41,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void CreateLiquid();
+
 	std::string CurState = "";
 	ScotchState State = ScotchState::None;
 

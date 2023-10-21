@@ -19,6 +19,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void EndCheck();
+
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 

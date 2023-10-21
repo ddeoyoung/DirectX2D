@@ -1,5 +1,7 @@
 #include "PreCompile.h"
 #include "Scotch.h"
+#include "Attack_Liquid.h"
+#include "ContentLevel.h"
 
 Scotch::Scotch()
 {
@@ -35,7 +37,6 @@ void Scotch::Start()
 	MainRenderer->CreateAnimation("Scotch_Idle", "Scotch_Idle", 0.07f);
 	MainRenderer->CreateAnimation("Scotch_Attack", "Scotch_Attack", 0.07f);
 	MainRenderer->CreateAnimation("Scotch_Death", "Scotch_Death", 0.05f);
-	MainRenderer->ChangeAnimation("Scotch_Idle");
 
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
@@ -52,6 +53,9 @@ void Scotch::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 80.0f });
+
+
+	ChangeState(ScotchState::Idle);
 }
 
 void Scotch::Update(float _Delta)
@@ -63,17 +67,20 @@ void Scotch::Update(float _Delta)
 
 void Scotch::ChangeState(ScotchState _State)
 {
-	if (State != _State)
+	if (_State != State)
 	{
-		switch (State)
+		switch (_State)
 		{
 		case ScotchState::None:
 			break;
 		case ScotchState::Idle:
+			IdleStart();
 			break;
 		case ScotchState::Attack:
+			AttackStart();
 			break;
 		case ScotchState::Death:
+			DeathStart();
 			break;
 		default:
 			break;
@@ -112,21 +119,40 @@ void Scotch::ChangeAnimationState(const std::string& _StateName)
 void Scotch::IdleStart()
 {
 	ChangeAnimationState("Idle");
+	IdleTimer = 9.0f;
 }
 
 void Scotch::IdleUpdate(float _Delta)
 {
+	IdleTimer -= _Delta;
 
+	if (IdleTimer < 0.0f)
+	{
+		ChangeState(ScotchState::Attack);
+		return;
+	}
 }
 
 void Scotch::AttackStart()
 {
 	ChangeAnimationState("Attack");
+	AttackTimer = 1.5f;
 }
 
 void Scotch::AttackUpdate(float _Delta)
 {
+	AttackTimer -= _Delta;
+	if (AttackTimer < 0.0f)
+	{
+		CreateLiquid();
+		AttackTimer = 1.5f;
+	}
 
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(ScotchState::Idle);
+		return;
+	}
 }
 
 void Scotch::DeathStart()
@@ -137,4 +163,12 @@ void Scotch::DeathStart()
 void Scotch::DeathUpdate(float _Delta)
 {
 
+}
+
+void Scotch::CreateLiquid()
+{
+	std::shared_ptr<Attack_Liquid> Liquid = GetLevel()->CreateActor<Attack_Liquid>();
+	float4 PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
+	float4 Pos = { PlayerPos.X , -300 };
+	Liquid->Transform.SetLocalPosition(Pos);
 }
