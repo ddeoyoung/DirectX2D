@@ -1,5 +1,16 @@
 #pragma once
 
+enum class DiceState
+{
+	None,
+	Idle,
+	HitOne,
+	HitTwo,
+	HitThree,
+	Death,
+};
+
+
 // Ό³Έν :
 class Dice : public ContentActor
 {
@@ -15,14 +26,38 @@ public:
 	Dice& operator=(Dice&& _Other) noexcept = delete;
 
 protected:
+	void ChangeState(DiceState _State);
+	void StateUpdate(float _Delta);
+	void ChangeAnimationState(const std::string& _StateName);
+
+	void IdleStart();
+	void IdleUpdate(float _Delta);
+
+	void HitOneStart();
+	void HitOneUpdate(float _Delta);
+
+	void HitTwoStart();
+	void HitTwoUpdate(float _Delta);
+
+	void HitThreeStart();
+	void HitThreeUpdate(float _Delta);
+
+	void DeathStart();
+	void DeathUpdate(float _Delta);
+
+protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
-
 	std::shared_ptr<class GameEngineCollision> ParryCollision = nullptr;
 
-private:
+	std::string CurState = "";
+	DiceState State = DiceState::None;
 
+private:
+	float IdleTimer = 0.0f;
+
+	bool IsHit = false;
 };
 

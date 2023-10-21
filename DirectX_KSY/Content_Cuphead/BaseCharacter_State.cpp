@@ -398,7 +398,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 
 
 	// Parry
-	IsParry = PlayerCollision->Collision(CollisionOrder::Parry);
+	IsParry = PlayerCollision->Collision(CollisionOrder::ParryObject);
 
 	if (true == IsJump && true == IsParry && true == GameEngineInput::IsPress('Z', this))
 	{
