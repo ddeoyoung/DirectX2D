@@ -23,6 +23,9 @@ public:
 	Dice& operator=(const Dice& _Other) = delete;
 	Dice& operator=(Dice&& _Other) noexcept = delete;
 
+	static int DiceCount;
+	static bool IsHit;
+
 protected:
 	void ChangeState(DiceState _State);
 	void StateUpdate(float _Delta);
@@ -47,10 +50,11 @@ protected:
 	std::string CurState = "";
 	DiceState State = DiceState::None;
 
+
 private:
 	float IdleTimer = 0.0f;
 	float HitTimer = 0.0f;
-	int DiceCount = 0;
-	bool IsHit = false;
+	//bool IsHit = false;
+	//int DiceCount = 0;
 };
 

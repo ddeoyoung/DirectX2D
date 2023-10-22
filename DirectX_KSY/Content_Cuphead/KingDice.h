@@ -50,6 +50,11 @@ public:
 		return HeadRenderer;
 	}
 
+	std::shared_ptr<class Dice> GetPinkDice()
+	{
+		return PinkDice;
+	}
+
 protected:
 	void ChangeState(KingDiceState _State);
 	void StateUpdate(float _Delta);

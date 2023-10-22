@@ -9,6 +9,9 @@ Dice::~Dice()
 {
 }
 
+int Dice::DiceCount = 0;
+bool Dice::IsHit = false;
+
 void Dice::Start()
 {
 	ContentActor::Start();
@@ -151,6 +154,7 @@ void Dice::IdleStart()
 	ChangeAnimationState("Idle");
 	IdleTimer = 0.0f;
 	DiceCount = 0;
+	IsHit = false;
 }
 
 void Dice::IdleUpdate(float _Delta)
@@ -182,7 +186,6 @@ void Dice::IdleUpdate(float _Delta)
 			DiceCount = 1;
 		}
 
-		IsHit = false;
 		ChangeState(DiceState::Hit);
 		return;
 	}
