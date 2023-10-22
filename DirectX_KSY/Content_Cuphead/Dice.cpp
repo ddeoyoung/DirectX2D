@@ -168,22 +168,21 @@ void Dice::IdleUpdate(float _Delta)
 	// Player Parry
 	IsHit = ParryCollision->Collision(CollisionOrder::Player);
 
-	if (true == IsHit && true == GameEngineInput::IsPress('Z', this))
+	if (true == IsHit && true == GameEngineInput::IsDown('Z', this))
 	{
-		// 2
-		if (IdleTimer > 0.0f && IdleTimer <= 0.4f)
+		if (IdleTimer < 0.2f || IdleTimer > 1.0f)
+		{
+			DiceCount = 1;
+		}
+
+		else if (IdleTimer > 0.2f && IdleTimer < 0.6f)
 		{
 			DiceCount = 2;
 		}
-		// 3
-		else if (IdleTimer > 0.4f && IdleTimer <= 0.8f)
+
+		else if (IdleTimer > 0.6f && IdleTimer < 1.0f)
 		{
 			DiceCount = 3;
-		}
-		// 1
-		else if (IdleTimer > 0.8f && IdleTimer <= 1.2f)
-		{
-			DiceCount = 1;
 		}
 
 		ParryCollision->Death();
