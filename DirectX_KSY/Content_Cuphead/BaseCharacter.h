@@ -6,7 +6,7 @@
 #define BOTTOMCHECKPOS { 0.0f, -2.0f }
 
 #define RUNSPEED 500.0f
-#define GRAVITYFORCE 2200.0f
+#define GRAVITYFORCE 2000.0f
 
 #define SHOOT_INTERVAL 0.2f
 
@@ -105,6 +105,7 @@ protected:
 	void Gravity(float _Delta);
 	void LerpCamera(float _Delta);
 	void PixelCheck(float _Delta);
+	void GroundCheck(float _Delta);
 	GameEngineColor GetPixelColor(float4 _Pos);
 
 	bool IsGround = false;
@@ -132,12 +133,9 @@ private:
 	int DashCount = 0;
 
 	float RunDustTimer = 0.0f;
-	float JumpTimer = 0.0f;
-	float ParryTimer = 0.0f;
 	float ShootInterval = 0.0f;
 
 	float4 GravityForce = float4::ZERO;
-	float4 JumpHeight = float4::ZERO;
-	float4 ParryHeight = float4::ZERO;
+	float4 JumpPower = float4::ZERO;
 };
 

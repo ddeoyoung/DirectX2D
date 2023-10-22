@@ -32,6 +32,8 @@ protected:
 	void SpinStart();
 	void SpinUpdate(float _Delta);
 
+	void SetPosAndRotation();
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

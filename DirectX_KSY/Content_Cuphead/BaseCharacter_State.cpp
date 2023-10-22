@@ -353,42 +353,23 @@ void BaseCharacter::DashUpdate(float _Delta)
 void BaseCharacter::JumpStart()
 {
 	ChangeAnimationState("Jump");
-	JumpTimer = 0.15f;
 	IsJump = true;
 	IsParry = false;
-	JumpHeight.Y = 1200.0f;
+	JumpPower.Y = 2000.0f;
 }
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
+	JumpPower.Y -= GravityForce.Y * _Delta;
+	Transform.AddLocalPosition(JumpPower * _Delta);
+
+	Gravity(_Delta);
 	PixelCheck(_Delta);
-
-	// Jump
-	float JumpForce = 1600.0f;
-	float JumpGravityForce = 3500.0f;
-
-	JumpTimer -= _Delta;
-
-	if (true == GameEngineInput::IsPress('Z', this) && 0.0f < JumpTimer)
-	{
-		JumpHeight.Y += JumpForce * _Delta;
-	}
-
-	if (JumpTimer < 0.0f)
-	{
-		JumpHeight.Y -= JumpGravityForce * _Delta;
-	}
-	Transform.AddLocalPosition(JumpHeight * _Delta);
+	GroundCheck(_Delta);
 
 
 	// Change State
-	if (true == GameEngineInput::IsPress(VK_LSHIFT, this))
-	{
-		ChangeState(CharacterState::Dash);
-		return;
-	}
-
-	if (JumpHeight.Y <= 0.0f && true == IsGround)
+	if (true == IsGround)
 	{
 		IsJump = false;
 		CreateJumpDust();
@@ -396,10 +377,13 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		return;
 	}
 
+	if (true == GameEngineInput::IsDown(VK_LSHIFT, this))
+	{
+		ChangeState(CharacterState::Dash);
+		return;
+	}
 
-	// Parry
 	IsParry = PlayerCollision->Collision(CollisionOrder::ParryObject);
-
 	if (true == IsJump && true == IsParry && true == GameEngineInput::IsPress('Z', this))
 	{
 		ChangeState(CharacterState::Parry);
@@ -410,37 +394,22 @@ void BaseCharacter::JumpUpdate(float _Delta)
 void BaseCharacter::ParryStart()
 {
 	ChangeAnimationState("Parry");
-	ParryTimer = 0.15f;
-	ParryHeight.Y = 2000.0f;
+	JumpPower.Y = 5000.0f;
 }
 
 void BaseCharacter::ParryUpdate(float _Delta)
 {
+	JumpPower.Y -= GravityForce.Y * _Delta;
+	Transform.AddLocalPosition(JumpPower * _Delta);
+
+	Gravity(_Delta);
 	PixelCheck(_Delta);
+	GroundCheck(_Delta);
 
-	// Parry
-	float ParryForce = 2000.0f;
-	float ParryGravityForce = 4000.0f;
-
-	ParryTimer -= _Delta;
-
-	if (true == GameEngineInput::IsPress('Z', this) && 0.0f < ParryTimer)
+	if (true == IsGround)
 	{
-		ParryHeight.Y += ParryForce * _Delta;
-	}
-
-	if (ParryTimer < 0.0f)
-	{
-		ParryHeight.Y -= ParryGravityForce * _Delta;
-	}
-	Transform.AddLocalPosition(ParryHeight * _Delta);
-
-
-	// Change State
-	if (ParryHeight.Y <= 0.0f && true == IsGround)
-	{
-		IsParry = false;
 		IsJump = false;
+		IsParry = false;
 		CreateJumpDust();
 		ChangeState(CharacterState::Idle);
 		return;

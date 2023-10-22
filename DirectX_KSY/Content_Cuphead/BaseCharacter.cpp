@@ -307,14 +307,12 @@ void BaseCharacter::Gravity(float _Delta)
 	 
 	if (GroundColor != GameEngineColor::RED)
 	{
-		IsGround = false;
 		GravityForce.Y -= _Delta * GRAVITYFORCE;
 		Transform.AddLocalPosition(GravityForce * _Delta);
 	}
 
 	else
 	{
-		IsGround = true;
 		GravityForce = 0.0f;
 	}
 }
@@ -373,5 +371,21 @@ void BaseCharacter::PixelCheck(float _Delta)
 	if (GameEngineColor::RED != Color)
 	{
 		Transform.AddLocalPosition(MovePos);
+	}
+}
+
+void BaseCharacter::GroundCheck(float _Delta)
+{
+	float4 CheckPos = BOTTOMCHECKPOS;
+	GameEngineColor GroundColor = GetPixelColor(CheckPos);
+
+	if (GroundColor != GameEngineColor::RED)
+	{
+		IsGround = false;
+	}
+
+	else
+	{
+		IsGround = true;
 	}
 }

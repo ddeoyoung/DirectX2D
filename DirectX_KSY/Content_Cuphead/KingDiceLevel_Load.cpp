@@ -221,8 +221,8 @@ void KingDiceLevel::LevelStartTextureSet()
 
 
 	// Frontground
-	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
-	Frontground->BackgroundInit("kd_bg_table2.png", { -60, -220 });
+	//std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
+	//Frontground->BackgroundInit("kd_bg_table2.png", { -60, -220 });
 
 	std::shared_ptr<ContentActor> ChipsRight = CreateActor<ContentActor>();
 	ChipsRight->SpriteInit("kd_fg_chips_right.png", { 1200 , -690 }, RenderOrder::FrontgroundObject);

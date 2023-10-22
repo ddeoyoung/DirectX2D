@@ -78,7 +78,7 @@ void ContentBackground::PixelBackgroundInit(std::string_view _SpriteName)
 	Scale.Y *= -1.0f;
 	Renderer->Transform.SetLocalPosition(Scale);
 
-	Renderer->Off();
+	//Renderer->Off();
 }
 
 GameEngineColor ContentBackground::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
