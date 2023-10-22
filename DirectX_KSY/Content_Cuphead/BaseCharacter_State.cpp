@@ -132,7 +132,7 @@ void BaseCharacter::ShootStart()
 
 void BaseCharacter::ShootUpdate(float _Delta)
 {
-	IsRunShoot = MoveCheck();
+	IsRunShoot = AimCheck();
 
 	if (true == GameEngineInput::IsUp('X', this) || true == GameEngineInput::IsFree('X', this))
 	{
@@ -170,7 +170,7 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 {
 	PixelCheck(_Delta);
 
-	IsRunShoot = MoveCheck();
+	IsRunShoot = AimCheck();
 
 	// Run
 	float RunSpeed = RUNSPEED;
@@ -384,7 +384,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	}
 
 	IsParry = PlayerCollision->Collision(CollisionOrder::ParryObject);
-	if (true == IsJump && true == IsParry && true == GameEngineInput::IsPress('Z', this))
+	if (true == IsParry && true == GameEngineInput::IsDown('Z', this))
 	{
 		ChangeState(CharacterState::Parry);
 		return;

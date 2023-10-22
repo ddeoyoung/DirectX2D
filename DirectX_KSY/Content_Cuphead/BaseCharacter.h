@@ -96,7 +96,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 	void DirCheck();
-	bool MoveCheck();
+	bool AimCheck();
 
 	void CreateRunDust();
 	void CreateJumpDust();

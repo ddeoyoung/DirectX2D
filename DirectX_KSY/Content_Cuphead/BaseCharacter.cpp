@@ -26,7 +26,7 @@ void BaseCharacter::Update(float _Delta)
 	DirCheck();
 	Gravity(_Delta);
 	LerpCamera(_Delta);
-	MoveCheck();
+	AimCheck();
 }
 
 void BaseCharacter::LevelStart(GameEngineLevel* _PrevLevel)
@@ -277,7 +277,7 @@ void BaseCharacter::DirCheck()
 	}
 }
 
-bool BaseCharacter::MoveCheck()
+bool BaseCharacter::AimCheck()
 {
 	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
 		|| (true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this)))

@@ -186,6 +186,7 @@ void Dice::IdleUpdate(float _Delta)
 			DiceCount = 1;
 		}
 
+		ParryCollision->Death();
 		ChangeState(DiceState::Hit);
 		return;
 	}
