@@ -3,6 +3,7 @@
 #include "JumpDust.h"
 #include "DashDust.h"
 #include "RunDust.h"
+#include "ParrySpark_Character.h"
 
 void BaseCharacter::CreateRunDust()
 {
@@ -52,4 +53,12 @@ void BaseCharacter::CreateDashDust()
 	default:
 		break;
 	}
+}
+
+void BaseCharacter::CreateParrySpark()
+{
+	ParryEffect = GetLevel()->CreateActor<ParrySpark_Character>();
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 Pos = PlayerPos;
+	ParryEffect->Transform.SetLocalPosition(Pos);
 }

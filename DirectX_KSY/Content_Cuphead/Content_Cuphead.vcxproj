@@ -292,6 +292,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ParrySpark_Character.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ParrySpark_Object.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Peashot.cpp">
       <SubType>
       </SubType>
@@ -479,6 +487,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="OverWorldLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ParrySpark_Character.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ParrySpark_Object.h">
       <SubType>
       </SubType>
     </ClInclude>

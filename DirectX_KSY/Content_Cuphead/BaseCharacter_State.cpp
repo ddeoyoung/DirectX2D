@@ -386,6 +386,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	IsParry = PlayerCollision->Collision(CollisionOrder::ParryObject);
 	if (true == IsParry && true == GameEngineInput::IsDown('Z', this))
 	{
+		CreateParrySpark();
 		ChangeState(CharacterState::Parry);
 		return;
 	}

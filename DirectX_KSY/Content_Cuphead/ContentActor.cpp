@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "ContentActor.h"
+#include "ParrySpark_Object.h"
 
 ContentActor::ContentActor()
 {
@@ -37,4 +38,12 @@ void ContentActor::AnimationInit()
 	{
 		StaticRenderer = CreateComponent<GameEngineSpriteRenderer>();
 	}
+}
+
+void ContentActor::CreateParrySpark()
+{
+	ParryEffect = GetLevel()->CreateActor<ParrySpark_Object>();
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 Pos = PlayerPos;
+	ParryEffect->Transform.SetLocalPosition(Pos);
 }

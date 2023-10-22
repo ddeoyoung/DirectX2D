@@ -30,8 +30,10 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void CreateParrySpark();
+
 private:
 	std::shared_ptr<GameEngineSpriteRenderer> StaticRenderer = nullptr;
-
+	std::shared_ptr<class ParrySpark_Object> ParryEffect = nullptr;
 };
 

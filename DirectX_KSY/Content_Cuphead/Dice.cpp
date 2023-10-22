@@ -19,6 +19,7 @@ void Dice::Start()
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("Dice_Idle"))
 	{
+		// Dice
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\AttackObject\\KingDice_Dice");
@@ -60,7 +61,7 @@ void Dice::Start()
 			_Renderer->GetParent<Dice>()->Death();
 		});
 	MainRenderer->AutoSpriteSizeOn();
-
+	MainRenderer->SetOrder(RenderOrder::Play);
 
 	// Create Parry Collision
 	ParryCollision = CreateComponent<GameEngineCollision>(CollisionOrder::ParryObject);
@@ -186,6 +187,7 @@ void Dice::IdleUpdate(float _Delta)
 		}
 
 		ParryCollision->Death();
+		CreateParrySpark();
 		ChangeState(DiceState::Hit);
 		return;
 	}

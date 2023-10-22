@@ -244,6 +244,12 @@
     <ClInclude Include="Marker.h">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
+    <ClInclude Include="ParrySpark_Character.h">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="ParrySpark_Object.h">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -409,6 +415,12 @@
     </ClCompile>
     <ClCompile Include="Marker.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ParrySpark_Character.cpp">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="ParrySpark_Object.cpp">
+      <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

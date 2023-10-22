@@ -101,6 +101,7 @@ protected:
 	void CreateRunDust();
 	void CreateJumpDust();
 	void CreateDashDust();
+	void CreateParrySpark();
 
 	void Gravity(float _Delta);
 	void LerpCamera(float _Delta);
@@ -128,6 +129,7 @@ protected:
 	std::shared_ptr<class RunDust> RunEffect = nullptr;
 	std::shared_ptr<class JumpDust> JumpEffect = nullptr;
 	std::shared_ptr<class DashDust> DashEffect = nullptr;
+	std::shared_ptr<class ParrySpark_Character> ParryEffect = nullptr;
 
 private:
 	int DashCount = 0;

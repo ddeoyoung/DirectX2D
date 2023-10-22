@@ -54,7 +54,5 @@ protected:
 private:
 	float IdleTimer = 0.0f;
 	float HitTimer = 0.0f;
-	//bool IsHit = false;
-	//int DiceCount = 0;
 };
 
