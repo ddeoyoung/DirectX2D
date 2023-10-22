@@ -395,24 +395,38 @@ void BaseCharacter::ParryStart()
 {
 	ChangeAnimationState("Parry");
 	JumpPower.Y = 5000.0f;
+
+	PauseTimer = 0.2f;
+	UnScaleDeltaTime = GameEngineCore::MainTime.GetUnScaleDeltaTime();
 }
 
 void BaseCharacter::ParryUpdate(float _Delta)
 {
-	JumpPower.Y -= GravityForce.Y * _Delta;
-	Transform.AddLocalPosition(JumpPower * _Delta);
-
-	Gravity(_Delta);
-	PixelCheck(_Delta);
-	GroundCheck(_Delta);
-
-	if (true == IsGround)
+	PauseTimer -= UnScaleDeltaTime;
+	if (PauseTimer > 0.0f)
 	{
-		IsJump = false;
-		IsParry = false;
-		CreateJumpDust();
-		ChangeState(CharacterState::Idle);
-		return;
+		GameEngineCore::MainTime.SetGlobalTimeScale(0);
+	}
+
+	else if (PauseTimer < 0.0f)
+	{
+		GameEngineCore::MainTime.SetGlobalTimeScale(1);
+
+		JumpPower.Y -= GravityForce.Y * _Delta;
+		Transform.AddLocalPosition(JumpPower * _Delta);
+
+		Gravity(_Delta);
+		PixelCheck(_Delta);
+		GroundCheck(_Delta);
+
+		if (true == IsGround)
+		{
+			IsJump = false;
+			IsParry = false;
+			CreateJumpDust();
+			ChangeState(CharacterState::Idle);
+			return;
+		}
 	}
 }
 

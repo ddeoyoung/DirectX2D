@@ -131,9 +131,10 @@ protected:
 
 private:
 	int DashCount = 0;
-
 	float RunDustTimer = 0.0f;
 	float ShootInterval = 0.0f;
+	float UnScaleDeltaTime = 0.0f;
+	float PauseTimer = 0.0f;
 
 	float4 GravityForce = float4::ZERO;
 	float4 JumpPower = float4::ZERO;
