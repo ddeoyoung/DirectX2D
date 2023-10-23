@@ -95,18 +95,19 @@ protected:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
-	void DirCheck();
-	bool AimCheck();
-
 	void CreateRunDust();
 	void CreateJumpDust();
 	void CreateDashDust();
 	void CreateParrySpark();
+	void CreateHitEffect();
 
+	void DirCheck();
+	bool AimCheck();
+	void GroundCheck();
+	bool Collisioncheck();
 	void Gravity(float _Delta);
 	void LerpCamera(float _Delta);
 	void PixelCheck(float _Delta);
-	void GroundCheck(float _Delta);
 	GameEngineColor GetPixelColor(float4 _Pos);
 
 	bool IsGround = false;
@@ -116,6 +117,7 @@ protected:
 	bool IsShoot = false;
 	bool IsAim = false;
 	bool IsParry = false;
+	bool IsHit = false;
 
 	ActorDir Dir = ActorDir::None;
 	AttackDir AttDir = AttackDir::None;
@@ -130,6 +132,7 @@ protected:
 	std::shared_ptr<class JumpDust> JumpEffect = nullptr;
 	std::shared_ptr<class DashDust> DashEffect = nullptr;
 	std::shared_ptr<class ParrySpark_Character> ParryEffect = nullptr;
+	std::shared_ptr<class HitFX> HitEffect = nullptr;
 
 private:
 	int DashCount = 0;

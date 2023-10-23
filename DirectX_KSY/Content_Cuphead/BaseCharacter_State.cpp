@@ -44,6 +44,12 @@ void BaseCharacter::IdleUpdate(float _Delta)
 		ChangeState(CharacterState::Aim);
 		return;
 	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
+	}
 }
 
 
@@ -94,6 +100,12 @@ void BaseCharacter::RunUpdate(float _Delta)
 		ChangeState(CharacterState::Idle);
 		return;
 	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
+	}
 }
 
 void BaseCharacter::AimStart()
@@ -115,6 +127,12 @@ void BaseCharacter::AimUpdate(float _Delta)
 	{
 		IsAim = true;
 		ChangeState(CharacterState::Shoot);
+		return;
+	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
 		return;
 	}
 }
@@ -157,6 +175,11 @@ void BaseCharacter::ShootUpdate(float _Delta)
 		return;
 	}
 
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
+	}
 }
 
 void BaseCharacter::RunShootStart()
@@ -220,6 +243,11 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 		return;
 	}
 
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
+	}
 }
 
 void BaseCharacter::DuckStart()
@@ -253,6 +281,12 @@ void BaseCharacter::DuckUpdate(float _Delta)
 		ChangeState(CharacterState::DuckShoot);
 		return;
 	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
+	}
 }
 
 void BaseCharacter::DuckIdleStart()
@@ -265,6 +299,12 @@ void BaseCharacter::DuckIdleUpdate(float _Delta)
 	if (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this))
 	{
 		ChangeState(CharacterState::Idle);
+		return;
+	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
 		return;
 	}
 }
@@ -281,6 +321,12 @@ void BaseCharacter::DuckShootUpdate(float _Delta)
 		ChangeState(CharacterState::Idle);
 		return;
 	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
+	}
 }
 
 void BaseCharacter::FallStart()
@@ -290,17 +336,22 @@ void BaseCharacter::FallStart()
 
 void BaseCharacter::FallUpdate(float _Delta)
 {
-	
+
 }
 
 void BaseCharacter::HitStart()
 {
 	ChangeAnimationState("Hit");
+	CreateHitEffect();
 }
 
 void BaseCharacter::HitUpdate(float _Delta)
 {
-
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(CharacterState::Idle);
+		return;
+	}
 }
 
 void BaseCharacter::DashStart()
@@ -365,7 +416,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 
 	Gravity(_Delta);
 	PixelCheck(_Delta);
-	GroundCheck(_Delta);
+	GroundCheck();
 
 
 	// Change State
@@ -388,6 +439,12 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	{
 		CreateParrySpark();
 		ChangeState(CharacterState::Parry);
+		return;
+	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
 		return;
 	}
 }
@@ -418,7 +475,7 @@ void BaseCharacter::ParryUpdate(float _Delta)
 
 		Gravity(_Delta);
 		PixelCheck(_Delta);
-		GroundCheck(_Delta);
+		GroundCheck();
 
 		if (true == IsGround)
 		{
@@ -428,6 +485,12 @@ void BaseCharacter::ParryUpdate(float _Delta)
 			ChangeState(CharacterState::Idle);
 			return;
 		}
+	}
+
+	if (true == Collisioncheck())
+	{
+		ChangeState(CharacterState::Hit);
+		return;
 	}
 }
 

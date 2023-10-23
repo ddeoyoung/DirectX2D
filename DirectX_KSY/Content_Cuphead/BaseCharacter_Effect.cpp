@@ -4,6 +4,7 @@
 #include "DashDust.h"
 #include "RunDust.h"
 #include "ParrySpark_Character.h"
+#include "HitFX.h"
 
 void BaseCharacter::CreateRunDust()
 {
@@ -61,4 +62,12 @@ void BaseCharacter::CreateParrySpark()
 	float4 PlayerPos = Transform.GetLocalPosition();
 	float4 Pos = PlayerPos;
 	ParryEffect->Transform.SetLocalPosition(Pos);
+}
+
+void BaseCharacter::CreateHitEffect()
+{
+	HitEffect = GetLevel()->CreateActor<HitFX>();
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 Pos = PlayerPos;
+	HitEffect->Transform.SetLocalPosition(Pos);
 }

@@ -250,6 +250,9 @@
     <ClInclude Include="ParrySpark_Object.h">
       <Filter>Actor\Character\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="HitFX.h">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -420,6 +423,9 @@
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
     <ClCompile Include="ParrySpark_Object.cpp">
+      <Filter>Actor\Character\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="HitFX.cpp">
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
   </ItemGroup>

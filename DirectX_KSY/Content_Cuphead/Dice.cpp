@@ -187,7 +187,7 @@ void Dice::IdleUpdate(float _Delta)
 		}
 
 		ParryCollision->Death();
-		CreateParrySpark();
+		//CreateParrySpark();
 		ChangeState(DiceState::Hit);
 		return;
 	}

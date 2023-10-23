@@ -34,7 +34,7 @@ void Marker::Start()
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 	MainRenderer->CreateAnimation("Marker_Idle", "Marker_Idle");
-	MainRenderer->CreateAnimation("Marker_Spin", "Marker_Spin");
+	MainRenderer->CreateAnimation("Marker_Spin", "Marker_Spin", 0.05f);
 	MainRenderer->AutoSpriteSizeOn();
 
 	Transform.SetLocalPosition({ 220, -300 });

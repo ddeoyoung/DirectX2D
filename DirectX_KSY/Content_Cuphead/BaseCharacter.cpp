@@ -374,7 +374,7 @@ void BaseCharacter::PixelCheck(float _Delta)
 	}
 }
 
-void BaseCharacter::GroundCheck(float _Delta)
+void BaseCharacter::GroundCheck()
 {
 	float4 CheckPos = BOTTOMCHECKPOS;
 	GameEngineColor GroundColor = GetPixelColor(CheckPos);
@@ -388,4 +388,15 @@ void BaseCharacter::GroundCheck(float _Delta)
 	{
 		IsGround = true;
 	}
+}
+
+bool BaseCharacter::Collisioncheck()
+{
+	if (true == PlayerCollision->Collision(CollisionOrder::Boss)
+		|| true == PlayerCollision->Collision(CollisionOrder::BossAttack))
+	{
+		return true;
+	}
+
+	return false;
 }
