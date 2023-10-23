@@ -9,6 +9,7 @@
 #include "TipsyTroopLevel.h"
 #include "ChipsBettiganLevel.h"
 #include "OutroLevel.h"
+#include "LoadingLevel.h"
 
 
 ContentsCore::ContentsCore()
@@ -32,6 +33,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<TipsyTroopLevel>("TipsyTroopLevel");
 	GameEngineCore::CreateLevel<ChipsBettiganLevel>("ChipsBettiganLevel");
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
+	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
 	GameEngineCore::ChangeLevel("KingDiceLevel");
 }

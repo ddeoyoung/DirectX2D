@@ -94,6 +94,12 @@
     <Filter Include="Actor\Character\Effect">
       <UniqueIdentifier>{4435ad7d-5283-4b69-a073-893bb5b7b480}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\6. Loading">
+      <UniqueIdentifier>{ed79b041-cc3e-4d84-a1de-856582c0e989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\6. Loading\Object">
+      <UniqueIdentifier>{d56f88d5-4ad1-40fe-b30b-ec8d68927956}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -252,6 +258,12 @@
     </ClInclude>
     <ClInclude Include="HitFX.h">
       <Filter>Actor\Character\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingLevel.h">
+      <Filter>Level\6. Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="Hourglass.h">
+      <Filter>Level\6. Loading\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +439,12 @@
     </ClCompile>
     <ClCompile Include="HitFX.cpp">
       <Filter>Actor\Character\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingLevel.cpp">
+      <Filter>Level\6. Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="Hourglass.cpp">
+      <Filter>Level\6. Loading\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
