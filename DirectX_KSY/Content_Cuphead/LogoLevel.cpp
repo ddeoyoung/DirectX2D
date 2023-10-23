@@ -22,7 +22,7 @@ void LogoLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
 
-	if (true == Logo->Renderer->IsCurAnimationEnd())
+	if (true == Logo->MainRenderer->IsCurAnimationEnd())
 	{
 		GameEngineCore::ChangeLevel("TitleLevel");
 	}

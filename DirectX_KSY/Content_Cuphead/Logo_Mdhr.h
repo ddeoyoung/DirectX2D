@@ -20,7 +20,7 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
-	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
+	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer;
 
 private:
 };

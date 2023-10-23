@@ -100,6 +100,9 @@
     <Filter Include="Level\6. Loading\Object">
       <UniqueIdentifier>{d56f88d5-4ad1-40fe-b30b-ec8d68927956}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\UI">
+      <UniqueIdentifier>{578f6b63-2ced-4c1d-8c8b-f7e9e79a3ba3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -264,6 +267,9 @@
     </ClInclude>
     <ClInclude Include="Hourglass.h">
       <Filter>Level\6. Loading\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeAnimation.h">
+      <Filter>Actor\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +451,9 @@
     </ClCompile>
     <ClCompile Include="Hourglass.cpp">
       <Filter>Level\6. Loading\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeAnimation.cpp">
+      <Filter>Actor\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

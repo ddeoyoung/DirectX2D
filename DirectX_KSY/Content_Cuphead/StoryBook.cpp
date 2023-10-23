@@ -106,8 +106,8 @@ void StoryBook::Start()
 	Renderer->CreateAnimation("Page17", "Page17", PAGEDUR, 1, 27, false);
 
 	Renderer->ChangeAnimation("Page0");
-
-	Renderer->Transform.SetLocalScale({ 1280, 720 });
+	Renderer->AutoSpriteSizeOn();
+	Renderer->Transform.SetLocalPosition({ 640, -360 });
 }
 
 void StoryBook::Update(float _Delta)
