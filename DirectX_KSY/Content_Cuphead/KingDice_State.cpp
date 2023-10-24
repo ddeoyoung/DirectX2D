@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "KingDice.h"
 #include "Dice.h"
+#include "Marker.h"
 
 void KingDice::IntroHandStart()
 {
@@ -33,6 +34,7 @@ void KingDice::IdleUpdate(float _Delta)
 	if (false == IsDiceOn && IdleTimer > 3.0f)
 	{
 		ChangeState(KingDiceState::Reveal);
+		return;
 	}
 
 	IdleTimer += _Delta;
@@ -40,6 +42,14 @@ void KingDice::IdleUpdate(float _Delta)
 	if (true == GameEngineInput::IsDown('P', this))
 	{
 		ChangeState(KingDiceState::CameraEat);
+		return;
+	}
+
+	// 마커 이동 완료
+	if (true == Marker::IsSpinEnd)
+	{
+		ChangeState(KingDiceState::Curious);
+		return;
 	}
 }
 
@@ -56,11 +66,18 @@ void KingDice::WinkUpdate(float _Delta)
 void KingDice::CuriousStart()
 {
 	ChangeAnimationState("Curious");
+	CuriousTimer = 2.0f;
 }
 
 void KingDice::CuriousUpdate(float _Delta)
 {
-
+	CuriousTimer -= _Delta;
+	if (CuriousTimer < 0.0f)
+	{
+		HeadRenderer->Off();
+		ChangeState(KingDiceState::CameraEat);
+		return;
+	}
 }
 
 void KingDice::RevealStart()
@@ -93,6 +110,7 @@ void KingDice::RevealUpdate(float _Delta)
 	{
 		Transform.AddLocalPosition({ 0 , 247 });
 		ChangeState(KingDiceState::Idle);
+		return;
 	}
 }
 

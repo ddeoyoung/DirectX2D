@@ -20,3 +20,9 @@ enum class CollisionOrder
 	BossAttack,
 	ParryObject,
 };
+
+enum class ObjectOrder
+{
+	None,
+	Marker,
+};

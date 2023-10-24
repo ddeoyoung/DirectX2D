@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "KingDice.h"
 #include "Dice.h"
+#include "Marker.h"
 
 KingDice::KingDice()
 {
@@ -73,6 +74,7 @@ void KingDice::Start()
 			_Renderer->SetPivotType(PivotType::Bottom);
 			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::CameraEat);
 			_Renderer->GetParent<KingDice>()->SetSubStage();
+			_Renderer->Off();
 		});
 
 	// Reveal
@@ -100,14 +102,14 @@ void KingDice::Start()
 
 
 	// Curious Head
-	HeadRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head", 0.05f);
+	HeadRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head", 0.04f);
 	HeadRenderer->ChangeAnimation("KingDice_Curious_Head");
 	HeadRenderer->AutoSpriteSizeOn();
 	HeadRenderer->SetPivotType(PivotType::Bottom);
 	HeadRenderer->Off();
 
 
-	ChangeState(KingDiceState::Idle);
+	ChangeState(KingDiceState::IntroHand);
 }
 
 void KingDice::Update(float _Delta)
@@ -208,5 +210,10 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 
 void KingDice::SetSubStage()
 {
-	GameEngineCore::ChangeLevel("ChipsBettiganLevel");
+	//GameEngineCore::ChangeLevel("ChipsBettiganLevel");
+}
+
+void KingDice::CheckRouletteSpace()
+{
+
 }

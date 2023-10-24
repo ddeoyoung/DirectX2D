@@ -84,6 +84,8 @@ protected:
 	void DeathStart();
 	void DeathUpdate(float _Delta);
 
+	void CheckRouletteSpace();
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

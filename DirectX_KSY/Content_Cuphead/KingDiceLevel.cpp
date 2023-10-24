@@ -35,10 +35,12 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelStartTextureSet();
 
 	// Marker
-	Roulette_Marker = CreateActor<Marker>();
+	Roulette_Marker = CreateActor<Marker>(ObjectOrder::Marker);
 	
 	// Boss
 	Boss = CreateActor<KingDice>();
+	Boss->On();
+	Boss->SetState(KingDiceState::IntroHand);
 
 	// Player
 	CurLevelPlayer = CreateActor<Cuphead>();

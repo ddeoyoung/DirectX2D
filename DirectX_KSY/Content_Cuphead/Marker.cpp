@@ -11,6 +11,8 @@ Marker::~Marker()
 {
 }
 
+bool Marker::IsSpinEnd = false;
+
 void Marker::Start()
 {
 	ContentActor::Start();
@@ -100,24 +102,34 @@ void Marker::ChangeAnimationState(const std::string& _StateName)
 void Marker::IdleStart()
 {
 	ChangeAnimationState("Idle");
+	IsSpinEnd = false;
 }
 
 void Marker::IdleUpdate(float _Delta)
 {
+	// 시작
 	// Dice Hit Check
-	if (true == Dice::IsHit && false == IsSpin)
+	if (true == Dice::IsHit && false == IsSpinStart)
 	{
-		IsSpin = true;
+		IsSpinStart = true;
 		CurCount = 0;
 		SpinCount = Dice::DiceCount;
 		ChangeState(MarkerState::Spin);
 		return;
 	}
 
-	if (CurCount > 0 && CurCount != SpinCount)
+	// 반복
+	if (true == IsSpinStart && CurCount != SpinCount)
 	{
 		ChangeState(MarkerState::Spin);
 		return;
+	}
+
+	// 주사위 수만큼 이동 완료
+	if (true == IsSpinStart && CurCount == SpinCount)
+	{
+		// 킹다이스로 리턴해야 할 것들
+		IsSpinEnd = true;
 	}
 }
 

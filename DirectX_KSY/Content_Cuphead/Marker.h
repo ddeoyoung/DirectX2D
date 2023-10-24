@@ -23,6 +23,13 @@ public:
 	Marker& operator=(const Marker& _Other) = delete;
 	Marker& operator=(Marker&& _Other) noexcept = delete;
 
+	static bool IsSpinEnd;
+
+	int GetCurRouletteSpace()
+	{
+		return CurRouletteSpace;
+	}
+
 protected:
 	void ChangeState(MarkerState _State);
 	void StateUpdate(float _Delta);
@@ -45,14 +52,12 @@ protected:
 
 	std::string CurState = "";
 	MarkerState State = MarkerState::None;
-
 	std::vector<float4> RouletteSpace;
-
-private:
-	int SpinCount = 0;
 	int CurRouletteSpace = 0;
 
+private:
 	int CurCount = 0;
-	bool IsSpin = false;
+	int SpinCount = 0;
+	bool IsSpinStart = false;
 };
 
