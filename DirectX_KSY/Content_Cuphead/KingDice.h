@@ -43,20 +43,30 @@ public:
 		State = _State;
 	}
 
-	void SetSubStage();
-
 	std::shared_ptr<class GameEngineSpriteRenderer> GetHeadRender()
 	{
 		return HeadRenderer;
 	}
 
-	std::shared_ptr<class Dice> GetPinkDice()
+	bool IsBossAnimationEnd()
 	{
-		return PinkDice;
+		return MainRenderer->IsCurAnimationEnd();
 	}
 
-protected:
 	void ChangeState(KingDiceState _State);
+
+	void SetLevelChange()
+	{
+		IsLevelChange = true;
+	}
+
+	bool GetLevelChange()
+	{
+		return IsLevelChange;
+	}
+
+
+protected:
 	void StateUpdate(float _Delta);
 	void ChangeAnimationState(const std::string& _StateName);
 
@@ -84,8 +94,6 @@ protected:
 	void DeathStart();
 	void DeathUpdate(float _Delta);
 
-	void CheckRouletteSpace();
-
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -104,5 +112,6 @@ private:
 	float ShowDiceTimer = 0.0f;
 
 	bool IsDiceOn = false;
+	bool IsLevelChange = false;
 };
 

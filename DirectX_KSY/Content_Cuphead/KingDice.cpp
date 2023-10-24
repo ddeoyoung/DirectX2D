@@ -73,15 +73,21 @@ void KingDice::Start()
 			_Renderer->Transform.SetLocalPosition({ HalfWindowScale.X + 20.0f, -HalfWindowScale.Y - 45.0f });
 			_Renderer->SetPivotType(PivotType::Bottom);
 			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::CameraEat);
-			_Renderer->GetParent<KingDice>()->SetSubStage();
 			_Renderer->Off();
+
+			// IsLevelChange = true;
+			_Renderer->GetParent<KingDice>()->SetLevelChange();
 		});
 
 	// Reveal
 	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f, false);
 
 	// Wink
-	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.07f);
+	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.08f, false);
+	MainRenderer->SetEndEvent("KingDice_Wink", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_CameraEat_First");
+		});
 
 	// Curious
 	MainRenderer->CreateAnimation("KingDice_Curious_Start", "KingDice_Curious_Start");
@@ -206,14 +212,4 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
-}
-
-void KingDice::SetSubStage()
-{
-	//GameEngineCore::ChangeLevel("ChipsBettiganLevel");
-}
-
-void KingDice::CheckRouletteSpace()
-{
-
 }

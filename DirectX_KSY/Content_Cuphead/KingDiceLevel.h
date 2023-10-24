@@ -1,6 +1,26 @@
 #pragma once
 #include "ContentLevel.h"
 
+enum class SpaceState
+{
+	None,
+	SpaceStart,
+	Space1,
+	Space2,
+	Space3,
+	SpaceSafe1,
+	Space4,
+	Space5,
+	Space6,
+	SpaceSafe2,
+	Space7,
+	Space8,
+	Space9,
+	SpaceSafe3,
+	SpaceStartOver,
+	SpaceFinish,
+};
+
 // Ό³Έν :
 class KingDiceLevel : public ContentLevel
 {
@@ -25,9 +45,15 @@ protected:
 	void LevelStartTextureLoad();
 	void LevelStartTextureSet();
 
+	bool CheckMarkerEnd();
+	void CheckRouletteSpace();
+	void ChangeToSubBossStage();
+
 private:
 	std::shared_ptr<class KingDice> Boss = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
 	std::shared_ptr<class Marker> Roulette_Marker = nullptr;
+
+	std::string LevelName = "";
 };
 

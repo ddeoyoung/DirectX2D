@@ -30,6 +30,11 @@ public:
 		return CurRouletteSpace;
 	}
 
+	bool GetIsSpinEnd()
+	{
+		return IsSpinEnd;
+	}
+
 protected:
 	void ChangeState(MarkerState _State);
 	void StateUpdate(float _Delta);

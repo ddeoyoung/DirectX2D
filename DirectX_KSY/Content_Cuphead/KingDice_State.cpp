@@ -75,7 +75,8 @@ void KingDice::CuriousUpdate(float _Delta)
 	if (CuriousTimer < 0.0f)
 	{
 		HeadRenderer->Off();
-		ChangeState(KingDiceState::CameraEat);
+		ChangeState(KingDiceState::Wink);
+		CuriousTimer = 2.0f;
 		return;
 	}
 }
