@@ -109,8 +109,7 @@ void Marker::IdleUpdate(float _Delta)
 	{
 		IsSpin = true;
 		CurCount = 0;
-		//SpinCount = Dice::DiceCount;
-		SpinCount = 3;
+		SpinCount = Dice::DiceCount;
 		ChangeState(MarkerState::Spin);
 		return;
 	}
