@@ -9,8 +9,8 @@ Dice::~Dice()
 {
 }
 
-int Dice::DiceCount = 0;
-bool Dice::IsHit = false;
+int Dice::DiceCount;
+bool Dice::IsHit;
 
 void Dice::Start()
 {
@@ -70,7 +70,7 @@ void Dice::Start()
 	ParryCollision->SetCollisionType(ColType::AABBBOX2D);
 	ParryCollision->Transform.SetLocalScale(Scale);
 
-
+	//DiceCount = 0;
 	ChangeState(DiceState::Idle);
 }
 
@@ -161,33 +161,33 @@ void Dice::IdleStart()
 void Dice::IdleUpdate(float _Delta)
 {
 	IdleTimer += _Delta;
-	if (IdleTimer > 1.2f)
+	if (IdleTimer > 1.2f && DiceCount == 0)
 	{
 		IdleTimer = 0.0f;
 	}
 
 	// Player Parry
-	IsHit = ParryCollision->Collision(CollisionOrder::Player);
+	bool ParryCheck = ParryCollision->Collision(CollisionOrder::Player);
 
-	if (true == IsHit && true == GameEngineInput::IsDown('Z', this))
+	if (true == ParryCheck && true == GameEngineInput::IsDown('Z', this))
 	{
-		if (IdleTimer < 0.2f || IdleTimer > 1.0f)
+		if (IdleTimer <= 0.2f || IdleTimer > 1.0f)
 		{
 			DiceCount = 1;
 		}
 
-		else if (IdleTimer > 0.2f && IdleTimer < 0.6f)
+		else if (IdleTimer > 0.2f && IdleTimer <= 0.6f)
 		{
 			DiceCount = 2;
 		}
 
-		else if (IdleTimer > 0.6f && IdleTimer < 1.0f)
+		else if (IdleTimer > 0.6f && IdleTimer <= 1.0f)
 		{
 			DiceCount = 3;
 		}
 
+		IsHit = ParryCheck;
 		ParryCollision->Death();
-		//CreateParrySpark();
 		ChangeState(DiceState::Hit);
 		return;
 	}

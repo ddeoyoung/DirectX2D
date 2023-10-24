@@ -32,7 +32,8 @@ protected:
 	void SpinStart();
 	void SpinUpdate(float _Delta);
 
-	void SetPosAndRotation();
+	void SetRouletteMarker();
+	void MoveMarker(float4 _Delta);
 
 protected:
 	void Start() override;
@@ -43,7 +44,10 @@ protected:
 	std::string CurState = "";
 	MarkerState State = MarkerState::None;
 
+	std::vector<float4> RouletteSpace;
+
 private:
 	int SpinCount = 0;
+	int CurRouletteSpace = 0;
 };
 

@@ -26,6 +26,11 @@ public:
 	static int DiceCount;
 	static bool IsHit;
 
+	int GetDiceCount()
+	{
+		return DiceCount;
+	}
+
 protected:
 	void ChangeState(DiceState _State);
 	void StateUpdate(float _Delta);
