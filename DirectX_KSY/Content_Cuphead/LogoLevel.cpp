@@ -30,7 +30,7 @@ void LogoLevel::Update(float _Delta)
 
 void LogoLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
-	ContentLevel::LevelStart(_PrevLevel);
+	//ContentLevel::LevelStart(_PrevLevel);
 
 	Logo = CreateActor<Logo_Mdhr>();
 }

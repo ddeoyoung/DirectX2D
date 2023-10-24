@@ -19,7 +19,7 @@ void FadeAnimation::Start()
 		// Dice
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\UI");
+		Dir.MoveChild("ContentsResources\\Texture\\UI\\FadeAnimation");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 
@@ -31,12 +31,17 @@ void FadeAnimation::Start()
 	}
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Max);
-	MainRenderer->CreateAnimation("FadeAnimation", "FadeAnimation", 0.05f, false);
-	MainRenderer->SetEndEvent("FadeAnimation", [](GameEngineSpriteRenderer* _Renderer)
+	MainRenderer->CreateAnimation("FadeIn", "FadeIn", 0.05f, false);
+	MainRenderer->SetEndEvent("FadeIn", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->Off();
 		});
-	MainRenderer->ChangeAnimation("FadeAnimation");
+	MainRenderer->CreateAnimation("FadeOut", "FadeOut", 0.05f, false);
+	MainRenderer->SetEndEvent("FadeOut", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+		});
+	MainRenderer->ChangeAnimation("FadeIn");
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetAutoScaleRatio(2.5);
 	MainRenderer->Transform.SetLocalPosition({ 640, -360 });
@@ -45,4 +50,22 @@ void FadeAnimation::Start()
 void FadeAnimation::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+}
+
+void FadeAnimation::SetFade(const std::string& _Name)
+{
+	std::string Name = "Fade";
+	if (_Name == "In" || _Name == "Out")
+	{
+		Name += _Name;
+		MainRenderer->ChangeAnimation(Name);
+	}
+}
+
+void FadeAnimation::EndCheck()
+{
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		Death();
+	}
 }

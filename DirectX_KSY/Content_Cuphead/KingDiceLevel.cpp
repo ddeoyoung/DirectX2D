@@ -34,9 +34,6 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelStartTextureLoad();
 	LevelStartTextureSet();
 
-	// UI - Fade
-	std::shared_ptr<FadeAnimation> Fade = CreateActor<FadeAnimation>();
-
 	// Marker
 	Roulette_Marker = CreateActor<Marker>();
 	

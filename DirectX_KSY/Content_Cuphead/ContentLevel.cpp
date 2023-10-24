@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "ContentLevel.h"
 
+#include "FadeAnimation.h"
 
 ContentLevel::ContentLevel()
 {
@@ -29,6 +30,11 @@ void ContentLevel::Update(float _Delta)
 void ContentLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	CurLevel = this;
+
+	// UI - Fade In
+	std::shared_ptr<FadeAnimation> Fade = CreateActor<FadeAnimation>();
+	Fade->SetFade("In");
+
 }
 
 void ContentLevel::LevelEnd(GameEngineLevel* _NextLevel)
