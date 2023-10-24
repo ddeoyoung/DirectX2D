@@ -168,7 +168,6 @@ void Dice::IdleUpdate(float _Delta)
 
 	// Player Parry
 	bool ParryCheck = ParryCollision->Collision(CollisionOrder::Player);
-
 	if (true == ParryCheck && true == GameEngineInput::IsDown('Z', this))
 	{
 		if (IdleTimer <= 0.2f || IdleTimer > 1.0f)

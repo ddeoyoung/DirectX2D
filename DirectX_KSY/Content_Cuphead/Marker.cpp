@@ -105,9 +105,18 @@ void Marker::IdleStart()
 void Marker::IdleUpdate(float _Delta)
 {
 	// Dice Hit Check
-	if (true == Dice::IsHit)
+	if (true == Dice::IsHit && false == IsSpin)
 	{
-		SpinCount = Dice::DiceCount;
+		IsSpin = true;
+		CurCount = 0;
+		//SpinCount = Dice::DiceCount;
+		SpinCount = 3;
+		ChangeState(MarkerState::Spin);
+		return;
+	}
+
+	if (CurCount > 0 && CurCount != SpinCount)
+	{
 		ChangeState(MarkerState::Spin);
 		return;
 	}
@@ -116,31 +125,30 @@ void Marker::IdleUpdate(float _Delta)
 void Marker::SpinStart()
 {
 	ChangeAnimationState("Spin");
+	CurRouletteSpace += 1;
 }
 
 void Marker::SpinUpdate(float _Delta)
 {
-	switch (SpinCount)
-	{
-	case 1:
-		MoveMarker(_Delta);
-		break;
-	case 2:
-		MoveMarker(_Delta);
-		break;
-	case 3:
-		MoveMarker(_Delta);
-		break;
-	default:
-		break;
-	}
+	float4 MovePos = float4::ZERO;
+	float4 StartPos = Transform.GetLocalPosition();
+	float4 EndPos = RouletteSpace[CurRouletteSpace];
 
-	SpinCount = 0;
+	MovePos = EndPos - StartPos;
+
+	Transform.AddLocalPosition(MovePos * _Delta * SPINSPEED);
+
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		CurCount += 1;
+		ChangeState(MarkerState::Idle);
+		return;
+	}
 }
 
 void Marker::SetRouletteMarker()
 {
-	float4 SpaceStart = { 220, -330 };
+	float4 SpaceStart = { 204, -300 };
 	float4 Space1 = { 245, -374 };
 	float4 Space2 = { 295, -444 };
 	float4 Space3 = { 362, -500 };
@@ -178,9 +186,5 @@ void Marker::SetRouletteMarker()
 
 void Marker::MoveMarker(float4 _Delta)
 {
-	for (int i = 1; i <= SpinCount; i++)
-	{
-		CurRouletteSpace += i;
-		Transform.SetLocalPosition(RouletteSpace[CurRouletteSpace]);
-	}
+
 }

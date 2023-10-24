@@ -7,6 +7,8 @@ enum class MarkerState
 	Spin,
 };
 
+#define SPINSPEED 10.0f
+
 // Ό³Έν :
 class Marker : public ContentActor
 {
@@ -49,5 +51,8 @@ protected:
 private:
 	int SpinCount = 0;
 	int CurRouletteSpace = 0;
+
+	int CurCount = 0;
+	bool IsSpin = false;
 };
 
