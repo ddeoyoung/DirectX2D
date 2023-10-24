@@ -136,13 +136,6 @@ void KingDiceLevel::CheckRouletteSpace()
 
 void KingDiceLevel::ChangeToSubBossStage()
 {
-	//std::string BossState = Boss->GetCurState();
-
-	//if (BossState == "CameraEat" && true == Boss->IsBossAnimationEnd())
-	//{
-	//	int a = 0;
-	//}
-
 	if (true == Boss->GetLevelChange())
 	{
 		GameEngineCore::ChangeLevel(LevelName);

@@ -91,13 +91,13 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Frontground
 	std::shared_ptr<ContentActor> Chip = CreateActor<ContentActor>();
-	Chip->SpriteInit("poker_fg_chips.png", { 300, -700 }, ChipsActorOrder::FrontgroundObject);
+	Chip->SpriteInit("poker_fg_chips.png", { 300, -700 }, RenderOrder::FrontgroundObject);
 
 	std::shared_ptr<ContentActor> Hand = CreateActor<ContentActor>();
-	Hand->SpriteInit("poker_fg_hands.png", { 50, -700 }, ChipsActorOrder::FrontgroundObject);
+	Hand->SpriteInit("poker_fg_hands.png", { 50, -700 }, RenderOrder::FrontgroundObject);
 
 	std::shared_ptr<ContentActor> Arm = CreateActor<ContentActor>();
-	Arm->SpriteInit("poker_fg_arm.png", { 1100, -520 }, ChipsActorOrder::FrontgroundObject);
+	Arm->SpriteInit("poker_fg_arm.png", { 1100, -520 }, RenderOrder::FrontgroundObject);
 
 	// Smoke
 	std::shared_ptr<CigSmoke> CiggaretteSmoke = CreateActor<CigSmoke>();

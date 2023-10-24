@@ -57,7 +57,7 @@ void KingDice::Start()
 	MainRenderer->CreateAnimation("KingDice_Idle", "KingDice_Idle", 0.05f);
 
 	// CameraEat
-	MainRenderer->CreateAnimation("KingDice_CameraEat_First", "KingDice_CameraEat_First", 0.06f, false);
+	MainRenderer->CreateAnimation("KingDice_CameraEat_First", "KingDice_CameraEat_First", 0.06f, -1, -1, false);
 	MainRenderer->SetEndEvent("KingDice_CameraEat_First", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->Transform.SetLocalPosition({ 0 , 600 });
@@ -66,7 +66,7 @@ void KingDice::Start()
 			_Renderer->ChangeAnimation("KingDice_CameraEat_Second");
 		});
 
-	MainRenderer->CreateAnimation("KingDice_CameraEat_Second", "KingDice_CameraEat_Second", 0.06f, false);
+	MainRenderer->CreateAnimation("KingDice_CameraEat_Second", "KingDice_CameraEat_Second", 0.06f, -1, -1, false);
 	MainRenderer->SetEndEvent("KingDice_CameraEat_Second", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half(); 
@@ -80,14 +80,10 @@ void KingDice::Start()
 		});
 
 	// Reveal
-	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f, false);
+	MainRenderer->CreateAnimation("KingDice_Reveal", "KingDice_Reveal", 0.05f);
 
 	// Wink
-	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.08f, false);
-	MainRenderer->SetEndEvent("KingDice_Wink", [](GameEngineSpriteRenderer* _Renderer)
-		{
-			_Renderer->ChangeAnimation("KingDice_CameraEat_First");
-		});
+	MainRenderer->CreateAnimation("KingDice_Wink", "KingDice_Wink", 0.08f,-1,-1,false);
 
 	// Curious
 	MainRenderer->CreateAnimation("KingDice_Curious_Start", "KingDice_Curious_Start");
@@ -127,7 +123,7 @@ void KingDice::Update(float _Delta)
 
 void KingDice::ChangeState(KingDiceState _State)
 {
-	if (_State != State)
+	if (State != _State)
 	{
 		switch (_State)
 		{
