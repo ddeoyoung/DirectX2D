@@ -42,13 +42,21 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Background
 	std::shared_ptr<Background_Smokers> Background = CreateActor<Background_Smokers>();
 
+	// Pixel Background
+	CurLevelPixelBackground = CreateActor<ContentBackground>();
+	CurLevelPixelBackground->PixelBackgroundInit("kd_cigar_bg_pixel.png");
+
+	// Player
+	//CurLevelPlayer = CreateActor<Cuphead>();
+	//CurLevelPlayer->Transform.SetLocalPosition({ 250, -400 });
+
 	// CigarFire
 	std::shared_ptr<CigarFire> CigarFireBack = CreateActor<CigarFire>();
-	CigarFireBack->SetFireTypeAndPos("Back", {640, -700});
+	CigarFireBack->SetFireTypeAndPos("Back", {640, -700}, (int)RenderOrder::BackgroundObject);
 	std::shared_ptr<CigarFire> CigarFireMiddle = CreateActor<CigarFire>();
-	CigarFireMiddle->SetFireTypeAndPos("Middle", {640, -800});
+	CigarFireMiddle->SetFireTypeAndPos("Middle", {640, -780}, (int)RenderOrder::FrontgroundObject3);
 	std::shared_ptr<CigarFire> CigarFireFront = CreateActor<CigarFire>();
-	CigarFireFront->SetFireTypeAndPos("Front", {640, -900});
+	CigarFireFront->SetFireTypeAndPos("Front", {640, -850}, (int)RenderOrder::FrontgroundObject3);
 
 	// Smoke
 	std::shared_ptr<TopSmoke> BackgroundSmoke = CreateActor<TopSmoke>();

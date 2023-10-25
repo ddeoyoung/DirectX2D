@@ -14,7 +14,7 @@ public:
 	CigarFire& operator=(const CigarFire& _Other) = delete;
 	CigarFire& operator=(CigarFire&& _Other) noexcept = delete;
 
-	void SetFireTypeAndPos(const std::string& _Type, float4 _Pos);
+	void SetFireTypeAndPos(const std::string& _Type, float4 _Pos, int _Order);
 
 protected:
 	void Start() override;

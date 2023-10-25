@@ -28,15 +28,14 @@ void CigarFire::Start()
 		}
 	}
 
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
-	MainRenderer->CreateAnimation("CigarFire_Back", "CigarFire_Back");
-	MainRenderer->CreateAnimation("CigarFire_Front", "CigarFire_Front");
-	MainRenderer->CreateAnimation("CigarFire_Middle", "CigarFire_Middle");
-	MainRenderer->ChangeAnimation("CigarFire_Front");
-
-	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->SetPivotType(PivotType::Bottom);
-	MainRenderer->Transform.SetLocalPosition({ 640.0f , -700.0f });
+	//MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
+	//MainRenderer->CreateAnimation("CigarFire_Back", "CigarFire_Back");
+	//MainRenderer->CreateAnimation("CigarFire_Front", "CigarFire_Front");
+	//MainRenderer->CreateAnimation("CigarFire_Middle", "CigarFire_Middle");
+	//MainRenderer->ChangeAnimation("CigarFire_Front");
+	//MainRenderer->AutoSpriteSizeOn();
+	//MainRenderer->SetPivotType(PivotType::Bottom);
+	//MainRenderer->Transform.SetLocalPosition({ 640.0f , -700.0f });
 }
 
 void CigarFire::Update(float _Delta)
@@ -44,9 +43,13 @@ void CigarFire::Update(float _Delta)
 	ContentActor::Update(_Delta);
 }
 
-void CigarFire::SetFireTypeAndPos(const std::string& _Type, float4 _Pos)
+void CigarFire::SetFireTypeAndPos(const std::string& _Type, float4 _Pos, int _Order)
 {
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(_Order);
 	std::string Name = "CigarFire_" + _Type;
+	MainRenderer->CreateAnimation(Name, Name);
 	MainRenderer->ChangeAnimation(Name);
+	MainRenderer->AutoSpriteSizeOn();
+	MainRenderer->SetPivotType(PivotType::Bottom);
 	MainRenderer->Transform.SetLocalPosition(_Pos);
 }

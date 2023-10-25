@@ -74,6 +74,11 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 		GameEngineCore::ChangeLevel("ChipsBettiganLevel");
 	}
 
+	if (ImGui::Button("MrWheezy Level"))
+	{
+		GameEngineCore::ChangeLevel("MrWheezyLevel");
+	}
+
 	if (ImGui::Button("Loading Level"))
 	{
 		GameEngineCore::ChangeLevel("LoadingLevel");

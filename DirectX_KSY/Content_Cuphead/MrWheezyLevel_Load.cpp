@@ -14,8 +14,8 @@ void MrWheezyLevel::LevelStartTextureLoad()
 		GameEngineSprite::CreateSingle("kd_cigar_bg_smokers_loop.png");
 
 		// Pixel Background
-		//GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_bg_table_pixel.bmp");
-		//GameEngineSprite::CreateSingle("kd_bg_table_pixel.bmp");
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\kd_cigar_bg_pixel.png");
+		GameEngineSprite::CreateSingle("kd_cigar_bg_pixel.png");
 	}
 
 
@@ -109,11 +109,46 @@ void MrWheezyLevel::LevelStartTextureSet()
 	FG_RightBottom->SpriteInit("kd_cigar_bg_smoke_fg.png", { 1150 , -650 }, RenderOrder::FrontgroundObject4);
 
 	std::shared_ptr<ContentActor> FG_RightTop = CreateActor<ContentActor>();
-	FG_RightTop->SpriteInit("kd_cigar_bg_mg_smoke_top_right.png", { 1200 , -50 }, RenderOrder::BackgroundObject4);
+	FG_RightTop->SpriteInit("kd_cigar_bg_mg_smoke_top_right.png", { 1100 , -80 }, RenderOrder::BackgroundObject4);
 
 	std::shared_ptr<ContentActor> FG_LeftTop = CreateActor<ContentActor>();
-	FG_LeftTop->SpriteInit("kd_cigar_bg_mg_smoke_top_left.png", { 80 , -50 }, RenderOrder::BackgroundObject4);
+	FG_LeftTop->SpriteInit("kd_cigar_bg_mg_smoke_top_left.png", { 130 , -50 }, RenderOrder::BackgroundObject4);
 
 	std::shared_ptr<ContentActor> FG_Bottom = CreateActor<ContentActor>();
-	FG_Bottom->SpriteInit("kd_cigar_bg_mg_smoke_btm.png", { 650 , -500 }, RenderOrder::BackgroundObject4);
+	FG_Bottom->SpriteInit("kd_cigar_bg_mg_smoke_btm.png", { 650 , -450 }, RenderOrder::BackgroundObject);
+
+
+	// Ash Tray
+	std::shared_ptr<ContentActor> AsyTray_LeftBack = CreateActor<ContentActor>();
+	AsyTray_LeftBack->SpriteInit("kd_cigar_bg_ashtray_left_bk.png", { 180 , -600 }, RenderOrder::BackgroundObject2);
+
+	std::shared_ptr<ContentActor> AsyTray_LeftFront = CreateActor<ContentActor>();
+	AsyTray_LeftFront->SpriteInit("kd_cigar_bg_ashtray_left_fr.png", { 180 , -640 }, RenderOrder::FrontgroundObject2);
+
+	std::shared_ptr<ContentActor> AsyTray_RightBack = CreateActor<ContentActor>();
+	AsyTray_RightBack->SpriteInit("kd_cigar_bg_ashtray_right_bk.png", { 1050 , -600 }, RenderOrder::BackgroundObject2);
+
+	std::shared_ptr<ContentActor> AsyTray_RightFront = CreateActor<ContentActor>();
+	AsyTray_RightFront->SpriteInit("kd_cigar_bg_ashtray_right_fr.png", { 1050 , -600 }, RenderOrder::FrontgroundObject2);
+
+
+	// Ash
+	std::shared_ptr<ContentActor> Asy_LeftBack = CreateActor<ContentActor>();
+	Asy_LeftBack->SpriteInit("kd_top_cigar_ash_0004.png", { 150 , -480 }, RenderOrder::BackgroundObject2);
+
+	std::shared_ptr<ContentActor> Asy_LeftMiddle = CreateActor<ContentActor>();
+	Asy_LeftMiddle->SpriteInit("kd_top_cigar_ash_0003.png", { 200 , -490 }, RenderOrder::BackgroundObject2);
+
+	std::shared_ptr<ContentActor> Asy_LeftMain = CreateActor<ContentActor>();
+	Asy_LeftMain->SpriteInit("kd_top_cigar_ash_main_0001.png", { 200 , -530 }, RenderOrder::FrontgroundObject);
+
+	std::shared_ptr<ContentActor> Asy_RightBack = CreateActor<ContentActor>();
+	Asy_RightBack->SpriteInit("kd_top_cigar_ash_0004.png", { 1020 , -480 }, RenderOrder::BackgroundObject2);
+
+	std::shared_ptr<ContentActor> Asy_RightMiddle = CreateActor<ContentActor>();
+	Asy_RightMiddle->SpriteInit("kd_top_cigar_ash_0002.png", { 1070 , -490 }, RenderOrder::BackgroundObject2);
+
+	std::shared_ptr<ContentActor> Asy_RightMain = CreateActor<ContentActor>();
+	Asy_RightMain->SpriteInit("kd_top_cigar_ash_main_0001.png", { 1050 , -520 }, RenderOrder::FrontgroundObject);
+
 }

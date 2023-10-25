@@ -93,7 +93,7 @@ void KingDiceLevel::CheckRouletteSpace()
 			break;
 		case 3:
 			SpaceState::Space3;
-			LevelName = "ChipsBettiganLevel";
+			LevelName = "MrWheezyLevel";
 			break;
 		case 4:
 			SpaceState::SpaceSafe1;
