@@ -304,10 +304,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="MrWeezyLevel.cpp">
+    <ClCompile Include="MrWheezy.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MrWheezyLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MrWheezy_State.cpp" />
     <ClCompile Include="OutroLevel.cpp">
       <SubType>
       </SubType>
@@ -526,7 +531,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MrWeezyLevel.h">
+    <ClInclude Include="MrWheezy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MrWheezyLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

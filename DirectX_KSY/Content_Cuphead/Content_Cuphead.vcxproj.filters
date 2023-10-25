@@ -106,6 +106,12 @@
     <Filter Include="Actor\Effect">
       <UniqueIdentifier>{ef2f2e25-1171-42d6-a2f2-99bf49345036}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage3\Boss">
+      <UniqueIdentifier>{cb04354f-668d-4bbc-b237-60c564f21712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage3\Object">
+      <UniqueIdentifier>{666c411c-d7b1-4433-858d-2d36f7548d4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -136,7 +142,7 @@
     <ClInclude Include="ChipsBettiganLevel.h">
       <Filter>Level\4. SubBossStage\Stage2</Filter>
     </ClInclude>
-    <ClInclude Include="MrWeezyLevel.h">
+    <ClInclude Include="MrWheezyLevel.h">
       <Filter>Level\4. SubBossStage\Stage3</Filter>
     </ClInclude>
     <ClInclude Include="HopusPocusLevel.h">
@@ -280,6 +286,9 @@
     <ClInclude Include="ParrySpark_Object.h">
       <Filter>Actor\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="MrWheezy.h">
+      <Filter>Level\4. SubBossStage\Stage3\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -310,7 +319,7 @@
     <ClCompile Include="ChipsBettiganLevel.cpp">
       <Filter>Level\4. SubBossStage\Stage2</Filter>
     </ClCompile>
-    <ClCompile Include="MrWeezyLevel.cpp">
+    <ClCompile Include="MrWheezyLevel.cpp">
       <Filter>Level\4. SubBossStage\Stage3</Filter>
     </ClCompile>
     <ClCompile Include="HopusPocusLevel.cpp">
@@ -469,6 +478,12 @@
     </ClCompile>
     <ClCompile Include="ParrySpark_Object.cpp">
       <Filter>Actor\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="MrWheezy.cpp">
+      <Filter>Level\4. SubBossStage\Stage3\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="MrWheezy_State.cpp">
+      <Filter>Level\4. SubBossStage\Stage3\Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
