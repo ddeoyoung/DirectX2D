@@ -1,10 +1,6 @@
 #pragma once
 #include "ContentLevel.h"
 
-enum class ChipsActorOrder
-{
-	FrontgroundObject = 20,
-};
 
 // Ό³Έν :
 class ChipsBettiganLevel : public ContentLevel

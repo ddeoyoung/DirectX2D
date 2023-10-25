@@ -289,6 +289,9 @@
     <ClInclude Include="MrWheezy.h">
       <Filter>Level\4. SubBossStage\Stage3\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="CigarFire.h">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -484,6 +487,12 @@
     </ClCompile>
     <ClCompile Include="MrWheezy_State.cpp">
       <Filter>Level\4. SubBossStage\Stage3\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="MrWheezyLevel_Load.cpp">
+      <Filter>Level\4. SubBossStage\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="CigarFire.cpp">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

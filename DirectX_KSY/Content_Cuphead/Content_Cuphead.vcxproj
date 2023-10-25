@@ -207,6 +207,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ChipsBettigan_State.cpp" />
+    <ClCompile Include="CigarFire.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CigSmoke.cpp">
       <SubType>
       </SubType>
@@ -312,6 +316,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MrWheezyLevel_Load.cpp" />
     <ClCompile Include="MrWheezy_State.cpp" />
     <ClCompile Include="OutroLevel.cpp">
       <SubType>
@@ -433,6 +438,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ChipsBettiganLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CigarFire.h">
       <SubType>
       </SubType>
     </ClInclude>
