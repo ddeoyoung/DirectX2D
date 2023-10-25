@@ -45,10 +45,14 @@ void BaseCharacter::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -101,10 +105,14 @@ void BaseCharacter::RunUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -130,10 +138,14 @@ void BaseCharacter::AimUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -175,10 +187,14 @@ void BaseCharacter::ShootUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -243,10 +259,15 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	// Hit
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -282,10 +303,15 @@ void BaseCharacter::DuckUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	// Hit
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -302,10 +328,15 @@ void BaseCharacter::DuckIdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	// Hit
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -322,10 +353,15 @@ void BaseCharacter::DuckShootUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	// Hit
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -349,6 +385,8 @@ void BaseCharacter::HitUpdate(float _Delta)
 {
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
+		// Reset Hit Interval
+		HitInterval = 1.0f;
 		ChangeState(CharacterState::Idle);
 		return;
 	}
@@ -363,6 +401,8 @@ void BaseCharacter::DashStart()
 
 void BaseCharacter::DashUpdate(float _Delta)
 {
+	PixelCheck(_Delta);
+
 	// Dash
 	float DashSpeed = 1000.0f;
 	float4 MovePos = 0.0f;
@@ -442,10 +482,15 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		return;
 	}
 
-	if (true == Collisioncheck())
+	// Hit
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 
@@ -487,10 +532,15 @@ void BaseCharacter::ParryUpdate(float _Delta)
 		}
 	}
 
-	if (true == Collisioncheck())
+	// Hit
+	HitInterval -= _Delta;
+	if (HitInterval < 0.0f)
 	{
-		ChangeState(CharacterState::Hit);
-		return;
+		if (true == Collisioncheck())
+		{
+			ChangeState(CharacterState::Hit);
+			return;
+		}
 	}
 }
 

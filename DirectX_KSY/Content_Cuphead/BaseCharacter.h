@@ -138,6 +138,7 @@ private:
 	int DashCount = 0;
 	float RunDustTimer = 0.0f;
 	float ShootInterval = 0.0f;
+	float HitInterval = 0.0f;
 	float UnScaleDeltaTime = 0.0f;
 	float PauseTimer = 0.0f;
 
