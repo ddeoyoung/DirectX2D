@@ -24,6 +24,8 @@ protected:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 private:
-
+	bool IsReady = false;
+	float ReadyTimer = 0.0f;
+	std::string TextName = "";
 };
 

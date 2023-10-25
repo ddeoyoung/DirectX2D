@@ -14,11 +14,11 @@ void FightText::Start()
 	ContentActor::Start();
 
 	// Create Sprite Folder
-	if (nullptr == GameEngineSprite::Find("FightText"))
+	if (nullptr == GameEngineSprite::Find("FightText_Ready"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\UI\\FightText");
+		Dir.MoveChild("ContentsResources\\Texture\\FightText");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 
@@ -45,23 +45,50 @@ void FightText::Start()
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetAutoScaleRatio(2.5);
 	MainRenderer->Transform.SetLocalPosition({ 640, -360 });
+
+	MainRenderer->Off();
+	ReadyTimer = 0.0f;
+	IsReady = false;
 }
 
 void FightText::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
 
-	EndCheck();
+	// Ready
+	if (TextName == "FightText_Ready")
+	{
+		ReadyTimer += _Delta;
+		if (ReadyTimer > 1.0f && IsReady == false)
+		{
+			IsReady = true;
+			MainRenderer->On();
+			MainRenderer->ChangeAnimation(TextName);
+		}
+
+		else if (true == IsReady)
+		{
+			EndCheck();
+		}
+	}
+
+	// Knock Out
+	else if (TextName == "FightText_KnockOut")
+	{
+		MainRenderer->On();
+		MainRenderer->ChangeAnimation(TextName);
+
+		EndCheck();
+	}
 }
 
 void FightText::SetFightText(const std::string& _Name)
 {
-	std::string Name = "FightText_";
+	TextName = "FightText_";
 
 	if (_Name == "KnockOut" || _Name == "Ready")
 	{
-		Name += _Name;
-		MainRenderer->ChangeAnimation(Name);
+		TextName += _Name;
 	}
 }
 

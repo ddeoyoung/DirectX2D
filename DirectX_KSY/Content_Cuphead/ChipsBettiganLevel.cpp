@@ -7,6 +7,7 @@
 
 #include "CigSmoke.h"
 #include "TopSmoke.h"
+#include "FightText.h"
 
 ChipsBettiganLevel::ChipsBettiganLevel()
 {
@@ -69,6 +70,10 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\poker_fg_arm.png");
 		GameEngineSprite::CreateSingle("poker_fg_arm.png");
 	}
+
+	// FightText
+	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
+	Ready->SetFightText("Ready");
 
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();

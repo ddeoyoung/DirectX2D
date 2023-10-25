@@ -8,6 +8,8 @@
 #include "Rum.h"
 #include "Scotch.h"
 
+#include "FightText.h"
+
 TipsyTroopLevel::TipsyTroopLevel()
 {
 }
@@ -32,6 +34,10 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Texture Load
 	LevelStartTextureLoad();
+
+	// FightText
+	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
+	Ready->SetFightText("Ready");
 
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
@@ -100,3 +106,15 @@ void TipsyTroopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
 }
+
+//void TipsyTroopLevel::FightTextLoad(float _Delta)
+//{
+//	ReadyTime += _Delta;
+//
+//	if (ReadyTime > 1.0f)
+//	{
+//		// FightText
+//		std::shared_ptr<FightText> Ready = CreateActor<FightText>();
+//		Ready->SetFightText("Ready");
+//	}
+//}

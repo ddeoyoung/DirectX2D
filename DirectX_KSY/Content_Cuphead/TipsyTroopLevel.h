@@ -29,6 +29,8 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 	void LevelStartTextureLoad();
+	void FightTextLoad(float _Delta);
+
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
 	std::shared_ptr<class Martini> BossMartini = nullptr;
