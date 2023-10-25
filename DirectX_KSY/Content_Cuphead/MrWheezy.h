@@ -5,6 +5,8 @@ enum class WheezyState
 	None,
 	Intro,
 	Idle,
+	Attack,
+	Teleport,
 	Death,
 };
 
@@ -32,6 +34,12 @@ protected:
 
 	void IdleStart();
 	void IdleUpdate(float _Delta);
+
+	void AttackStart();
+	void AttackUpdate(float _Delta);
+
+	void TeleportStart();
+	void TeleportUpdate(float _Delta);
 
 	void DeathStart();
 	void DeathUpdate(float _Delta);
