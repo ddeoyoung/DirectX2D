@@ -103,6 +103,9 @@
     <Filter Include="Actor\UI">
       <UniqueIdentifier>{578f6b63-2ced-4c1d-8c8b-f7e9e79a3ba3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Effect">
+      <UniqueIdentifier>{ef2f2e25-1171-42d6-a2f2-99bf49345036}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -256,9 +259,6 @@
     <ClInclude Include="ParrySpark_Character.h">
       <Filter>Actor\Character\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="ParrySpark_Object.h">
-      <Filter>Actor\Character\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="HitFX.h">
       <Filter>Actor\Character\Effect</Filter>
     </ClInclude>
@@ -273,6 +273,12 @@
     </ClInclude>
     <ClInclude Include="FightText.h">
       <Filter>Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BossExplosion.h">
+      <Filter>Actor\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="ParrySpark_Object.h">
+      <Filter>Actor\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -443,9 +449,6 @@
     <ClCompile Include="ParrySpark_Character.cpp">
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="ParrySpark_Object.cpp">
-      <Filter>Actor\Character\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="HitFX.cpp">
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
@@ -460,6 +463,12 @@
     </ClCompile>
     <ClCompile Include="FightText.cpp">
       <Filter>Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BossExplosion.cpp">
+      <Filter>Actor\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="ParrySpark_Object.cpp">
+      <Filter>Actor\Effect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -194,6 +194,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BaseWeapon_State.cpp" />
+    <ClCompile Include="BossExplosion.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ChipsBettigan.cpp">
       <SubType>
       </SubType>
@@ -412,6 +416,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BaseWeapon.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BossExplosion.h">
       <SubType>
       </SubType>
     </ClInclude>
