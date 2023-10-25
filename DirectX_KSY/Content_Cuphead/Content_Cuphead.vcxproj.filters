@@ -292,6 +292,9 @@
     <ClInclude Include="CigarFire.h">
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Background_Smokers.h">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -492,6 +495,9 @@
       <Filter>Level\4. SubBossStage\Stage3</Filter>
     </ClCompile>
     <ClCompile Include="CigarFire.cpp">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Background_Smokers.cpp">
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
     </ClCompile>
   </ItemGroup>

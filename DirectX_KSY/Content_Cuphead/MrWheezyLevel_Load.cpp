@@ -106,7 +106,7 @@ void MrWheezyLevel::LevelStartTextureSet()
 {
 	// Frontground
 	std::shared_ptr<ContentActor> FG_RightBottom = CreateActor<ContentActor>();
-	FG_RightBottom->SpriteInit("kd_cigar_bg_smoke_fg.png", { 1200 , -690 }, RenderOrder::FrontgroundObject4);
+	FG_RightBottom->SpriteInit("kd_cigar_bg_smoke_fg.png", { 1150 , -650 }, RenderOrder::FrontgroundObject4);
 
 	std::shared_ptr<ContentActor> FG_RightTop = CreateActor<ContentActor>();
 	FG_RightTop->SpriteInit("kd_cigar_bg_mg_smoke_top_right.png", { 1200 , -50 }, RenderOrder::BackgroundObject4);
@@ -115,5 +115,5 @@ void MrWheezyLevel::LevelStartTextureSet()
 	FG_LeftTop->SpriteInit("kd_cigar_bg_mg_smoke_top_left.png", { 80 , -50 }, RenderOrder::BackgroundObject4);
 
 	std::shared_ptr<ContentActor> FG_Bottom = CreateActor<ContentActor>();
-	FG_Bottom->SpriteInit("kd_cigar_bg_mg_smoke_btm.png", { 630 , -500 }, RenderOrder::BackgroundObject4);
+	FG_Bottom->SpriteInit("kd_cigar_bg_mg_smoke_btm.png", { 650 , -500 }, RenderOrder::BackgroundObject4);
 }

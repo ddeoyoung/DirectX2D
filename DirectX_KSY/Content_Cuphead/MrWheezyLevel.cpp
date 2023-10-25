@@ -5,6 +5,7 @@
 #include "Cuphead.h"
 #include "MrWheezy.h"
 
+#include "Background_Smokers.h"
 #include "TopSmoke.h"
 #include "CigarFire.h"
 #include "FightText.h"
@@ -39,12 +40,7 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	Ready->SetFightText("Ready");
 
 	// Background
-	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("kd_cigar_bg_smokers_loop.png", { -80, 0 });
-
-	// Pixel Background
-	//CurLevelPixelBackground = CreateActor<ContentBackground>();
-	//CurLevelPixelBackground->PixelBackgroundInit("poker_bg_main_pixel.png");
+	std::shared_ptr<Background_Smokers> Background = CreateActor<Background_Smokers>();
 
 	// CigarFire
 	std::shared_ptr<CigarFire> CigarFireBack = CreateActor<CigarFire>();
@@ -53,14 +49,6 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CigarFireMiddle->SetFireTypeAndPos("Middle", {640, -800});
 	std::shared_ptr<CigarFire> CigarFireFront = CreateActor<CigarFire>();
 	CigarFireFront->SetFireTypeAndPos("Front", {640, -900});
-
-
-	// Player
-	//CurLevelPlayer = CreateActor<Cuphead>();
-	//CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
-
-	// Boss
-	//Boss = CreateActor<MrWheezy>();
 
 	// Smoke
 	std::shared_ptr<TopSmoke> BackgroundSmoke = CreateActor<TopSmoke>();
