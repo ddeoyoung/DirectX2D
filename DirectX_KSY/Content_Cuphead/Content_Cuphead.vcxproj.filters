@@ -271,6 +271,9 @@
     <ClInclude Include="FadeAnimation.h">
       <Filter>Actor\UI</Filter>
     </ClInclude>
+    <ClInclude Include="FightText.h">
+      <Filter>Actor\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -453,6 +456,9 @@
       <Filter>Level\6. Loading\Object</Filter>
     </ClCompile>
     <ClCompile Include="FadeAnimation.cpp">
+      <Filter>Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="FightText.cpp">
       <Filter>Actor\UI</Filter>
     </ClCompile>
   </ItemGroup>
