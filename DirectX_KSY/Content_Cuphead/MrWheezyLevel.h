@@ -22,6 +22,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 	void LevelStartTextureLoad();
+	void LevelStartTextureSet();
 
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer;

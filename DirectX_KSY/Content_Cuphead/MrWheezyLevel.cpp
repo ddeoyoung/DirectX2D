@@ -32,14 +32,15 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	ContentLevel::LevelStart(_PrevLevel);
 
 	LevelStartTextureLoad();
+	LevelStartTextureSet();
 
 	// FightText
 	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
 	Ready->SetFightText("Ready");
 
 	// Background
-	//CurLevelBackground = CreateActor<ContentBackground>();
-	//CurLevelBackground->BackgroundInit("kd_cigar_bg_smokers-loop.png", { -80, 40 });
+	CurLevelBackground = CreateActor<ContentBackground>();
+	CurLevelBackground->BackgroundInit("kd_cigar_bg_smokers_loop.png", { -80, 0 });
 
 	// Pixel Background
 	//CurLevelPixelBackground = CreateActor<ContentBackground>();
@@ -47,11 +48,11 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// CigarFire
 	std::shared_ptr<CigarFire> CigarFireBack = CreateActor<CigarFire>();
-	CigarFireBack->SetFireTypeAndPos("Back", {640, -650});
+	CigarFireBack->SetFireTypeAndPos("Back", {640, -700});
 	std::shared_ptr<CigarFire> CigarFireMiddle = CreateActor<CigarFire>();
-	CigarFireMiddle->SetFireTypeAndPos("Middle", {640, -750});
+	CigarFireMiddle->SetFireTypeAndPos("Middle", {640, -800});
 	std::shared_ptr<CigarFire> CigarFireFront = CreateActor<CigarFire>();
-	CigarFireFront->SetFireTypeAndPos("Front", {640, -850});
+	CigarFireFront->SetFireTypeAndPos("Front", {640, -900});
 
 
 	// Player

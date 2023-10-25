@@ -28,7 +28,7 @@ void CigarFire::Start()
 		}
 	}
 
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
 	MainRenderer->CreateAnimation("CigarFire_Back", "CigarFire_Back");
 	MainRenderer->CreateAnimation("CigarFire_Front", "CigarFire_Front");
 	MainRenderer->CreateAnimation("CigarFire_Middle", "CigarFire_Middle");

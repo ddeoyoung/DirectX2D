@@ -4,11 +4,18 @@ enum class RenderOrder
 {
 	Background,
 	BackgroundObject,
+	BackgroundObject2,
+	BackgroundObject3,
+	BackgroundObject4,
 	PlayEffect,
 	PlayerShoot,
 	Play,
 	Frontground,
 	FrontgroundObject,
+	FrontgroundObject2,
+	FrontgroundObject3,
+	FrontgroundObject4,
+	FrontgroundEffect,
 	Max,
 };
 

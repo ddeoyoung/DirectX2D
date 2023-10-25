@@ -27,7 +27,7 @@ void TopSmoke::Start()
 		}
 	}
 
-	Renderer = CreateComponent<GameEngineSpriteRenderer>();
+	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundEffect);
 	Renderer->SetMaterial("2DTextureOver");
 
 	Renderer->CreateAnimation("TopSmoke", "TopSmoke");
