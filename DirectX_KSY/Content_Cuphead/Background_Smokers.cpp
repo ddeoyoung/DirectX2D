@@ -29,9 +29,14 @@ void Background_Smokers::Start()
 	MainRenderer->SetSprite("kd_cigar_bg_smokers_loop.png");
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->Transform.SetLocalPosition({ 640.0f , -275.0f });
+
+	MainRenderer->SetSampler("EngineBaseWRAPSampler");
+
 }
 
 void Background_Smokers::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	MainRenderer->RenderBaseInfoValue.VertexUVPlus.X += _Delta * 0.01;
 }

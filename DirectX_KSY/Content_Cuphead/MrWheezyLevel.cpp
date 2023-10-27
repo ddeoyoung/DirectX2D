@@ -47,8 +47,11 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevelPixelBackground->PixelBackgroundInit("kd_cigar_bg_pixel.png");
 
 	// Player
-	//CurLevelPlayer = CreateActor<Cuphead>();
-	//CurLevelPlayer->Transform.SetLocalPosition({ 250, -400 });
+	CurLevelPlayer = CreateActor<Cuphead>();
+	CurLevelPlayer->Transform.SetLocalPosition({ 250, -400 });
+
+	// Boss
+	Boss = CreateActor<MrWheezy>();
 
 	// CigarFire
 	std::shared_ptr<CigarFire> CigarFireBack = CreateActor<CigarFire>();

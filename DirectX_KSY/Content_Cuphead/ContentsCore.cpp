@@ -37,7 +37,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("KingDiceLevel");
+	GameEngineCore::ChangeLevel("MrWheezyLevel");
 }
 
 void ContentsCore::Update(float _Delta)

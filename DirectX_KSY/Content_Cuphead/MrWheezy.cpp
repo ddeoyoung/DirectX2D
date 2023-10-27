@@ -31,25 +31,32 @@ void MrWheezy::Start()
 	}
 
 	// Create Animation
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Play);
 	MainRenderer->CreateAnimation("MrWheezy_Intro", "MrWheezy_Intro");
 	MainRenderer->SetEndEvent("MrWheezy_Intro", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("MrWheezy_Idle");
 		});
-	MainRenderer->CreateAnimation("MrWheezy_Idle", "MrWheezy_Idle", 0.05f);
-	MainRenderer->CreateAnimation("MrWheezy_Attack", "MrWheezy_Attack", 0.05f);
+	MainRenderer->CreateAnimation("MrWheezy_Idle", "MrWheezy_Idle");
+	MainRenderer->CreateAnimation("MrWheezy_Attack", "MrWheezy_Attack");
 	MainRenderer->CreateAnimation("MrWheezy_Teleport1", "MrWheezy_Teleport1", 0.05f);
+	MainRenderer->SetEndEvent("MrWheezy_Teleport1", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("MrWheezy_Teleport2");
+		});
 	MainRenderer->CreateAnimation("MrWheezy_Teleport2", "MrWheezy_Teleport2", 0.05f);
+	MainRenderer->SetEndEvent("MrWheezy_Teleport2", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("MrWheezy_Teleport3");
+		});
 	MainRenderer->CreateAnimation("MrWheezy_Teleport3", "MrWheezy_Teleport3", 0.05f);
-	MainRenderer->CreateAnimation("MrWheezy_Death_Intro", "MrWheezy_Death_Intro", 0.05f);
-	MainRenderer->CreateAnimation("MrWheezy_Death_Loop", "MrWheezy_Death_Loop", 0.05f);
+	MainRenderer->CreateAnimation("MrWheezy_Death_Intro", "MrWheezy_Death_Intro");
+	MainRenderer->CreateAnimation("MrWheezy_Death_Loop", "MrWheezy_Death_Loop");
 
 	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->SetPivotType(PivotType::Bottom);
-	Transform.SetLocalPosition({ 1100 , -650 });
+	Transform.SetLocalPosition({ 1050 , -250 });
 
-	ChangeState(WheezyState::Idle);
+	ChangeState(WheezyState::Intro);
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -123,9 +130,13 @@ void MrWheezy::StateUpdate(float _Delta)
 
 void MrWheezy::ChangeAnimationState(const std::string& _StateName)
 {
-	std::string AnimationName = "Weezy_";
+	std::string AnimationName = "MrWheezy_";
 	AnimationName += _StateName;
 
+	if (_StateName == "Teleport")
+	{
+		AnimationName += "1";
+	}
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
