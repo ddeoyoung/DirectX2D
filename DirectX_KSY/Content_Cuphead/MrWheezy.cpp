@@ -80,6 +80,18 @@ void MrWheezy::Start()
 	KingDiceRenderer->SetPivotType(PivotType::Top);
 	FireRenderer->Transform.SetLocalPosition({ -80, 160 });
 
+	// Test
+	MainRenderer->CreateAnimation("MrWheezy_Appear1", "MrWheezy_Teleport3", 0.05f, 15, 0, false);
+	MainRenderer->SetEndEvent("MrWheezy_Appear1", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("MrWheezy_Appear2");
+		});
+	MainRenderer->CreateAnimation("MrWheezy_Appear2", "MrWheezy_Teleport2", 0.05f, 16, 0, false);
+	MainRenderer->SetEndEvent("MrWheezy_Appear2", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("MrWheezy_Appear3");
+		});
+	MainRenderer->CreateAnimation("MrWheezy_Appear3", "MrWheezy_Teleport1", 0.05f, 7, 0, false);
 
 	ChangeState(WheezyState::Intro);
 
@@ -121,6 +133,9 @@ void MrWheezy::ChangeState(WheezyState _State)
 		case WheezyState::Teleport:
 			TeleportStart();
 			break;
+		case WheezyState::Appear:
+			AppearStart();
+			break;
 		case WheezyState::Death:
 			DeathStart();
 			break;
@@ -146,6 +161,8 @@ void MrWheezy::StateUpdate(float _Delta)
 		return AttackUpdate(_Delta);
 	case WheezyState::Teleport:
 		return TeleportUpdate(_Delta);
+	case WheezyState::Appear:
+		return AppearUpdate(_Delta);
 	case WheezyState::Death:
 		return DeathUpdate(_Delta);
 	default:
@@ -158,7 +175,7 @@ void MrWheezy::ChangeAnimationState(const std::string& _StateName)
 	std::string AnimationName = "MrWheezy_";
 	AnimationName += _StateName;
 
-	if (_StateName == "Teleport")
+	if (_StateName == "Teleport" || _StateName == "Appear")
 	{
 		AnimationName += "1";
 	}

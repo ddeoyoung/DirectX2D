@@ -70,6 +70,22 @@ void MrWheezy::TeleportUpdate(float _Delta)
 			/*MainRenderer->*/Transform.AddLocalPosition({ 850, 0 });
 		}
 
+		ChangeState(WheezyState::Appear);
+		return;
+	}
+}
+
+void MrWheezy::AppearStart()
+{
+	ChangeAnimationState("Appear");
+}
+
+void MrWheezy::AppearUpdate(float _Delta)
+{
+	if (true == MainRenderer->IsCurAnimation("MrWheezy_Appear3")
+		&& true == MainRenderer->IsCurAnimationEnd())
+	{
+
 		ChangeState(WheezyState::Idle);
 		return;
 	}
