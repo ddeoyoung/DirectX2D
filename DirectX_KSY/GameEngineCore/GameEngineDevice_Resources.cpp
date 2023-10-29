@@ -43,12 +43,10 @@ void GameEngineDevice::ResourcesInit()
 
 	{
 		std::vector<GameEngineVertex> Vertex;
-		Vertex.resize(2);
+		Vertex.resize(3);
 
-		GameEngineVertex BaseVertexs[2];
-
-		BaseVertexs[0] = { { 0.0f, 0.0f, 0.0f, 1.0f } };
-		BaseVertexs[1] = { { 0.0f, 0.0f, 0.0f, 1.0f } };
+		Vertex[0] = { { 0.0f, 0.0f, 0.0f, 1.0f } };
+		Vertex[1] = { { 0.0f, 0.0f, 0.0f, 1.0f } };
 
 		GameEngineVertexBuffer::Create("Line", Vertex);
 
@@ -60,6 +58,7 @@ void GameEngineDevice::ResourcesInit()
 
 		std::shared_ptr<GameEngineMesh> LineMesh = GameEngineMesh::Create("Line");
 		LineMesh->SetTOPOLOGY(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+		// LineMesh->SetTOPOLOGY(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	}
 
 	{
@@ -527,6 +526,14 @@ void GameEngineDevice::ResourcesInit()
 		Mat->SetRasterizer("EngineWireRasterizer");
 	}
 
+	{
+		std::shared_ptr<GameEngineMaterial> Mat = GameEngineMaterial::Create("2DDebugLine");
+		Mat->SetVertexShader("DebugLine_VS");
+		Mat->SetPixelShader("DebugLine_PS");
+		// Mat->SetRasterizer("EngineWireRasterizer");
+
+		Mat->SetRasterizer("EngineRasterizer");
+	}
 
 
 	// 엔진수준에서 지원해주는 가장 기초적인 리소스들은 여기에서 만들어질 겁니다.
