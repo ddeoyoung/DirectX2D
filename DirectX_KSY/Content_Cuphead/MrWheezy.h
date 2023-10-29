@@ -24,6 +24,12 @@ public:
 	MrWheezy& operator=(const MrWheezy& _Other) = delete;
 	MrWheezy& operator=(MrWheezy&& _Other) noexcept = delete;
 
+	void SetState(WheezyState _State)
+	{
+		State = _State;
+	}
+
+
 protected:
 	void ChangeState(WheezyState _State);
 	void StateUpdate(float _Delta);
@@ -48,6 +54,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void ReverseDir();
+
 	std::string CurState = "";
 	WheezyState State = WheezyState::None;
 
@@ -57,6 +65,9 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
+	float IdleTime = 0.0f;
+	int AttackCount = 0;
 
+	int Dir = 1;
 };
 

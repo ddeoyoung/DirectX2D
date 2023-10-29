@@ -55,9 +55,10 @@ void MrWheezy::Start()
 	MainRenderer->SetEndEvent("MrWheezy_Intro", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("MrWheezy_Idle");
+			_Renderer->GetParent<MrWheezy>()->SetState(WheezyState::Idle);
 		});
-	MainRenderer->CreateAnimation("MrWheezy_Idle", "MrWheezy_Idle");
-	MainRenderer->CreateAnimation("MrWheezy_Attack", "MrWheezy_Attack");
+	MainRenderer->CreateAnimation("MrWheezy_Idle", "MrWheezy_Idle", 0.05f);
+	MainRenderer->CreateAnimation("MrWheezy_Attack", "MrWheezy_Attack", 0.08f);
 	MainRenderer->CreateAnimation("MrWheezy_Teleport1", "MrWheezy_Teleport1", 0.05f, -1, -1, false);
 	MainRenderer->SetEndEvent("MrWheezy_Teleport1", [](GameEngineSpriteRenderer* _Renderer)
 		{
@@ -74,6 +75,7 @@ void MrWheezy::Start()
 
 	MainRenderer->AutoSpriteSizeOn();
 	Transform.SetLocalPosition({ 1050 , -250 });
+
 	KingDiceRenderer->Transform.SetLocalPosition({ -300, 300 });
 	KingDiceRenderer->SetPivotType(PivotType::Top);
 	FireRenderer->Transform.SetLocalPosition({ -80, 160 });
@@ -163,4 +165,10 @@ void MrWheezy::ChangeAnimationState(const std::string& _StateName)
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
+	MainRenderer->Transform.SetLocalScale({ Dir * 1.0f, 1.0f });
+}
+
+void MrWheezy::ReverseDir()
+{
+	Dir *= (-1);
 }
