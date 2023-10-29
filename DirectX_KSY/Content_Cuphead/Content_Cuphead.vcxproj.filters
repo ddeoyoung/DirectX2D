@@ -295,6 +295,12 @@
     <ClInclude Include="Background_Smokers.h">
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Attack_FireBullet.h">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack_CiggyDemon.h">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -498,6 +504,12 @@
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
     </ClCompile>
     <ClCompile Include="Background_Smokers.cpp">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_FireBullet.cpp">
+      <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_CiggyDemon.cpp">
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
     </ClCompile>
   </ItemGroup>

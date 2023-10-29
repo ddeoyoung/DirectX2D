@@ -1,5 +1,7 @@
 #include "PreCompile.h"
 #include "MrWheezy.h"
+#include "Attack_FireBullet.h"
+#include "Attack_CiggyDemon.h"
 
 MrWheezy::MrWheezy()
 {

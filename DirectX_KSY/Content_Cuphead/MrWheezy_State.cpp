@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "MrWheezy.h"
+#include "Attack_FireBullet.h"
 
 void MrWheezy::IntroStart()
 {

@@ -171,6 +171,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Attack_CiggyDemon.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Attack_FireBullet.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Attack_Liquid.cpp">
       <SubType>
       </SubType>
@@ -410,6 +418,14 @@
   <ItemGroup>
     <ClInclude Include="ActorEnum.h" />
     <ClInclude Include="Attack_Chips.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Attack_CiggyDemon.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Attack_FireBullet.h">
       <SubType>
       </SubType>
     </ClInclude>
