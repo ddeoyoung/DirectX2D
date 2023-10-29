@@ -59,6 +59,7 @@ protected:
 	void Update(float _Delta) override;
 
 	void ReverseDir();
+	void CreateCiggyDemon(float _Delta);
 
 	std::string CurState = "";
 	WheezyState State = WheezyState::None;
@@ -69,9 +70,9 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-	float IdleTime = 0.0f;
-	int AttackCount = 0;
-
 	int Dir = 1;
+	int AttackCount = 0;
+	float IdleTime = 0.0f;
+	float CiggyDemonInter = 3.0f;
 };
 

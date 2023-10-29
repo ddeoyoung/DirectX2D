@@ -19,12 +19,14 @@ protected:
 	void Update(float _Delta) override;
 
 	void SetRandomPos();
+	void MoveUpdate(float _Delta);
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> FxRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 private:
-
+	float LiveTime = 5.0f;
+	float FxTime = 2.0f;
 };
 

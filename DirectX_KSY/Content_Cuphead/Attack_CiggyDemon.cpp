@@ -19,7 +19,7 @@ void Attack_CiggyDemon::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\MrWheezy\\AttackObejct");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\MrWheezy\\AttackObject");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 		for (size_t i = 0; i < Directorys.size(); i++)
@@ -30,8 +30,8 @@ void Attack_CiggyDemon::Start()
 	}
 
 	// Create Animation
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	MainRenderer->CreateAnimation("Cigar_CiggyDemon", "Cigar_CiggyDemon", -1, -1, false);
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
+	MainRenderer->CreateAnimation("Cigar_CiggyDemon", "Cigar_CiggyDemon", 0.05f);
 	MainRenderer->ChangeAnimation("Cigar_CiggyDemon");
 	MainRenderer->AutoSpriteSizeOn();
 
@@ -39,17 +39,18 @@ void Attack_CiggyDemon::Start()
 	SetRandomPos();
 
 
-	FxRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	FxRenderer->CreateAnimation("CiggyDemonFx", "CiggyDemonFx", -1, -1, false);
-	FxRenderer->ChangeAnimation("CiggyDemonFx");
-	FxRenderer->AutoSpriteSizeOn();
-	FxRenderer->Off();
+	//FxRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
+	//FxRenderer->CreateAnimation("CiggyDemonFx", "CiggyDemonFx", 0.05f/*, -1, -1, false*/);
+	//FxRenderer->ChangeAnimation("CiggyDemonFx");
+	//FxRenderer->AutoSpriteSizeOn();
+	//FxRenderer->SetPivotType(PivotType::Top);
+	//FxRenderer->Transform.SetLocalPosition({ 0.0f, -50.0f });
 
 	// Create Collision
 	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Cigar_CiggyDemon");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
-	Scale -= { 60.0f, 40.0f };
+	Scale -= { 100.0f, 40.0f };
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
 }
@@ -57,13 +58,28 @@ void Attack_CiggyDemon::Start()
 void Attack_CiggyDemon::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+	MoveUpdate(_Delta);
 }
 
 void Attack_CiggyDemon::SetRandomPos()
 {
 	GameEngineRandom NewRandom;
 	float Random = NewRandom.RandomFloat(450.0f, 750.0f);
-	NewRandom.SetSeed(Random);
+	NewRandom.SetSeed((int)Random);
 
-	Transform.SetLocalPosition(Random);
+	Transform.SetLocalPosition({ Random, -650.0f });
+}
+
+void Attack_CiggyDemon::MoveUpdate(float _Delta)
+{
+	float4 MovePos = float4::UP * 200.0f * _Delta;
+	//float4 FxMovePos = float4::DOWN * 20.0f * _Delta;
+	Transform.AddLocalPosition(MovePos);
+	//FxRenderer->Transform.AddLocalPosition(FxMovePos);
+
+	LiveTime -= _Delta;
+	if (LiveTime < 0.0f)
+	{
+		Death();
+	}
 }

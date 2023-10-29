@@ -111,8 +111,8 @@ void MrWheezy::Start()
 void MrWheezy::Update(float _Delta)
 {
 	ContentActor::Start();
-
 	StateUpdate(_Delta);
+	CreateCiggyDemon(_Delta);
 }
 
 void MrWheezy::ChangeState(WheezyState _State)
@@ -190,4 +190,14 @@ void MrWheezy::ChangeAnimationState(const std::string& _StateName)
 void MrWheezy::ReverseDir()
 {
 	Dir *= (-1);
+}
+
+void MrWheezy::CreateCiggyDemon(float _Delta)
+{
+	CiggyDemonInter -= _Delta;
+	if (CiggyDemonInter < 0.0f)
+	{
+		std::shared_ptr<Attack_CiggyDemon> CiggyDemon = GetLevel()->CreateActor<Attack_CiggyDemon>();
+		CiggyDemonInter = 3.0f;
+	}
 }
