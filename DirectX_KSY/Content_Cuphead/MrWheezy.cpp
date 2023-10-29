@@ -30,31 +30,54 @@ void MrWheezy::Start()
 		}
 	}
 
-	// Create Animation
+	// Create Animation - King Dice
+	KingDiceRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
+	KingDiceRenderer->CreateAnimation("MrWheezy_Intro_Hand", "MrWheezy_Intro_Hand", 0.07f, -1, -1, false);
+	KingDiceRenderer->SetEndEvent("MrWheezy_Intro_Hand", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+		});
+	KingDiceRenderer->ChangeAnimation("MrWheezy_Intro_Hand");
+	KingDiceRenderer->AutoSpriteSizeOn();
+
+	FireRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
+	FireRenderer->CreateAnimation("MrWheezy_Intro_Hand_Flame", "MrWheezy_Intro_Hand_Flame", 0.07f, -1, -1, false);
+	FireRenderer->SetEndEvent("MrWheezy_Intro_Hand_Flame", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+		});
+	FireRenderer->ChangeAnimation("MrWheezy_Intro_Hand_Flame");
+	FireRenderer->AutoSpriteSizeOn();
+
+	// Create Animation - Boss
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Play);
-	MainRenderer->CreateAnimation("MrWheezy_Intro", "MrWheezy_Intro");
+	MainRenderer->CreateAnimation("MrWheezy_Intro", "MrWheezy_Intro", 0.07f, -1, -1, false);
 	MainRenderer->SetEndEvent("MrWheezy_Intro", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("MrWheezy_Idle");
 		});
 	MainRenderer->CreateAnimation("MrWheezy_Idle", "MrWheezy_Idle");
 	MainRenderer->CreateAnimation("MrWheezy_Attack", "MrWheezy_Attack");
-	MainRenderer->CreateAnimation("MrWheezy_Teleport1", "MrWheezy_Teleport1", 0.05f);
+	MainRenderer->CreateAnimation("MrWheezy_Teleport1", "MrWheezy_Teleport1", 0.05f, -1, -1, false);
 	MainRenderer->SetEndEvent("MrWheezy_Teleport1", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("MrWheezy_Teleport2");
 		});
-	MainRenderer->CreateAnimation("MrWheezy_Teleport2", "MrWheezy_Teleport2", 0.05f);
+	MainRenderer->CreateAnimation("MrWheezy_Teleport2", "MrWheezy_Teleport2", 0.05f, -1, -1, false);
 	MainRenderer->SetEndEvent("MrWheezy_Teleport2", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("MrWheezy_Teleport3");
 		});
-	MainRenderer->CreateAnimation("MrWheezy_Teleport3", "MrWheezy_Teleport3", 0.05f);
-	MainRenderer->CreateAnimation("MrWheezy_Death_Intro", "MrWheezy_Death_Intro");
+	MainRenderer->CreateAnimation("MrWheezy_Teleport3", "MrWheezy_Teleport3", 0.05f, -1, -1, false);
+	MainRenderer->CreateAnimation("MrWheezy_Death_Intro", "MrWheezy_Death_Intro", -1, -1, false);
 	MainRenderer->CreateAnimation("MrWheezy_Death_Loop", "MrWheezy_Death_Loop");
 
 	MainRenderer->AutoSpriteSizeOn();
 	Transform.SetLocalPosition({ 1050 , -250 });
+	KingDiceRenderer->Transform.SetLocalPosition({ -300, 300 });
+	KingDiceRenderer->SetPivotType(PivotType::Top);
+	FireRenderer->Transform.SetLocalPosition({ -80, 160 });
+
 
 	ChangeState(WheezyState::Intro);
 
@@ -65,7 +88,7 @@ void MrWheezy::Start()
 	Scale -= { 80.0f, 60.0f };
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
-	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
+	BossCollision->Transform.SetLocalPosition({ 0, 0 });
 
 }
 

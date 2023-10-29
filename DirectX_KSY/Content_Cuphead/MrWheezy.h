@@ -52,6 +52,8 @@ protected:
 	WheezyState State = WheezyState::None;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> KingDiceRenderer = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> FireRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
