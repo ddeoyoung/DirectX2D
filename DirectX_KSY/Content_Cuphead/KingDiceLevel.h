@@ -49,6 +49,11 @@ protected:
 	void CheckRouletteSpace();
 	void ChangeToSubBossStage();
 
+	void FightKingDiceStart();
+	void FightKingDiceUpdate(float _Delta);
+
+	bool IsFightKingDice = false;
+
 private:
 	std::shared_ptr<class KingDice> Boss = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;

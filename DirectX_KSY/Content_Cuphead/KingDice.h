@@ -11,6 +11,7 @@ enum class KingDiceState
 	Curious,
 	Reveal,
 	CameraEat,
+	Attack,
 	Death,
 };
 
@@ -122,7 +123,6 @@ private:
 	float CuriousTimer = 0.0f;
 	float ShowDiceTimer = 0.0f;
 
-	//bool IsDiceOn = false;
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
 };
