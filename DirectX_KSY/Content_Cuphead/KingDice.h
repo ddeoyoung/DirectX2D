@@ -28,6 +28,8 @@ public:
 	KingDice& operator=(const KingDice& _Other) = delete;
 	KingDice& operator=(KingDice&& _Other) noexcept = delete;
 
+	static bool IsDiceOn;
+
 	std::string GetCurState()
 	{
 		return CurState;
@@ -70,6 +72,10 @@ public:
 		return IsLevelChange;
 	}
 
+	void SetIsSafeSpace(bool _IsSafeSpace)
+	{
+		IsSafeSpace = _IsSafeSpace;
+	}
 
 protected:
 	void StateUpdate(float _Delta);
@@ -116,7 +122,8 @@ private:
 	float CuriousTimer = 0.0f;
 	float ShowDiceTimer = 0.0f;
 
-	bool IsDiceOn = false;
+	//bool IsDiceOn = false;
 	bool IsLevelChange = false;
+	bool IsSafeSpace = false;
 };
 

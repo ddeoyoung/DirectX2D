@@ -12,6 +12,7 @@ Marker::~Marker()
 }
 
 bool Marker::IsSpinEnd = false;
+bool Marker::IsTurnEnd = false;
 
 void Marker::Start()
 {
@@ -130,6 +131,11 @@ void Marker::IdleUpdate(float _Delta)
 	{
 		// 킹다이스로 리턴해야 할 것들
 		IsSpinEnd = true;
+		IsSpinStart = false;
+		Dice::IsHit = false;
+		SpinCount = 0;
+		IsTurnEnd = true;
+		return;
 	}
 }
 

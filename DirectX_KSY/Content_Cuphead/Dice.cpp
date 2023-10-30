@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Dice.h"
+#include "KingDice.h"
 
 Dice::Dice()
 {
@@ -203,6 +204,7 @@ void Dice::HitUpdate(float _Delta)
 	HitTimer -= _Delta;
 	if (HitTimer < 0.0f)
 	{
+		KingDice::IsDiceOn = false;
 		ChangeState(DiceState::Death);
 		return;
 	}

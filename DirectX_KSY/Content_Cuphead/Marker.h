@@ -24,15 +24,11 @@ public:
 	Marker& operator=(Marker&& _Other) noexcept = delete;
 
 	static bool IsSpinEnd;
+	static bool IsTurnEnd;
 
 	int GetCurRouletteSpace()
 	{
 		return CurRouletteSpace;
-	}
-
-	bool GetIsSpinEnd()
-	{
-		return IsSpinEnd;
 	}
 
 protected:

@@ -60,9 +60,7 @@ void KingDiceLevel::LevelEnd(GameEngineLevel* _NextLevel)
 
 bool KingDiceLevel::CheckMarkerEnd()
 {
-	std::string BossState = Boss->GetCurState();
-
-	if (true == Roulette_Marker->GetIsSpinEnd() && BossState == "Curious")
+	if (true == Marker::IsSpinEnd)
 	{
 		return true;
 	}
@@ -132,6 +130,8 @@ void KingDiceLevel::CheckRouletteSpace()
 		default:
 			break;
 		}
+
+		Boss->SetIsSafeSpace(true);
 	}
 }
 

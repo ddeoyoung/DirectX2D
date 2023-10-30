@@ -11,6 +11,8 @@ KingDice::~KingDice()
 {
 }
 
+bool KingDice::IsDiceOn;
+
 void KingDice::Start()
 {
 	ContentActor::Start();

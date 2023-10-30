@@ -39,15 +39,10 @@ void KingDice::IdleUpdate(float _Delta)
 
 	IdleTimer += _Delta;
 
-	if (true == GameEngineInput::IsDown('P', this))
-	{
-		ChangeState(KingDiceState::CameraEat);
-		return;
-	}
-
 	// 마커 이동 완료
-	if (true == Marker::IsSpinEnd)
+	if (true == Marker::IsSpinEnd && true == Marker::IsTurnEnd)
 	{
+		Marker::IsTurnEnd = false;
 		ChangeState(KingDiceState::Curious);
 		return;
 	}
@@ -75,8 +70,18 @@ void KingDice::CuriousUpdate(float _Delta)
 	if (CuriousTimer < 0.0f)
 	{
 		HeadRenderer->Off();
-		ChangeState(KingDiceState::CameraEat);
-		return;
+
+		if (true == IsSafeSpace)
+		{
+			ChangeState(KingDiceState::Reveal);
+			return;
+		}
+
+		else if (false == IsSafeSpace)
+		{
+			ChangeState(KingDiceState::CameraEat);
+			return;
+		}
 	}
 }
 
