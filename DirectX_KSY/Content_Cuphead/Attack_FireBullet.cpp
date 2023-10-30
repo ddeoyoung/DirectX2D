@@ -38,7 +38,7 @@ void Attack_FireBullet::Start()
 	
 
 	//TrailRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	//TrailRenderer->CreateAnimation("FireBullet_Trail", "FireBullet_Trail", -1, -1, false);
+	//TrailRenderer->CreateAnimation("FireBullet_Trail", "FireBullet_Trail"/*, 0.08f, -1, -1, false*/);
 	//TrailRenderer->SetEndEvent("FireBullet_Trail", [](GameEngineSpriteRenderer* _Renderer)
 	//	{
 	//		_Renderer->Off();
