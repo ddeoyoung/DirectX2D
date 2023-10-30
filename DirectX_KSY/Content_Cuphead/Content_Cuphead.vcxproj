@@ -191,7 +191,23 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Background_Close.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Background_Far.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Background_Middle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Background_Smokers.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Background_White.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -354,10 +370,16 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PipandDot.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PipandDotLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PipandDotLevel_Load.cpp" />
+    <ClCompile Include="PipandDot_State.cpp" />
     <ClCompile Include="PiroulettaLevel.cpp">
       <SubType>
       </SubType>
@@ -441,7 +463,23 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Background_Close.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Background_Far.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Background_Middle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Background_Smokers.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Background_White.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -593,6 +631,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PhearLapLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PipandDot.h">
       <SubType>
       </SubType>
     </ClInclude>

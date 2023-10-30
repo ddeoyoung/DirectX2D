@@ -60,6 +60,11 @@ public:
 		IsLevelChange = true;
 	}
 
+	void SetLevelChange(bool _bool)
+	{
+		IsLevelChange = _bool;
+	}
+
 	bool GetLevelChange()
 	{
 		return IsLevelChange;

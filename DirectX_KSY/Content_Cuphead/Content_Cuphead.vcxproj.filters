@@ -112,6 +112,12 @@
     <Filter Include="Level\4. SubBossStage\Stage3\Object">
       <UniqueIdentifier>{666c411c-d7b1-4433-858d-2d36f7548d4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage4\Boss">
+      <UniqueIdentifier>{4a4c1652-8816-45d7-b017-691b83ce16d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\4. SubBossStage\Stage4\Object">
+      <UniqueIdentifier>{d3c2b590-1dd4-4199-8f42-9181cbf3d153}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -300,6 +306,21 @@
     </ClInclude>
     <ClInclude Include="Attack_CiggyDemon.h">
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PipandDot.h">
+      <Filter>Level\4. SubBossStage\Stage4\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Background_White.h">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Background_Close.h">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Background_Middle.h">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Background_Far.h">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +532,27 @@
     </ClCompile>
     <ClCompile Include="Attack_CiggyDemon.cpp">
       <Filter>Level\4. SubBossStage\Stage3\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PipandDot.cpp">
+      <Filter>Level\4. SubBossStage\Stage4\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="PipandDot_State.cpp">
+      <Filter>Level\4. SubBossStage\Stage4\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="PipandDotLevel_Load.cpp">
+      <Filter>Level\4. SubBossStage\Stage4</Filter>
+    </ClCompile>
+    <ClCompile Include="Background_White.cpp">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Background_Close.cpp">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Background_Middle.cpp">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Background_Far.cpp">
+      <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
