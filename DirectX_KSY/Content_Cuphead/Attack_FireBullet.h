@@ -19,6 +19,12 @@ public:
 		AttDir = _AttDir;
 	}
 
+	float4 Pos;
+
+	float4 Arm;
+	float Dis = 0.0f;
+	float Angle = 0.0f;
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -32,5 +38,6 @@ protected:
 private:
 	int AttDir = 0;
 	float LiveTime = 3.0f;
+
 };
 

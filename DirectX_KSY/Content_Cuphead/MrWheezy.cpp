@@ -223,4 +223,5 @@ void MrWheezy::CreateFireBullet()
 	}
 
 	FireBullet->Transform.SetLocalPosition(BossPos);
+	FireBullet->Pos = BossPos;
 }

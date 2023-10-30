@@ -65,8 +65,24 @@ void Attack_FireBullet::Update(float _Delta)
 
 void Attack_FireBullet::MoveUpdate(float _Delta)
 {
+	Pos += float4::LEFT * AttDir * _Delta * 100.0f;
+
+	Dis += _Delta * 200.0f;
+
+	if (300.0f <= Dis)
+	{
+		Dis = 300.0f;
+	}
+
+	Angle += _Delta * 360.0f;
+
+	Arm = float4::GetUnitVectorFromDeg(Angle);
+
+	Transform.SetLocalPosition(Pos + (Arm * Dis));
+
+	// Transform.AddLocalPosition(Pos);
 	float4 MovePos = float4::LEFT * AttDir * _Delta * 500.0f;
-	Transform.AddLocalPosition(MovePos);
+	// Transform.AddLocalPosition(MovePos);
 
 	LiveTime -= _Delta;
 	if (LiveTime < 0.0f)
