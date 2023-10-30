@@ -47,7 +47,7 @@ void CigarFire::SetFireTypeAndPos(const std::string& _Type, float4 _Pos, int _Or
 {
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(_Order);
 	std::string Name = "CigarFire_" + _Type;
-	MainRenderer->CreateAnimation(Name, Name);
+	MainRenderer->CreateAnimation(Name, Name, 0.05f);
 	MainRenderer->ChangeAnimation(Name);
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
