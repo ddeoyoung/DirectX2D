@@ -4,15 +4,15 @@
 void KingDiceLevel::LevelStartTextureLoad()
 {
 	// Background
-	if (nullptr == GameEngineSprite::Find("kd_bg_painting.png"))
+	if (nullptr == GameEngineSprite::Find("kd_bg_painting2.png"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Background\\kd_bg_painting.png");
+		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Background\\kd_bg_painting2.png");
 
 		// 페인팅 배경(위)
 		GameEngineTexture::Load(Dir.GetStringPath());
-		GameEngineSprite::CreateSingle("kd_bg_painting.png");
+		GameEngineSprite::CreateSingle("kd_bg_painting2.png");
 
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\Stage\\KingDice\\StageObject\\Table");
@@ -214,7 +214,8 @@ void KingDiceLevel::LevelStartTextureSet()
 {
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("kd_bg_painting.png");
+	CurLevelBackground->BackgroundInit("kd_bg_painting2.png");
+	CurLevelBackground->Transform.SetLocalPosition({ -20, 50 });
 
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
 	CurLevelPixelBackground->PixelBackgroundInit("kd_bg_table_pixel.bmp");
