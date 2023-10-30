@@ -14,14 +14,23 @@ public:
 	Attack_FireBullet& operator=(const Attack_FireBullet& _Other) = delete;
 	Attack_FireBullet& operator=(Attack_FireBullet&& _Other) noexcept = delete;
 
+	void SetAttDir(int _AttDir)
+	{
+		AttDir = _AttDir;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void MoveUpdate(float _Delta);
+
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> TrailRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 private:
-
+	int AttDir = 0;
+	float LiveTime = 3.0f;
 };
 

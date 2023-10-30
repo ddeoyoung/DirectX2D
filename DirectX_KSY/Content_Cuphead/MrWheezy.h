@@ -30,6 +30,11 @@ public:
 		State = _State;
 	}
 
+	int GetDir()
+	{
+		return Dir;
+	}
+
 
 protected:
 	void ChangeState(WheezyState _State);
@@ -60,6 +65,7 @@ protected:
 
 	void ReverseDir();
 	void CreateCiggyDemon(float _Delta);
+	void CreateFireBullet();
 
 	std::string CurState = "";
 	WheezyState State = WheezyState::None;
@@ -73,6 +79,8 @@ private:
 	int Dir = 1;
 	int AttackCount = 0;
 	float IdleTime = 0.0f;
+	float AttackTime = 0.0f;
 	float CiggyDemonInter = 3.0f;
+	bool IsAttack = false;
 };
 

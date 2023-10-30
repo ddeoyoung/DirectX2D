@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Attack_FireBullet.h"
+#include "MrWheezy.h"
 
 Attack_FireBullet::Attack_FireBullet()
 {
@@ -30,14 +31,20 @@ void Attack_FireBullet::Start()
 	}
 
 	// Create Animation
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	MainRenderer->CreateAnimation("Cigar_FireBullet", "Cigar_FireBullet", -1, -1, false);
-	MainRenderer->SetEndEvent("Cigar_FireBullet", [](GameEngineSpriteRenderer* _Renderer)
-		{
-			_Renderer->Off();
-		});
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Play);
+	MainRenderer->CreateAnimation("Cigar_FireBullet", "Cigar_FireBullet", 0.05f);
 	MainRenderer->ChangeAnimation("Cigar_FireBullet");
 	MainRenderer->AutoSpriteSizeOn();
+	
+
+	//TrailRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	//TrailRenderer->CreateAnimation("FireBullet_Trail", "FireBullet_Trail", -1, -1, false);
+	//TrailRenderer->SetEndEvent("FireBullet_Trail", [](GameEngineSpriteRenderer* _Renderer)
+	//	{
+	//		_Renderer->Off();
+	//	});
+	//TrailRenderer->ChangeAnimation("FireBullet_Trail");
+	//TrailRenderer->AutoSpriteSizeOn();
 
 
 	// Create Collision
@@ -52,4 +59,18 @@ void Attack_FireBullet::Start()
 void Attack_FireBullet::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	MoveUpdate(_Delta);
+}
+
+void Attack_FireBullet::MoveUpdate(float _Delta)
+{
+	float4 MovePos = float4::LEFT * AttDir * _Delta * 500.0f;
+	Transform.AddLocalPosition(MovePos);
+
+	LiveTime -= _Delta;
+	if (LiveTime < 0.0f)
+	{
+		Death();
+	}
 }

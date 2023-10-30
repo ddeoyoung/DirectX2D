@@ -38,10 +38,19 @@ void MrWheezy::IdleUpdate(float _Delta)
 void MrWheezy::AttackStart()
 {
 	ChangeAnimationState("Attack");
+	AttackTime = 1.0f;
+	IsAttack = false;
 }
 
 void MrWheezy::AttackUpdate(float _Delta)
 {
+	AttackTime -= _Delta;
+	if (AttackTime < 0.0f && false == IsAttack)
+	{
+		IsAttack = true;
+		CreateFireBullet();
+	}
+
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		AttackCount += 1;

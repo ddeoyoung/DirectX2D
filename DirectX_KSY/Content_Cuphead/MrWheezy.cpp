@@ -201,3 +201,26 @@ void MrWheezy::CreateCiggyDemon(float _Delta)
 		CiggyDemonInter = 3.0f;
 	}
 }
+
+void MrWheezy::CreateFireBullet()
+{
+	std::shared_ptr<Attack_FireBullet> FireBullet = GetLevel()->CreateActor<Attack_FireBullet>();
+	FireBullet->SetAttDir(Dir);
+
+	float4 BossPos = Transform.GetLocalPosition();
+	BossPos.Y -= 140.0f;
+
+	switch (Dir)
+	{
+	case 1:
+		BossPos.X -= 200.0f;
+		break;
+	case -1:
+		BossPos.X += 200.0f;
+		break;
+	default:
+		break;
+	}
+
+	FireBullet->Transform.SetLocalPosition(BossPos);
+}
