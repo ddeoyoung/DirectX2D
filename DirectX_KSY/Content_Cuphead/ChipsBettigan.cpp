@@ -303,7 +303,7 @@ bool ChipsBettigan::CheckAttackDir()
 		return true;
 	}
 	
-	if (true == IsMove)
+	else if (true == IsMove)
 	{
 		IsMove = false;
 		return false;

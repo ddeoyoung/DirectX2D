@@ -38,5 +38,5 @@ void Background_Smokers::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
 
-	MainRenderer->RenderBaseInfoValue.VertexUVPlus.X += _Delta * 0.01;
+	MainRenderer->RenderBaseInfoValue.VertexUVPlus.X += _Delta * 0.01f;
 }

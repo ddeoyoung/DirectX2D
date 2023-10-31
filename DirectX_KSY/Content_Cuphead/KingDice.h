@@ -52,6 +52,11 @@ public:
 		return HeadRenderer;
 	}
 
+	std::shared_ptr<class GameEngineSpriteRenderer> GetArmRender()
+	{
+		return ArmRenderer;
+	}
+
 	bool IsBossAnimationEnd()
 	{
 		return MainRenderer->IsCurAnimationEnd();
@@ -121,6 +126,7 @@ protected:
 	void RandomAttackDir();
 	void SetAttackPos();
 	void ResetAttackPos();
+	void SetAttackArm();
 
 	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
@@ -136,6 +142,7 @@ private:
 	float CuriousTimer = 0.0f;
 	float ShowDiceTimer = 0.0f;
 	float AttackIdleTime = 0.0f;
+	float ShowArmTime = 0.0f;
 
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
