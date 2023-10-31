@@ -117,6 +117,11 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void CheckAttackCount();
+	void RandomAttackDir();
+	void SetAttackPos();
+	void ResetAttackPos();
+
 	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
 
@@ -130,8 +135,13 @@ private:
 	float IdleTimer = 0.0f;
 	float CuriousTimer = 0.0f;
 	float ShowDiceTimer = 0.0f;
+	float AttackIdleTime = 0.0f;
 
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
+
+	int AttackCount = 0;
+
+	std::string AttackDir = "";
 };
 

@@ -147,17 +147,28 @@ void KingDice::DeathUpdate(float _Delta)
 void KingDice::AttackStart()
 {
 	HeadRenderer->Off();
-	ChangeAnimationState("Attack");
+	AttackCount = 7;
+	RandomAttackDir();
+	SetAttackPos();
+	std::string AnimationName = "Attack_" + AttackDir;
+	ChangeAnimationState(AnimationName);
 }
 
 void KingDice::AttackUpdate(float _Delta)
 {
+	CheckAttackCount();
 
+	if (AttackCount == 0)
+	{
+		std::string AnimationName = "KingDice_Attack_" + AttackDir + "_End";
+		MainRenderer->ChangeAnimation(AnimationName);
+	}
 }
 
 void KingDice::AttackIdleStart()
 {
 	ChangeAnimationState("AttackIdle");
+	ResetAttackPos();
 }
 
 void KingDice::AttackIdleUpdate(float _Delta)

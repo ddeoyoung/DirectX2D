@@ -106,8 +106,34 @@ void KingDice::Start()
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
 	// Attack
-	MainRenderer->CreateAnimation("KingDice_Attack_Left", "KingDice_Attack_Left", 0.07f);
-	MainRenderer->CreateAnimation("KingDice_Attack_Right", "KingDice_Attack_Right", 0.07f);
+	MainRenderer->CreateAnimation("KingDice_AttackIdle", "KingDice_Idle", 0.05f);
+	MainRenderer->CreateAnimation("KingDice_Attack_Left_Start", "KingDice_Attack_Left_Start", 0.05f, -1, -1, false);
+	MainRenderer->SetEndEvent("KingDice_Attack_Left_Start", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_Attack_Left_Loop");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::Attack);
+		});
+	MainRenderer->CreateAnimation("KingDice_Attack_Left_Loop", "KingDice_Attack_Left_Loop", 0.05f);
+	MainRenderer->CreateAnimation("KingDice_Attack_Left_End", "KingDice_Attack_Left_Start", 0.05f, 15, 0, false);
+	MainRenderer->SetEndEvent("KingDice_Attack_Left_End", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_AttackIdle");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::AttackIdle);
+		});
+
+	MainRenderer->CreateAnimation("KingDice_Attack_Right_Start", "KingDice_Attack_Right_Start", 0.05f, -1, -1, false);
+	MainRenderer->SetEndEvent("KingDice_Attack_Right_Start", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_Attack_Right_Loop");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::Attack);
+		});
+	MainRenderer->CreateAnimation("KingDice_Attack_Right_Loop", "KingDice_Attack_Right_Loop", 0.05f);
+	MainRenderer->CreateAnimation("KingDice_Attack_Right_End", "KingDice_Attack_Right_Start", 0.05f, 15, 0, false);
+	MainRenderer->SetEndEvent("KingDice_Attack_Right_End", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("KingDice_AttackIdle");
+			_Renderer->GetParent<KingDice>()->SetState(KingDiceState::AttackIdle);
+		});
 
 
 	MainRenderer->AutoSpriteSizeOn();
@@ -125,8 +151,8 @@ void KingDice::Start()
 
 	//////////////////////////////////// Arm ///////////////////////////////////////////
 	// Attack Arm
-	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm", "KingDice_Attack_Left_Arm", 0.05f);
-	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm", "KingDice_Attack_Right_Arm", 0.05f);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm", "KingDice_Attack_Left_Arm", 0.07f);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm", "KingDice_Attack_Right_Arm", 0.07f);
 	ArmRenderer->ChangeAnimation("KingDice_Attack_Left_Arm");
 	ArmRenderer->AutoSpriteSizeOn();
 	ArmRenderer->Off();
@@ -238,11 +264,68 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 	}
 
 	// Attack
-	if (_StateName == "Attack")
+	if (_StateName == "Attack_Left" || _StateName == "Attack_Right")
 	{
-		AnimationName += "_Left";
+		AnimationName += "_Start";
 	}
 
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
+}
+
+void KingDice::RandomAttackDir()
+{
+	GameEngineRandom NewRandom;
+	int Random = NewRandom.RandomInt(1, 2);
+	NewRandom.SetSeed(Random);
+
+	switch (Random)
+	{
+	case 1:
+		AttackDir = "Left";
+		break;
+	case 2:
+		AttackDir = "Right";
+		break;
+	default:
+		break;
+	}
+}
+
+void KingDice::CheckAttackCount()
+{
+	if (true == MainRenderer->IsCurAnimation("KingDice_Attack_Left_Loop")
+		|| true == MainRenderer->IsCurAnimation("KingDice_Attack_Right_Loop"))
+	{
+		if (true == MainRenderer->IsCurAnimationEnd())
+		{
+			AttackCount -= 1;
+		}
+	}
+}
+
+void KingDice::SetAttackPos() 
+{
+	if (AttackDir == "Left")
+	{
+		Transform.AddLocalPosition({ -50 , -310 });
+	}
+
+	else if (AttackDir == "Right")
+	{
+		Transform.AddLocalPosition({ 50 , -310 });
+	}
+}
+
+void KingDice::ResetAttackPos()
+{
+	if (AttackDir == "Left")
+	{
+		Transform.AddLocalPosition({ 50 , 310 });
+	}
+
+	else if (AttackDir == "Right")
+	{
+		Transform.AddLocalPosition({ -50 , 310 });
+	}
 }
