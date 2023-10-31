@@ -169,9 +169,15 @@ void KingDice::AttackIdleStart()
 {
 	ChangeAnimationState("AttackIdle");
 	ResetAttackPos();
+	AttackIdleTime = 0.0f;
 }
 
 void KingDice::AttackIdleUpdate(float _Delta)
 {
-
+	AttackIdleTime += _Delta;
+	if (AttackIdleTime > 3.0f)
+	{
+		ChangeState(KingDiceState::Attack);
+		return;
+	}
 }
