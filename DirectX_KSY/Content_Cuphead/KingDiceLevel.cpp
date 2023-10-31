@@ -27,12 +27,20 @@ void KingDiceLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
 
-	CheckRouletteSpace();
-	ChangeToSubBossStage();
+	if (false == IsFightKingDice)
+	{
+		CheckRouletteSpace();
+		ChangeToSubBossStage();
+		
+		if (true == IsFightKingDice)
+		{
+			FightKingDiceStart();
+		}
+	}
 
 	if (true == IsFightKingDice)
 	{
-		FightKingDiceStart();
+		FightKingDiceUpdate(_Delta);
 	}
 }
 
@@ -166,14 +174,27 @@ void KingDiceLevel::ChangeToSubBossStage()
 void KingDiceLevel::FightKingDiceStart()
 {
 	// FightText
-	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
-	Ready->SetFightText("Ready");
+	if (nullptr == ReadyText)
+	{
+		ReadyText = CreateActor<FightText>();
+		ReadyText->SetFightText("Ready");
+	}
 
 	// Boss
-	//Boss->SetState(KingDiceState::);
+	//if ("Attack" != Boss->GetCurState())
+	//{
+	//	Boss->SetState(KingDiceState::Attack);
+	//}
 }
 
 void KingDiceLevel::FightKingDiceUpdate(float _Delta)
 {
-
+	ReadyTime += _Delta;
+	if (ReadyTime > 3.0f)
+	{
+		if ("Attack" != Boss->GetCurState())
+		{
+			Boss->SetState(KingDiceState::Attack);
+		}
+	}
 }

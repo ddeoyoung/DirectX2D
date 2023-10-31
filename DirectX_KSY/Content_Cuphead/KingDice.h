@@ -12,6 +12,7 @@ enum class KingDiceState
 	Reveal,
 	CameraEat,
 	Attack,
+	AttackIdle,
 	Death,
 };
 
@@ -43,7 +44,7 @@ public:
 
 	void SetState(KingDiceState _State)
 	{
-		State = _State;
+		ChangeState(_State);
 	}
 
 	std::shared_ptr<class GameEngineSpriteRenderer> GetHeadRender()
@@ -55,8 +56,6 @@ public:
 	{
 		return MainRenderer->IsCurAnimationEnd();
 	}
-
-	void ChangeState(KingDiceState _State);
 
 	void SetLevelChange()
 	{
@@ -77,6 +76,8 @@ public:
 	{
 		IsSafeSpace = _IsSafeSpace;
 	}
+
+	void ChangeState(KingDiceState _State);
 
 protected:
 	void StateUpdate(float _Delta);
@@ -106,6 +107,12 @@ protected:
 	void DeathStart();
 	void DeathUpdate(float _Delta);
 
+	void AttackStart();
+	void AttackUpdate(float _Delta);
+
+	void AttackIdleStart();
+	void AttackIdleUpdate(float _Delta);
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -115,6 +122,7 @@ protected:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> HeadRenderer = nullptr;
+	std::shared_ptr<class GameEngineSpriteRenderer> ArmRenderer = nullptr;
 
 	std::shared_ptr<class Dice> PinkDice = nullptr;
 

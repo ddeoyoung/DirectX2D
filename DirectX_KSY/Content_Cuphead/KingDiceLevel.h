@@ -58,7 +58,9 @@ private:
 	std::shared_ptr<class KingDice> Boss = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
 	std::shared_ptr<class Marker> Roulette_Marker = nullptr;
-
+	std::shared_ptr<class FightText> ReadyText = nullptr;
 	std::string LevelName = "";
+
+	float ReadyTime = 0.0f;
 };
 

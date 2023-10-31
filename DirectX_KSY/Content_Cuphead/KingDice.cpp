@@ -37,10 +37,14 @@ void KingDice::Start()
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	Transform.SetLocalPosition({ HalfWindowScale.X + 27.0f, -HalfWindowScale.Y - 28.0f });
 
+
 	// Create Animation
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
 	HeadRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	ArmRenderer = CreateComponent<GameEngineSpriteRenderer>();
 
+
+	//////////////////////////////////////// Main /////////////////////////////////////////
 	// Intro
 	MainRenderer->CreateAnimation("KingDice_IntroHand", "KingDice_IntroHand", 0.04f, false);
 	MainRenderer->SetEndEvent("KingDice_IntroHand", [](GameEngineSpriteRenderer* _Renderer)
@@ -101,16 +105,31 @@ void KingDice::Start()
 	// Death
 	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
 
+	// Attack
+	MainRenderer->CreateAnimation("KingDice_Attack_Left", "KingDice_Attack_Left", 0.07f);
+	MainRenderer->CreateAnimation("KingDice_Attack_Right", "KingDice_Attack_Right", 0.07f);
+
+
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 
 
+	//////////////////////////////////// Head //////////////////////////////////////////
 	// Curious Head
 	HeadRenderer->CreateAnimation("KingDice_Curious_Head", "KingDice_Curious_Head", 0.04f);
 	HeadRenderer->ChangeAnimation("KingDice_Curious_Head");
 	HeadRenderer->AutoSpriteSizeOn();
 	HeadRenderer->SetPivotType(PivotType::Bottom);
 	HeadRenderer->Off();
+
+
+	//////////////////////////////////// Arm ///////////////////////////////////////////
+	// Attack Arm
+	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm", "KingDice_Attack_Left_Arm", 0.05f);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm", "KingDice_Attack_Right_Arm", 0.05f);
+	ArmRenderer->ChangeAnimation("KingDice_Attack_Left_Arm");
+	ArmRenderer->AutoSpriteSizeOn();
+	ArmRenderer->Off();
 
 
 	ChangeState(KingDiceState::IntroHand);
@@ -155,6 +174,12 @@ void KingDice::ChangeState(KingDiceState _State)
 		case KingDiceState::Death:
 			DeathStart();
 			break;
+		case KingDiceState::Attack:
+			AttackStart();
+			break;
+		case KingDiceState::AttackIdle:
+			AttackIdleStart();
+			break;
 		default:
 			break;
 		}
@@ -185,6 +210,10 @@ void KingDice::StateUpdate(float _Delta)
 		return CameraEatUpdate(_Delta);
 	case KingDiceState::Death:
 		return DeathUpdate(_Delta);
+	case KingDiceState::Attack:
+		return AttackUpdate(_Delta);
+	case KingDiceState::AttackIdle:
+		return AttackIdleUpdate(_Delta);
 	default:
 		break;
 	}
@@ -206,6 +235,12 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Curious")
 	{
 		AnimationName += "_Start";
+	}
+
+	// Attack
+	if (_StateName == "Attack")
+	{
+		AnimationName += "_Left";
 	}
 
 	CurState = _StateName;

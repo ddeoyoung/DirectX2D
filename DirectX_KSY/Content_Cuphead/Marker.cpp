@@ -13,6 +13,7 @@ Marker::~Marker()
 
 bool Marker::IsSpinEnd = false;
 bool Marker::IsTurnEnd = false;
+int Marker::CurRouletteSpace = 0;
 
 void Marker::Start()
 {
@@ -68,6 +69,9 @@ void Marker::ChangeState(MarkerState _State)
 		case MarkerState::Spin:
 			SpinStart();
 			break;
+		case MarkerState::SpinEnd:
+			SpinEndStart();
+			break;
 		default:
 			break;
 		}
@@ -86,6 +90,8 @@ void Marker::StateUpdate(float _Delta)
 		return IdleUpdate(_Delta);
 	case MarkerState::Spin:
 		return SpinUpdate(_Delta);
+	case MarkerState::SpinEnd:
+		return SpinEndUpdate(_Delta);
 	default:
 		break;
 	}
@@ -108,6 +114,13 @@ void Marker::IdleStart()
 
 void Marker::IdleUpdate(float _Delta)
 {
+	// 룰렛 최대 범위 이내만
+	if (CurRouletteSpace >= 14)
+	{
+		ChangeState(MarkerState::SpinEnd);
+		return;
+	}
+
 	// 시작
 	// Dice Hit Check
 	if (true == Dice::IsHit && false == IsSpinStart)
@@ -129,12 +142,7 @@ void Marker::IdleUpdate(float _Delta)
 	// 주사위 수만큼 이동 완료
 	if (true == IsSpinStart && CurCount == SpinCount)
 	{
-		// 킹다이스로 리턴해야 할 것들
-		IsSpinEnd = true;
-		IsSpinStart = false;
-		Dice::IsHit = false;
-		SpinCount = 0;
-		IsTurnEnd = true;
+		ResetMarkerInfo();
 		return;
 	}
 }
@@ -162,6 +170,19 @@ void Marker::SpinUpdate(float _Delta)
 		return;
 	}
 }
+
+void Marker::SpinEndStart()
+{
+	KingDice::IsDiceOn = true;
+	ResetMarkerInfo();
+	ChangeAnimationState("Idle");
+}
+
+void Marker::SpinEndUpdate(float _Delta)
+{
+
+}
+
 
 void Marker::SetRouletteMarker()
 {
@@ -201,7 +222,17 @@ void Marker::SetRouletteMarker()
 	RouletteSpace.push_back(SpaceFinish);
 }
 
-void Marker::MoveMarker(float4 _Delta)
+void Marker::MoveMarkerCheat()
 {
+	ResetMarkerInfo();
+	Transform.SetLocalPosition(RouletteSpace[CurRouletteSpace]);
+}
 
+void Marker::ResetMarkerInfo()
+{
+	IsSpinStart = false;
+	IsSpinEnd = true;
+	IsTurnEnd = true;
+	Dice::IsHit = false;
+	SpinCount = 0;
 }

@@ -204,6 +204,7 @@ void Dice::HitUpdate(float _Delta)
 	HitTimer -= _Delta;
 	if (HitTimer < 0.0f)
 	{
+		HitTimer = 1.5f;
 		KingDice::IsDiceOn = false;
 		ChangeState(DiceState::Death);
 		return;

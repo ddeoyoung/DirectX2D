@@ -485,9 +485,6 @@
     <ClCompile Include="HeathUp.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Marker.cpp">
-      <Filter>Level\5. BossStage\Object</Filter>
-    </ClCompile>
     <ClCompile Include="ParrySpark_Character.cpp">
       <Filter>Actor\Character\Effect</Filter>
     </ClCompile>
@@ -553,6 +550,9 @@
     </ClCompile>
     <ClCompile Include="Background_Far.cpp">
       <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Marker.cpp">
+      <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

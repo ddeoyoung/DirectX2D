@@ -33,6 +33,7 @@ void KingDice::IdleUpdate(float _Delta)
 {
 	if (false == IsDiceOn && IdleTimer > 3.0f)
 	{
+		IdleTimer = 0.0f;
 		ChangeState(KingDiceState::Reveal);
 		return;
 	}
@@ -135,6 +136,31 @@ void KingDice::DeathStart()
 }
 
 void KingDice::DeathUpdate(float _Delta)
+{
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// Attack //////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void KingDice::AttackStart()
+{
+	HeadRenderer->Off();
+	ChangeAnimationState("Attack");
+}
+
+void KingDice::AttackUpdate(float _Delta)
+{
+
+}
+
+void KingDice::AttackIdleStart()
+{
+	ChangeAnimationState("AttackIdle");
+}
+
+void KingDice::AttackIdleUpdate(float _Delta)
 {
 
 }

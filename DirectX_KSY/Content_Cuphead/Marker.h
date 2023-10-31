@@ -5,6 +5,7 @@ enum class MarkerState
 	None,
 	Idle,
 	Spin,
+	SpinEnd,
 };
 
 #define SPINSPEED 10.0f
@@ -25,11 +26,20 @@ public:
 
 	static bool IsSpinEnd;
 	static bool IsTurnEnd;
+	static int CurRouletteSpace;
 
 	int GetCurRouletteSpace()
 	{
 		return CurRouletteSpace;
 	}
+
+	void SetCurRouletteSpace(int _SpaceNum)
+	{
+		CurRouletteSpace = _SpaceNum;
+	}
+
+	void MoveMarkerCheat();
+
 
 protected:
 	void ChangeState(MarkerState _State);
@@ -42,8 +52,11 @@ protected:
 	void SpinStart();
 	void SpinUpdate(float _Delta);
 
+	void SpinEndStart();
+	void SpinEndUpdate(float _Delta);
+
 	void SetRouletteMarker();
-	void MoveMarker(float4 _Delta);
+	void ResetMarkerInfo();
 
 protected:
 	void Start() override;
@@ -54,7 +67,6 @@ protected:
 	std::string CurState = "";
 	MarkerState State = MarkerState::None;
 	std::vector<float4> RouletteSpace;
-	int CurRouletteSpace = 0;
 
 private:
 	int CurCount = 0;

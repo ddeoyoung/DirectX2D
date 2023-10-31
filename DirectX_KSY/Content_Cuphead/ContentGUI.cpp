@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "ContentGUI.h"
+#include "Marker.h"
 
 ContentGUI::ContentGUI()
 {
@@ -33,7 +34,7 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 
 
 	// Level Change
-	ImGui::Text("Level Change");
+	ImGui::Text("Change Level");
 	if (ImGui::Button("Logo Level"))
 	{
 		GameEngineCore::ChangeLevel("LogoLevel");
