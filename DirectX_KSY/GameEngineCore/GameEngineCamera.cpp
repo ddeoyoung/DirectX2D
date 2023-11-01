@@ -30,6 +30,11 @@ void GameEngineCamera::Start()
 		return;
 	}
 
+	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+
+	CameraTarget = GameEngineRenderTarget::Create();
+	CameraTarget->AddNewTexture(DXGI_FORMAT_R32G32B32A32_FLOAT, WindowScale, float4::ZERONULL);
+
 	IsFreeCameraValue = false;
 }
 
@@ -160,7 +165,7 @@ void GameEngineCamera::Render(float _DeltaTime)
 					return _Left->Transform.GetWorldPosition().Z > _Right->Transform.GetWorldPosition().Z;
 				});
 		}
-		
+
 		if (true == YSortMap.contains(RendererPair.first))
 		{
 			RendererList.sort([](std::shared_ptr<class GameEngineRenderer> _Left, std::shared_ptr<class GameEngineRenderer> _Right)

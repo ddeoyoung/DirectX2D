@@ -167,6 +167,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AStartPathFinder.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GameEngineActor.cpp" />
     <ClCompile Include="GameEngineBlend.cpp">
       <SubType>
@@ -316,6 +320,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AStartPathFinder.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EngineEnum.h" />
     <ClInclude Include="GameEngineActor.h" />
     <ClInclude Include="GameEngineBlend.h">

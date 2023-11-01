@@ -47,6 +47,41 @@ void GameEngineRenderTarget::Setting()
 	GameEngineCore::GetContext()->OMSetRenderTargets(static_cast<UINT>(RTV.size()), &RTV[0], DSV);
 }
 
+void GameEngineRenderTarget::AddNewTexture(DXGI_FORMAT _Format, float4 _Scale, float4 _Color)
+{
+	D3D11_TEXTURE2D_DESC Desc = { 0 };
+	Desc.ArraySize = 1;
+	Desc.Width = _Scale.uiX();
+	Desc.Height = _Scale.uiY();
+	Desc.Format = _Format;
+	Desc.SampleDesc.Count = 1;
+	Desc.SampleDesc.Quality = 0;
+	Desc.MipLevels = 1;
+	// 디폴트
+	// 이 텍스처의 메모리를 그래픽카드가 가지게 해라.
+	Desc.Usage = D3D11_USAGE_DEFAULT;
+	Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET | D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
+	// 용도 랜더타겟으로 사용하기 위해서 만든다.
+	// D3D11_BIND_SHADER_RESOURCE 텍스처로 쉐이더에 세팅할수 있게 하기 위해서 만든다.
+
+	std::shared_ptr<GameEngineTexture> Tex = GameEngineTexture::Create(Desc);
+	Textures.push_back(Tex);
+
+	// 뷰포트도 생성
+	D3D11_VIEWPORT ViewPortData;
+	ViewPortData.TopLeftX = 0;
+	ViewPortData.TopLeftY = 0;
+	ViewPortData.Width = static_cast<float>(_Scale.uiX());
+	ViewPortData.Height = static_cast<float>(_Scale.uiY());
+	ViewPortData.MinDepth = 0.0f;
+	ViewPortData.MaxDepth = 1.0f;
+
+	RTV.push_back(Tex->GetRTV());
+	SRV.push_back(Tex->GetSRV());
+	ClearColor.push_back(_Color);
+	ViewPort.push_back(ViewPortData);
+
+}
 
 void GameEngineRenderTarget::CreateDepthTexture(int _Index/* = 0*/)
 {
