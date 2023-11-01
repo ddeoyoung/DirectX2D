@@ -349,7 +349,7 @@ void KingDice::SetAttackArm()
 
 	if (AttackDir == "Left")
 	{
-		ArmRenderer->Transform.SetLocalPosition({ -250 , 0 });
+		ArmRenderer->Transform.SetLocalPosition({ -300 , 0 });
 	}
 
 	else if (AttackDir == "Right")
