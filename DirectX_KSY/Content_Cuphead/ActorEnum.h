@@ -53,3 +53,12 @@ enum class AttackState
 	Attack,
 	Death,
 };
+
+enum class CardType
+{
+	None,
+	Club,
+	Diamond,
+	Heart,
+	Spade,
+};

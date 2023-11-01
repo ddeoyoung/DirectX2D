@@ -150,12 +150,15 @@ void KingDice::AttackStart()
 	SetAttackPos();
 	HeadRenderer->Off();
 	AttackCount = 7;
-	CardInter = 0.0f;
 	std::string AnimationName = "Attack_" + AttackDir;
 	ChangeAnimationState(AnimationName);
 
 	// Arm
 	SetAttackArm();
+
+	// Card
+	CardInter = 0.0f;
+	CardPattern = GetRandomCardSet();
 }
 
 void KingDice::AttackUpdate(float _Delta)

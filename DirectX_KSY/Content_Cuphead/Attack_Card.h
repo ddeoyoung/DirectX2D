@@ -14,7 +14,8 @@ public:
 	Attack_Card& operator=(const Attack_Card& _Other) = delete;
 	Attack_Card& operator=(Attack_Card&& _Other) noexcept = delete;
 
-	void CardSetting(int _AttDir);
+	void SetCardAttDir(int _AttDir);
+	void SetCardType(CardType _CardType);
 
 protected:
 	void Start() override;

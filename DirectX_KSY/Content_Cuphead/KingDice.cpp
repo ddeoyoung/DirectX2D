@@ -171,6 +171,9 @@ void KingDice::Start()
 	ArmRenderer->SetPivotType(PivotType::Bottom);
 	ArmRenderer->Off();
 
+
+	CreateCardPattern();
+
 	ChangeState(KingDiceState::IntroHand);
 }
 
@@ -286,6 +289,10 @@ void KingDice::ChangeAnimationState(const std::string& _StateName)
 	MainRenderer->ChangeAnimation(AnimationName);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// Attack //////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void KingDice::RandomAttackDir()
 {
 	GameEngineRandom NewRandom;
@@ -307,8 +314,9 @@ void KingDice::RandomAttackDir()
 
 void KingDice::CheckAttackCount()
 {
-	if (true == MainRenderer->IsCurAnimation("KingDice_Attack_Left_Loop")
-		|| true == MainRenderer->IsCurAnimation("KingDice_Attack_Right_Loop"))
+	bool CheckLoop = IsAttackLoop();
+
+	if (true == CheckLoop)
 	{
 		if (true == MainRenderer->IsCurAnimationEnd())
 		{
@@ -363,17 +371,21 @@ void KingDice::CreateCards()
 {
 	std::shared_ptr<Attack_Card> Card = GetLevel()->CreateActor<Attack_Card>();
 
+	CardType Type = CardPattern.back();
+	Card->SetCardType(Type);
+	CardPattern.pop_back();
+
 	if (AttackDir == "Left")
 	{
 		// Left = 1
-		Card->CardSetting(1);
+		Card->SetCardAttDir(1);
 		Card->Transform.SetLocalScale({ 1.0f, 1.0f });
 		Card->Transform.SetLocalPosition({ 275, -550 });
 	}
 	else if (AttackDir == "Right")
 	{
 		// Right = -1
-		Card->CardSetting(-1);
+		Card->SetCardAttDir(-1);
 		Card->Transform.SetLocalScale({ -1.0f, 1.0f });
 		Card->Transform.SetLocalPosition({ 1030, -550 });
 	}
@@ -388,4 +400,35 @@ bool KingDice::IsAttackLoop()
 	}
 
 	return false;
+}
+
+void KingDice::CreateCardPattern()
+{
+	CardSet.clear();
+
+	CardType Club = CardType::Club;
+	CardType Diamond = CardType::Diamond;
+	CardType Heart = CardType::Heart;
+	CardType Spade = CardType::Spade;
+
+	std::vector<CardType> Set1 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
+	std::vector<CardType> Set2 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
+	std::vector<CardType> Set3 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
+	std::vector<CardType> Set4 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
+
+	CardSet.push_back(Set1);
+	CardSet.push_back(Set2);
+	CardSet.push_back(Set3);
+	CardSet.push_back(Set4);
+}
+
+std::vector<CardType> KingDice::GetRandomCardSet()
+{
+	int Size = CardSet.size();
+
+	GameEngineRandom NewRandom;
+	int Random = NewRandom.RandomInt(0, Size - 1);
+	NewRandom.SetSeed(Random);
+
+	return CardSet[Random];
 }

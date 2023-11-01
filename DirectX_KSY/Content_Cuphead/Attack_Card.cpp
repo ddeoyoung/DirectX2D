@@ -75,10 +75,32 @@ void Attack_Card::Update(float _Delta)
 	ContentActor::Update(_Delta);
 	MoveUpdate(_Delta);
 }
-
-void Attack_Card::CardSetting(int _AttDir)
+void Attack_Card::SetCardAttDir(int _AttDir)
 {
 	Dir = _AttDir;
+}
+
+void Attack_Card::SetCardType(CardType _CardType)
+{
+	switch (_CardType)
+	{
+	case CardType::None:
+		break;
+	case CardType::Club:
+		MainRenderer->ChangeAnimation("Card_Club_Start");
+		break;
+	case CardType::Diamond:
+		MainRenderer->ChangeAnimation("Card_Diamond_Start");
+		break;
+	case CardType::Heart:
+		MainRenderer->ChangeAnimation("Card_Heart_Start");
+		break;
+	case CardType::Spade:
+		MainRenderer->ChangeAnimation("Card_Spade_Start");
+		break;
+	default:
+		break;
+	}
 }
 
 void Attack_Card::MoveUpdate(float _Delta)

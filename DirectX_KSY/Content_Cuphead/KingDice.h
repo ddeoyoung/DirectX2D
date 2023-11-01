@@ -134,6 +134,8 @@ protected:
 	void SetAttackArm();
 	void CreateCards();
 	bool IsAttackLoop();
+	void CreateCardPattern();
+	std::vector<CardType> GetRandomCardSet();
 
 	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
@@ -158,5 +160,8 @@ private:
 	int AttackCount = 0;
 
 	std::string AttackDir = "";
+
+	std::vector<std::vector<CardType>> CardSet;
+	std::vector<CardType> CardPattern;
 };
 
