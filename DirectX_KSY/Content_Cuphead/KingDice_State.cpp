@@ -150,6 +150,7 @@ void KingDice::AttackStart()
 	SetAttackPos();
 	HeadRenderer->Off();
 	AttackCount = 7;
+	CardInter = 0.0f;
 	std::string AnimationName = "Attack_" + AttackDir;
 	ChangeAnimationState(AnimationName);
 
@@ -166,6 +167,15 @@ void KingDice::AttackUpdate(float _Delta)
 		std::string AnimationName = "KingDice_Attack_" + AttackDir + "_End";
 		MainRenderer->ChangeAnimation(AnimationName);
 		ArmRenderer->Off();
+	}
+
+	bool CheckLoop = IsAttackLoop();
+
+	CardInter += _Delta;
+	if (CardInter > 0.5f && true == CheckLoop)
+	{
+		CreateCards();
+		CardInter = 0.0f;
 	}
 }
 

@@ -2,6 +2,7 @@
 #include "KingDice.h"
 #include "Dice.h"
 #include "Marker.h"
+#include "Attack_Card.h"
 
 KingDice::KingDice()
 {
@@ -153,18 +154,18 @@ void KingDice::Start()
 
 	//////////////////////////////////// Arm ///////////////////////////////////////////
 	// Attack Arm
-	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm_Start", "KingDice_Attack_Left_Arm_Start", 0.05f, -1, -1, false);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm_Start", "KingDice_Attack_Left_Arm_Start", 0.04f, -1, -1, false);
 	ArmRenderer->SetEndEvent("KingDice_Attack_Left_Arm_Start", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("KingDice_Attack_Left_Arm");
 		});
-	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm", "KingDice_Attack_Left_Arm", 0.05f);
-	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm_Start", "KingDice_Attack_Right_Arm_Start", 0.05f, -1, -1, false);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Left_Arm", "KingDice_Attack_Left_Arm", 0.04f);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm_Start", "KingDice_Attack_Right_Arm_Start", 0.04f, -1, -1, false);
 	ArmRenderer->SetEndEvent("KingDice_Attack_Right_Arm_Start", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("KingDice_Attack_Right_Arm");
 		});
-	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm", "KingDice_Attack_Right_Arm", 0.05f);
+	ArmRenderer->CreateAnimation("KingDice_Attack_Right_Arm", "KingDice_Attack_Right_Arm", 0.04f);
 	ArmRenderer->ChangeAnimation("KingDice_Attack_Left_Arm");
 	ArmRenderer->AutoSpriteSizeOn();
 	ArmRenderer->SetPivotType(PivotType::Bottom);
@@ -356,4 +357,35 @@ void KingDice::SetAttackArm()
 	{
 		ArmRenderer->Transform.SetLocalPosition({ 250 , 0 });
 	}
+}
+
+void KingDice::CreateCards()
+{
+	std::shared_ptr<Attack_Card> Card = GetLevel()->CreateActor<Attack_Card>();
+
+	if (AttackDir == "Left")
+	{
+		// Left = 1
+		Card->CardSetting(1);
+		Card->Transform.SetLocalScale({ 1.0f, 1.0f });
+		Card->Transform.SetLocalPosition({ 275, -550 });
+	}
+	else if (AttackDir == "Right")
+	{
+		// Right = -1
+		Card->CardSetting(-1);
+		Card->Transform.SetLocalScale({ -1.0f, 1.0f });
+		Card->Transform.SetLocalPosition({ 1030, -550 });
+	}
+}
+
+bool KingDice::IsAttackLoop()
+{
+	if (true == MainRenderer->IsCurAnimation("KingDice_Attack_Left_Loop")
+		|| true == MainRenderer->IsCurAnimation("KingDice_Attack_Right_Loop"))
+	{
+		return true;
+	}
+
+	return false;
 }

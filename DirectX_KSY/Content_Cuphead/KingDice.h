@@ -82,6 +82,11 @@ public:
 		IsSafeSpace = _IsSafeSpace;
 	}
 
+	std::string GetAttackDir()
+	{
+		return AttackDir;
+	}
+
 	void ChangeState(KingDiceState _State);
 
 protected:
@@ -127,6 +132,8 @@ protected:
 	void SetAttackPos();
 	void ResetAttackPos();
 	void SetAttackArm();
+	void CreateCards();
+	bool IsAttackLoop();
 
 	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
@@ -143,6 +150,7 @@ private:
 	float ShowDiceTimer = 0.0f;
 	float AttackIdleTime = 0.0f;
 	float ShowArmTime = 0.0f;
+	float CardInter = 0.0f;
 
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
