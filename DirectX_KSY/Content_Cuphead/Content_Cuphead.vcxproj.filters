@@ -322,6 +322,9 @@
     <ClInclude Include="Background_Far.h">
       <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Attack_Card.h">
+      <Filter>Level\5. BossStage\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -552,6 +555,9 @@
       <Filter>Level\4. SubBossStage\Stage4\Object</Filter>
     </ClCompile>
     <ClCompile Include="Marker.cpp">
+      <Filter>Level\5. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack_Card.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
   </ItemGroup>

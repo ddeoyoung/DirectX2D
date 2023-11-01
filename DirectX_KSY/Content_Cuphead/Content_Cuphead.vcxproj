@@ -167,6 +167,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Attack_Card.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Attack_Chips.cpp">
       <SubType>
       </SubType>
@@ -439,6 +443,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActorEnum.h" />
+    <ClInclude Include="Attack_Card.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Attack_Chips.h">
       <SubType>
       </SubType>
