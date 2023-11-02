@@ -69,11 +69,17 @@ void BaseWeapon::AttackUpdate(float _Delta)
 	Transform.AddLocalPosition(MovePos);
 
 
-
-	// Test Code
+	// Death
 	{
 		bool IsAttacked = AttackCollision->Collision(CollisionOrder::Boss);
+		if (true == IsAttacked)
+		{
+			ChangeState(AttackState::Death);
+		}
+	}
 
+	{
+		bool IsAttacked = AttackCollision->Collision(CollisionOrder::ShootObject);
 		if (true == IsAttacked)
 		{
 			ChangeState(AttackState::Death);

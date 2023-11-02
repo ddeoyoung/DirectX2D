@@ -26,6 +26,10 @@ private:
 	std::shared_ptr<ContentBackground> BackLayer = nullptr;
 	std::shared_ptr<ContentBackground> FrontLayer = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
+	std::shared_ptr<class Target> TargetObject = nullptr;
+	std::shared_ptr<class Sphere> Sphere1 = nullptr;
+	std::shared_ptr<class Sphere> Sphere2 = nullptr;
+	std::shared_ptr<class Sphere> Sphere3 = nullptr;
 
 	void SetLayerPos();
 };

@@ -22,9 +22,6 @@
     <Filter Include="Level\2. Tutorial">
       <UniqueIdentifier>{11567a07-478f-45cb-a101-28f1beb0195f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\2. Tutorial\Object">
-      <UniqueIdentifier>{99e97766-ba3d-4749-a0d2-8c653a0ce2f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level\3. OverWorld">
       <UniqueIdentifier>{58d35493-8a6a-4854-bf90-08d8e66b2e21}</UniqueIdentifier>
     </Filter>
@@ -118,6 +115,18 @@
     <Filter Include="Level\4. SubBossStage\Stage4\Object">
       <UniqueIdentifier>{d3c2b590-1dd4-4199-8f42-9181cbf3d153}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\2. Tutorial\ElderKettle">
+      <UniqueIdentifier>{abf7315d-7dfd-48a5-8c41-fa06e269c9bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\2. Tutorial\Tutorial">
+      <UniqueIdentifier>{8d2b8464-725a-49c0-83f1-c079d34f0ef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\2. Tutorial\ElderKettle\Object">
+      <UniqueIdentifier>{99e97766-ba3d-4749-a0d2-8c653a0ce2f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\2. Tutorial\Tutorial\Object">
+      <UniqueIdentifier>{15722343-7371-4d9a-b277-99b04d8f2fda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -174,9 +183,6 @@
     </ClInclude>
     <ClInclude Include="BaseWeapon.h">
       <Filter>Actor\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="TutorialLevel.h">
-      <Filter>Level\2. Tutorial</Filter>
     </ClInclude>
     <ClInclude Include="TitleMenuBackground.h">
       <Filter>Level\0. Title\Object</Filter>
@@ -325,17 +331,26 @@
     <ClInclude Include="Attack_Card.h">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
-    <ClInclude Include="ElderKettleLevel.h">
-      <Filter>Level\2. Tutorial</Filter>
-    </ClInclude>
     <ClInclude Include="ElderKettle.h">
-      <Filter>Level\2. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\ElderKettle\Object</Filter>
     </ClInclude>
     <ClInclude Include="EnterMessage.h">
-      <Filter>Level\2. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\ElderKettle\Object</Filter>
     </ClInclude>
     <ClInclude Include="MusicNote.h">
-      <Filter>Level\2. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\ElderKettle\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ElderKettleLevel.h">
+      <Filter>Level\2. Tutorial\ElderKettle</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialLevel.h">
+      <Filter>Level\2. Tutorial\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="Target.h">
+      <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -396,9 +411,6 @@
     </ClCompile>
     <ClCompile Include="BaseWeapon.cpp">
       <Filter>Actor\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="TutorialLevel.cpp">
-      <Filter>Level\2. Tutorial</Filter>
     </ClCompile>
     <ClCompile Include="TitleMenuBackground.cpp">
       <Filter>Level\0. Title\Object</Filter>
@@ -572,17 +584,26 @@
     <ClCompile Include="Attack_Card.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClCompile>
-    <ClCompile Include="ElderKettleLevel.cpp">
-      <Filter>Level\2. Tutorial</Filter>
-    </ClCompile>
     <ClCompile Include="ElderKettle.cpp">
-      <Filter>Level\2. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\ElderKettle\Object</Filter>
     </ClCompile>
     <ClCompile Include="EnterMessage.cpp">
-      <Filter>Level\2. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\ElderKettle\Object</Filter>
     </ClCompile>
     <ClCompile Include="MusicNote.cpp">
-      <Filter>Level\2. Tutorial\Object</Filter>
+      <Filter>Level\2. Tutorial\ElderKettle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ElderKettleLevel.cpp">
+      <Filter>Level\2. Tutorial\ElderKettle</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialLevel.cpp">
+      <Filter>Level\2. Tutorial\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="Target.cpp">
+      <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

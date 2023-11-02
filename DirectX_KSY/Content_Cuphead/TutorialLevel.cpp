@@ -5,6 +5,9 @@
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 
+#include "Sphere.h"
+#include "Target.h"
+
 TutorialLevel::TutorialLevel()
 {
 }
@@ -55,6 +58,20 @@ void TutorialLevel::Start()
 	// Player
 	CurLevelPlayer = CreateActor<Cuphead>();
 	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+
+	// Target
+	TargetObject = CreateActor<Target>();
+	TargetObject->Transform.SetLocalPosition({ 3564, -240});
+
+	// Sphere
+	Sphere1 = CreateActor<Sphere>();
+	Sphere1->Transform.SetLocalPosition({ 3891, -317 });
+
+	Sphere2 = CreateActor<Sphere>();
+	Sphere2->Transform.SetLocalPosition({ 4093, -317 });
+
+	Sphere3 = CreateActor<Sphere>();
+	Sphere3->Transform.SetLocalPosition({ 4293, -317 });
 }
 
 void TutorialLevel::Update(float _Delta)

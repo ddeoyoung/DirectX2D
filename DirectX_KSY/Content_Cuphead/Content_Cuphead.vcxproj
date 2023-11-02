@@ -430,7 +430,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="StoryBook.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Target.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -707,7 +715,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="StoryBook.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Target.h">
       <SubType>
       </SubType>
     </ClInclude>

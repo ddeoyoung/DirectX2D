@@ -31,6 +31,7 @@ enum class CollisionOrder
 	ParryObject,
 	NPC,
 	Message,
+	ShootObject,
 };
 
 enum class ObjectOrder
