@@ -14,6 +14,9 @@
     <FxCompile Include="DebugColorShader.fx">
       <Filter>Debug</Filter>
     </FxCompile>
+    <FxCompile Include="TargetMerge.fx">
+      <Filter>Target</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -24,6 +27,9 @@
     </Filter>
     <Filter Include="Debug">
       <UniqueIdentifier>{89644e0d-c76e-45e2-801b-b89c47769015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Target">
+      <UniqueIdentifier>{87d2bc15-9464-42b9-8b3c-f1b008b395db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
