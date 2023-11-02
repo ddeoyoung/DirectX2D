@@ -22,11 +22,13 @@ protected:
 	void Update(float _Delta) override;
 
 	void MoveUpdate(float _Delta);
+	void SetCollisionType();
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 private:
 	int Dir = 0;
+	CardType CurCardType = CardType::None;
 };
 

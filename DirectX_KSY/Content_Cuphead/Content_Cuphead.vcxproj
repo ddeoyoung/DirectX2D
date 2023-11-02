@@ -281,6 +281,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ElderKettle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ElderKettleLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FadeAnimation.cpp">
       <SubType>
       </SubType>
@@ -550,6 +558,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Dice.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ElderKettle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ElderKettleLevel.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -74,6 +74,14 @@ public:
 		return Renderer;
 	}
 
+	void SetBackgroundScaleRatio(float _Ratio)
+	{
+		if (nullptr != Texture)
+		{
+			Renderer->SetAutoScaleRatio(_Ratio);
+		}
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

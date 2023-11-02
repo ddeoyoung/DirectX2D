@@ -3,6 +3,7 @@
 #include "LogoLevel.h"
 #include "TitleLevel.h"
 #include "IntroLevel.h"
+#include "ElderKettleLevel.h"
 #include "TutorialLevel.h"
 #include "OverWorldLevel.h"
 #include "KingDiceLevel.h"
@@ -29,6 +30,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<LogoLevel>("LogoLevel");
 	GameEngineCore::CreateLevel<TitleLevel>("TitleLevel");
 	GameEngineCore::CreateLevel<IntroLevel>("IntroLevel");
+	GameEngineCore::CreateLevel<ElderKettleLevel>("ElderKettleLevel");
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");
 	GameEngineCore::CreateLevel<OverWorldLevel>("OverWorldLevel");
 	GameEngineCore::CreateLevel<KingDiceLevel>("KingDiceLevel");
@@ -39,7 +41,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("KingDiceLevel");
+	GameEngineCore::ChangeLevel("ElderKettleLevel");
 }
 
 void ContentsCore::Update(float _Delta)

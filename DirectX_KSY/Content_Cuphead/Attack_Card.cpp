@@ -61,20 +61,23 @@ void Attack_Card::Start()
 	MainRenderer->AutoSpriteSizeOn();
 
 
-	// Create Collision
-	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
-	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Card_Club");
-	float4 Scale = Texture->GetSpriteData(0).GetScale();
-	Scale -= { 100.0f, 40.0f };
-	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
-	AttackCollision->Transform.SetLocalScale(Scale);
+
+
+
 }
 
 void Attack_Card::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	if (nullptr == AttackCollision)
+	{
+		SetCollisionType();
+	}
+
 	MoveUpdate(_Delta);
 }
+
 void Attack_Card::SetCardAttDir(int _AttDir)
 {
 	Dir = _AttDir;
@@ -101,10 +104,32 @@ void Attack_Card::SetCardType(CardType _CardType)
 	default:
 		break;
 	}
+
+	CurCardType = _CardType;
 }
 
 void Attack_Card::MoveUpdate(float _Delta)
 {
 	float4 MovePos = Dir * _Delta * 300.0f;
 	Transform.AddLocalPosition(MovePos);
+}
+
+void Attack_Card::SetCollisionType()
+{
+	// Create Collision
+	if (CurCardType == CardType::Heart)
+	{
+		AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::ParryObject);
+	}
+
+	else
+	{
+		AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+	}
+
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Card_Club");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	Scale -= { 100.0f, 40.0f };
+	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
+	AttackCollision->Transform.SetLocalScale(Scale);
 }

@@ -325,6 +325,12 @@
     <ClInclude Include="Attack_Card.h">
       <Filter>Level\5. BossStage\Object</Filter>
     </ClInclude>
+    <ClInclude Include="ElderKettleLevel.h">
+      <Filter>Level\2. Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="ElderKettle.h">
+      <Filter>Level\2. Tutorial\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -559,6 +565,12 @@
     </ClCompile>
     <ClCompile Include="Attack_Card.cpp">
       <Filter>Level\5. BossStage\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ElderKettleLevel.cpp">
+      <Filter>Level\2. Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="ElderKettle.cpp">
+      <Filter>Level\2. Tutorial\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

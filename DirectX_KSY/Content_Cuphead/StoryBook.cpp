@@ -94,7 +94,7 @@ void StoryBook::Start()
 	Renderer->CreateAnimation("Page10", "Page10", PAGEDUR, 1, 23, false);
 	Renderer->SetEndEvent("Page10", [](GameEngineSpriteRenderer* _Render)
 		{
-			GameEngineCore::ChangeLevel("TutorialLevel");
+			GameEngineCore::ChangeLevel("ElderKettleLevel");
 		});
 
 	// Outro
