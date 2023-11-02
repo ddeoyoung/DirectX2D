@@ -411,10 +411,19 @@ void KingDice::CreateCardPattern()
 	CardType Heart = CardType::Heart;
 	CardType Spade = CardType::Spade;
 
-	std::vector<CardType> Set1 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
-	std::vector<CardType> Set2 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
-	std::vector<CardType> Set3 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
-	std::vector<CardType> Set4 = { Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club, Spade, Diamond, Heart };
+	// 뒤에서부터 생성 시작
+
+	/*
+	스 클 하 다 스 하 클 하 다 스 하 클
+	다 스 클 하 다 스 하 클 다 하 스 하
+	클 하 다 스 클 하 다 하 스 클 하 다
+	스 클 하 다 스 클 하 다 하 스 클 하
+	*/
+
+	std::vector<CardType> Set1 = { Heart, Diamond, Spade, Club, Diamond, Heart, Spade, Club, Spade, Heart, Diamond, Club };
+	std::vector<CardType> Set2 = { Diamond, Heart, Club, Spade, Heart, Diamond, Heart, Club, Spade, Diamond, Heart, Club };
+	std::vector<CardType> Set3 = { Heart, Spade, Heart, Diamond, Club, Heart, Spade, Diamond, Heart, Club, Spade, Diamond };
+	std::vector<CardType> Set4 = { Club, Heart, Spade, Diamond, Heart, Club, Heart, Spade, Diamond, Heart, Club, Spade };
 
 	CardSet.push_back(Set1);
 	CardSet.push_back(Set2);

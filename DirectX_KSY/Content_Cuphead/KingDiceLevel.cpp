@@ -52,17 +52,23 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelStartTextureSet();
 
 	// Marker
-	Roulette_Marker = CreateActor<Marker>(ObjectOrder::Marker);
+	Roulette_Marker = CreateActor<Marker>();
 	
 	// Boss
-	Boss = CreateActor<KingDice>();
-	Boss->On();
-	Boss->SetState(KingDiceState::Attack);
+	if (nullptr == Boss)
+	{
+		Boss = CreateActor<KingDice>();
+		Boss->On();
+		Boss->SetState(KingDiceState::Attack);
+	}
 
 	// Player
-	CurLevelPlayer = CreateActor<Cuphead>();
-	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
-
+	if (nullptr == CurLevelPlayer)
+	{
+		CurLevelPlayer = CreateActor<Cuphead>();
+		CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+	}
+	
 	// LevelChange
 	LevelName = "";
 }
