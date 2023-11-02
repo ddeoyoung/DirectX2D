@@ -23,5 +23,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 private:
 	std::shared_ptr<ContentBackground> BackLayer = nullptr;
+
+	std::shared_ptr<class ElderKettle> Kettle = nullptr;
 };
 

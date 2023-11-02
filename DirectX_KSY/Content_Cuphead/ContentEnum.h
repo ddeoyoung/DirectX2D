@@ -29,6 +29,7 @@ enum class CollisionOrder
 	Boss,
 	BossAttack,
 	ParryObject,
+	NPC,
 };
 
 enum class ObjectOrder

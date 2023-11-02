@@ -5,6 +5,8 @@
 #include "BaseCharacter.h"
 #include "Cuphead.h"
 
+#include "ElderKettle.h"
+
 ElderKettleLevel::ElderKettleLevel()
 {
 }
@@ -37,6 +39,17 @@ void ElderKettleLevel::Start()
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\ek_bg_vignette.png");
 		GameEngineSprite::CreateSingle("ek_bg_vignette.png");
 	}
+}
+
+void ElderKettleLevel::Update(float _Delta)
+{
+	ContentLevel::Update(_Delta);
+}
+
+void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
+{
+	ContentLevel::LevelStart(_PrevLevel);
+
 
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
@@ -54,16 +67,11 @@ void ElderKettleLevel::Start()
 	std::shared_ptr<ContentActor> Vignette = CreateActor<ContentActor>();
 	Vignette->SpriteInit("ek_bg_vignette.png", { 800, -380 }, RenderOrder::FrontgroundEffect);
 
-}
+	// Elder Kettle
+	Kettle = CreateActor<ElderKettle>();
+	
 
-void ElderKettleLevel::Update(float _Delta)
-{
-	ContentLevel::Update(_Delta);
-}
-
-void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
-{
-	ContentLevel::LevelStart(_PrevLevel);
+	
 }
 
 void ElderKettleLevel::LevelEnd(GameEngineLevel* _NextLevel)
