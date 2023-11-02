@@ -331,6 +331,9 @@
     <ClInclude Include="ElderKettle.h">
       <Filter>Level\2. Tutorial\Object</Filter>
     </ClInclude>
+    <ClInclude Include="EnterMessage.h">
+      <Filter>Level\2. Tutorial\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -570,6 +573,9 @@
       <Filter>Level\2. Tutorial</Filter>
     </ClCompile>
     <ClCompile Include="ElderKettle.cpp">
+      <Filter>Level\2. Tutorial\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="EnterMessage.cpp">
       <Filter>Level\2. Tutorial\Object</Filter>
     </ClCompile>
   </ItemGroup>

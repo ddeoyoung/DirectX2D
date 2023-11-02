@@ -6,6 +6,8 @@
 #include "Cuphead.h"
 
 #include "ElderKettle.h"
+#include "EnterMessage.h"
+#include "FadeAnimation.h"
 
 ElderKettleLevel::ElderKettleLevel()
 {
@@ -38,12 +40,18 @@ void ElderKettleLevel::Start()
 		// Vignette
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\ek_bg_vignette.png");
 		GameEngineSprite::CreateSingle("ek_bg_vignette.png");
+
+		// Enter Message
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\EnterMessage.png");
+		GameEngineSprite::CreateSingle("EnterMessage.png");
 	}
 }
 
 void ElderKettleLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+	EnterBubble->InteractionCheck();
+	TutorialEnterInteraction();
 }
 
 void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -54,7 +62,6 @@ void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
 	CurLevelBackground->BackgroundInit("ek_bg_main.png", { -0, 50 });
-
 
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
 	CurLevelPixelBackground->PixelBackgroundInit("ek_bg_main_pixel.png");
@@ -70,11 +77,38 @@ void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Elder Kettle
 	Kettle = CreateActor<ElderKettle>();
 	
+	// Enter Message
+	EnterBubble = CreateActor<EnterMessage>();
 
-	
+	// UI - Fade Out
+	Fade = CreateActor<FadeAnimation>(RenderOrder::Max);
+	Fade->Transform.AddLocalPosition({ 175, 0});
+	Fade->Off();
 }
 
 void ElderKettleLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+}
+
+void ElderKettleLevel::TutorialEnterInteraction()
+{
+	bool Check = EnterBubble->InteractionCheck();
+	if (false == IsLevelChange)
+	{
+		if (true == Check && true == GameEngineInput::IsDown('Z', this))
+		{
+			Fade->On();
+			Fade->SetFade("Out");
+			IsLevelChange = true;
+		}
+	}
+
+	else if (true == IsLevelChange)
+	{
+		if (true == Fade->IsCurAnimationEnd())
+		{
+			GameEngineCore::ChangeLevel("TutorialLevel");
+		}
+	}
 }

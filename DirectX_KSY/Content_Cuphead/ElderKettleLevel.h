@@ -21,9 +21,14 @@ protected:
 
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
-private:
-	std::shared_ptr<ContentBackground> BackLayer = nullptr;
 
+	void TutorialEnterInteraction();
+
+private:
 	std::shared_ptr<class ElderKettle> Kettle = nullptr;
+	std::shared_ptr<class EnterMessage> EnterBubble = nullptr;
+	std::shared_ptr<class FadeAnimation> Fade = nullptr;
+
+	bool IsLevelChange = false;
 };
 

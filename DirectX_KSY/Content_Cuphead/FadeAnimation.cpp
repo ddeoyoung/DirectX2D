@@ -69,3 +69,13 @@ void FadeAnimation::EndCheck()
 		Death();
 	}
 }
+
+bool FadeAnimation::IsCurAnimationEnd()
+{
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		return true;
+	}
+
+	return false;
+}

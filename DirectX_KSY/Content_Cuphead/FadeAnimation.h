@@ -15,6 +15,7 @@ public:
 	FadeAnimation& operator=(FadeAnimation&& _Other) noexcept = delete;
 
 	void SetFade(const std::string& _Name);
+	bool IsCurAnimationEnd();
 
 protected:
 	void Start() override;
