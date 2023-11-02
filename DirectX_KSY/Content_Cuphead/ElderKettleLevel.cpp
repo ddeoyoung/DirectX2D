@@ -8,6 +8,7 @@
 #include "ElderKettle.h"
 #include "EnterMessage.h"
 #include "FadeAnimation.h"
+#include "MusicNote.h"
 
 ElderKettleLevel::ElderKettleLevel()
 {
@@ -44,6 +45,14 @@ void ElderKettleLevel::Start()
 		// Enter Message
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\EnterMessage.png");
 		GameEngineSprite::CreateSingle("EnterMessage.png");
+
+		// Object - Chair
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\ek_bg_chair.png");
+		GameEngineSprite::CreateSingle("ek_bg_chair.png");
+
+		// Object - Couch
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\ek_bg_couch.png");
+		GameEngineSprite::CreateSingle("ek_bg_couch.png");
 	}
 }
 
@@ -72,7 +81,15 @@ void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Vignette
 	std::shared_ptr<ContentActor> Vignette = CreateActor<ContentActor>();
-	Vignette->SpriteInit("ek_bg_vignette.png", { 800, -380 }, RenderOrder::FrontgroundEffect);
+	Vignette->SpriteInit("ek_bg_vignette.png", { 800, -380 }, RenderOrder::FrontgroundObject3);
+
+	// Object - Chair
+	std::shared_ptr<ContentActor> Chair = CreateActor<ContentActor>();
+	Chair->SpriteInit("ek_bg_chair.png", { 600, -680 }, RenderOrder::FrontgroundObject);
+
+	// Object - Couch
+	std::shared_ptr<ContentActor> Couch = CreateActor<ContentActor>();
+	Couch->SpriteInit("ek_bg_couch.png", { 1350, -640 }, RenderOrder::FrontgroundObject4);
 
 	// Elder Kettle
 	Kettle = CreateActor<ElderKettle>();
@@ -84,6 +101,10 @@ void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	Fade = CreateActor<FadeAnimation>(RenderOrder::Max);
 	Fade->Transform.AddLocalPosition({ 175, 0});
 	Fade->Off();
+
+	// Music Note
+	std::shared_ptr<MusicNote> Music = CreateActor<MusicNote>();
+	Music->Transform.SetLocalPosition({ 750, -240 });
 }
 
 void ElderKettleLevel::LevelEnd(GameEngineLevel* _NextLevel)

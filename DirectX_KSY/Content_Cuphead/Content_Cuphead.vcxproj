@@ -362,6 +362,10 @@
     </ClCompile>
     <ClCompile Include="MrWheezyLevel_Load.cpp" />
     <ClCompile Include="MrWheezy_State.cpp" />
+    <ClCompile Include="MusicNote.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="OutroLevel.cpp">
       <SubType>
       </SubType>
@@ -639,6 +643,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="MrWheezyLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MusicNote.h">
       <SubType>
       </SubType>
     </ClInclude>

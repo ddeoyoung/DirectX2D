@@ -334,6 +334,9 @@
     <ClInclude Include="EnterMessage.h">
       <Filter>Level\2. Tutorial\Object</Filter>
     </ClInclude>
+    <ClInclude Include="MusicNote.h">
+      <Filter>Level\2. Tutorial\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -576,6 +579,9 @@
       <Filter>Level\2. Tutorial\Object</Filter>
     </ClCompile>
     <ClCompile Include="EnterMessage.cpp">
+      <Filter>Level\2. Tutorial\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicNote.cpp">
       <Filter>Level\2. Tutorial\Object</Filter>
     </ClCompile>
   </ItemGroup>
