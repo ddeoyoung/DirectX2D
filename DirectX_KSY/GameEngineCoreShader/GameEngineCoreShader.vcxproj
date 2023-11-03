@@ -31,6 +31,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
+    <FxCompile Include="FadePostEffect.fx" />
     <FxCompile Include="RenderBase.fx" />
     <FxCompile Include="TargetMerge.fx" />
     <FxCompile Include="TextureShader.fx">
