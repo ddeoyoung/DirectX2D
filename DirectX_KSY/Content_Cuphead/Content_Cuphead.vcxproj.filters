@@ -352,6 +352,9 @@
     <ClInclude Include="Sphere.h">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClInclude>
+    <ClInclude Include="GenericExplosion.h">
+      <Filter>Actor\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -604,6 +607,9 @@
     </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericExplosion.cpp">
+      <Filter>Actor\Effect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

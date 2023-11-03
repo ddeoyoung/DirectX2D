@@ -41,7 +41,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("ElderKettleLevel");
+	GameEngineCore::ChangeLevel("TutorialLevel");
 }
 
 void ContentsCore::Update(float _Delta)

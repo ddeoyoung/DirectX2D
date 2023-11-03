@@ -51,14 +51,6 @@ void TutorialLevel::Start()
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
 	CurLevelPixelBackground->PixelBackgroundInit("TutorialBitMap.png");
 
-	// Front Layer
-	FrontLayer = CreateActor<ContentBackground>();
-	FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
-
-	// Player
-	CurLevelPlayer = CreateActor<Cuphead>();
-	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
-
 	// Target
 	TargetObject = CreateActor<Target>();
 	TargetObject->Transform.SetLocalPosition({ 3564, -240});
@@ -72,6 +64,14 @@ void TutorialLevel::Start()
 
 	Sphere3 = CreateActor<Sphere>();
 	Sphere3->Transform.SetLocalPosition({ 4293, -317 });
+
+	// Front Layer
+	FrontLayer = CreateActor<ContentBackground>();
+	FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
+
+	// Player
+	CurLevelPlayer = CreateActor<Cuphead>();
+	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
 }
 
 void TutorialLevel::Update(float _Delta)

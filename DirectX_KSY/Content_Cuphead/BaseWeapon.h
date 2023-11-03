@@ -62,17 +62,18 @@ protected:
 	void Update(float _Delta) override;
 
 	void AttackDirCheck();
+	void HitCheck();
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 	AttackState State = AttackState::None;
 	AttackDir AttDir = AttackDir::None;
-
 	float4 PlayerPos = float4::ZERO;
-
 	std::string CurState = "";
 
 private:
+	bool IsHit = false;
+
 };
 

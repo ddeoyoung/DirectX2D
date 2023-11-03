@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "Target.h"
 
+#include "GenericExplosion.h"
+
 Target::Target()
 {
 }
@@ -45,7 +47,6 @@ void Target::Start()
 	TargetRenderer->CreateAnimation("Tutorial_Target", "Tutorial_Target");
 	TargetRenderer->ChangeAnimation("Tutorial_Target");
 	TargetRenderer->AutoSpriteSizeOn();
-	//TargetRenderer->Transform.SetLocalPosition({ 0, 0 });
 
 	// Create Collision
 	TargetCollision = CreateComponent<GameEngineCollision>(CollisionOrder::ShootObject);
@@ -59,4 +60,38 @@ void Target::Start()
 void Target::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+	DeathCheck();
+}
+
+void Target::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+	Death();
+}
+
+void Target::HPMinus()
+{
+	if (nullptr != TargetCollision)
+	{
+		if (1 <= HP)
+		{
+			--HP;
+
+			if (0 == HP)
+			{
+				CreateExplosionEffect();
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void Target::CreateExplosionEffect()
+{
+	std::shared_ptr<GenericExplosion> Effect = GetLevel()->CreateActor<GenericExplosion>();
+	float4 Pos = Transform.GetLocalPosition();
+	Effect->Transform.SetLocalPosition(Pos);
 }

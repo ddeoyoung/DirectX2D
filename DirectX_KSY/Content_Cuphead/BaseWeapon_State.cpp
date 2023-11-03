@@ -70,21 +70,7 @@ void BaseWeapon::AttackUpdate(float _Delta)
 
 
 	// Death
-	{
-		bool IsAttacked = AttackCollision->Collision(CollisionOrder::Boss);
-		if (true == IsAttacked)
-		{
-			ChangeState(AttackState::Death);
-		}
-	}
-
-	{
-		bool IsAttacked = AttackCollision->Collision(CollisionOrder::ShootObject);
-		if (true == IsAttacked)
-		{
-			ChangeState(AttackState::Death);
-		}
-	}
+	HitCheck();
 }
 
 void BaseWeapon::DeathStart()
