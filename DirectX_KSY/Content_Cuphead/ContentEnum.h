@@ -32,6 +32,7 @@ enum class CollisionOrder
 	NPC,
 	Message,
 	ShootObject,
+	Portal,
 };
 
 enum class ObjectOrder

@@ -19,7 +19,7 @@ void BossExplosion::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Effect");
+		Dir.MoveChild("ContentsResources\\Texture\\Tutorial");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 

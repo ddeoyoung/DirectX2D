@@ -93,5 +93,6 @@ void Target::CreateExplosionEffect()
 {
 	std::shared_ptr<GenericExplosion> Effect = GetLevel()->CreateActor<GenericExplosion>();
 	float4 Pos = Transform.GetLocalPosition();
+	Pos.Y -= 50.0f;
 	Effect->Transform.SetLocalPosition(Pos);
 }

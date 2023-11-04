@@ -51,9 +51,9 @@ void Sphere::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	bool ParryCheck = ParryCollision->Collision(CollisionOrder::Player);
-	if (true == ParryCheck)
+	if (true == ParryCheck && true == GameEngineInput::IsDown('Z', this))
 	{
 		MainRenderer->ChangeAnimation("Tutorial_Sphere");
-		ParryCollision->Off();
+		ParryCollision->Death();
 	}
 }

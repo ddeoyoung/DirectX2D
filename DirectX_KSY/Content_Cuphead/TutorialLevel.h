@@ -30,7 +30,11 @@ private:
 	std::shared_ptr<class Sphere> Sphere1 = nullptr;
 	std::shared_ptr<class Sphere> Sphere2 = nullptr;
 	std::shared_ptr<class Sphere> Sphere3 = nullptr;
+	std::shared_ptr<class PortalDoor> ExitDoor = nullptr;
+	std::shared_ptr<class FadeAnimation> Fade = nullptr;
 
 	void SetLayerPos();
+
+	bool IsLevelChange = false;
 };
 

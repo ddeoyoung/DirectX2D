@@ -7,6 +7,8 @@
 
 #include "Sphere.h"
 #include "Target.h"
+#include "PortalDoor.h"
+#include "FadeAnimation.h"
 
 TutorialLevel::TutorialLevel()
 {
@@ -72,6 +74,22 @@ void TutorialLevel::Start()
 	// Player
 	CurLevelPlayer = CreateActor<Cuphead>();
 	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+
+	// Exit Door
+	if (nullptr == ExitDoor)
+	{
+		ExitDoor = CreateActor<PortalDoor>();
+	}
+	ExitDoor->Transform.SetLocalPosition({ 6642, -468 });
+	ExitDoor->SetPortalValue(PortalValue::OverWorld);
+
+	// Fade
+	if (nullptr == Fade)
+	{
+		Fade = CreateActor<FadeAnimation>();
+	}
+	Fade->Transform.SetLocalPosition({ 5620, 0 });
+	Fade->Off();
 }
 
 void TutorialLevel::Update(float _Delta)
@@ -79,6 +97,25 @@ void TutorialLevel::Update(float _Delta)
 	ContentLevel::Update(_Delta);
 
 	SetLayerPos();
+
+	bool PortalCheck = ExitDoor->GetIsPortalOn();
+	if (false == IsLevelChange)
+	{
+		if (true == PortalCheck)
+		{
+			Fade->On();
+			Fade->SetFade("Out");
+			IsLevelChange = true;
+		}
+	}
+
+	else if (true == IsLevelChange)
+	{
+		if (true == Fade->IsCurAnimationEnd())
+		{
+			ExitDoor->LevelChange();
+		}
+	}
 }
 
 void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)

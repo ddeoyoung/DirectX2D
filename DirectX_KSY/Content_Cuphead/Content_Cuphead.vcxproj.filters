@@ -355,6 +355,9 @@
     <ClInclude Include="GenericExplosion.h">
       <Filter>Actor\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="PortalDoor.h">
+      <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -610,6 +613,9 @@
     </ClCompile>
     <ClCompile Include="GenericExplosion.cpp">
       <Filter>Actor\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="PortalDoor.cpp">
+      <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
