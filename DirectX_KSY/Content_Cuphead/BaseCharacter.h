@@ -11,7 +11,6 @@
 #define SHOOT_INTERVAL 0.2f
 
 // Ό³Έν :
-class ContentLevel;
 class BaseCharacter : public ContentActor
 {
 public:

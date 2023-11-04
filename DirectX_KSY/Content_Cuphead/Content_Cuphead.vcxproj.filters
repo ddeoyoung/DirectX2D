@@ -127,6 +127,9 @@
     <Filter Include="Level\2. Tutorial\Tutorial\Object">
       <UniqueIdentifier>{15722343-7371-4d9a-b277-99b04d8f2fda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\3. OverWorld\Object">
+      <UniqueIdentifier>{9013ade1-3798-4dec-871c-df01ecb51391}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -357,6 +360,9 @@
     </ClInclude>
     <ClInclude Include="PortalDoor.h">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OverWorldCharacter.h">
+      <Filter>Level\3. OverWorld\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -616,6 +622,12 @@
     </ClCompile>
     <ClCompile Include="PortalDoor.cpp">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OverWorldCharacter.cpp">
+      <Filter>Level\3. OverWorld\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OverWorldcharacter_State.cpp">
+      <Filter>Level\3. OverWorld\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
