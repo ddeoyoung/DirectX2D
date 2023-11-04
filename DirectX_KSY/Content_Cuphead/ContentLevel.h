@@ -4,6 +4,7 @@
 #include "ContentActor.h"
 #include "ContentGUI.h"
 #include "BaseCharacter.h"
+#include "FadeAnimation.h"
 
 // Ό³Έν :
 class ContentBackground;
@@ -64,6 +65,7 @@ protected:
 	std::shared_ptr<ContentBackground> CurLevelBackground = nullptr;
 	std::shared_ptr<ContentBackground> CurLevelPixelBackground = nullptr;
 	std::shared_ptr<BaseCharacter> CurLevelPlayer = nullptr;
+	std::shared_ptr<FadeAnimation> FadeIn = nullptr;
 
 private:
 };

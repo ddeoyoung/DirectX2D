@@ -1,6 +1,8 @@
 #include "PreCompile.h"
 #include "OverWorldCharacter.h"
 
+#include "ContentLevel.h"
+
 OverWorldCharacter::OverWorldCharacter()
 {
 }
@@ -61,6 +63,7 @@ void OverWorldCharacter::Update(float _Delta)
 
 	StateUpdate(_Delta);
 	DirCheck();
+	LerpCamera(_Delta);
 }
 
 void OverWorldCharacter::LevelStart(GameEngineLevel* _PrevLevel)
@@ -227,5 +230,25 @@ void OverWorldCharacter::DirCheck()
 	{
 		Dir = CheckDir;
 		ChangeAnimationState(CurState);
+	}
+}
+
+void OverWorldCharacter::LerpCamera(float _Delta)
+{
+	float CameraSpeed = 2.5f;
+	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+	float4 TextureScale = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetPixelTextureScale();
+
+	float4 CameraPos = GetLevel()->GetMainCamera()->Transform.GetWorldPosition(); // Start
+	float4 PlayerPos = Transform.GetWorldPosition(); // End
+	float4 MovePos = float4::LerpClamp(CameraPos, PlayerPos, CameraSpeed * _Delta);
+
+	// 카메라 Y 고정
+	//MovePos.Y = CameraPos.Y;
+
+	if (MovePos.iX() > WindowScale.hX()
+		&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
+	{
+		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
 	}
 }

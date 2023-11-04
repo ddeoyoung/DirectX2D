@@ -32,8 +32,8 @@ void ContentLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevel = this;
 
 	// UI - Fade In
-	std::shared_ptr<FadeAnimation> Fade = CreateActor<FadeAnimation>(RenderOrder::Max);
-	Fade->SetFade("In");
+	FadeIn = CreateActor<FadeAnimation>(RenderOrder::Max);
+	FadeIn->SetFade("In");
 }
 
 void ContentLevel::LevelEnd(GameEngineLevel* _NextLevel)

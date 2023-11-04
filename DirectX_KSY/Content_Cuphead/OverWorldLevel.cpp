@@ -53,6 +53,15 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();
 	OverWorldPlayer->Transform.SetLocalPosition({ 800, -878 });
+
+	float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
+	GetMainCamera()->Transform.SetLocalPosition(PlayerPos);
+
+	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+	float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY()};
+
+	// Fade In
+	FadeIn->Transform.SetLocalPosition(FadePos);
 }
 
 void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)

@@ -65,7 +65,7 @@ protected:
 
 
 	void DirCheck();
-
+	void LerpCamera(float _Delta);
 
 private:
 
