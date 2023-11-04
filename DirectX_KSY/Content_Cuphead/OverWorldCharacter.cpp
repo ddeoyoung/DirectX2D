@@ -15,11 +15,11 @@ void OverWorldCharacter::Start()
 
 
 	// Create Sprite Folder
-	if (nullptr == GameEngineSprite::Find("OverWorld_Cuphead_Idle"))
+	if (nullptr == GameEngineSprite::Find("OverWorld_Cuphead_Idle_Right"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Cuphead");
+		Dir.MoveChild("ContentsResources\\Texture\\OverWorld\\OverWorld_Cuphead");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 
@@ -60,6 +60,7 @@ void OverWorldCharacter::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	StateUpdate(_Delta);
+	DirCheck();
 }
 
 void OverWorldCharacter::LevelStart(GameEngineLevel* _PrevLevel)
@@ -119,11 +120,112 @@ void OverWorldCharacter::ChangeAnimationState(const std::string& _StateName)
 	std::string AnimationName = "OverWorld_Cuphead_";
 	AnimationName += _StateName;
 
+	if (_StateName == "Idle" || _StateName == "Walk")
+	{
+		switch (Dir)
+		{
+		case OverWorldCharacterDir::None:
+		case OverWorldCharacterDir::Left:
+		case OverWorldCharacterDir::Right:
+			AnimationName += "_Right";
+			break;
+		case OverWorldCharacterDir::Up:
+			AnimationName += "_Up";
+			break;
+		case OverWorldCharacterDir::Down:
+			AnimationName += "_Down";
+			break;
+		case OverWorldCharacterDir::Left_Diagonal_Up:
+		case OverWorldCharacterDir::Right_Diagonal_Up:
+			AnimationName += "_Diagonal_Up";
+			break;
+		case OverWorldCharacterDir::Left_Diagonal_Down:
+		case OverWorldCharacterDir::Right_Diagonal_Down:
+			AnimationName += "_Diagonal_Down";
+			break;
+		default:
+			break;
+		}
+	}
+
 	CurState = _StateName;
 	MainRenderer->ChangeAnimation(AnimationName);
 }
 
 void OverWorldCharacter::DirCheck()
 {
+	OverWorldCharacterDir CheckDir = Dir;
 
+	// Left
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (true == GameEngineInput::IsUp(VK_UP, this) || true == GameEngineInput::IsFree(VK_UP, this))
+		&& (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Left;
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+	}
+
+	// Right
+	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
+		&& (true == GameEngineInput::IsUp(VK_UP, this) || true == GameEngineInput::IsFree(VK_UP, this))
+		&& (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Right;
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+	// Up
+	if ((true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this))
+		&& (true == GameEngineInput::IsUp(VK_LEFT, this) || true == GameEngineInput::IsFree(VK_LEFT, this))
+		&& (true == GameEngineInput::IsUp(VK_RIGHT, this) || true == GameEngineInput::IsFree(VK_RIGHT, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Up;
+	}
+
+	// Down
+	if ((true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this))
+		&& (true == GameEngineInput::IsUp(VK_LEFT, this) || true == GameEngineInput::IsFree(VK_LEFT, this))
+		&& (true == GameEngineInput::IsUp(VK_RIGHT, this) || true == GameEngineInput::IsFree(VK_RIGHT, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Down;
+	}
+
+	// Left Diagonal Up
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Left;
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+	}
+
+	// Right Diagonal Up
+	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
+		&& (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Right;
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+	// Left Diagonal Down
+	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
+		&& (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Left;
+		Transform.SetLocalScale({ -1.0f, 1.0f });
+	}
+
+	// Right Diagonal Down
+	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
+		&& (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this)))
+	{
+		CheckDir = OverWorldCharacterDir::Right;
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+
+	if (CheckDir != Dir)
+	{
+		Dir = CheckDir;
+		ChangeAnimationState(CurState);
+	}
 }

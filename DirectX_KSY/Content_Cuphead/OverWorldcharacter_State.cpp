@@ -13,7 +13,7 @@ void OverWorldCharacter::IdleUpdate(float _Delta)
 
 void OverWorldCharacter::WalkStart()
 {
-	ChangeAnimationState("Walk");
+	//ChangeAnimationState("Walk");
 }
 
 void OverWorldCharacter::WalkUpdate(float _Delta)
@@ -23,7 +23,7 @@ void OverWorldCharacter::WalkUpdate(float _Delta)
 
 void OverWorldCharacter::WinStart()
 {
-	ChangeAnimationState("Win");
+	//ChangeAnimationState("Win");
 }
 
 void OverWorldCharacter::WinUpdate(float _Delta)

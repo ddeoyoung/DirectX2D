@@ -48,7 +48,7 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
 	CurLevelPixelBackground->PixelBackgroundInit("Island1_pixel.png");
-	CurLevelPixelBackground->GetRenderer()->On();
+	//CurLevelPixelBackground->GetRenderer()->On();
 
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();

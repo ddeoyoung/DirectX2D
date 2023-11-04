@@ -49,8 +49,9 @@ protected:
 	void WinStart();
 	void WinUpdate(float _Delta);
 
-	OverWorldCharacterState State = OverWorldCharacterState::None;
 	std::string CurState = "";
+	OverWorldCharacterState State = OverWorldCharacterState::None;
+	OverWorldCharacterDir Dir = OverWorldCharacterDir::None;
 
 protected:
 	void Start() override;
