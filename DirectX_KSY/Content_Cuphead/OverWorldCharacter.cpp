@@ -51,7 +51,7 @@ void OverWorldCharacter::Start()
 
 	MainRenderer->ChangeAnimation("OverWorld_Cuphead_Idle_Right");
 	MainRenderer->AutoSpriteSizeOn();
-	MainRenderer->SetPivotType(PivotType::Bottom);
+	//MainRenderer->SetPivotType(PivotType::Bottom);
 
 
 	ChangeState(OverWorldCharacterState::Idle);
@@ -197,7 +197,7 @@ void OverWorldCharacter::DirCheck()
 	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
 		&& (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this)))
 	{
-		CheckDir = OverWorldCharacterDir::Left;
+		CheckDir = OverWorldCharacterDir::Left_Diagonal_Up;
 		Transform.SetLocalScale({ -1.0f, 1.0f });
 	}
 
@@ -205,7 +205,7 @@ void OverWorldCharacter::DirCheck()
 	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
 		&& (true == GameEngineInput::IsDown(VK_UP, this) || true == GameEngineInput::IsPress(VK_UP, this)))
 	{
-		CheckDir = OverWorldCharacterDir::Right;
+		CheckDir = OverWorldCharacterDir::Right_Diagonal_Up;
 		Transform.SetLocalScale({ 1.0f, 1.0f });
 	}
 
@@ -213,7 +213,7 @@ void OverWorldCharacter::DirCheck()
 	if ((true == GameEngineInput::IsDown(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_LEFT, this))
 		&& (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this)))
 	{
-		CheckDir = OverWorldCharacterDir::Left;
+		CheckDir = OverWorldCharacterDir::Left_Diagonal_Down;
 		Transform.SetLocalScale({ -1.0f, 1.0f });
 	}
 
@@ -221,7 +221,7 @@ void OverWorldCharacter::DirCheck()
 	if ((true == GameEngineInput::IsDown(VK_RIGHT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
 		&& (true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this)))
 	{
-		CheckDir = OverWorldCharacterDir::Right;
+		CheckDir = OverWorldCharacterDir::Right_Diagonal_Down;
 		Transform.SetLocalScale({ 1.0f, 1.0f });
 	}
 
@@ -250,5 +250,54 @@ void OverWorldCharacter::LerpCamera(float _Delta)
 		&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
 	{
 		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
+	}
+}
+
+GameEngineColor OverWorldCharacter::GetPixelColor(float4 _Pos)
+{
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 CheckPos = PlayerPos + _Pos;
+
+	GameEngineColor Color = ContentLevel::CurLevel->GetCurLevelPixelBackground()->GetColor(CheckPos, GameEngineColor::RED);
+
+	return Color;
+}
+
+void OverWorldCharacter::PixelCheck(float _Delta)
+{
+	float4 PlayerPos = Transform.GetLocalPosition();
+	float4 CheckPos = float4::ZERO;
+	float4 MovePos = float4::ZERO;
+	float MoveSpeed = 200.0f;
+
+	if (GameEngineInput::IsPress(VK_LEFT, this))
+	{
+		MovePos += float4::LEFT * _Delta * MoveSpeed;
+		CheckPos = { -20.0f , 0.0f };
+	}
+
+	if (GameEngineInput::IsPress(VK_RIGHT, this))
+	{
+		MovePos += float4::RIGHT * _Delta * MoveSpeed;
+		CheckPos = { 20.0f , 0.0f };
+	}
+
+	if (GameEngineInput::IsPress(VK_UP, this))
+	{
+		MovePos += float4::UP * _Delta * MoveSpeed;
+		CheckPos = { 0.0f, 40.0f };
+	}
+
+	if (GameEngineInput::IsPress(VK_DOWN, this))
+	{
+		MovePos += float4::DOWN * _Delta * MoveSpeed;
+		CheckPos = { 0.0f, -40.0f };
+	}
+
+	GameEngineColor Color = GetPixelColor(CheckPos);
+
+	if (GameEngineColor::RED != Color)
+	{
+		Transform.AddLocalPosition(MovePos);
 	}
 }

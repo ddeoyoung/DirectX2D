@@ -66,6 +66,8 @@ protected:
 
 	void DirCheck();
 	void LerpCamera(float _Delta);
+	void PixelCheck(float _Delta);
+	GameEngineColor GetPixelColor(float4 _Pos);
 
 private:
 

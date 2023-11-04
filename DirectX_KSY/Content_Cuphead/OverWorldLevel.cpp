@@ -56,7 +56,6 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	GetMainCamera()->Transform.SetLocalPosition(PlayerPos);
-
 	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
 	float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY()};
 

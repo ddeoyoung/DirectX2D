@@ -22,6 +22,8 @@ void OverWorldCharacter::WalkStart()
 
 void OverWorldCharacter::WalkUpdate(float _Delta)
 {
+	PixelCheck(_Delta);
+
 	if (true == GameEngineInput::IsUp(VK_LEFT, this) || true == GameEngineInput::IsUp(VK_RIGHT, this)
 		|| (true == GameEngineInput::IsUp(VK_UP, this) || true == GameEngineInput::IsUp(VK_DOWN, this)))
 	{
