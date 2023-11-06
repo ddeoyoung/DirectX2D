@@ -18,7 +18,7 @@ void Portal::Start()
 	PortalCollision->Transform.SetLocalScale({ 150, 150 });
 
 	// Create Sprite
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundObject);
 }
 
 void Portal::Update(float _Delta)

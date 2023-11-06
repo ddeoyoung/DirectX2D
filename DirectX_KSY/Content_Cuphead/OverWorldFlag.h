@@ -1,7 +1,8 @@
 #pragma once
+#include "Portal.h"
 
 // Ό³Έν :
-class OverWorldFlag : public ContentActor
+class OverWorldFlag : public Portal
 {
 public:
 	// constrcuter destructer
@@ -19,6 +20,8 @@ protected:
 	void Update(float _Delta) override;
 
 private:
-	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
+	std::shared_ptr<class GameEngineCollision> Collision = nullptr;
+
+	bool IsFlagUp = false;
 };
 

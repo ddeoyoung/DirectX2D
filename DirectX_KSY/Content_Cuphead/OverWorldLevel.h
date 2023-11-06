@@ -24,5 +24,6 @@ protected:
 
 private:
 	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
+	std::shared_ptr<class OverWorldFlag> FlagToHell = nullptr;
 };
 

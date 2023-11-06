@@ -51,8 +51,15 @@ void OverWorldCharacter::Start()
 
 	MainRenderer->ChangeAnimation("OverWorld_Cuphead_Idle_Right");
 	MainRenderer->AutoSpriteSizeOn();
-	//MainRenderer->SetPivotType(PivotType::Bottom);
+	MainRenderer->SetRenderOrder(RenderOrder::Play);
 
+
+	PlayerCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Player);
+	PlayerCollision->SetCollisionType(ColType::AABBBOX2D);
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("OverWorld_Cuphead_Idle_Right");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+	PlayerCollision->Transform.SetLocalScale(Scale);
+	PlayerCollision->Transform.SetLocalPosition({ 0, 0 });
 
 	ChangeState(OverWorldCharacterState::Idle);
 }
