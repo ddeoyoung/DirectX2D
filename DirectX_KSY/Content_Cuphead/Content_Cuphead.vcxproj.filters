@@ -130,6 +130,9 @@
     <Filter Include="Level\3. OverWorld\Object">
       <UniqueIdentifier>{9013ade1-3798-4dec-871c-df01ecb51391}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Object">
+      <UniqueIdentifier>{b792b758-7c60-4982-b8c2-2fecbcfcf5d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -358,10 +361,16 @@
     <ClInclude Include="GenericExplosion.h">
       <Filter>Actor\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="PortalDoor.h">
+    <ClInclude Include="TutorialDoor.h">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClInclude>
     <ClInclude Include="OverWorldCharacter.h">
+      <Filter>Level\3. OverWorld\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>Actor\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OverWorldFlag.h">
       <Filter>Level\3. OverWorld\Object</Filter>
     </ClInclude>
   </ItemGroup>
@@ -620,13 +629,19 @@
     <ClCompile Include="GenericExplosion.cpp">
       <Filter>Actor\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="PortalDoor.cpp">
+    <ClCompile Include="TutorialDoor.cpp">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClCompile>
     <ClCompile Include="OverWorldCharacter.cpp">
       <Filter>Level\3. OverWorld\Object</Filter>
     </ClCompile>
     <ClCompile Include="OverWorldcharacter_State.cpp">
+      <Filter>Level\3. OverWorld\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Actor\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OverWorldFlag.cpp">
       <Filter>Level\3. OverWorld\Object</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,6 +18,7 @@ public:
 	void BackgroundInit(std::string_view _SpriteName);
 	void BackgroundInit(std::string_view _SpriteName, float4 _Pos);
 	void PixelBackgroundInit(std::string_view _SpriteName);
+	void UpperBackgroundInit(std::string_view _SpriteName);
 
 	GameEngineColor GetColor(float4 _Pos, GameEngineColor _DefaultColor);
 
@@ -89,9 +90,10 @@ protected:
 	std::shared_ptr<GameEngineSpriteRenderer> Renderer = nullptr;
 	std::shared_ptr<GameEngineTexture> Texture = nullptr;
 	std::shared_ptr<GameEngineTexture> PixelTexture = nullptr;
+	std::shared_ptr<GameEngineTexture> UpperTexture = nullptr;
 private:
 	std::string Background = "";
 	std::string PixelBackground = "";
-
+	std::string UpperBackground = "";
 };
 

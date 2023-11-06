@@ -81,6 +81,27 @@ void ContentBackground::PixelBackgroundInit(std::string_view _SpriteName)
 	Renderer->Off();
 }
 
+void ContentBackground::UpperBackgroundInit(std::string_view _SpriteName)
+{
+	UpperBackground = _SpriteName;
+
+	if (nullptr == GameEngineSprite::Find(UpperBackground))
+	{
+		MsgBoxAssert(UpperBackground + "의 Upper배경이 로드되지 않았습니다.");
+		return;
+	}
+
+	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundObject3);
+	Renderer->SetSprite(UpperBackground);
+
+	UpperTexture = GameEngineTexture::Find(UpperBackground);
+
+	float4 Scale = UpperTexture->GetScale().Half();
+	Scale.Y *= -1.0f;
+
+	Renderer->Transform.SetLocalPosition(Scale);
+}
+
 GameEngineColor ContentBackground::GetColor(float4 _Pos, GameEngineColor _DefaultColor)
 {
 	_Pos.Y *= -1.0f;

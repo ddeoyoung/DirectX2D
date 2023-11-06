@@ -7,7 +7,8 @@
 
 #include "Sphere.h"
 #include "Target.h"
-#include "PortalDoor.h"
+#include "Portal.h"
+#include "TutorialDoor.h"
 #include "FadeAnimation.h"
 
 TutorialLevel::TutorialLevel()
@@ -55,7 +56,7 @@ void TutorialLevel::Start()
 
 	// Target
 	TargetObject = CreateActor<Target>();
-	TargetObject->Transform.SetLocalPosition({ 3564, -240});
+	TargetObject->Transform.SetLocalPosition({ 3564, -240 });
 
 	// Sphere
 	Sphere1 = CreateActor<Sphere>();
@@ -78,7 +79,7 @@ void TutorialLevel::Start()
 	// Exit Door
 	if (nullptr == ExitDoor)
 	{
-		ExitDoor = CreateActor<PortalDoor>();
+		ExitDoor = CreateActor<TutorialDoor>();
 	}
 	ExitDoor->Transform.SetLocalPosition({ 6642, -468 });
 	ExitDoor->SetPortalValue(PortalValue::OverWorld);

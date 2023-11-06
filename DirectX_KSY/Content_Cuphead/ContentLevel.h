@@ -64,6 +64,7 @@ protected:
 
 	std::shared_ptr<ContentBackground> CurLevelBackground = nullptr;
 	std::shared_ptr<ContentBackground> CurLevelPixelBackground = nullptr;
+	std::shared_ptr<ContentBackground> CurLevelUpperBackground = nullptr;
 	std::shared_ptr<BaseCharacter> CurLevelPlayer = nullptr;
 	std::shared_ptr<FadeAnimation> FadeIn = nullptr;
 

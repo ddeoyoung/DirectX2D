@@ -297,7 +297,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PortalDoor.cpp">
+    <ClCompile Include="OverWorldFlag.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TutorialDoor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -606,7 +614,15 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PortalDoor.h">
+    <ClInclude Include="OverWorldFlag.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TutorialDoor.h">
       <SubType>
       </SubType>
     </ClInclude>

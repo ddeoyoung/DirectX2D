@@ -16,20 +16,44 @@ void OverWorldLevel::Start()
 	ContentLevel::Start();
 
 
+	//// Sprite Load
+	//if (nullptr == GameEngineSprite::Find("Island1.png"))
+	//{
+	//	GameEngineDirectory Dir;
+	//	Dir.MoveParentToExistsChild("GameEngineResources");
+	//	Dir.MoveChild("ContentsResources\\Texture\\OverWorld\\OverWorldMap");
+
+	//	// Background
+	//	GameEngineTexture::Load(Dir.GetStringPath() + "\\Island1.png");
+	//	GameEngineSprite::CreateSingle("Island1.png");
+
+	//	// Pixel Background
+	//	GameEngineTexture::Load(Dir.GetStringPath() + "\\Island1_pixel.png");
+	//	GameEngineSprite::CreateSingle("Island1_pixel.png");
+
+	//	// Background Upper
+	//	GameEngineTexture::Load(Dir.GetStringPath() + "\\Island1_Upper.png");
+	//	GameEngineSprite::CreateSingle("Island1_Upper.png");
+	//}
+
 	// Sprite Load
-	if (nullptr == GameEngineSprite::Find("Island1.png"))
+	if (nullptr == GameEngineSprite::Find("IslandFinal.png"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\OverWorld\\OverWorldMap");
 
 		// Background
-		GameEngineTexture::Load(Dir.GetStringPath() + "\\Island1.png");
-		GameEngineSprite::CreateSingle("Island1.png");
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\IslandFinal.png");
+		GameEngineSprite::CreateSingle("IslandFinal.png");
 
 		// Pixel Background
-		GameEngineTexture::Load(Dir.GetStringPath() + "\\Island1_pixel.png");
-		GameEngineSprite::CreateSingle("Island1_pixel.png");
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\IslandFinal_pixel.png");
+		GameEngineSprite::CreateSingle("IslandFinal_pixel.png");
+
+		// Background Upper
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\IslandFinal_Upper.png");
+		GameEngineSprite::CreateSingle("IslandFinal_Upper.png");
 	}
 }
 
@@ -44,20 +68,25 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Background
 	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("Island1.png");
+	CurLevelBackground->BackgroundInit("IslandFinal.png");
 
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
-	CurLevelPixelBackground->PixelBackgroundInit("Island1_pixel.png");
+	CurLevelPixelBackground->PixelBackgroundInit("IslandFinal_pixel.png");
 	//CurLevelPixelBackground->GetRenderer()->On();
+
+	// Background Upper
+	CurLevelUpperBackground = CreateActor<ContentBackground>();
+	CurLevelUpperBackground->UpperBackgroundInit("IslandFinal_Upper.png");
 
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();
-	OverWorldPlayer->Transform.SetLocalPosition({ 800, -878 });
+	//OverWorldPlayer->Transform.SetLocalPosition({ 800, -878 });
+	OverWorldPlayer->Transform.SetLocalPosition({ 860, -3400 });
 
 	float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	GetMainCamera()->Transform.SetLocalPosition(PlayerPos);
 	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-	float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY()};
+	float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
 
 	// Fade In
 	FadeIn->Transform.SetLocalPosition(FadePos);

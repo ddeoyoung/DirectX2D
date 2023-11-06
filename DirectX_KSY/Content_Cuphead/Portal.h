@@ -8,19 +8,20 @@ enum class PortalValue
 	OverWorld,
 };
 
+
 // Ό³Έν :
-class PortalDoor : public ContentActor
+class Portal : public ContentActor
 {
-public: 
+public:
 	// constrcuter destructer
-	PortalDoor();
-	~PortalDoor();
+	Portal();
+	~Portal();
 
 	// delete Function
-	PortalDoor(const PortalDoor& _Other) = delete;
-	PortalDoor(PortalDoor&& _Other) noexcept = delete;
-	PortalDoor& operator=(const PortalDoor& _Other) = delete;
-	PortalDoor& operator=(PortalDoor&& _Other) noexcept = delete;
+	Portal(const Portal& _Other) = delete;
+	Portal(Portal&& _Other) noexcept = delete;
+	Portal& operator=(const Portal& _Other) = delete;
+	Portal& operator=(Portal&& _Other) noexcept = delete;
 
 	void SetPortalValue(PortalValue _PV)
 	{
@@ -34,11 +35,11 @@ public:
 
 	void LevelChange();
 
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
-private:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> PortalCollision = nullptr;
 
@@ -46,5 +47,8 @@ private:
 	bool IsPortalOn = false;
 
 	void CollisionCheck(float _Delta);
+
+private:
+
 };
 
