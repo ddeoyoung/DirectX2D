@@ -373,6 +373,9 @@
     <ClInclude Include="OverWorldFlag.h">
       <Filter>Level\3. OverWorld\Object</Filter>
     </ClInclude>
+    <ClInclude Include="InkwellHellLevel.h">
+      <Filter>Level\3. OverWorld</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -643,6 +646,9 @@
     </ClCompile>
     <ClCompile Include="OverWorldFlag.cpp">
       <Filter>Level\3. OverWorld\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="InkwellHellLevel.cpp">
+      <Filter>Level\3. OverWorld</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

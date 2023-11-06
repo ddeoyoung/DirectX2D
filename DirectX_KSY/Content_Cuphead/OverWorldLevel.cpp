@@ -12,8 +12,6 @@ OverWorldLevel::~OverWorldLevel()
 {
 }
 
-std::shared_ptr<OverWorldCharacter> OverWorldPlayer = nullptr;
-
 void OverWorldLevel::Start()
 {
 	ContentLevel::Start();
@@ -66,6 +64,8 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	FlagToHouse = CreateActor<OverWorldFlag>();
 	FlagToHouse->Transform.SetLocalPosition({ 9000, -1150 });
 	FlagToHouse->SetPortalValue(PortalValue::Inkwell_One);
+
+	// Portal To  
 
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();

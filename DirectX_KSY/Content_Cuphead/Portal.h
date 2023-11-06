@@ -8,6 +8,8 @@ enum class PortalValue
 	OverWorld,
 	Inkwell_One,
 	Inkwell_Hell,
+	Inkwell_Isle,
+	BossStage,
 };
 
 
@@ -49,8 +51,6 @@ protected:
 	bool IsPortalOn = false;
 
 	void CollisionCheck(float _Delta);
-
-	void PortalToInkwellHell();
 
 private:
 
