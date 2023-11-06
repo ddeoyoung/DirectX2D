@@ -30,13 +30,17 @@ void OverWorldFlag::Start()
 		}
 	}
 
-	//MainRenderer->SetOrder(RenderOrder::Play);
 	MainRenderer->CreateAnimation("Flag_Start", "Flag_Start", 0.05f, -1, -1, false);
 	MainRenderer->SetEndEvent("Flag_Start", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("Flag_Loop");
 		});
 	MainRenderer->CreateAnimation("Flag_Loop", "Flag_Loop", 0.05f);
+	MainRenderer->CreateAnimation("Flag_End", "Flag_Start", 0.05f, 8, 0, false);
+	MainRenderer->SetEndEvent("Flag_End", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->Off();
+		});
 	MainRenderer->ChangeAnimation("Flag_Start");
 	MainRenderer->SetRenderOrder(RenderOrder::Play);
 	MainRenderer->AutoSpriteSizeOn();
@@ -47,8 +51,8 @@ void OverWorldFlag::Start()
 
 
 	Collision = CreateComponent<GameEngineCollision>(CollisionOrder::NPC);
-	Collision->SetCollisionType(ColType::AABBBOX2D);
-	Collision->Transform.SetLocalScale({ 500, 500 });
+	Collision->SetCollisionType(ColType::SPHERE2D);
+	Collision->Transform.SetLocalScale({ 700, 500 });
 	Collision->Transform.SetLocalPosition({ 0, 0 });
 }
 
@@ -65,6 +69,16 @@ void OverWorldFlag::Update(float _Delta)
 			MainRenderer->On();
 			MainRenderer->ChangeAnimation("Flag_Start");
 			IsFlagUp = true;
+		}
+	}
+
+	if (true == IsFlagUp)
+	{
+		bool Check = Collision->Collision(CollisionOrder::Player);
+		if (false == Check)
+		{
+			IsFlagUp = false;
+			MainRenderer->ChangeAnimation("Flag_End");
 		}
 	}
 }

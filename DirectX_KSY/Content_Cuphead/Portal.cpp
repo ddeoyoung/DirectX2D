@@ -1,5 +1,7 @@
 #include "PreCompile.h"
 #include "Portal.h"
+#include "OverWorldLevel.h"
+#include "OverWorldCharacter.h"
 
 Portal::Portal()
 {
@@ -9,6 +11,7 @@ Portal::~Portal()
 {
 }
 
+std::shared_ptr<OverWorldCharacter> OverWorldLevel::OverWorldPlayer;
 
 void Portal::Start()
 {
@@ -42,6 +45,12 @@ void Portal::LevelChange()
 	case PortalValue::OverWorld:
 		GameEngineCore::ChangeLevel("OverWorldLevel");
 		break;
+	case PortalValue::Inkwell_Hell:
+		//PortalToInkwellHell();
+		break;
+	case PortalValue::Inkwell_One:
+
+		break;
 	default:
 		break;
 	}
@@ -57,5 +66,14 @@ void Portal::CollisionCheck(float _Delta)
 	else
 	{
 		IsPortalOn = false;
+	}
+}
+
+void Portal::PortalToInkwellHell()
+{
+	std::string LevelName = GetLevel()->GetName();
+	if (LevelName == "OverWorldLevel")
+	{
+		OverWorldLevel::OverWorldPlayer->Transform.SetLocalPosition({ 9040, -1200 });
 	}
 }

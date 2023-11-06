@@ -12,6 +12,8 @@ OverWorldLevel::~OverWorldLevel()
 {
 }
 
+std::shared_ptr<OverWorldCharacter> OverWorldPlayer = nullptr;
+
 void OverWorldLevel::Start()
 {
 	ContentLevel::Start();
@@ -37,10 +39,6 @@ void OverWorldLevel::Start()
 	}
 }
 
-void OverWorldLevel::Update(float _Delta)
-{
-	ContentLevel::Update(_Delta);
-}
 
 void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
@@ -62,6 +60,12 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Flag To Inkwell Hell
 	FlagToHell = CreateActor<OverWorldFlag>();
 	FlagToHell->Transform.SetLocalPosition({ 2200, -3450 });
+	FlagToHell->SetPortalValue(PortalValue::Inkwell_Hell);
+
+	// Flag To House (Inkwell Island 1)
+	FlagToHouse = CreateActor<OverWorldFlag>();
+	FlagToHouse->Transform.SetLocalPosition({ 9000, -1150 });
+	FlagToHouse->SetPortalValue(PortalValue::Inkwell_One);
 
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();
@@ -74,6 +78,21 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Fade In
 	FadeIn->Transform.SetLocalPosition(FadePos);
+}
+
+void OverWorldLevel::Update(float _Delta)
+{
+	ContentLevel::Update(_Delta);
+
+	if (true == FlagToHell->GetIsPortalOn())
+	{
+		OverWorldPlayer->Transform.SetLocalPosition({ 9040, -1200 });
+	}
+
+	if (true == FlagToHouse->GetIsPortalOn())
+	{
+		OverWorldPlayer->Transform.SetLocalPosition({ 2200, -3450 });
+	}
 }
 
 void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)

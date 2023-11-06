@@ -53,7 +53,6 @@ void OverWorldCharacter::Start()
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetRenderOrder(RenderOrder::Play);
 
-
 	PlayerCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Player);
 	PlayerCollision->SetCollisionType(ColType::AABBBOX2D);
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("OverWorld_Cuphead_Idle_Right");

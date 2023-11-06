@@ -6,6 +6,8 @@ enum class PortalValue
 	ElderKettleHouse,
 	Tutorial,
 	OverWorld,
+	Inkwell_One,
+	Inkwell_Hell,
 };
 
 
@@ -47,6 +49,8 @@ protected:
 	bool IsPortalOn = false;
 
 	void CollisionCheck(float _Delta);
+
+	void PortalToInkwellHell();
 
 private:
 

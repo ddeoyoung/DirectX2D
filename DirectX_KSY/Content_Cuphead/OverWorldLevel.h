@@ -15,6 +15,8 @@ public:
 	OverWorldLevel& operator=(const OverWorldLevel& _Other) = delete;
 	OverWorldLevel& operator=(OverWorldLevel&& _Other) noexcept = delete;
 
+	static std::shared_ptr<class OverWorldCharacter> OverWorldPlayer;
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
@@ -23,7 +25,7 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 private:
-	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
 	std::shared_ptr<class OverWorldFlag> FlagToHell = nullptr;
+	std::shared_ptr<class OverWorldFlag> FlagToHouse = nullptr;
 };
 
