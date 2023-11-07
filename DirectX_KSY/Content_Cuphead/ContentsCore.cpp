@@ -43,7 +43,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("InkwellHellLevel");
+	GameEngineCore::ChangeLevel("OverWorldLevel");
 }
 
 void ContentsCore::Update(float _Delta)
