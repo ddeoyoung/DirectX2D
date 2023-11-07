@@ -13,16 +13,24 @@ void Portal::Start()
 {
 	ContentActor::Start();
 
-	PortalCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Portal);
-	PortalCollision->Transform.SetLocalScale({ 150, 150 });
-
-	// Create Sprite
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundObject);
+
+	PortalCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Portal);
 }
 
 void Portal::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	if (PortalScale == float4::ZERO)
+	{
+		PortalCollision->Transform.SetLocalScale({ 150, 150 });
+	}
+
+	else
+	{
+		PortalCollision->Transform.SetLocalScale(PortalScale);
+	}
 
 	CollisionCheck(_Delta);
 }
@@ -48,6 +56,7 @@ void Portal::LevelChange()
 	case PortalValue::Inkwell_Hell:
 		break;
 	case PortalValue::Inkwell_Isle:
+		GameEngineCore::ChangeLevel("OverWorldLevel");
 		break;
 	case PortalValue::BossStage:
 		GameEngineCore::ChangeLevel("KingDiceLevel");
@@ -55,6 +64,8 @@ void Portal::LevelChange()
 	default:
 		break;
 	}
+
+	IsPortalOn = false;
 }
 
 void Portal::CollisionCheck(float _Delta)

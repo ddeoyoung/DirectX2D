@@ -30,5 +30,7 @@ private:
 	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
 
 	bool IsHell = false;
+
+	float4 LastPlayerPos = float4::ZERO;
 };
 

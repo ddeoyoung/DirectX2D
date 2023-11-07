@@ -31,16 +31,12 @@ void FadeAnimation::Start()
 	}
 
 	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Max);
-	MainRenderer->CreateAnimation("FadeIn", "FadeIn", 0.05f, false);
+	MainRenderer->CreateAnimation("FadeIn", "FadeIn", 0.05f, -1, -1, false);
 	MainRenderer->SetEndEvent("FadeIn", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->Off();
 		});
-	MainRenderer->CreateAnimation("FadeOut", "FadeOut", 0.05f, false);
-	MainRenderer->SetEndEvent("FadeOut", [](GameEngineSpriteRenderer* _Renderer)
-		{
-			_Renderer->Off();
-		});
+	MainRenderer->CreateAnimation("FadeOut", "FadeOut", 0.05f, -1, -1, false);
 	MainRenderer->ChangeAnimation("FadeIn");
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetAutoScaleRatio(2.5);
@@ -50,6 +46,8 @@ void FadeAnimation::Start()
 void FadeAnimation::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	EndCheck();
 }
 
 void FadeAnimation::SetFade(const std::string& _Name)

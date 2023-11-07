@@ -38,11 +38,21 @@ public:
 		return IsPortalOn;
 	}
 
+	void SetIsPortalOn(bool _bool)
+	{
+		IsPortalOn = _bool;
+	}
+
 	void LevelChange();
 
 	std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
 	{
 		return MainRenderer;
+	}
+
+	void SetPortalScale(float4 _Scale)
+	{
+		PortalScale = _Scale;
 	}
 
 protected:
@@ -54,7 +64,7 @@ protected:
 
 	PortalValue PV = PortalValue::None;
 	bool IsPortalOn = false;
-
+	float4 PortalScale = float4::ZERO;
 	void CollisionCheck(float _Delta);
 
 private:

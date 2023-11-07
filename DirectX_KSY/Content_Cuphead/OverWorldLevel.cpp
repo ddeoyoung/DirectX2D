@@ -73,8 +73,15 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	PortalToHell->GetRenderer()->Off();
 
 	// Player
-	OverWorldPlayer = CreateActor<OverWorldCharacter>();
-	OverWorldPlayer->Transform.SetLocalPosition({ 860, -3400 });
+	if (nullptr == OverWorldPlayer)
+	{
+		OverWorldPlayer = CreateActor<OverWorldCharacter>();
+		OverWorldPlayer->Transform.SetLocalPosition({ 860, -3400 });
+	}
+	if (LastPlayerPos != float4::ZERO)
+	{
+		OverWorldPlayer->Transform.SetLocalPosition(LastPlayerPos);
+	}
 
 	float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	GetMainCamera()->Transform.SetLocalPosition(PlayerPos);
@@ -107,10 +114,16 @@ void OverWorldLevel::Update(float _Delta)
 	if (true == PortalToHell->GetIsPortalOn())
 	{
 		FadeOut->On();
-		float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
+		//float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
+		//float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		//float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
+
 		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-		float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
+		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
 		FadeOut->Transform.SetLocalPosition(FadePos);
+
+		LastPlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	}
 
 	if (true == FadeOut->IsCurAnimationEnd())
@@ -120,6 +133,8 @@ void OverWorldLevel::Update(float _Delta)
 
 	if (true == IsHell)
 	{
+		IsHell = false;
+		PortalToHell->SetIsPortalOn(false);
 		GameEngineCore::ChangeLevel("InkwellHellLevel");
 	}
 }
