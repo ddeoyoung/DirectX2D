@@ -3,6 +3,7 @@
 
 #include "OverWorldCharacter.h"
 #include "OverWorldFlag.h"
+#include "FadeAnimation.h"
 
 OverWorldLevel::OverWorldLevel()
 {
@@ -55,17 +56,21 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	CurLevelUpperBackground = CreateActor<ContentBackground>();
 	CurLevelUpperBackground->UpperBackgroundInit("IslandFinal_Upper.png");
 
-	// Flag To Inkwell Hell
-	FlagToHell = CreateActor<OverWorldFlag>();
-	FlagToHell->Transform.SetLocalPosition({ 2200, -3450 });
-	FlagToHell->SetPortalValue(PortalValue::Inkwell_Hell);
+	// Flag To Inkwell Three
+	FlagToThree = CreateActor<OverWorldFlag>();
+	FlagToThree->Transform.SetLocalPosition({ 2200, -3450 });
+	FlagToThree->SetPortalValue(PortalValue::Inkwell_Three);
 
-	// Flag To House (Inkwell Island 1)
-	FlagToHouse = CreateActor<OverWorldFlag>();
-	FlagToHouse->Transform.SetLocalPosition({ 9000, -1150 });
-	FlagToHouse->SetPortalValue(PortalValue::Inkwell_One);
+	// Flag To Inkwell One
+	FlagToOne = CreateActor<OverWorldFlag>();
+	FlagToOne->Transform.SetLocalPosition({ 9000, -1150 });
+	FlagToOne->SetPortalValue(PortalValue::Inkwell_One);
 
-	// Portal To  
+	// Portal To Inkwell Hell
+	PortalToHell = CreateActor<Portal>();
+	PortalToHell->Transform.SetLocalPosition({ 9660, -630 });
+	PortalToHell->SetPortalValue(PortalValue::Inkwell_Hell);
+	PortalToHell->GetRenderer()->Off();
 
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();
@@ -78,20 +83,44 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Fade In
 	FadeIn->Transform.SetLocalPosition(FadePos);
+
+	// Fade Out
+	FadeOut = CreateActor<FadeAnimation>();
+	FadeOut->SetFade("Out");
+	FadeOut->Off();
 }
 
 void OverWorldLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
 
-	if (true == FlagToHell->GetIsPortalOn())
+	if (true == FlagToThree->GetIsPortalOn())
 	{
 		OverWorldPlayer->Transform.SetLocalPosition({ 9040, -1200 });
 	}
 
-	if (true == FlagToHouse->GetIsPortalOn())
+	if (true == FlagToOne->GetIsPortalOn())
 	{
 		OverWorldPlayer->Transform.SetLocalPosition({ 2200, -3450 });
+	}
+
+	if (true == PortalToHell->GetIsPortalOn())
+	{
+		FadeOut->On();
+		float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
+		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
+		FadeOut->Transform.SetLocalPosition(FadePos);
+	}
+
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		IsHell = true;
+	}
+
+	if (true == IsHell)
+	{
+		GameEngineCore::ChangeLevel("InkwellHellLevel");
 	}
 }
 

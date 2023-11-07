@@ -249,9 +249,6 @@ void OverWorldCharacter::LerpCamera(float _Delta)
 	float4 PlayerPos = Transform.GetWorldPosition(); // End
 	float4 MovePos = float4::LerpClamp(CameraPos, PlayerPos, CameraSpeed * _Delta);
 
-	// 카메라 Y 고정
-	//MovePos.Y = CameraPos.Y;
-
 	if (MovePos.iX() > WindowScale.hX()
 		&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
 	{

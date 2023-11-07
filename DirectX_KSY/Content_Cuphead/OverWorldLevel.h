@@ -24,7 +24,11 @@ protected:
 
 private:
 	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
-	std::shared_ptr<class OverWorldFlag> FlagToHell = nullptr;
-	std::shared_ptr<class OverWorldFlag> FlagToHouse = nullptr;
+	std::shared_ptr<class OverWorldFlag> FlagToThree = nullptr;
+	std::shared_ptr<class OverWorldFlag> FlagToOne = nullptr;
+	std::shared_ptr<class Portal> PortalToHell = nullptr;
+	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
+
+	bool IsHell = false;
 };
 

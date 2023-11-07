@@ -6,6 +6,7 @@
 #include "ElderKettleLevel.h"
 #include "TutorialLevel.h"
 #include "OverWorldLevel.h"
+#include "InkwellHellLevel.h"
 #include "KingDiceLevel.h"
 #include "TipsyTroopLevel.h"
 #include "ChipsBettiganLevel.h"
@@ -33,6 +34,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<ElderKettleLevel>("ElderKettleLevel");
 	GameEngineCore::CreateLevel<TutorialLevel>("TutorialLevel");
 	GameEngineCore::CreateLevel<OverWorldLevel>("OverWorldLevel");
+	GameEngineCore::CreateLevel<InkwellHellLevel>("InkwellHellLevel");
 	GameEngineCore::CreateLevel<KingDiceLevel>("KingDiceLevel");
 	GameEngineCore::CreateLevel<TipsyTroopLevel>("TipsyTroopLevel");
 	GameEngineCore::CreateLevel<ChipsBettiganLevel>("ChipsBettiganLevel");
@@ -41,7 +43,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("OverWorldLevel");
+	GameEngineCore::ChangeLevel("InkwellHellLevel");
 }
 
 void ContentsCore::Update(float _Delta)

@@ -7,6 +7,7 @@ enum class PortalValue
 	Tutorial,
 	OverWorld,
 	Inkwell_One,
+	Inkwell_Three,
 	Inkwell_Hell,
 	Inkwell_Isle,
 	BossStage,
@@ -39,6 +40,10 @@ public:
 
 	void LevelChange();
 
+	std::shared_ptr<GameEngineSpriteRenderer> GetRenderer()
+	{
+		return MainRenderer;
+	}
 
 protected:
 	void Start() override;

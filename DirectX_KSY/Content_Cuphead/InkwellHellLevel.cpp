@@ -57,16 +57,19 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Entrance To Inkwell Isle
 	PortalToInkwell = CreateActor<Portal>();
-	PortalToInkwell->Transform.SetLocalPosition({ 630, -1700 });
-	PortalToInkwell->SetPortalValue(PortalValue::Inkwell_Hell);
+	PortalToInkwell->Transform.SetLocalPosition({ 900, -1750 });
+	PortalToInkwell->SetPortalValue(PortalValue::Inkwell_Isle);
+	PortalToInkwell->GetRenderer()->Off();
 
 	// Entrance To Boss Stage
 	PortalToBossStage = CreateActor<Portal>();
-	PortalToBossStage->Transform.SetLocalPosition({ 1400, -913 });
-	PortalToBossStage->SetPortalValue(PortalValue::Inkwell_Hell);
+	PortalToBossStage->Transform.SetLocalPosition({ 1600, -1027 });
+	PortalToBossStage->SetPortalValue(PortalValue::BossStage);
+	PortalToBossStage->GetRenderer()->Off();
 
 	// Player
-	OverWorldPlayer->Transform.SetLocalPosition({ 630, -1700 });
+	OverWorldPlayer = CreateActor<OverWorldCharacter>();
+	OverWorldPlayer->Transform.SetLocalPosition({ 900, -1750 });
 
 	float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	GetMainCamera()->Transform.SetLocalPosition(PlayerPos);

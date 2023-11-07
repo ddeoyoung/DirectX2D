@@ -41,10 +41,16 @@ void Portal::LevelChange()
 	case PortalValue::OverWorld:
 		GameEngineCore::ChangeLevel("OverWorldLevel");
 		break;
+	case PortalValue::Inkwell_One:
+		break;
+	case PortalValue::Inkwell_Three:
+		break;
 	case PortalValue::Inkwell_Hell:
 		break;
-	case PortalValue::Inkwell_One:
-
+	case PortalValue::Inkwell_Isle:
+		break;
+	case PortalValue::BossStage:
+		GameEngineCore::ChangeLevel("KingDiceLevel");
 		break;
 	default:
 		break;
