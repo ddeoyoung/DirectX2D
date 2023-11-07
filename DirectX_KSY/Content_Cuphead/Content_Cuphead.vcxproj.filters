@@ -130,8 +130,11 @@
     <Filter Include="Actor\Object">
       <UniqueIdentifier>{b792b758-7c60-4982-b8c2-2fecbcfcf5d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\Global">
+    <Filter Include="Global">
       <UniqueIdentifier>{d99aee84-6dd1-46c7-84e4-1c5264984631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{e72d0aaa-bb3e-4436-a2ec-51498a184a75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -218,13 +221,13 @@
       <Filter>Actor\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="ContentEnum.h">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="ContentLevel.h">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="ContentBackground.h">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="ChipsBettigan.h">
       <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>
@@ -236,7 +239,7 @@
       <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
     </ClInclude>
     <ClInclude Include="ContentActor.h">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Martini.h">
       <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
@@ -272,7 +275,7 @@
       <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
     </ClInclude>
     <ClInclude Include="ContentGUI.h">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="HeathUp.h">
       <Filter>Level\5. BossStage\Object</Filter>
@@ -376,6 +379,9 @@
     <ClInclude Include="OverWorldFlag.h">
       <Filter>Level\3. OverWorld\Object</Filter>
     </ClInclude>
+    <ClInclude Include="OldFilm.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -467,10 +473,10 @@
       <Filter>Level\5. BossStage\Boss</Filter>
     </ClCompile>
     <ClCompile Include="ContentLevel.cpp">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="ContentBackground.cpp">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="ChipsBettigan.cpp">
       <Filter>Level\4. SubBossStage\Stage2\Boss</Filter>
@@ -485,7 +491,7 @@
       <Filter>Level\4. SubBossStage\Stage2\Object</Filter>
     </ClCompile>
     <ClCompile Include="ContentActor.cpp">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Martini.cpp">
       <Filter>Level\4. SubBossStage\Stage1\Boss</Filter>
@@ -528,7 +534,7 @@
       <Filter>Level\4. SubBossStage\Stage1\Object</Filter>
     </ClCompile>
     <ClCompile Include="ContentGUI.cpp">
-      <Filter>Level\Global</Filter>
+      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="KingDiceLevel_Load.cpp">
       <Filter>Level\5. BossStage</Filter>
@@ -649,6 +655,9 @@
     </ClCompile>
     <ClCompile Include="InkwellHellLevel.cpp">
       <Filter>Level\3. OverWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="OldFilm.cpp">
+      <Filter>Shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

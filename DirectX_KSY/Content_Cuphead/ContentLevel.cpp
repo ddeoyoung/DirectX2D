@@ -2,6 +2,7 @@
 #include "ContentLevel.h"
 
 #include "FadeAnimation.h"
+#include "OldFilm.h"
 
 ContentLevel::ContentLevel()
 {
@@ -15,10 +16,15 @@ ContentLevel* ContentLevel::CurLevel = nullptr;
 
 void ContentLevel::Start()
 {
+	// Set Camera
 	float4 HalfWindowScale = GameEngineCore::MainWindow.GetScale().Half();
 	GetMainCamera()->Transform.SetLocalPosition({ HalfWindowScale.X, -HalfWindowScale.Y, -500.0f });
 	GetMainCamera()->SetProjectionType(EPROJECTIONTYPE::Orthographic);
 
+	// Old Film
+	GetMainCamera()->GetCameraAllRenderTarget()->CreateEffect<OldFilm>();
+
+	// Input
 	GameEngineInput::AddInputObject(this);
 }
 

@@ -10,6 +10,20 @@ void ContentsCore::ContentRes()
 	GameEngineRenderTarget::IsDepth = false;
 	GameEngineLevel::IsDebug = false;
 
+	{
+		// Content Shader Load
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("ContentsResources");
+		Dir.MoveChild("Content_Shader");
+		std::vector<GameEngineFile> Files = Dir.GetAllFile({ ".fx" });
+
+		for (size_t i = 0; i < Files.size(); i++)
+		{
+			GameEngineFile& File = Files[i];
+			GameEngineShader::AutoCompile(File);
+		}
+	}
+
 	// OverRay
 	{
 		D3D11_BLEND_DESC Desc = {};
@@ -37,4 +51,13 @@ void ContentsCore::ContentRes()
 
 	// IMGUI
 	GameEngineGUI::CreateGUIWindow<ContentGUI>("ContentGUI");
+
+
+	// Shader
+	{
+		std::shared_ptr<GameEngineMaterial> Mat = GameEngineMaterial::Create("OldFilm");
+		Mat->SetVertexShader("OldFilm_VS");
+		Mat->SetPixelShader("OldFilm_PS");
+		Mat->SetDepthState("AlwaysDepth");
+	}
 }
