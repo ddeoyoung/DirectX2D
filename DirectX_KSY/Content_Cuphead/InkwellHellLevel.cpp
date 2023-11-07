@@ -78,11 +78,30 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Fade In
 	FadeIn->Transform.SetLocalPosition(FadePos);
+
+	// Fade Out
+	FadeOut = CreateActor<FadeAnimation>();
+	FadeOut->SetFade("Out");
+	FadeOut->Off();
 }
 
 void InkwellHellLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+
+	if (true == PortalToBossStage->GetIsPortalOn())
+	{
+		FadeOut->On();
+		float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
+		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
+		FadeOut->Transform.SetLocalPosition(FadePos);
+	}
+
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		PortalToBossStage->LevelChange();
+	}
 }
 
 void InkwellHellLevel::LevelEnd(GameEngineLevel* _NextLevel)

@@ -26,5 +26,6 @@ private:
 	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
 	std::shared_ptr<class Portal> PortalToInkwell = nullptr;
 	std::shared_ptr<class Portal> PortalToBossStage = nullptr;
+	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
 };
 
