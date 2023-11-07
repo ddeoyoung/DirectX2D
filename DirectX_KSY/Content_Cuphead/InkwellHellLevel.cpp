@@ -18,6 +18,7 @@ void InkwellHellLevel::Start()
 	ContentLevel::Start();
 
 	// Sprite Load
+	// Background
 	if (nullptr == GameEngineSprite::Find("InkwellHell.png"))
 	{
 		GameEngineDirectory Dir;
@@ -35,6 +36,22 @@ void InkwellHellLevel::Start()
 		// Background Upper
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\InkwellHell_Upper.png");
 		GameEngineSprite::CreateSingle("InkwellHell_Upper.png");
+	}
+
+	// Frontground
+	if (nullptr == GameEngineSprite::Find("world4_fg_cave_near.png"))
+	{
+		GameEngineDirectory Dir;
+		Dir.MoveParentToExistsChild("GameEngineResources");
+		Dir.MoveChild("ContentsResources\\Texture\\OverWorld\\OverWorldMap\\Inkwell_Hell\\Frontground");
+
+		// Near
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\world4_fg_cave_near.png");
+		GameEngineSprite::CreateSingle("world4_fg_cave_near.png");
+
+		// Far
+		GameEngineTexture::Load(Dir.GetStringPath() + "\\world4_fg_cave_far.png");
+		GameEngineSprite::CreateSingle("world4_fg_cave_far.png");
 	}
 }
 
@@ -69,14 +86,23 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Player
 	OverWorldPlayer = CreateActor<OverWorldCharacter>();
-	OverWorldPlayer->Transform.SetLocalPosition({ 900, -1750 });
+	OverWorldPlayer->Transform.SetLocalPosition({ 1025, -1500 });
 
+
+	// Frontground
+	std::shared_ptr<ContentActor> CaveFar = CreateActor<ContentActor>();
+	CaveFar->SpriteInit("world4_fg_cave_far.png", { 1060, -1500 }, RenderOrder::FrontgroundObject);
+
+	std::shared_ptr<ContentActor> CaveNear = CreateActor<ContentActor>();
+	CaveNear->SpriteInit("world4_fg_cave_near.png", { 1580, -1160 }, RenderOrder::FrontgroundObject2);
+
+
+	// Fade In
 	float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	GetMainCamera()->Transform.SetLocalPosition(PlayerPos);
 	float4 WindowScale = GameEngineCore::MainWindow.GetScale();
 	float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
 
-	// Fade In
 	FadeIn->Transform.SetLocalPosition(FadePos);
 
 	// Fade Out

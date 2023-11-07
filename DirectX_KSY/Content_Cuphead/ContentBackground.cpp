@@ -91,7 +91,7 @@ void ContentBackground::UpperBackgroundInit(std::string_view _SpriteName)
 		return;
 	}
 
-	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundObject3);
+	Renderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundObject2);
 	Renderer->SetSprite(UpperBackground);
 
 	UpperTexture = GameEngineTexture::Find(UpperBackground);
