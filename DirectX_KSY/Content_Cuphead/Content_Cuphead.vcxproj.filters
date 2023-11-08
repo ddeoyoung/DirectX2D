@@ -352,9 +352,6 @@
     <ClInclude Include="ElderKettleLevel.h">
       <Filter>Level\2. Tutorial\ElderKettle</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialLevel.h">
-      <Filter>Level\2. Tutorial\Tutorial</Filter>
-    </ClInclude>
     <ClInclude Include="Target.h">
       <Filter>Level\2. Tutorial\Tutorial\Object</Filter>
     </ClInclude>
@@ -381,6 +378,9 @@
     </ClInclude>
     <ClInclude Include="OldFilm.h">
       <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialLevel.h">
+      <Filter>Level\2. Tutorial\Tutorial</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
