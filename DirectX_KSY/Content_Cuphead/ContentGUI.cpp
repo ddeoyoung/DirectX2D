@@ -35,10 +35,6 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 
 	// Level Change
 	ImGui::Text("Change Level");
-	if (ImGui::Button("Logo Level"))
-	{
-		GameEngineCore::ChangeLevel("LogoLevel");
-	}
 
 	if (ImGui::Button("Title Level"))
 	{
@@ -50,6 +46,11 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 		GameEngineCore::ChangeLevel("IntroLevel");
 	}
 
+	if (ImGui::Button("ElderKettle Level"))
+	{
+		GameEngineCore::ChangeLevel("ElderKettleLevel");
+	}
+
 	if (ImGui::Button("Tutorial Level"))
 	{
 		GameEngineCore::ChangeLevel("TutorialLevel");
@@ -58,6 +59,11 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 	if (ImGui::Button("OverWorld Level"))
 	{
 		GameEngineCore::ChangeLevel("OverWorldLevel");
+	}
+
+	if (ImGui::Button("InkwellHell Level"))
+	{
+		GameEngineCore::ChangeLevel("InkwellHellLevel");
 	}
 
 	if (ImGui::Button("KingDice Level"))
@@ -80,13 +86,4 @@ void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 		GameEngineCore::ChangeLevel("MrWheezyLevel");
 	}
 
-	if (ImGui::Button("PipandDot Level"))
-	{
-		GameEngineCore::ChangeLevel("PipandDotLevel");
-	}
-
-	if (ImGui::Button("Loading Level"))
-	{
-		GameEngineCore::ChangeLevel("LoadingLevel");
-	}
 }

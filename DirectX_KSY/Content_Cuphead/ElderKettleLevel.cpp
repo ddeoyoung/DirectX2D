@@ -69,42 +69,73 @@ void ElderKettleLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 
 	// Background
-	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("ek_bg_main.png", { -0, 50 });
+	if (nullptr == CurLevelBackground)
+	{
+		CurLevelBackground = CreateActor<ContentBackground>();
+		CurLevelBackground->BackgroundInit("ek_bg_main.png", { -0, 50 });
+	}
 
-	CurLevelPixelBackground = CreateActor<ContentBackground>();
-	CurLevelPixelBackground->PixelBackgroundInit("ek_bg_main_pixel.png");
-
+	// Pixel Background
+	if (nullptr == CurLevelPixelBackground)
+	{
+		CurLevelPixelBackground = CreateActor<ContentBackground>();
+		CurLevelPixelBackground->PixelBackgroundInit("ek_bg_main_pixel.png");
+	}
+	
 	// Player
-	CurLevelPlayer = CreateActor<Cuphead>();
-	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+	if (nullptr == CurLevelPlayer)
+	{
+		CurLevelPlayer = CreateActor<Cuphead>();
+		CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+	}
 
 	// Vignette
-	std::shared_ptr<ContentActor> Vignette = CreateActor<ContentActor>();
-	Vignette->SpriteInit("ek_bg_vignette.png", { 800, -380 }, RenderOrder::FrontgroundObject3);
+	if (nullptr == Vignette)
+	{
+		Vignette = CreateActor<ContentActor>();
+		Vignette->SpriteInit("ek_bg_vignette.png", { 800, -380 }, RenderOrder::FrontgroundObject3);
+	}
 
 	// Object - Chair
-	std::shared_ptr<ContentActor> Chair = CreateActor<ContentActor>();
-	Chair->SpriteInit("ek_bg_chair.png", { 600, -680 }, RenderOrder::FrontgroundObject);
+	if (nullptr == Chair)
+	{
+		Chair = CreateActor<ContentActor>();
+		Chair->SpriteInit("ek_bg_chair.png", { 600, -680 }, RenderOrder::FrontgroundObject);
+	}
 
 	// Object - Couch
-	std::shared_ptr<ContentActor> Couch = CreateActor<ContentActor>();
-	Couch->SpriteInit("ek_bg_couch.png", { 1350, -640 }, RenderOrder::FrontgroundObject4);
+	if (nullptr == Couch)
+	{
+		Couch = CreateActor<ContentActor>();
+		Couch->SpriteInit("ek_bg_couch.png", { 1350, -640 }, RenderOrder::FrontgroundObject4);
+	}
 
 	// Elder Kettle
-	Kettle = CreateActor<ElderKettle>();
+	if (nullptr == Kettle)
+	{
+		Kettle = CreateActor<ElderKettle>();
+	}
 	
 	// Enter Message
-	EnterBubble = CreateActor<EnterMessage>();
+	if (nullptr == EnterBubble)
+	{
+		EnterBubble = CreateActor<EnterMessage>();
+	}
 
 	// UI - Fade Out
-	Fade = CreateActor<FadeAnimation>(RenderOrder::Max);
-	Fade->Transform.AddLocalPosition({ 175, 0});
-	Fade->Off();
+	if (nullptr == Fade)
+	{
+		Fade = CreateActor<FadeAnimation>(RenderOrder::Max);
+		Fade->Transform.AddLocalPosition({ 175, 0 });
+		Fade->Off();
+	}
 
 	// Music Note
-	std::shared_ptr<MusicNote> Music = CreateActor<MusicNote>();
-	Music->Transform.SetLocalPosition({ 750, -240 });
+	if (nullptr == Music)
+	{
+		Music = CreateActor<MusicNote>();
+		Music->Transform.SetLocalPosition({ 750, -240 });
+	}
 }
 
 void ElderKettleLevel::LevelEnd(GameEngineLevel* _NextLevel)

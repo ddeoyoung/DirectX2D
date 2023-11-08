@@ -22,7 +22,7 @@ private:
 	void EffectProcess(float _DeltaTime) override;
 
 	int CurIndex = 0;
-
+	float Time = 0.0f;
 	std::shared_ptr<GameEngineSprite> FilmSprite;
 };
 

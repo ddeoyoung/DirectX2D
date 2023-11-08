@@ -37,12 +37,8 @@ void OldFilm::Start()
 
 	EffectUnit.SetMesh("fullrect");
 	EffectUnit.SetMaterial("OldFilm");
-
 	FilmSprite = GameEngineSprite::Find("OldFilm");
-
 	EffectUnit.ShaderResHelper.SetSampler("Tex0Sampler", "POINT");
-	//EffectUnit.ShaderResHelper.SetSampler("Tex1Sampler", "POINT");
-
 }
 
 void OldFilm::EffectProcess(float _DeltaTime)
@@ -50,8 +46,13 @@ void OldFilm::EffectProcess(float _DeltaTime)
 	ResultTarget->Setting();
 
 	EffectUnit.ShaderResHelper.SetTexture("Tex0", FilmSprite->GetSpriteData(CurIndex).Texture);
-
-	++CurIndex;
+	
+	Time += _DeltaTime;
+	if (0.02f <= Time)
+	{
+		Time = 0.0f;
+		++CurIndex;
+	}
 
 	if (CurIndex >= FilmSprite->GetSpriteCount())
 	{

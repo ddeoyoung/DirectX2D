@@ -28,6 +28,10 @@ private:
 	std::shared_ptr<class ElderKettle> Kettle = nullptr;
 	std::shared_ptr<class EnterMessage> EnterBubble = nullptr;
 	std::shared_ptr<class FadeAnimation> Fade = nullptr;
+	std::shared_ptr<class ContentActor> Vignette = nullptr;
+	std::shared_ptr<class ContentActor> Chair = nullptr;
+	std::shared_ptr<class ContentActor> Couch = nullptr;
+	std::shared_ptr<class MusicNote> Music = nullptr;
 
 	bool IsLevelChange = false;
 };

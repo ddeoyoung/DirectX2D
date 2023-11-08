@@ -18,6 +18,32 @@ void TitleLevel::Start()
 	ContentLevel::Start();
 }
 
+void TitleLevel::LevelStart(GameEngineLevel* _PrevLevel)
+{
+	ContentLevel::LevelStart(_PrevLevel);
+
+	if (nullptr == Back)
+	{
+		Back = CreateActor<TitleBackground>();
+	}
+
+	if (nullptr == CupheadAndMugman)
+	{
+		CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
+	}
+	
+	if (nullptr == MenuBack)
+	{
+		MenuBack = CreateActor<TitleMenuBackground>();
+	}
+	MenuBack->Off();
+}
+
+void TitleLevel::LevelEnd(GameEngineLevel* _NextLevel)
+{
+	ContentLevel::LevelEnd(_NextLevel);
+}
+
 void TitleLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
@@ -33,20 +59,4 @@ void TitleLevel::Update(float _Delta)
 	{
 		GameEngineCore::ChangeLevel("IntroLevel");
 	}
-}
-
-
-void TitleLevel::LevelStart(GameEngineLevel* _PrevLevel)
-{
-	ContentLevel::LevelStart(_PrevLevel);
-
-	Back = CreateActor<TitleBackground>();
-	CupheadAndMugman = CreateActor<Cuphead_And_Mugman>();
-	MenuBack = CreateActor<TitleMenuBackground>();
-	MenuBack->Off();
-}
-
-void TitleLevel::LevelEnd(GameEngineLevel* _NextLevel)
-{
-	ContentLevel::LevelEnd(_NextLevel);
 }

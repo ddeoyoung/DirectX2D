@@ -42,55 +42,6 @@ void TutorialLevel::Start()
 		GameEngineTexture::Load(Dir.GetStringPath() + "\\tutorial_room_back_layer_0001.png");
 		GameEngineSprite::CreateSingle("tutorial_room_back_layer_0001.png");
 	}
-
-	// Back Layer
-	BackLayer = CreateActor<ContentBackground>();
-	BackLayer->BackgroundInit("tutorial_room_back_layer_0001.png");
-
-	// Background
-	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("TutorialMap.png");
-
-	CurLevelPixelBackground = CreateActor<ContentBackground>();
-	CurLevelPixelBackground->PixelBackgroundInit("TutorialBitMap.png");
-
-	// Target
-	TargetObject = CreateActor<Target>();
-	TargetObject->Transform.SetLocalPosition({ 3564, -240 });
-
-	// Sphere
-	Sphere1 = CreateActor<Sphere>();
-	Sphere1->Transform.SetLocalPosition({ 3891, -317 });
-
-	Sphere2 = CreateActor<Sphere>();
-	Sphere2->Transform.SetLocalPosition({ 4093, -317 });
-
-	Sphere3 = CreateActor<Sphere>();
-	Sphere3->Transform.SetLocalPosition({ 4293, -317 });
-
-	// Front Layer
-	FrontLayer = CreateActor<ContentBackground>();
-	FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
-
-	// Player
-	CurLevelPlayer = CreateActor<Cuphead>();
-	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
-
-	// Exit Door
-	if (nullptr == ExitDoor)
-	{
-		ExitDoor = CreateActor<TutorialDoor>();
-	}
-	ExitDoor->Transform.SetLocalPosition({ 6642, -468 });
-	ExitDoor->SetPortalValue(PortalValue::OverWorld);
-
-	// Fade
-	if (nullptr == Fade)
-	{
-		Fade = CreateActor<FadeAnimation>();
-	}
-	Fade->Transform.SetLocalPosition({ 5620, 0 });
-	Fade->Off();
 }
 
 void TutorialLevel::Update(float _Delta)
@@ -122,6 +73,74 @@ void TutorialLevel::Update(float _Delta)
 void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	ContentLevel::LevelStart(_PrevLevel);
+
+	// Back Layer
+	if (nullptr == BackLayer)
+	{
+		BackLayer = CreateActor<ContentBackground>();
+		BackLayer->BackgroundInit("tutorial_room_back_layer_0001.png");
+	}
+
+	// Background
+	if (nullptr == CurLevelBackground)
+	{
+		CurLevelBackground = CreateActor<ContentBackground>();
+		CurLevelBackground->BackgroundInit("TutorialMap.png");
+
+		CurLevelPixelBackground = CreateActor<ContentBackground>();
+		CurLevelPixelBackground->PixelBackgroundInit("TutorialBitMap.png");
+	}
+
+	// Target
+	if (nullptr == TargetObject)
+	{
+		TargetObject = CreateActor<Target>();
+		TargetObject->Transform.SetLocalPosition({ 3564, -240 });
+	}
+
+	// Sphere
+	if (nullptr == Sphere1)
+	{
+		Sphere1 = CreateActor<Sphere>();
+		Sphere1->Transform.SetLocalPosition({ 3891, -317 });
+
+		Sphere2 = CreateActor<Sphere>();
+		Sphere2->Transform.SetLocalPosition({ 4093, -317 });
+
+		Sphere3 = CreateActor<Sphere>();
+		Sphere3->Transform.SetLocalPosition({ 4293, -317 });
+	}
+
+	// Front Layer
+	if (nullptr == FrontLayer)
+	{
+		FrontLayer = CreateActor<ContentBackground>();
+		FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
+	}
+
+	// Player
+	if (nullptr == CurLevelPlayer)
+	{
+		CurLevelPlayer = CreateActor<Cuphead>();
+		CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+	}
+
+	// Exit Door
+	if (nullptr == ExitDoor)
+	{
+		ExitDoor = CreateActor<TutorialDoor>();
+		ExitDoor->Transform.SetLocalPosition({ 6642, -468 });
+		ExitDoor->SetPortalValue(PortalValue::OverWorld);
+		ExitDoor->GetRenderer()->Off();
+	}
+
+	// Fade
+	if (nullptr == Fade)
+	{
+		Fade = CreateActor<FadeAnimation>();
+		Fade->Transform.SetLocalPosition({ 5620, 0 });
+		Fade->Off();
+	}
 }
 
 void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
@@ -131,7 +150,7 @@ void TutorialLevel::LevelEnd(GameEngineLevel* _NextLevel)
 
 void TutorialLevel::SetLayerPos()
 {
-	// BackLayer, FrontLayer -> Camera 따라가야함
+	// BackLayer, FrontLayer: Camera 따라가기
 	float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
 	float4 WindowScaleHalf = GameEngineCore::MainWindow.GetScale().Half();
 	float4 LayerPos = { CameraPos.X - WindowScaleHalf.X, CameraPos.Y + WindowScaleHalf.Y };

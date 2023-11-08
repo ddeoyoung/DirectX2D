@@ -61,36 +61,44 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	ContentLevel::LevelStart(_PrevLevel);
 
 	// Background
-	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("InkwellHell.png");
+	if (nullptr == CurLevelBackground)
+	{
+		CurLevelBackground = CreateActor<ContentBackground>();
+		CurLevelBackground->BackgroundInit("InkwellHell.png");
 
-	CurLevelPixelBackground = CreateActor<ContentBackground>();
-	CurLevelPixelBackground->PixelBackgroundInit("InkwellHell_pixel.png");
-	//CurLevelPixelBackground->GetRenderer()->On();
+		CurLevelPixelBackground = CreateActor<ContentBackground>();
+		CurLevelPixelBackground->PixelBackgroundInit("InkwellHell_pixel.png");
+		//CurLevelPixelBackground->GetRenderer()->On();
 
-	// Background Upper
-	CurLevelUpperBackground = CreateActor<ContentBackground>();
-	CurLevelUpperBackground->UpperBackgroundInit("InkwellHell_Upper.png");
+		CurLevelUpperBackground = CreateActor<ContentBackground>();
+		CurLevelUpperBackground->UpperBackgroundInit("InkwellHell_Upper.png");
+	}
 
 	// Entrance To Inkwell Isle
-	PortalToInkwell = CreateActor<Portal>();
-	PortalToInkwell->SetPortalScale({500, 500});
-	PortalToInkwell->Transform.SetLocalPosition({ 900, -1600 });
-	PortalToInkwell->SetPortalValue(PortalValue::Inkwell_Isle);
-	PortalToInkwell->GetRenderer()->Off();
+	if (nullptr == PortalToInkwell)
+	{
+		PortalToInkwell = CreateActor<Portal>();
+		PortalToInkwell->SetPortalScale({ 500, 500 });
+		PortalToInkwell->Transform.SetLocalPosition({ 900, -1600 });
+		PortalToInkwell->SetPortalValue(PortalValue::Inkwell_Isle);
+		PortalToInkwell->GetRenderer()->Off();
+	}
 
 	// Entrance To Boss Stage
-	PortalToBossStage = CreateActor<Portal>();
-	PortalToBossStage->Transform.SetLocalPosition({ 1600, -1027 });
-	PortalToBossStage->SetPortalValue(PortalValue::BossStage);
-	PortalToBossStage->GetRenderer()->Off();
+	if (nullptr == PortalToBossStage)
+	{
+		PortalToBossStage = CreateActor<Portal>();
+		PortalToBossStage->Transform.SetLocalPosition({ 1600, -1027 });
+		PortalToBossStage->SetPortalValue(PortalValue::BossStage);
+		PortalToBossStage->GetRenderer()->Off();
+	}
 
 	// Player
 	if (nullptr == OverWorldPlayer)
 	{
 		OverWorldPlayer = CreateActor<OverWorldCharacter>();
+		OverWorldPlayer->Transform.SetLocalPosition({ 1025, -1500 });
 	}
-	OverWorldPlayer->Transform.SetLocalPosition({ 1025, -1500 });
 
 	// Frontground
 	std::shared_ptr<ContentActor> CaveFar = CreateActor<ContentActor>();
@@ -109,9 +117,12 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	FadeIn->Transform.SetLocalPosition(FadePos);
 
 	// Fade Out
-	FadeOut = CreateActor<FadeAnimation>();
-	FadeOut->SetFade("Out");
-	FadeOut->Off();
+	if (nullptr == FadeOut)
+	{
+		FadeOut = CreateActor<FadeAnimation>();
+		FadeOut->SetFade("Out");
+		FadeOut->Off();
+	}
 }
 
 void InkwellHellLevel::Update(float _Delta)

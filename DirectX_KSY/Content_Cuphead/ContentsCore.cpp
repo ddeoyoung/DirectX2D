@@ -39,11 +39,10 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<TipsyTroopLevel>("TipsyTroopLevel");
 	GameEngineCore::CreateLevel<ChipsBettiganLevel>("ChipsBettiganLevel");
 	GameEngineCore::CreateLevel<MrWheezyLevel>("MrWheezyLevel");
-	GameEngineCore::CreateLevel<PipandDotLevel>("PipandDotLevel");
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("OverWorldLevel");
+	GameEngineCore::ChangeLevel("TitleLevel");
 }
 
 void ContentsCore::Update(float _Delta)
