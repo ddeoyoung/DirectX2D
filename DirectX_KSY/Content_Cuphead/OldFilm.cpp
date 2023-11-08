@@ -54,12 +54,13 @@ void OldFilm::EffectProcess(float _DeltaTime)
 		++CurIndex;
 	}
 
-	if (CurIndex >= FilmSprite->GetSpriteCount())
+	if (CurIndex >= static_cast<int>(FilmSprite->GetSpriteCount()))
 	{
 		CurIndex = 0;
 	}
 
 	EffectUnit.Render();
+	EffectUnit.ShaderResHelper.AllShaderResourcesReset();
 
 	GameEngineRenderTarget::RenderTargetReset();
 }

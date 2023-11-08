@@ -3,6 +3,8 @@
 
 #include "FadeAnimation.h"
 #include "OldFilm.h"
+#include <GameEngineCore/BlurPostEffect.h>
+
 
 ContentLevel::ContentLevel()
 {
@@ -23,6 +25,9 @@ void ContentLevel::Start()
 
 	// Old Film
 	GetMainCamera()->GetCameraAllRenderTarget()->CreateEffect<OldFilm>();
+
+	// Blur Post Effect
+	GetMainCamera()->GetCameraAllRenderTarget()->CreateEffect<BlurPostEffect>();
 
 	// Input
 	GameEngineInput::AddInputObject(this);
