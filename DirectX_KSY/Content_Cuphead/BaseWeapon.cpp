@@ -195,7 +195,7 @@ void BaseWeapon::SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos, bool _IsMove
 
 void BaseWeapon::HitCheck()
 {
-	AttackCollision->Collision(CollisionOrder::ShootObject, [=](std::vector<std::shared_ptr<GameEngineCollision> >_GroupOrder)
+	AttackCollision->Collision(CollisionOrder::ShootObject, [=](std::vector<GameEngineCollision*>_GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
@@ -207,7 +207,7 @@ void BaseWeapon::HitCheck()
 			return;
 		});
 
-	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<std::shared_ptr<GameEngineCollision> >_GroupOrder)
+	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
