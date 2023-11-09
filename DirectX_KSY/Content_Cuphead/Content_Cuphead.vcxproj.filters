@@ -382,6 +382,9 @@
     <ClInclude Include="TutorialLevel.h">
       <Filter>Level\2. Tutorial\Tutorial</Filter>
     </ClInclude>
+    <ClInclude Include="OverWorldHouse.h">
+      <Filter>Level\3. OverWorld\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -658,6 +661,9 @@
     </ClCompile>
     <ClCompile Include="OldFilm.cpp">
       <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="OverWorldHouse.cpp">
+      <Filter>Level\3. OverWorld\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

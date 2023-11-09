@@ -4,6 +4,7 @@
 #include "OverWorldCharacter.h"
 #include "OverWorldFlag.h"
 #include "FadeAnimation.h"
+#include "OverWorldHouse.h"
 
 OverWorldLevel::OverWorldLevel()
 {
@@ -72,6 +73,11 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	PortalToHell->SetPortalValue(PortalValue::Inkwell_Hell);
 	PortalToHell->GetRenderer()->Off();
 
+	// Portal To Elder Kettle House
+	TutorialHouse = CreateActor<OverWorldHouse>();
+	TutorialHouse->Transform.SetLocalPosition({ 820, -3240});
+	TutorialHouse->SetPortalValue(PortalValue::ElderKettleHouse);
+
 	// Player
 	if (nullptr == OverWorldPlayer)
 	{
@@ -111,24 +117,28 @@ void OverWorldLevel::Update(float _Delta)
 		OverWorldPlayer->Transform.SetLocalPosition({ 2200, -3450 });
 	}
 
-	if (true == PortalToHell->GetIsPortalOn())
+	if (true == PortalToHell->GetIsPortalOn()
+		|| true == TutorialHouse->GetIsPortalOn())
 	{
 		FadeOut->On();
-		//float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
-		//float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-		//float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
-
 		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
 		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
 		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
 		FadeOut->Transform.SetLocalPosition(FadePos);
-
 		LastPlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
 	}
 
 	if (true == FadeOut->IsCurAnimationEnd())
 	{
-		IsHell = true;
+		if (true == PortalToHell->GetIsCollision())
+		{
+			IsHell = true;
+		}
+		
+		else if (true == TutorialHouse->GetIsCollision())
+		{
+			IsHouse = true;
+		}
 	}
 
 	if (true == IsHell)
@@ -136,6 +146,13 @@ void OverWorldLevel::Update(float _Delta)
 		IsHell = false;
 		PortalToHell->SetIsPortalOn(false);
 		GameEngineCore::ChangeLevel("InkwellHellLevel");
+	}
+
+	if (true == IsHouse)
+	{
+		IsHouse = false;
+		TutorialHouse->SetIsPortalOn(false);
+		GameEngineCore::ChangeLevel("ElderKettleLevel");
 	}
 }
 

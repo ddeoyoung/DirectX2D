@@ -65,6 +65,7 @@ void TutorialLevel::Update(float _Delta)
 	{
 		if (true == Fade->IsCurAnimationEnd())
 		{
+			IsLevelChange = false;
 			ExitDoor->LevelChange();
 		}
 	}

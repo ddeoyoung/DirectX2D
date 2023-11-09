@@ -38,6 +38,11 @@ public:
 		return IsPortalOn;
 	}
 
+	bool GetIsCollision()
+	{
+		return IsCollision;
+	}
+
 	void SetIsPortalOn(bool _bool)
 	{
 		IsPortalOn = _bool;
@@ -64,6 +69,7 @@ protected:
 
 	PortalValue PV = PortalValue::None;
 	bool IsPortalOn = false;
+	bool IsCollision = false;
 	float4 PortalScale = float4::ZERO;
 	void CollisionCheck(float _Delta);
 

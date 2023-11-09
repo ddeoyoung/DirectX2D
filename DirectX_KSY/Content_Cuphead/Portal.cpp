@@ -70,13 +70,32 @@ void Portal::LevelChange()
 
 void Portal::CollisionCheck(float _Delta)
 {
-	if (true == PortalCollision->Collision(CollisionOrder::Player)
-		&& true == GameEngineInput::IsDown('Z', this))
+	//if (true == PortalCollision->Collision(CollisionOrder::Player)
+	//	&& true == GameEngineInput::IsDown('Z', this))
+	//{
+	//	IsPortalOn = true;
+	//}
+	//else
+	//{
+	//	IsPortalOn = false;
+	//}
+
+	// Test
+	if (true == PortalCollision->Collision(CollisionOrder::Player))
 	{
-		IsPortalOn = true;
+		IsCollision = true;
+
+		if (true == GameEngineInput::IsDown('Z', this))
+		{
+			IsPortalOn = true;
+		}
+		else
+		{
+			IsPortalOn = false;
+		}
 	}
 	else
 	{
-		IsPortalOn = false;
+		IsCollision = false;
 	}
 }

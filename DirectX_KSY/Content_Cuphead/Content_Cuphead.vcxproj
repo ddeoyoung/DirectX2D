@@ -309,6 +309,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="OverWorldHouse.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Portal.cpp">
       <SubType>
       </SubType>
@@ -631,6 +635,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="OverWorldFlag.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OverWorldHouse.h">
       <SubType>
       </SubType>
     </ClInclude>

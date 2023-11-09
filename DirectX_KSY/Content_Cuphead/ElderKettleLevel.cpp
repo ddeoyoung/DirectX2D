@@ -160,6 +160,7 @@ void ElderKettleLevel::TutorialEnterInteraction()
 	{
 		if (true == Fade->IsCurAnimationEnd())
 		{
+			IsLevelChange = false;
 			GameEngineCore::ChangeLevel("TutorialLevel");
 		}
 	}
