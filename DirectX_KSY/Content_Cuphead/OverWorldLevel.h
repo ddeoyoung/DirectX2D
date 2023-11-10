@@ -29,7 +29,6 @@ private:
 	std::shared_ptr<class Portal> PortalToHell = nullptr;
 	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
 	std::shared_ptr<class OverWorldHouse> TutorialHouse = nullptr;
-	std::shared_ptr<class Portal> NextLevel = nullptr;
 
 	bool IsHell = false;
 	bool IsHouse = false;

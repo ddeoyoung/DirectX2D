@@ -60,6 +60,8 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	ContentLevel::LevelStart(_PrevLevel);
 
+	GetMainCamera()->Transform.SetWorldPosition({ 1000, -1550 });
+
 	// Background
 	if (nullptr == CurLevelBackground)
 	{
@@ -123,6 +125,10 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		FadeOut->SetFade("Out");
 		FadeOut->Off();
 	}
+
+
+	// Initialize
+	NextLevel = nullptr;
 }
 
 void InkwellHellLevel::Update(float _Delta)
@@ -138,6 +144,7 @@ void InkwellHellLevel::Update(float _Delta)
 		FadeOut->Transform.SetLocalPosition(FadePos);
 
 		NextLevel = PortalToBossStage;
+		NextLevel->SetPortalValue(PortalValue::BossStage);
 	}
 
 	if (true == PortalToInkwell->GetIsPortalOn())
@@ -149,6 +156,7 @@ void InkwellHellLevel::Update(float _Delta)
 		FadeOut->Transform.SetLocalPosition(FadePos);
 
 		NextLevel = PortalToInkwell;
+		NextLevel->SetPortalValue(PortalValue::Inkwell_Isle);
 	}
 
 	if (true == FadeOut->IsCurAnimationEnd())
@@ -160,9 +168,26 @@ void InkwellHellLevel::Update(float _Delta)
 void InkwellHellLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
-}
 
-void InkwellHellLevel::SetFadeOut()
-{
-	
+	if (nullptr != CurLevelBackground)
+	{
+		CurLevelBackground = nullptr;
+		CurLevelPixelBackground = nullptr;
+		CurLevelUpperBackground = nullptr;
+	}
+
+	if (nullptr != PortalToInkwell)
+	{
+		PortalToInkwell = nullptr;
+	}
+
+	if (nullptr != PortalToBossStage)
+	{
+		PortalToBossStage = nullptr;
+	}
+
+	if (nullptr != FadeOut)
+	{
+		FadeOut = nullptr;
+	}
 }

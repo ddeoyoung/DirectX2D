@@ -22,8 +22,6 @@ protected:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
-	void SetFadeOut();
-
 private:
 	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
 	std::shared_ptr<class Portal> PortalToInkwell = nullptr;
