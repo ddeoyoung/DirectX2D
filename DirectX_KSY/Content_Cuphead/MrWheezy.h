@@ -35,6 +35,7 @@ public:
 		return Dir;
 	}
 
+	void HPMinus();
 
 protected:
 	void ChangeState(WheezyState _State);
@@ -67,6 +68,8 @@ protected:
 	void CreateCiggyDemon(float _Delta);
 	void CreateFireBullet();
 
+	void DeathCheck();
+
 	std::string CurState = "";
 	WheezyState State = WheezyState::None;
 
@@ -82,5 +85,9 @@ private:
 	float AttackTime = 0.0f;
 	float CiggyDemonInter = 3.0f;
 	bool IsAttack = false;
+
+	int BossHP = 0;
+	bool IsHit = false;
+	bool IsDeath = false;
 };
 

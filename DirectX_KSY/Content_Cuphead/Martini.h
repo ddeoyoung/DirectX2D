@@ -23,6 +23,8 @@ public:
 	Martini& operator=(const Martini& _Other) = delete;
 	Martini& operator=(Martini&& _Other) noexcept = delete;
 
+	void HPMinus();
+
 protected:
 	void ChangeState(MartiniState _State);
 	void StateUpdate(float _Delta);
@@ -43,6 +45,8 @@ protected:
 
 	void CreateOliveDevil();
 
+	void DeathCheck();
+
 	std::string CurState = "";
 	MartiniState State = MartiniState::None;
 
@@ -55,7 +59,10 @@ protected:
 private:
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
-
 	bool IsOliveOn = false;
+
+	int BossHP = 0;
+	bool IsHit = false;
+	bool IsDeath = false;
 };
 

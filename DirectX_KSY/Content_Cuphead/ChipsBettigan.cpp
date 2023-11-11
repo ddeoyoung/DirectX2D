@@ -51,12 +51,10 @@ void ChipsBettigan::Start()
 			_Renderer->ChangeAnimation("Chips_Death_Finish");
 		});
 	MainRenderer->CreateAnimation("Chips_Death_Finish", "Chips_Death_Finish");
-
 	MainRenderer->AutoSpriteSizeOn();
 	MainRenderer->SetPivotType(PivotType::Bottom);
 	Transform.SetLocalPosition({ 1100 , -650 });
 
-	ChangeState(ChipsState::Idle);
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -68,6 +66,11 @@ void ChipsBettigan::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
+
+
+	// Setting
+	ChangeState(ChipsState::Idle);
+	BossHP = 20;
 }
 
 void ChipsBettigan::Update(float _Delta)
@@ -75,11 +78,7 @@ void ChipsBettigan::Update(float _Delta)
 	ContentActor::Start();
 
 	StateUpdate(_Delta);
-
-	if (BossHP <= 0)
-	{
-		ChangeState(ChipsState::Death);
-	}
+	DeathCheck();
 }
 
 void ChipsBettigan::ChangeState(ChipsState _State)
@@ -308,4 +307,30 @@ bool ChipsBettigan::CheckAttackDir()
 		IsMove = false;
 		return false;
 	}
+}
+
+void ChipsBettigan::HPMinus()
+{
+	if (nullptr != BossCollision)
+	{
+		if (1 <= BossHP)
+		{
+			--BossHP;
+
+			if (0 == BossHP)
+			{
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void ChipsBettigan::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+
+	ChangeState(ChipsState::Death);
 }

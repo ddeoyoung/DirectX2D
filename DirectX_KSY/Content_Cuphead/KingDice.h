@@ -89,6 +89,8 @@ public:
 
 	void ChangeState(KingDiceState _State);
 
+	void HPMinus();
+
 protected:
 	void StateUpdate(float _Delta);
 	void ChangeAnimationState(const std::string& _StateName);
@@ -136,6 +138,7 @@ protected:
 	bool IsAttackLoop();
 	void CreateCardPattern();
 	std::vector<CardType> GetRandomCardSet();
+	void DeathCheck();
 
 	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
@@ -143,7 +146,7 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> HeadRenderer = nullptr;
 	std::shared_ptr<class GameEngineSpriteRenderer> ArmRenderer = nullptr;
-
+	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 	std::shared_ptr<class Dice> PinkDice = nullptr;
 
 private:
@@ -156,8 +159,11 @@ private:
 
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
+	bool IsHit = false;
+	bool IsDeath = false;
 
 	int AttackCount = 0;
+	int BossHP = 0;
 
 	std::string AttackDir = "";
 

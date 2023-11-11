@@ -95,7 +95,6 @@ void MrWheezy::Start()
 		});
 	MainRenderer->CreateAnimation("MrWheezy_Appear3", "MrWheezy_Teleport1", 0.05f, 7, 0, false);
 
-	ChangeState(WheezyState::Intro);
 
 	// Create Collision
 	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
@@ -106,6 +105,8 @@ void MrWheezy::Start()
 	BossCollision->Transform.SetLocalScale(Scale);
 	BossCollision->Transform.SetLocalPosition({ 0, 0 });
 
+	ChangeState(WheezyState::Intro);
+	BossHP = 30;
 }
 
 void MrWheezy::Update(float _Delta)
@@ -113,6 +114,7 @@ void MrWheezy::Update(float _Delta)
 	ContentActor::Start();
 	StateUpdate(_Delta);
 	CreateCiggyDemon(_Delta);
+	DeathCheck();
 }
 
 void MrWheezy::ChangeState(WheezyState _State)
@@ -224,4 +226,30 @@ void MrWheezy::CreateFireBullet()
 
 	FireBullet->Transform.SetLocalPosition(BossPos);
 	FireBullet->SetPos(BossPos);
+}
+
+void MrWheezy::HPMinus()
+{
+	if (nullptr != BossCollision)
+	{
+		if (1 <= BossHP)
+		{
+			--BossHP;
+
+			if (0 == BossHP)
+			{
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void MrWheezy::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+
+	ChangeState(WheezyState::Death);
 }

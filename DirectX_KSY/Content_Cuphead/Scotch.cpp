@@ -50,6 +50,7 @@ void Scotch::Start()
 	BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() + 80.0f });
 
 	ChangeState(ScotchState::Idle);
+	BossHP = 20;
 }
 
 void Scotch::Update(float _Delta)
@@ -57,6 +58,7 @@ void Scotch::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	StateUpdate(_Delta);
+	DeathCheck();
 }
 
 void Scotch::ChangeState(ScotchState _State)
@@ -164,4 +166,31 @@ void Scotch::CreateLiquid()
 	float4 PlayerPos = ContentLevel::CurLevel->GetCurLevelPlayer()->Transform.GetWorldPosition();
 	float4 Pos = { PlayerPos.X , -300 };
 	Liquid->Transform.SetLocalPosition(Pos);
+}
+
+
+void Scotch::HPMinus()
+{
+	if (nullptr != BossCollision)
+	{
+		if (1 <= BossHP)
+		{
+			--BossHP;
+
+			if (0 == BossHP)
+			{
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void Scotch::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+
+	ChangeState(ScotchState::Death);
 }

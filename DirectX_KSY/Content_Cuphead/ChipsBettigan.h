@@ -30,6 +30,8 @@ public:
 	ChipsBettigan& operator=(const ChipsBettigan& _Other) = delete;
 	ChipsBettigan& operator=(ChipsBettigan&& _Other) noexcept = delete;
 
+	void HPMinus();
+
 protected:
 	void ChangeState(ChipsState _State);
 	void StateUpdate(float _Delta);
@@ -58,6 +60,8 @@ protected:
 	void CheckIdleDir();
 	bool CheckAttackDir();
 
+	void DeathCheck();
+
 	std::string CurState = "";
 	ChipsState State = ChipsState::None;
 
@@ -68,7 +72,9 @@ protected:
 
 private:
 	int SpinDir = 1;
-	int BossHP = 20;
+	int BossHP = 0;
+	bool IsHit = false;
+	bool IsDeath = false;
 
 	float IdleTimer = 0.0f;
 	float StretchTimer = 0.0f;

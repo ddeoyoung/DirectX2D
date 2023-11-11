@@ -3,6 +3,12 @@
 #include "BaseCharacter.h"
 
 #include "Target.h"
+#include "Martini.h"
+#include "Rum.h"
+#include "Scotch.h"
+#include "ChipsBettigan.h"
+#include "MrWheezy.h"
+#include "KingDice.h"
 
 BaseWeapon::BaseWeapon()
 {
@@ -195,6 +201,7 @@ void BaseWeapon::SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos, bool _IsMove
 
 void BaseWeapon::HitCheck()
 {
+	// Shoot Object - Tutorial Target
 	AttackCollision->Collision(CollisionOrder::ShootObject, [=](std::vector<GameEngineCollision*>_GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
@@ -207,15 +214,69 @@ void BaseWeapon::HitCheck()
 			return;
 		});
 
+	// Boss - Martini
 	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
-				Target* Other = static_cast<Target*>(_GroupOrder[i]->GetActor());
+				Martini* Other = static_cast<Martini*>(_GroupOrder[i]->GetActor());
 				Other->HPMinus();
 			}
 
 			ChangeState(AttackState::Death);
 			return;
 		});
+
+	// Boss - Rum
+	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
+		{
+			for (size_t i = 0; i < _GroupOrder.size(); i++)
+			{
+				Rum* Other = static_cast<Rum*>(_GroupOrder[i]->GetActor());
+				Other->HPMinus();
+			}
+
+			ChangeState(AttackState::Death);
+			return;
+		});
+
+	// Boss - Scotch
+	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
+		{
+			for (size_t i = 0; i < _GroupOrder.size(); i++)
+			{
+				Scotch* Other = static_cast<Scotch*>(_GroupOrder[i]->GetActor());
+				Other->HPMinus();
+			}
+
+			ChangeState(AttackState::Death);
+			return;
+		});
+
+	// Boss - ChipsBettigan
+	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
+		{
+			for (size_t i = 0; i < _GroupOrder.size(); i++)
+			{
+				ChipsBettigan* Other = static_cast<ChipsBettigan*>(_GroupOrder[i]->GetActor());
+				Other->HPMinus();
+			}
+
+			ChangeState(AttackState::Death);
+			return;
+		});
+
+	// Boss - MrWheezy
+	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
+		{
+			for (size_t i = 0; i < _GroupOrder.size(); i++)
+			{
+				MrWheezy* Other = static_cast<MrWheezy*>(_GroupOrder[i]->GetActor());
+				Other->HPMinus();
+			}
+
+			ChangeState(AttackState::Death);
+			return;
+		});
+	
 }

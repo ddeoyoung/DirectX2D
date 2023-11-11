@@ -69,6 +69,7 @@ void Target::DeathCheck()
 	{
 		return;
 	}
+
 	Death();
 }
 
@@ -79,7 +80,7 @@ void Target::HPMinus()
 		if (1 <= HP)
 		{
 			--HP;
-
+			
 			if (0 == HP)
 			{
 				CreateExplosionEffect();

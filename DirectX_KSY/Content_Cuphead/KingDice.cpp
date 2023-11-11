@@ -172,9 +172,17 @@ void KingDice::Start()
 	ArmRenderer->Off();
 
 
-	CreateCardPattern();
+	//////////////////////////////////// Collision ///////////////////////////////////////////
+	BossCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
+	BossCollision->SetCollisionType(ColType::AABBBOX2D);
+	BossCollision->Transform.SetLocalScale({ 300, 300 });
+	BossCollision->Transform.SetLocalPosition({ 0, 200 });
 
+
+	// Setting
+	CreateCardPattern();
 	ChangeState(KingDiceState::IntroHand);
+	BossHP = 50;
 }
 
 void KingDice::Update(float _Delta)
@@ -182,6 +190,7 @@ void KingDice::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	StateUpdate(_Delta);
+	DeathCheck();
 }
 
 void KingDice::ChangeState(KingDiceState _State)
@@ -432,4 +441,34 @@ std::vector<CardType> KingDice::GetRandomCardSet()
 	NewRandom.SetSeed(Random);
 
 	return CardSet[Random];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// Death //////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void KingDice::HPMinus()
+{
+	if (nullptr != BossCollision)
+	{
+		if (1 <= BossHP)
+		{
+			--BossHP;
+
+			if (0 == BossHP)
+			{
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void KingDice::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+
+	ChangeState(KingDiceState::Death);
 }

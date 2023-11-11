@@ -23,6 +23,8 @@ public:
 	Rum& operator=(const Rum& _Other) = delete;
 	Rum& operator=(Rum&& _Other) noexcept = delete;
 
+	void HPMinus();
+
 protected:
 	void ChangeState(RumState _State);
 	void StateUpdate(float _Delta);
@@ -42,6 +44,7 @@ protected:
 	void Update(float _Delta) override;
 
 	void CreateSpew();
+	void DeathCheck();
 
 	std::string CurState = "";
 	RumState State = RumState::None;
@@ -52,5 +55,9 @@ protected:
 private:
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
+
+	int BossHP = 0;
+	bool IsHit = false;
+	bool IsDeath = false;
 };
 

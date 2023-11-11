@@ -53,6 +53,7 @@ void Martini::Start()
 
 
 	ChangeState(MartiniState::Idle);
+	BossHP = 20;
 }
 
 void Martini::Update(float _Delta)
@@ -60,6 +61,7 @@ void Martini::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	StateUpdate(_Delta);
+	DeathCheck();
 }
 
 void Martini::ChangeState(MartiniState _State)
@@ -177,4 +179,31 @@ void Martini::CreateOliveDevil()
 	std::shared_ptr<Attack_Olive> OliveDevil = GetLevel()->CreateActor<Attack_Olive>();
 	float4 Pos = { 844.0f, -110.0f };
 	OliveDevil->Transform.SetLocalPosition(Pos);
+}
+
+
+void Martini::HPMinus()
+{
+	if (nullptr != BossCollision)
+	{
+		if (1 <= BossHP)
+		{
+			--BossHP;
+
+			if (0 == BossHP)
+			{
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void Martini::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+
+	ChangeState(MartiniState::Death);
 }

@@ -23,6 +23,8 @@ public:
 	Scotch& operator=(const Scotch& _Other) = delete;
 	Scotch& operator=(Scotch&& _Other) noexcept = delete;
 
+	void HPMinus();
+
 protected:
 	void ChangeState(ScotchState _State);
 	void StateUpdate(float _Delta);
@@ -42,6 +44,7 @@ protected:
 	void Update(float _Delta) override;
 
 	void CreateLiquid();
+	void DeathCheck();
 
 	std::string CurState = "";
 	ScotchState State = ScotchState::None;
@@ -54,5 +57,9 @@ protected:
 private:
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
+
+	int BossHP = 0;
+	bool IsHit = false;
+	bool IsDeath = false;
 };
 
