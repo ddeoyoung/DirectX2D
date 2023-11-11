@@ -376,6 +376,37 @@ void KingDice::SetAttackArm()
 	}
 }
 
+void KingDice::SetBossCollision()
+{
+	BossCollision->On();
+	BossCollision->Transform.SetLocalScale({ 400, 400 });
+	
+	if (AttackDir == "Left")
+	{
+		BossCollision->Transform.AddLocalPosition({ 50, 310 });
+	}
+
+	else if (AttackDir == "Right")
+	{
+		BossCollision->Transform.AddLocalPosition({ -50, 310 });
+	}
+}
+
+void KingDice::ResetBossCollision()
+{
+	BossCollision->Transform.SetLocalScale({ 250, 250 });
+
+	if (AttackDir == "Left")
+	{
+		BossCollision->Transform.AddLocalPosition({ -50, -310 });
+	}
+
+	else if (AttackDir == "Right")
+	{
+		BossCollision->Transform.AddLocalPosition({ 50, -310 });
+	}
+}
+
 void KingDice::CreateCards()
 {
 	std::shared_ptr<Attack_Card> Card = GetLevel()->CreateActor<Attack_Card>();

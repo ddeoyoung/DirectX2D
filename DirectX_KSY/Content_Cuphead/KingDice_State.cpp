@@ -159,6 +159,9 @@ void KingDice::AttackStart()
 	// Card
 	CardInter = 0.0f;
 	CardPattern = GetRandomCardSet();
+
+	// Collision
+	SetBossCollision();
 }
 
 void KingDice::AttackUpdate(float _Delta)
@@ -187,6 +190,9 @@ void KingDice::AttackIdleStart()
 	ChangeAnimationState("AttackIdle");
 	ResetAttackPos();
 	AttackIdleTime = 0.0f;
+
+	// Collision
+	ResetBossCollision();
 }
 
 void KingDice::AttackIdleUpdate(float _Delta)

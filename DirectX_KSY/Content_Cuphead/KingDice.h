@@ -134,6 +134,8 @@ protected:
 	void SetAttackPos();
 	void ResetAttackPos();
 	void SetAttackArm();
+	void SetBossCollision();
+	void ResetBossCollision();
 	void CreateCards();
 	bool IsAttackLoop();
 	void CreateCardPattern();

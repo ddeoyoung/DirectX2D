@@ -30,7 +30,7 @@ void Cuphead::Start()
 	}
 
 	// Create Animation
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Play);
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Player);
 
 	// Idle
 	MainRenderer->CreateAnimation("Cuphead_Idle", "Idle");
