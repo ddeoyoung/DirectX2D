@@ -293,6 +293,8 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EXCard.cpp" />
+    <ClCompile Include="HPCard.cpp" />
     <ClCompile Include="InkwellHellLevel.cpp">
       <SubType>
       </SubType>
@@ -622,6 +624,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EXCard.h" />
+    <ClInclude Include="HPCard.h" />
     <ClInclude Include="InkwellHellLevel.h">
       <SubType>
       </SubType>

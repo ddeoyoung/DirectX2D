@@ -19,6 +19,7 @@ enum class RenderOrder
 	FrontgroundObject3,
 	FrontgroundObject4,
 	FrontgroundEffect,
+	UI,
 	Max,
 };
 

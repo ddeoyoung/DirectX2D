@@ -385,6 +385,12 @@
     <ClInclude Include="OverWorldHouse.h">
       <Filter>Level\3. OverWorld\Object</Filter>
     </ClInclude>
+    <ClInclude Include="EXCard.h">
+      <Filter>Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HPCard.h">
+      <Filter>Actor\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -664,6 +670,12 @@
     </ClCompile>
     <ClCompile Include="OverWorldHouse.cpp">
       <Filter>Level\3. OverWorld\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="EXCard.cpp">
+      <Filter>Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HPCard.cpp">
+      <Filter>Actor\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

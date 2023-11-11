@@ -16,7 +16,6 @@ void FadeAnimation::Start()
 	// Create Sprite Folder
 	if (nullptr == GameEngineSprite::Find("FadeAnimation"))
 	{
-		// Dice
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
 		Dir.MoveChild("ContentsResources\\Texture\\UI\\FadeAnimation");
