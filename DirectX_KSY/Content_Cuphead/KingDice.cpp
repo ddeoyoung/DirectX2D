@@ -465,7 +465,7 @@ void KingDice::CreateCardPattern()
 
 std::vector<CardType> KingDice::GetRandomCardSet()
 {
-	int Size = CardSet.size();
+	int Size = static_cast<int>(CardSet.size());
 
 	GameEngineRandom NewRandom;
 	int Random = NewRandom.RandomInt(0, Size - 1);

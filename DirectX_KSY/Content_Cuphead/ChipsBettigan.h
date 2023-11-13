@@ -2,10 +2,10 @@
 #include <GameEngineCore\GameEngineActor.h>
 
 // Speed
-#define STRETCHSPEED 160.0f
-#define ATTACKSPEED -600.0f
-#define FALLSPEED -520.0f
-#define ATTACKTIME 1.5f
+#define CHIPSTRETCHSPEED 160.0f
+#define CHIPATTACKSPEED -600.0f
+#define CHIPFALLSPEED -520.0f
+#define CHIPATTACKTIME 1.5f
 
 enum class ChipsState
 {

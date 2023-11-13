@@ -40,7 +40,7 @@ void ChipsBettigan::SpinStart()
 	CheckAttackDir();
 
 	StretchTimer = 1.0f;
-	AttackTimer = ATTACKTIME;
+	AttackTimer = CHIPATTACKTIME;
 	IsStretch = false;
 	FirstAttack = false;
 	SecondAttack = false;
@@ -111,7 +111,7 @@ void ChipsBettigan::DeathStart()
 
 void ChipsBettigan::DeathUpdate(float _Delta)
 {
-	float4 MovePos = { 0.0f, FALLSPEED * _Delta};
+	float4 MovePos = { 0.0f, CHIPFALLSPEED * _Delta};
 
 	// Death Fall
 	if (DeathFallTimer > 0.0f)

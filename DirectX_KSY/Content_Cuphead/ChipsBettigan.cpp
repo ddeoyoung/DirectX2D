@@ -199,7 +199,7 @@ void ChipsBettigan::StretchChips(float _Delta, bool _IsStretch)
 		SpinDir = -1;
 	}
 
-	float4 MovePos = { 0.0f, STRETCHSPEED * _Delta * SpinDir };
+	float4 MovePos = { 0.0f, CHIPSTRETCHSPEED * _Delta * SpinDir };
 
 	// Head
 	Transform.AddLocalPosition(MovePos);
@@ -229,7 +229,7 @@ void ChipsBettigan::SpinAttack(float _Delta)
 		Dir = -1;
 	}
 
-	float4 MovePos = { Dir * ATTACKSPEED * _Delta, 0.0f };
+	float4 MovePos = { Dir * CHIPATTACKSPEED * _Delta, 0.0f };
 
 	// First
 	if (false == FirstAttack && AttackTimer > 0.0f)
@@ -246,7 +246,7 @@ void ChipsBettigan::SpinAttack(float _Delta)
 
 	if (false == FirstAttack && AttackTimer < 0.0f)
 	{
-		AttackTimer = ATTACKTIME;
+		AttackTimer = CHIPATTACKTIME;
 		FirstAttack = true;
 	}
 
@@ -262,7 +262,7 @@ void ChipsBettigan::SpinAttack(float _Delta)
 
 	if (true == FirstAttack && false == SecondAttack && AttackTimer < 0.0f)
 	{
-		AttackTimer = ATTACKTIME;
+		AttackTimer = CHIPATTACKTIME;
 		SecondAttack = true;
 	}
 
@@ -307,6 +307,8 @@ bool ChipsBettigan::CheckAttackDir()
 		IsMove = false;
 		return false;
 	}
+
+	return false;
 }
 
 void ChipsBettigan::HPMinus()
