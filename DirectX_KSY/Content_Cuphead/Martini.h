@@ -44,25 +44,20 @@ protected:
 	void Update(float _Delta) override;
 
 	void CreateOliveDevil();
-
 	void DeathCheck();
 
 	std::string CurState = "";
 	MartiniState State = MartiniState::None;
 
-	// Test Code
-	EventParameter TestEvent;
-
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-	float IdleTimer = 0.0f;
-	float AttackTimer = 0.0f;
-	bool IsOliveOn = false;
-
 	int BossHP = 0;
+	bool IsOliveOn = false;
 	bool IsHit = false;
 	bool IsDeath = false;
+	float IdleTimer = 0.0f;
+	float AttackTimer = 0.0f;
 };
 

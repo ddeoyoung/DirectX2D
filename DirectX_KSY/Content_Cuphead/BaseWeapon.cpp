@@ -3,6 +3,7 @@
 #include "BaseCharacter.h"
 
 #include "Target.h"
+#include "Attack_Olive.h"
 #include "Martini.h"
 #include "Rum.h"
 #include "Scotch.h"
@@ -207,6 +208,19 @@ void BaseWeapon::HitCheck()
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
 				Target* Other = static_cast<Target*>(_GroupOrder[i]->GetActor());
+				Other->HPMinus();
+			}
+
+			ChangeState(AttackState::Death);
+			return;
+		});
+
+	// Attack Object - Olive
+	AttackCollision->Collision(CollisionOrder::BossAttack, [=](std::vector<GameEngineCollision*> _GroupOrder)
+		{
+			for (size_t i = 0; i < _GroupOrder.size(); i++)
+			{
+				Attack_Olive* Other = static_cast<Attack_Olive*>(_GroupOrder[i]->GetActor());
 				Other->HPMinus();
 			}
 

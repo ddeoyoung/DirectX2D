@@ -32,6 +32,8 @@ public:
 		State = _State;
 	}
 
+	void HPMinus();
+
 protected:
 	void ChangeState(OliveState _State);
 	void StateUpdate(float _Delta);
@@ -56,6 +58,8 @@ protected:
 	void Start() override;
 	void Update(float _Delta) override;
 
+	void DeathCheck();
+
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
@@ -63,12 +67,13 @@ protected:
 	OliveState State = OliveState::None;
 
 private:
+	int HP = 0;
+	int ChangeDir = 1;
+	bool IsHit = false;
+	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
-
 	float MoveDur = 0.0f;
-
-	int ChangeDir = 1;
 
 	float4 PlayerPos = float4::ZERO;
 };

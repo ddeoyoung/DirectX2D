@@ -39,7 +39,7 @@ void Attack_Olive::Start()
 		});
 	MainRenderer->CreateAnimation("Olive_Idle", "Olive_Idle");
 	MainRenderer->CreateAnimation("Olive_Attack", "Olive_Attack");
-	MainRenderer->CreateAnimation("Olive_Death", "Olive_Death");
+	MainRenderer->CreateAnimation("Olive_Death", "Olive_Death", 0.05f, -1, -1, false);
 	MainRenderer->AutoSpriteSizeOn();
 
 
@@ -51,7 +51,10 @@ void Attack_Olive::Start()
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
 
+
+	// Setting
 	ChangeState(OliveState::Appear);
+	HP = 3;
 }
 
 void Attack_Olive::Update(float _Delta)
@@ -59,6 +62,7 @@ void Attack_Olive::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	StateUpdate(_Delta);
+	DeathCheck();
 }
 
 void Attack_Olive::ChangeState(OliveState _State)
@@ -181,7 +185,7 @@ void Attack_Olive::MoveUpdate(float _Delta)
 
 void Attack_Olive::AttackStart()
 {
-
+	ChangeAnimationState("Attack");
 }
 
 void Attack_Olive::AttackUpdate(float _Delta)
@@ -191,10 +195,40 @@ void Attack_Olive::AttackUpdate(float _Delta)
 
 void Attack_Olive::DeathStart()
 {
-
+	ChangeAnimationState("Death");
 }
 
 void Attack_Olive::DeathUpdate(float _Delta)
 {
+	if (true == MainRenderer->IsCurAnimationEnd())
+	{
+		Death();
+	}
+}
 
+
+void Attack_Olive::HPMinus()
+{
+	if (nullptr != AttackCollision)
+	{
+		if (1 <= HP)
+		{
+			--HP;
+
+			if (0 == HP)
+			{
+				IsDeath = true;
+			}
+		}
+	}
+}
+
+void Attack_Olive::DeathCheck()
+{
+	if (false == IsDeath)
+	{
+		return;
+	}
+
+	ChangeState(OliveState::Death);
 }
