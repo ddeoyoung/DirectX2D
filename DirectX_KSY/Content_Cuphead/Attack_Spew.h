@@ -25,6 +25,6 @@ protected:
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 private:
-
+	float AttackColTime = 0.0f;
 };
 

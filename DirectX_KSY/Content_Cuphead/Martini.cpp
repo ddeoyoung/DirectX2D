@@ -205,5 +205,6 @@ void Martini::DeathCheck()
 		return;
 	}
 
+	BossCollision->Off();
 	ChangeState(MartiniState::Death);
-}
+} 

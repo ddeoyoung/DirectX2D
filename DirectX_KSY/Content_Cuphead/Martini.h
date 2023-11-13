@@ -25,6 +25,11 @@ public:
 
 	void HPMinus();
 
+	bool GetIsDeath()
+	{
+		return IsDeath;
+	}
+
 protected:
 	void ChangeState(MartiniState _State);
 	void StateUpdate(float _Delta);

@@ -73,6 +73,10 @@ void MrWheezy::Start()
 		});
 	MainRenderer->CreateAnimation("MrWheezy_Teleport3", "MrWheezy_Teleport3", 0.05f, -1, -1, false);
 	MainRenderer->CreateAnimation("MrWheezy_Death_Intro", "MrWheezy_Death_Intro", -1, -1, false);
+	MainRenderer->SetEndEvent("MrWheezy_Death_Intro", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("MrWheezy_Death_Loop");
+		});
 	MainRenderer->CreateAnimation("MrWheezy_Death_Loop", "MrWheezy_Death_Loop");
 
 	MainRenderer->AutoSpriteSizeOn();
@@ -182,6 +186,11 @@ void MrWheezy::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Teleport" || _StateName == "Appear")
 	{
 		AnimationName += "1";
+	}
+
+	if (_StateName == "Death")
+	{
+		AnimationName += "_Intro";
 	}
 
 	CurState = _StateName;

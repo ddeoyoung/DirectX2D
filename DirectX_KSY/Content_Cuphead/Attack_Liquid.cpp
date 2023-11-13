@@ -50,6 +50,9 @@ void Attack_Liquid::Start()
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
 	AttackCollision->Off();
+
+
+	AttackColTime = 0.0f;
 }
 
 void Attack_Liquid::Update(float _Delta)
@@ -57,6 +60,12 @@ void Attack_Liquid::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	EndCheck();
+
+	AttackColTime += _Delta;
+	if (AttackColTime > 1.0)
+	{
+		AttackCollision->Off();
+	}
 }
 
 void Attack_Liquid::EndCheck()

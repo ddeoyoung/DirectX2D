@@ -192,5 +192,6 @@ void Scotch::DeathCheck()
 		return;
 	}
 
+	BossCollision->Off();
 	ChangeState(ScotchState::Death);
 }

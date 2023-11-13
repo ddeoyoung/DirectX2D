@@ -23,11 +23,6 @@ void TipsyTroopLevel::Start()
 	ContentLevel::Start();
 }
 
-void TipsyTroopLevel::Update(float _Delta)
-{
-	ContentLevel::Update(_Delta);
-}
-
 void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 {
 	ContentLevel::LevelStart(_PrevLevel);
@@ -36,7 +31,7 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelStartTextureLoad();
 
 	// FightText
-	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
+	Ready = CreateActor<FightText>();
 	Ready->SetFightText("Ready");
 
 	// Background
@@ -100,6 +95,40 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	BossScotch = CreateActor<Scotch>();
 	BossRum = CreateActor<Rum>();
 
+}
+
+void TipsyTroopLevel::Update(float _Delta)
+{
+	ContentLevel::Update(_Delta);
+
+	bool CheckMartiniDeath = BossMartini->GetIsDeath();
+	bool CheckRumDeath = BossRum->GetIsDeath();
+	bool CheckScotchDeath = BossScotch->GetIsDeath();
+
+
+	// È®ÀÎ¿ë
+	if (true == CheckMartiniDeath)
+	{
+		int a = 0;
+	}
+	if (true == CheckRumDeath)
+	{
+		int a = 0;
+	}
+	if (true == CheckScotchDeath)
+	{
+		int a = 0;
+	}
+
+	if (false == IsStageClear
+		&& true == CheckMartiniDeath
+		&& true == CheckRumDeath
+		&& true == CheckScotchDeath)
+	{
+		// Knock Out
+		KnockOut = CreateActor<FightText>();
+		KnockOut->SetFightText("KnockOut");
+	}
 }
 
 void TipsyTroopLevel::LevelEnd(GameEngineLevel* _NextLevel)

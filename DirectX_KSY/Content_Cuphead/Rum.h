@@ -25,6 +25,11 @@ public:
 
 	void HPMinus();
 
+	bool GetIsDeath()
+	{
+		return IsDeath;
+	}
+
 protected:
 	void ChangeState(RumState _State);
 	void StateUpdate(float _Delta);
@@ -53,11 +58,10 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-	float IdleTimer = 0.0f;
-	float AttackTimer = 0.0f;
-
 	int BossHP = 0;
 	bool IsHit = false;
 	bool IsDeath = false;
+	float IdleTimer = 0.0f;
+	float AttackTimer = 0.0f;
 };
 

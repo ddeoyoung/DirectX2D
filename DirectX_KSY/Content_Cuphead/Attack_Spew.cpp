@@ -47,6 +47,8 @@ void Attack_Spew::Start()
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
 	AttackCollision->Transform.AddLocalPosition({ -250 , 80});
+
+	AttackColTime = 0.0f;
 }
 
 void Attack_Spew::Update(float _Delta)
@@ -54,6 +56,12 @@ void Attack_Spew::Update(float _Delta)
 	ContentActor::Update(_Delta);
 
 	EndCheck();
+
+	AttackColTime += _Delta;
+	if (AttackColTime > 0.7)
+	{
+		AttackCollision->Off();
+	}
 }
 
 void Attack_Spew::EndCheck()

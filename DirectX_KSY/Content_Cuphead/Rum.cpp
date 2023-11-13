@@ -195,5 +195,6 @@ void Rum::DeathCheck()
 		return;
 	}
 
+	BossCollision->Off();
 	ChangeState(RumState::Death);
 }

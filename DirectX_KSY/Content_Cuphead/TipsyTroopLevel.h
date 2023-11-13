@@ -35,5 +35,9 @@ private:
 	std::shared_ptr<class Martini> BossMartini = nullptr;
 	std::shared_ptr<class Rum> BossRum = nullptr;
 	std::shared_ptr<class Scotch> BossScotch = nullptr;
+	std::shared_ptr<class FightText> Ready = nullptr;
+	std::shared_ptr<class FightText> KnockOut = nullptr;
+
+	bool IsStageClear = false;
 };
 
