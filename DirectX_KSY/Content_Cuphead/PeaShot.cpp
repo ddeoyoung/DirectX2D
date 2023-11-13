@@ -35,11 +35,11 @@ void Peashot::Start()
 	MainRenderer->CreateAnimation("Peashot_Spark", "Peashot_Spark", 0.04f, false);
 	MainRenderer->CreateAnimation("Peashot_Attack", "Peashot_Attack", 0.05f);
 	MainRenderer->CreateAnimation("Peashot_Death", "Peashot_Death", 0.05f, false);
-	MainRenderer->SetEndEvent("Peashot_Death", [](GameEngineSpriteRenderer* _Renderer)
-		{
-			_Renderer->Death();
-			_Renderer = nullptr;
-		});
+	//MainRenderer->SetEndEvent("Peashot_Death", [](GameEngineSpriteRenderer* _Renderer)
+	//	{
+	//		_Renderer->Death();
+	//		_Renderer = nullptr;
+	//	});
 	MainRenderer->CreateAnimation("Peashot_EX", "Peashot_EX");
 	MainRenderer->CreateAnimation("Peashot_EX_Death", "Peashot_EX_Death");
 	MainRenderer->AutoSpriteSizeOn();

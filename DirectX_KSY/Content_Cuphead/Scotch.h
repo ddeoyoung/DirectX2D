@@ -24,6 +24,7 @@ public:
 	Scotch& operator=(Scotch&& _Other) noexcept = delete;
 
 	void HPMinus();
+	void CreateDeathEffect();
 
 	bool GetIsDeath()
 	{

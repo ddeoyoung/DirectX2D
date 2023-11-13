@@ -14,8 +14,6 @@ public:
 	BossExplosion& operator=(const BossExplosion& _Other) = delete;
 	BossExplosion& operator=(BossExplosion&& _Other) noexcept = delete;
 
-	void EndCheck();
-
 protected:
 	void Start() override;
 	void Update(float _Delta) override;

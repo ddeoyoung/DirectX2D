@@ -24,6 +24,7 @@ public:
 	Martini& operator=(Martini&& _Other) noexcept = delete;
 
 	void HPMinus();
+	void CreateDeathEffect();
 
 	bool GetIsDeath()
 	{

@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Martini.h"
 #include "Attack_Olive.h"
+#include "BossExplosion.h"
 
 Martini::Martini()
 {
@@ -184,17 +185,14 @@ void Martini::CreateOliveDevil()
 
 void Martini::HPMinus()
 {
-	if (nullptr != BossCollision)
+	if (1 <= BossHP)
 	{
-		if (1 <= BossHP)
-		{
-			--BossHP;
+		--BossHP;
+	}
 
-			if (0 == BossHP)
-			{
-				IsDeath = true;
-			}
-		}
+	if (0 >= BossHP)
+	{
+		IsDeath = true;
 	}
 }
 
@@ -207,4 +205,13 @@ void Martini::DeathCheck()
 
 	BossCollision->Off();
 	ChangeState(MartiniState::Death);
-} 
+}
+
+void Martini::CreateDeathEffect()
+{
+	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
+
+	float4 BossPos = Transform.GetLocalPosition();
+	BossPos += { 0.0f, 200.0f };
+	DeathEffect->Transform.SetLocalPosition(BossPos);
+}

@@ -1,6 +1,7 @@
 #include "PreCompile.h"
 #include "Rum.h"
 #include "Attack_Spew.h"
+#include "BossExplosion.h"
 
 Rum::Rum()
 {
@@ -197,4 +198,13 @@ void Rum::DeathCheck()
 
 	BossCollision->Off();
 	ChangeState(RumState::Death);
+}
+
+void Rum::CreateDeathEffect()
+{
+	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
+
+	float4 BossPos = Transform.GetLocalPosition();
+	BossPos += { 30.0f, 150.0f };
+	DeathEffect->Transform.SetLocalPosition(BossPos);
 }

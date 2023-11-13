@@ -29,6 +29,9 @@ protected:
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
 	void LevelStartTextureLoad();
+	void CheckStageClear();
+	void CreateKnockOut();
+	void CreateBossExplosion();
 
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;

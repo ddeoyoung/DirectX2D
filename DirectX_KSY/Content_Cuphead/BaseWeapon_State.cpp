@@ -68,8 +68,6 @@ void BaseWeapon::AttackUpdate(float _Delta)
 
 	Transform.AddLocalPosition(MovePos);
 
-
-	// Death
 	HitCheck();
 }
 

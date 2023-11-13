@@ -24,6 +24,7 @@ public:
 	Rum& operator=(Rum&& _Other) noexcept = delete;
 
 	void HPMinus();
+	void CreateDeathEffect();
 
 	bool GetIsDeath()
 	{

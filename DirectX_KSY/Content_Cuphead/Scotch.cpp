@@ -2,6 +2,7 @@
 #include "Scotch.h"
 #include "Attack_Liquid.h"
 #include "ContentLevel.h"
+#include "BossExplosion.h"
 
 Scotch::Scotch()
 {
@@ -194,4 +195,13 @@ void Scotch::DeathCheck()
 
 	BossCollision->Off();
 	ChangeState(ScotchState::Death);
+}
+
+void Scotch::CreateDeathEffect()
+{
+	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
+
+	float4 BossPos = Transform.GetLocalPosition();
+	BossPos += { 0.0f, 400.0f };
+	DeathEffect->Transform.SetLocalPosition(BossPos);
 }

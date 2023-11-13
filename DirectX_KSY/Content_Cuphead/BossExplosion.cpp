@@ -19,7 +19,7 @@ void BossExplosion::Start()
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
-		Dir.MoveChild("ContentsResources\\Texture\\Tutorial");
+		Dir.MoveChild("ContentsResources\\Texture\\Effect");
 
 		std::vector<GameEngineDirectory> Directorys = Dir.GetAllDirectory();
 
@@ -30,12 +30,8 @@ void BossExplosion::Start()
 		}
 	}
 
-	MainRenderer = CreateComponent<GameEngineSpriteRenderer>();
-	MainRenderer->CreateAnimation("BossExplosion", "BossExplosion", 0.05f, -1, -1, false);
-	MainRenderer->SetEndEvent("BossExplosion", [](GameEngineSpriteRenderer* _Renderer)
-		{
-			_Renderer->Off();
-		});
+	MainRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::FrontgroundEffect);
+	MainRenderer->CreateAnimation("BossExplosion", "BossExplosion", 0.05f);
 	MainRenderer->ChangeAnimation("BossExplosion");
 	MainRenderer->AutoSpriteSizeOn();
 
@@ -44,14 +40,4 @@ void BossExplosion::Start()
 void BossExplosion::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
-
-	EndCheck();
-}
-
-void BossExplosion::EndCheck()
-{
-	if (true == MainRenderer->IsCurAnimationEnd())
-	{
-		Death();
-	}
 }

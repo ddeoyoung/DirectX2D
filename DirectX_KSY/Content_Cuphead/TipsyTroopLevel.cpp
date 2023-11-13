@@ -100,38 +100,41 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void TipsyTroopLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+	CheckStageClear();
+}
 
+void TipsyTroopLevel::LevelEnd(GameEngineLevel* _NextLevel)
+{
+	ContentLevel::LevelEnd(_NextLevel);
+}
+
+void TipsyTroopLevel::CheckStageClear()
+{
 	bool CheckMartiniDeath = BossMartini->GetIsDeath();
 	bool CheckRumDeath = BossRum->GetIsDeath();
 	bool CheckScotchDeath = BossScotch->GetIsDeath();
-
-
-	// È®ÀÎ¿ë
-	if (true == CheckMartiniDeath)
-	{
-		int a = 0;
-	}
-	if (true == CheckRumDeath)
-	{
-		int a = 0;
-	}
-	if (true == CheckScotchDeath)
-	{
-		int a = 0;
-	}
 
 	if (false == IsStageClear
 		&& true == CheckMartiniDeath
 		&& true == CheckRumDeath
 		&& true == CheckScotchDeath)
 	{
-		// Knock Out
-		KnockOut = CreateActor<FightText>();
-		KnockOut->SetFightText("KnockOut");
+		IsStageClear = true;
+		CreateKnockOut();
+		CreateBossExplosion();
 	}
 }
 
-void TipsyTroopLevel::LevelEnd(GameEngineLevel* _NextLevel)
+void TipsyTroopLevel::CreateKnockOut()
 {
-	ContentLevel::LevelEnd(_NextLevel);
+	// Knock Out
+	KnockOut = CreateActor<FightText>();
+	KnockOut->SetFightText("KnockOut");
+}
+
+void TipsyTroopLevel::CreateBossExplosion()
+{
+	BossMartini->CreateDeathEffect();
+	BossRum->CreateDeathEffect();
+	BossScotch->CreateDeathEffect();
 }

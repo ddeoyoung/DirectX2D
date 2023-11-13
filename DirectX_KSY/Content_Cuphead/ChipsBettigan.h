@@ -32,6 +32,11 @@ public:
 
 	void HPMinus();
 
+	bool GetIsDeath()
+	{
+		return IsDeath;
+	}
+
 protected:
 	void ChangeState(ChipsState _State);
 	void StateUpdate(float _Delta);

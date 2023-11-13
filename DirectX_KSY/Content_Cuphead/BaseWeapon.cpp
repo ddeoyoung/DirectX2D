@@ -202,6 +202,11 @@ void BaseWeapon::SetAttackDirAndPos(AttackDir _AttDir, float4 _Pos, bool _IsMove
 
 void BaseWeapon::HitCheck()
 {
+	if (nullptr == AttackCollision)
+	{
+		return;
+	}
+
 	// Shoot Object - Tutorial Target
 	AttackCollision->Collision(CollisionOrder::ShootObject, [=](std::vector<GameEngineCollision*>_GroupOrder)
 		{
