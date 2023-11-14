@@ -14,7 +14,7 @@ void Attack_Chips::Start()
 	ContentActor::Start();
 
 	// Create Sprite Folder
-	if (nullptr == GameEngineSprite::Find("CigSmoke"))
+	if (nullptr == GameEngineSprite::Find("Chips_Spin_Middle"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
@@ -53,7 +53,10 @@ void Attack_Chips::SetChips(float4 _BossPos, const std::string& _ChipType)
 	MainRenderer->ChangeAnimation(ChipType);
 
 	// Collision
-	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Boss);
+	if (nullptr == AttackCollision)
+	{
+		AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+	}
 
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Chips_Spin_Middle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();

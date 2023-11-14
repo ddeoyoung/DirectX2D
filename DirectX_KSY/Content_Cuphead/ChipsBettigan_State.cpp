@@ -60,6 +60,8 @@ void ChipsBettigan::SpinStart()
 
 void ChipsBettigan::SpinUpdate(float _Delta)
 {
+	DeathCheck();
+
 	// Stretch Up
 	if (StretchTimer > 0.0f)
 	{

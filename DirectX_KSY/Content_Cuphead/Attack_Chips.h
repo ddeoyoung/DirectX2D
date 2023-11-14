@@ -22,7 +22,6 @@ protected:
 	void Update(float _Delta) override;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
-
 	std::shared_ptr<class GameEngineCollision> AttackCollision = nullptr;
 
 private:

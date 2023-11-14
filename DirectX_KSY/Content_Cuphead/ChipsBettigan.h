@@ -73,6 +73,14 @@ protected:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
+	std::shared_ptr<class Attack_Chips> Chips1 = nullptr;
+	std::shared_ptr<class Attack_Chips> Chips2 = nullptr;
+	std::shared_ptr<class Attack_Chips> Chips3 = nullptr;
+	std::shared_ptr<class Attack_Chips> Chips4 = nullptr;
+	std::shared_ptr<class Attack_Chips> Chips5 = nullptr;
+	std::shared_ptr<class Attack_Chips> Chips6 = nullptr;
+	std::shared_ptr<class Attack_Chips> Chips7 = nullptr;
+
 	std::vector<std::shared_ptr<class Attack_Chips>> ChipSet;
 
 private:

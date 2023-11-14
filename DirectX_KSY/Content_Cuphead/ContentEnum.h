@@ -30,6 +30,7 @@ enum class CollisionOrder
 	PlayerAttack,
 	Boss,
 	BossAttack,
+	Monster,
 	ParryObject,
 	NPC,
 	Message,

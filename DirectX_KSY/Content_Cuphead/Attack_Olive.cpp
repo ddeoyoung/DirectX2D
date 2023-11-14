@@ -44,7 +44,7 @@ void Attack_Olive::Start()
 
 
 	// Create Collision
-	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::Monster);
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Olive_Idle");
 	float4 Scale = Texture->GetSpriteData(0).GetScale();
 	Scale -= { 50.0f, 30.0f };
