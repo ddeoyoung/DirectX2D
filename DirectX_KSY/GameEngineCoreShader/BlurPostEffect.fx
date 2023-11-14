@@ -10,6 +10,7 @@ struct GameEngineVertex2D
 
 struct PixelOutPut
 {
+    // ÇÈ¼¿½¦ÀÌ´õ¿¡ º¸³»´À ¤¤¿ª
     float4 POSITION : SV_POSITION;
     float4 TEXCOORD : TEXCOORD;
 };
@@ -26,7 +27,9 @@ PixelOutPut BlurPostEffect_VS(GameEngineVertex2D _Input)
 Texture2D DiffuseTex : register(t0);
 SamplerState DiffuseTexSampler : register(s0);
 
+// StructuredBuffer<float4> ArrScreenSize : register(t11);
+
 float4 BlurPostEffect_PS(PixelOutPut _Input) : SV_Target0
 {
-    return GaussianBlur(DiffuseTex, DiffuseTexSampler, ScreenSize, _Input.TEXCOORD);
+    return GaussianBlur(DiffuseTex, DiffuseTexSampler, ScreenSize.xy, _Input.TEXCOORD.xy);
 }
