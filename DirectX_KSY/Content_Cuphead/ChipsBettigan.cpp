@@ -147,6 +147,7 @@ void ChipsBettigan::ChangeAnimationState(const std::string& _StateName)
 	if (_StateName == "Death")
 	{
 		AnimationName += "_Fall";
+		CheckDeathDir();
 	}
 
 	CurState = _StateName;
@@ -293,7 +294,12 @@ void ChipsBettigan::SpinAttack(float _Delta)
 	{
 		ChipSet[4]->Transform.AddLocalPosition(MovePos);
 		ChipSet[5]->Transform.AddLocalPosition(MovePos);
-		ChipSet[6]->Transform.AddLocalPosition(MovePos);
+
+		// 임시 예외처리
+		if (nullptr != ChipSet[6])
+		{
+			ChipSet[6]->Transform.AddLocalPosition(MovePos);
+		}
 
 		AttackTimer -= _Delta;
 	}
@@ -346,6 +352,19 @@ bool ChipsBettigan::CheckAttackDir()
 	}
 
 	return false;
+}
+
+void ChipsBettigan::CheckDeathDir()
+{
+	if (SpinDir == 1)
+	{
+		Transform.SetLocalScale({ 1.0f, 1.0f });
+	}
+
+	if (SpinDir == -1)
+	{
+		Transform.SetLocalScale({ -1.0f , 1.0f });
+	}
 }
 
 void ChipsBettigan::HPMinus()

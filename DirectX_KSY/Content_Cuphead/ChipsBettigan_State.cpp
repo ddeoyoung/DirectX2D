@@ -16,21 +16,21 @@ void ChipsBettigan::IntroUpdate(float _Delta)
 void ChipsBettigan::IdleStart()
 {
 	ChangeAnimationState("Idle");
-
 	IdleTimer = 0.0f;
-
 	CheckIdleDir();
 }
 
 void ChipsBettigan::IdleUpdate(float _Delta)
 {
-	if (IdleTimer > 3.0f)
-	{
-		ChangeState(ChipsState::Spin);
-		IdleTimer = 0.0f;
-	}
+	DeathCheck();
 
 	IdleTimer += _Delta;
+	if (IdleTimer > 3.0f)
+	{
+		IdleTimer = 0.0f;
+		ChangeState(ChipsState::Spin);
+		return;
+	}
 }
 
 void ChipsBettigan::SpinStart()
@@ -100,33 +100,26 @@ void ChipsBettigan::SpinUpdate(float _Delta)
 		BossCollision->Transform.SetLocalScale(Scale);
 		BossCollision->Transform.SetLocalPosition({ 0, Scale.hY() });
 		ChangeState(ChipsState::Idle);
+		return;
 	}
 }
 
 void ChipsBettigan::DeathStart()
 {
 	ChangeAnimationState("Death");
+	CheckDeathDir();
 
-	//DeathFallTimer = 0.6f;
-	//Transform.AddLocalPosition({ 0, 260.0f });
+	float4 CurPos = Transform.GetLocalPosition();
+	CurPos.Y = -200.0f;
+	Transform.SetLocalPosition(CurPos);
 }
 
 void ChipsBettigan::DeathUpdate(float _Delta)
 {
 	float4 MovePos = { 0.0f, CHIPFALLSPEED * _Delta};
+	float4 CurPos = Transform.GetLocalPosition();
 
-	// Death Fall
-	//DeathFallTimer -= _Delta;
-	//if (DeathFallTimer > 0.0f)
-	//{
-	//	Transform.AddLocalPosition(MovePos);
-	//}
-
-	// -640.0f 까지 떨어지기
-
-	float4 Pos = Transform.GetLocalPosition();
-
-	if (Pos.Y > -640.0f)
+	if (CurPos.Y > -640.0f)
 	{
 		Transform.AddLocalPosition(MovePos);
 	}

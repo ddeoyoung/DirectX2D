@@ -8,6 +8,7 @@
 #include "CigSmoke.h"
 #include "TopSmoke.h"
 #include "FightText.h"
+#include "FadeAnimation.h"
 
 ChipsBettiganLevel::ChipsBettiganLevel()
 {
@@ -27,6 +28,13 @@ void ChipsBettiganLevel::Update(float _Delta)
 	ContentLevel::Update(_Delta);
 
 	CheckStageClear();
+	CreateFadeOut(_Delta);
+
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		// Level Change - King Dice
+		GameEngineCore::ChangeLevel("KingDiceLevel");
+	}
 }
 
 void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -109,6 +117,15 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Smoke
 	std::shared_ptr<CigSmoke> CiggaretteSmoke = CreateActor<CigSmoke>();
 	std::shared_ptr<TopSmoke> BackgroundSmoke = CreateActor<TopSmoke>();
+
+
+	// Fade Out
+	if (nullptr == FadeOut)
+	{
+		FadeOut = CreateActor<FadeAnimation>();
+		FadeOut->SetFade("Out");
+		FadeOut->Off();
+	}
 }
 
 void ChipsBettiganLevel::LevelEnd(GameEngineLevel* _NextLevel)
@@ -138,5 +155,17 @@ void ChipsBettiganLevel::CheckStageClear()
 		IsStageClear = true;
 		CreateKnockOut();
 		CreateBossExplosion();
+	}
+}
+
+void ChipsBettiganLevel::CreateFadeOut(float _Delta)
+{
+	if (true == IsStageClear)
+	{
+		StageClearTime += _Delta;
+		if (StageClearTime > 5.0f)
+		{
+			FadeOut->On();
+		}
 	}
 }
