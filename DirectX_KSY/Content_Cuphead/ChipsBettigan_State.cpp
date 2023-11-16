@@ -107,8 +107,8 @@ void ChipsBettigan::DeathStart()
 {
 	ChangeAnimationState("Death");
 
-	DeathFallTimer = 0.6f;
-	Transform.AddLocalPosition({ 0, 260.0f });
+	//DeathFallTimer = 0.6f;
+	//Transform.AddLocalPosition({ 0, 260.0f });
 }
 
 void ChipsBettigan::DeathUpdate(float _Delta)
@@ -116,10 +116,19 @@ void ChipsBettigan::DeathUpdate(float _Delta)
 	float4 MovePos = { 0.0f, CHIPFALLSPEED * _Delta};
 
 	// Death Fall
-	if (DeathFallTimer > 0.0f)
+	//DeathFallTimer -= _Delta;
+	//if (DeathFallTimer > 0.0f)
+	//{
+	//	Transform.AddLocalPosition(MovePos);
+	//}
+
+	// -640.0f 까지 떨어지기
+
+	float4 Pos = Transform.GetLocalPosition();
+
+	if (Pos.Y > -640.0f)
 	{
 		Transform.AddLocalPosition(MovePos);
 	}
 
-	DeathFallTimer -= _Delta;
 }

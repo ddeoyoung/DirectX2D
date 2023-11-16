@@ -298,7 +298,7 @@ void BaseWeapon::HitCheck()
 				{
 					Other->HPMinus();
 				}
-			}
+			}     
 
 			ChangeState(AttackState::Death);
 			return;

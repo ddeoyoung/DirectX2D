@@ -4,7 +4,7 @@
 // Speed
 #define CHIPSTRETCHSPEED 160.0f
 #define CHIPATTACKSPEED -600.0f
-#define CHIPFALLSPEED -520.0f
+#define CHIPFALLSPEED -1000.0f
 #define CHIPATTACKTIME 1.5f
 
 enum class ChipsState

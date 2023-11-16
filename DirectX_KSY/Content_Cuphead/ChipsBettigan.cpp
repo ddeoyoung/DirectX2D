@@ -47,7 +47,7 @@ void ChipsBettigan::Start()
 		{
 			_Renderer->ChangeAnimation("Chips_Death_HeadCrash");
 		});
-	MainRenderer->CreateAnimation("Chips_Death_HeadCrash", "Chips_Death_HeadCrash", false);
+	MainRenderer->CreateAnimation("Chips_Death_HeadCrash", "Chips_Death_HeadCrash", 0.05f, -1, -1, false);
 	MainRenderer->SetEndEvent("Chips_Death_HeadCrash", [](GameEngineSpriteRenderer* _Renderer)
 		{
 			_Renderer->ChangeAnimation("Chips_Death_Finish");
@@ -72,7 +72,7 @@ void ChipsBettigan::Start()
 
 	// Setting
 	ChangeState(ChipsState::Idle);
-	BossHP = 20;
+	BossHP = 5;
 
 	ChipSet.clear();
 	ChipSet.reserve(20);
