@@ -25,6 +25,8 @@ void ChipsBettiganLevel::Start()
 void ChipsBettiganLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+
+	CheckStageClear();
 }
 
 void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -72,7 +74,7 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	}
 
 	// FightText
-	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
+	Ready = CreateActor<FightText>();
 	Ready->SetFightText("Ready");
 
 	// Background
@@ -112,4 +114,29 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void ChipsBettiganLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+}
+
+void ChipsBettiganLevel::CreateKnockOut()
+{
+	// Knock Out
+	KnockOut = CreateActor<FightText>();
+	KnockOut->SetFightText("KnockOut");
+}
+
+void ChipsBettiganLevel::CreateBossExplosion()
+{
+	Boss->CreateDeathEffect();
+}
+
+void ChipsBettiganLevel::CheckStageClear()
+{
+	bool CheckChipsDeath = Boss->GetIsDeath();
+
+	if (false == IsStageClear 
+		&& true == CheckChipsDeath)
+	{
+		IsStageClear = true;
+		CreateKnockOut();
+		CreateBossExplosion();
+	}
 }

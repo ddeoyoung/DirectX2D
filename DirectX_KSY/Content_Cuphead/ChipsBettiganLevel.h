@@ -23,11 +23,17 @@ protected:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
+	void CheckStageClear();
+	void CreateKnockOut();
+	void CreateBossExplosion();
+
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
-
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
 	std::shared_ptr<class ChipsBettigan> Boss = nullptr;
+	std::shared_ptr<class FightText> Ready = nullptr;
+	std::shared_ptr<class FightText> KnockOut = nullptr;
 
+	bool IsStageClear = false;
 };
 

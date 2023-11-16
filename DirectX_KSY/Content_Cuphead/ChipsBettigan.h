@@ -37,6 +37,8 @@ public:
 		return IsDeath;
 	}
 
+	void CreateDeathEffect();
+
 protected:
 	void ChangeState(ChipsState _State);
 	void StateUpdate(float _Delta);
