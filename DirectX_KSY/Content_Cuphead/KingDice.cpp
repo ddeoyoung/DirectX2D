@@ -177,7 +177,7 @@ void KingDice::Start()
 	BossCollision->SetCollisionType(ColType::AABBBOX2D);
 	BossCollision->Transform.SetLocalScale({ 300, 300 });
 	BossCollision->Transform.SetLocalPosition({ 0, 200 });
-
+	BossCollision->Off();
 
 	// Setting
 	CreateCardPattern();

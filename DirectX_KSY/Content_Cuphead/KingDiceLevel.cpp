@@ -104,17 +104,17 @@ void KingDiceLevel::CheckRouletteSpace()
 			break;
 		case 1:
 			SpaceState::Space1;
-			Boss->SetIsSafeSpace(true);
+			Boss->SetIsSafeSpace(false);
 			LevelName = "TipsyTroopLevel";
 			break;
 		case 2:
 			SpaceState::Space2;
-			Boss->SetIsSafeSpace(true);
+			Boss->SetIsSafeSpace(false);
 			LevelName = "ChipsBettiganLevel";
 			break;
 		case 3:
 			SpaceState::Space3;
-			Boss->SetIsSafeSpace(true);
+			Boss->SetIsSafeSpace(false);
 			LevelName = "MrWheezyLevel";
 			break;
 		case 4:
@@ -124,7 +124,6 @@ void KingDiceLevel::CheckRouletteSpace()
 		case 5:
 			SpaceState::Space4;
 			Boss->SetIsSafeSpace(true);
-			//LevelName = "PipandDotLevel";
 			break;
 		case 6:
 			SpaceState::Space5;
@@ -173,6 +172,7 @@ void KingDiceLevel::ChangeToSubBossStage()
 {
 	if (true == Boss->GetLevelChange())
 	{
+		Boss->SetLevelChange(false);
 		GameEngineCore::ChangeLevel(LevelName);
 	}
 }
