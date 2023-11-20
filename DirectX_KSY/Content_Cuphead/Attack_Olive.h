@@ -65,9 +65,7 @@ protected:
 	OliveState State = OliveState::None;
 
 private:
-	int HP = 0;
 	int ChangeDir = 1;
-	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
 	float MoveDur = 0.0f;

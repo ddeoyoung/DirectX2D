@@ -60,7 +60,6 @@ void Attack_Olive::Start()
 void Attack_Olive::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
-
 	StateUpdate(_Delta);
 	DeathCheck();
 }

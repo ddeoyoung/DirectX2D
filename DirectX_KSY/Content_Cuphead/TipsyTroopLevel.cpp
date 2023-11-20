@@ -95,17 +95,67 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	BossScotch = CreateActor<Scotch>();
 	BossRum = CreateActor<Rum>();
 
+	// Fade Out
+	if (nullptr == FadeOut)
+	{
+		FadeOut = CreateActor<FadeAnimation>();
+		FadeOut->SetFade("Out");
+		FadeOut->Off();
+	}
 }
 
 void TipsyTroopLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
 	CheckStageClear();
+	CreateFadeOut(_Delta);
+
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		// Level Change - King Dice
+		GameEngineCore::ChangeLevel("KingDiceLevel");
+	}
 }
 
 void TipsyTroopLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+
+	if (nullptr != CurLevelBackground)
+	{
+		CurLevelBackground->Death();
+		CurLevelBackground = nullptr;
+	}
+
+	if (nullptr != CurLevelPixelBackground)
+	{
+		CurLevelPixelBackground->Death();
+		CurLevelPixelBackground = nullptr;
+	}
+
+	if (nullptr != CurLevelPlayer)
+	{
+		CurLevelPlayer->Death();
+		CurLevelPlayer = nullptr;
+	}
+
+	if (nullptr != BossMartini)
+	{
+		BossMartini->Death();
+		BossMartini = nullptr;
+
+		BossScotch->Death();
+		BossScotch = nullptr;
+
+		BossRum->Death();
+		BossRum = nullptr;
+	}
+
+	if (nullptr != FadeOut)
+	{
+		FadeOut->Death();
+		FadeOut = nullptr;
+	}
 }
 
 void TipsyTroopLevel::CheckStageClear()
@@ -137,4 +187,16 @@ void TipsyTroopLevel::CreateBossExplosion()
 	BossMartini->CreateDeathEffect();
 	BossRum->CreateDeathEffect();
 	BossScotch->CreateDeathEffect();
+}
+
+void TipsyTroopLevel::CreateFadeOut(float _Delta)
+{
+	if (true == IsStageClear)
+	{
+		StageClearTime += _Delta;
+		if (StageClearTime > 5.0f)
+		{
+			FadeOut->On();
+		}
+	}
 }

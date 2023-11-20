@@ -3,13 +3,7 @@
 #include "BaseCharacter.h"
 
 #include "Target.h"
-#include "Attack_Olive.h"
-#include "Martini.h"
-#include "Rum.h"
-#include "Scotch.h"
-#include "ChipsBettigan.h"
-#include "MrWheezy.h"
-#include "KingDice.h"
+#include "BaseMonster.h"
 
 BaseWeapon::BaseWeapon()
 {
@@ -207,7 +201,7 @@ void BaseWeapon::HitCheck()
 		return;
 	}
 
-	// Shoot Object - Tutorial Target
+	// Shoot Object (Tutorial Target)
 	AttackCollision->Collision(CollisionOrder::ShootObject, [=](std::vector<GameEngineCollision*>_GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
@@ -224,12 +218,12 @@ void BaseWeapon::HitCheck()
 			return;
 		});
 
-	// Attack Object - Olive
+	// Monster
 	AttackCollision->Collision(CollisionOrder::Monster, [=](std::vector<GameEngineCollision*> _GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
-				Attack_Olive* Other = static_cast<Attack_Olive*>(_GroupOrder[i]->GetActor());
+				BaseMonster* Other = dynamic_cast<BaseMonster*>(_GroupOrder[i]->GetActor());
 				if (nullptr != Other)
 				{
 					Other->HPMinus();
@@ -245,7 +239,7 @@ void BaseWeapon::HitCheck()
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
-				BaseMonster* Other = static_cast<BaseMonster*>(_GroupOrder[i]->GetActor());
+				BaseMonster* Other = dynamic_cast<BaseMonster*>(_GroupOrder[i]->GetActor());
 				if (nullptr != Other)
 				{
 					Other->HPMinus();

@@ -32,6 +32,7 @@ protected:
 	void CheckStageClear();
 	void CreateKnockOut();
 	void CreateBossExplosion();
+	void CreateFadeOut(float _Delta);
 
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
@@ -40,7 +41,9 @@ private:
 	std::shared_ptr<class Scotch> BossScotch = nullptr;
 	std::shared_ptr<class FightText> Ready = nullptr;
 	std::shared_ptr<class FightText> KnockOut = nullptr;
+	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
 
 	bool IsStageClear = false;
+	float StageClearTime = 0.0f;
 };
 

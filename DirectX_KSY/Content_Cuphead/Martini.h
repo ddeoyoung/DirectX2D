@@ -53,9 +53,7 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-	int HP = 0;
 	bool IsOliveOn = false;
-	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
 };

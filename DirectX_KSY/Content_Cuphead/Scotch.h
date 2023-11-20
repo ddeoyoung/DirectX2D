@@ -55,8 +55,6 @@ protected:
 	std::shared_ptr<class Attack_Liquid> Liquid = nullptr;
 
 private:
-	int HP = 0;
-	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
 };

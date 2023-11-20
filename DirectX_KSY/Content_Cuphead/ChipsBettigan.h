@@ -81,8 +81,6 @@ protected:
 
 private:
 	int SpinDir = 1;
-	int HP = 0;
-	bool IsDeath = false;
 
 	float IdleTimer = 0.0f;
 	float StretchTimer = 0.0f;

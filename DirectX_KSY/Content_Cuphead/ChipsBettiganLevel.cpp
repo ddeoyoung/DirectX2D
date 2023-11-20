@@ -131,6 +131,8 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void ChipsBettiganLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+
+
 }
 
 void ChipsBettiganLevel::CreateKnockOut()
