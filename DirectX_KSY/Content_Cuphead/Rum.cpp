@@ -52,7 +52,7 @@ void Rum::Start()
 
 
 	ChangeState(RumState::Idle);
-	BossHP = 20;
+	HP = 20;
 }
 
 void Rum::Update(float _Delta)
@@ -170,23 +170,6 @@ void Rum::CreateSpew()
 	std::shared_ptr<Attack_Spew> Spew = GetLevel()->CreateActor<Attack_Spew>();
 	float4 Pos = { 620, -680 };
 	Spew->Transform.SetLocalPosition(Pos);
-}
-
-
-void Rum::HPMinus()
-{
-	if (nullptr != BossCollision)
-	{
-		if (1 <= BossHP)
-		{
-			--BossHP;
-
-			if (0 == BossHP)
-			{
-				IsDeath = true;
-			}
-		}
-	}
 }
 
 void Rum::DeathCheck()

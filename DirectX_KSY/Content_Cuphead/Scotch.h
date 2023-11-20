@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineCore\GameEngineActor.h>
+#include "BaseMonster.h"
 
 enum class ScotchState
 {
@@ -10,7 +10,7 @@ enum class ScotchState
 };
 
 // Ό³Έν :
-class Scotch : public ContentActor
+class Scotch : public BaseMonster
 {
 public:
 	// constrcuter destructer
@@ -23,13 +23,7 @@ public:
 	Scotch& operator=(const Scotch& _Other) = delete;
 	Scotch& operator=(Scotch&& _Other) noexcept = delete;
 
-	void HPMinus();
 	void CreateDeathEffect();
-
-	bool GetIsDeath()
-	{
-		return IsDeath;
-	}
 
 protected:
 	void ChangeState(ScotchState _State);
@@ -61,8 +55,7 @@ protected:
 	std::shared_ptr<class Attack_Liquid> Liquid = nullptr;
 
 private:
-	int BossHP = 0;
-	bool IsHit = false;
+	int HP = 0;
 	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;

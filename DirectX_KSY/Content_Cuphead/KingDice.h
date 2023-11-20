@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineCore\GameEngineActor.h>
+#include "BaseMonster.h"
 
 enum class KingDiceState 
 {
@@ -17,7 +17,7 @@ enum class KingDiceState
 };
 
 // Ό³Έν :
-class KingDice : public ContentActor
+class KingDice : public BaseMonster
 {
 public:
 	// constrcuter destructer
@@ -89,8 +89,6 @@ public:
 
 	void ChangeState(KingDiceState _State);
 
-	void HPMinus();
-
 protected:
 	void StateUpdate(float _Delta);
 	void ChangeAnimationState(const std::string& _StateName);
@@ -161,14 +159,12 @@ private:
 
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
-	bool IsHit = false;
 	bool IsDeath = false;
 
 	int AttackCount = 0;
-	int BossHP = 0;
+	int HP = 0;
 
 	std::string AttackDir = "";
-
 	std::vector<std::vector<CardType>> CardSet;
 	std::vector<CardType> CardPattern;
 };

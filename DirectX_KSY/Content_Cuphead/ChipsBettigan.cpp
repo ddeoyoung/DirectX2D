@@ -73,9 +73,7 @@ void ChipsBettigan::Start()
 
 	// Setting
 	ChangeState(ChipsState::Idle);
-	BossHP = 5;
-
-	ChipSet.clear();
+	HP = 30;
 	ChipSet.reserve(20);
 }
 
@@ -364,22 +362,6 @@ void ChipsBettigan::CheckDeathDir()
 	if (SpinDir == -1)
 	{
 		Transform.SetLocalScale({ -1.0f , 1.0f });
-	}
-}
-
-void ChipsBettigan::HPMinus()
-{
-	if (nullptr != BossCollision)
-	{
-		if (1 <= BossHP)
-		{
-			--BossHP;
-
-			if (0 == BossHP)
-			{
-				IsDeath = true;
-			}
-		}
 	}
 }
 

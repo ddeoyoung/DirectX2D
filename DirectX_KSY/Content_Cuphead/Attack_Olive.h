@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineCore\GameEngineActor.h>
+#include "BaseMonster.h"
 
 #define OLIVE_MOVE_SPEED 20.0f;
 
@@ -14,7 +14,7 @@ enum class OliveState
 };
 
 // Ό³Έν :
-class Attack_Olive : public ContentActor
+class Attack_Olive : public BaseMonster
 {
 public:
 	// constrcuter destructer
@@ -31,8 +31,6 @@ public:
 	{
 		State = _State;
 	}
-
-	void HPMinus();
 
 protected:
 	void ChangeState(OliveState _State);
@@ -69,7 +67,6 @@ protected:
 private:
 	int HP = 0;
 	int ChangeDir = 1;
-	bool IsHit = false;
 	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;

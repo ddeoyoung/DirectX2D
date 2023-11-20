@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineCore\GameEngineActor.h>
+#include "BaseMonster.h"
 
 // Speed
 #define CHIPSTRETCHSPEED 160.0f
@@ -17,7 +17,7 @@ enum class ChipsState
 };
 
 // Ό³Έν :
-class ChipsBettigan : public ContentActor
+class ChipsBettigan : public BaseMonster
 {
 public:
 	// constrcuter destructer
@@ -29,13 +29,6 @@ public:
 	ChipsBettigan(ChipsBettigan&& _Other) noexcept = delete;
 	ChipsBettigan& operator=(const ChipsBettigan& _Other) = delete;
 	ChipsBettigan& operator=(ChipsBettigan&& _Other) noexcept = delete;
-
-	void HPMinus();
-
-	bool GetIsDeath()
-	{
-		return IsDeath;
-	}
 
 	void CreateDeathEffect();
 
@@ -88,8 +81,7 @@ protected:
 
 private:
 	int SpinDir = 1;
-	int BossHP = 0;
-	bool IsHit = false;
+	int HP = 0;
 	bool IsDeath = false;
 
 	float IdleTimer = 0.0f;

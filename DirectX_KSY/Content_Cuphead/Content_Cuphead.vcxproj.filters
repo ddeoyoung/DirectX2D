@@ -136,6 +136,9 @@
     <Filter Include="Shader">
       <UniqueIdentifier>{e72d0aaa-bb3e-4436-a2ec-51498a184a75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Monster">
+      <UniqueIdentifier>{08e7fca9-ba2b-45a0-8535-c6dc29393796}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -390,6 +393,9 @@
     </ClInclude>
     <ClInclude Include="HPCard.h">
       <Filter>Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMonster.h">
+      <Filter>Actor\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -676,6 +682,9 @@
     </ClCompile>
     <ClCompile Include="HPCard.cpp">
       <Filter>Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMonster.cpp">
+      <Filter>Actor\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

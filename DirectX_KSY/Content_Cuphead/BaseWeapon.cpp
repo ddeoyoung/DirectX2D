@@ -240,12 +240,12 @@ void BaseWeapon::HitCheck()
 			return;
 		});
 
-	// Boss - Martini
+	// Boss
 	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
 		{
 			for (size_t i = 0; i < _GroupOrder.size(); i++)
 			{
-				Martini* Other = static_cast<Martini*>(_GroupOrder[i]->GetActor());
+				BaseMonster* Other = static_cast<BaseMonster*>(_GroupOrder[i]->GetActor());
 				if (nullptr != Other)
 				{
 					Other->HPMinus();
@@ -255,69 +255,4 @@ void BaseWeapon::HitCheck()
 			ChangeState(AttackState::Death);
 			return;
 		});
-
-	// Boss - Rum
-	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
-		{
-			for (size_t i = 0; i < _GroupOrder.size(); i++)
-			{
-				Rum* Other = static_cast<Rum*>(_GroupOrder[i]->GetActor());
-				if (nullptr != Other)
-				{
-					Other->HPMinus();
-				}
-			}
-
-			ChangeState(AttackState::Death);
-			return;
-		});
-
-	// Boss - Scotch
-	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
-		{
-			for (size_t i = 0; i < _GroupOrder.size(); i++)
-			{
-				Scotch* Other = static_cast<Scotch*>(_GroupOrder[i]->GetActor());
-				if (nullptr != Other)
-				{
-					Other->HPMinus();
-				}
-			}
-
-			ChangeState(AttackState::Death);
-			return;
-		});
-
-	// Boss - ChipsBettigan
-	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
-		{
-			for (size_t i = 0; i < _GroupOrder.size(); i++)
-			{
-				ChipsBettigan* Other = static_cast<ChipsBettigan*>(_GroupOrder[i]->GetActor());
-				if (nullptr != Other)
-				{
-					Other->HPMinus();
-				}
-			}     
-
-			ChangeState(AttackState::Death);
-			return;
-		});
-
-	// Boss - MrWheezy
-	AttackCollision->Collision(CollisionOrder::Boss, [=](std::vector<GameEngineCollision*> _GroupOrder)
-		{
-			for (size_t i = 0; i < _GroupOrder.size(); i++)
-			{
-				MrWheezy* Other = static_cast<MrWheezy*>(_GroupOrder[i]->GetActor());
-				if (nullptr != Other)
-				{
-					Other->HPMinus();
-				}
-			}
-
-			ChangeState(AttackState::Death);
-			return;
-		});
-	
 }

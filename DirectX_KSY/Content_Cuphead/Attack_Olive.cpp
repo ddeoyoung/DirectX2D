@@ -206,23 +206,6 @@ void Attack_Olive::DeathUpdate(float _Delta)
 	}
 }
 
-
-void Attack_Olive::HPMinus()
-{
-	if (nullptr != AttackCollision)
-	{
-		if (1 <= HP)
-		{
-			--HP;
-
-			if (0 == HP)
-			{
-				IsDeath = true;
-			}
-		}
-	}
-}
-
 void Attack_Olive::DeathCheck()
 {
 	if (false == IsDeath)

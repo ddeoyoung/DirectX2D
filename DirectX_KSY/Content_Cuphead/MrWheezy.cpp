@@ -110,7 +110,7 @@ void MrWheezy::Start()
 	BossCollision->Transform.SetLocalPosition({ 0, 0 });
 
 	ChangeState(WheezyState::Intro);
-	BossHP = 30;
+	HP = 30;
 }
 
 void MrWheezy::Update(float _Delta)
@@ -241,11 +241,11 @@ void MrWheezy::HPMinus()
 {
 	if (nullptr != BossCollision)
 	{
-		if (1 <= BossHP)
+		if (1 <= HP)
 		{
-			--BossHP;
+			--HP;
 
-			if (0 == BossHP)
+			if (0 == HP)
 			{
 				IsDeath = true;
 			}

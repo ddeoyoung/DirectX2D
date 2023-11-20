@@ -215,6 +215,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BaseMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BaseCharacter.cpp">
       <SubType>
       </SubType>
@@ -547,6 +551,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Background_White.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BaseMonster.h">
       <SubType>
       </SubType>
     </ClInclude>

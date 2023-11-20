@@ -1,4 +1,5 @@
 #pragma once
+#include "BaseMonster.h"
 
 enum class WheezyState
 {
@@ -12,7 +13,7 @@ enum class WheezyState
 };
 
 // Ό³Έν :
-class MrWheezy : public ContentActor
+class MrWheezy : public BaseMonster
 {
 public:
 	// constrcuter destructer
@@ -86,8 +87,7 @@ private:
 	float CiggyDemonInter = 3.0f;
 	bool IsAttack = false;
 
-	int BossHP = 0;
-	bool IsHit = false;
+	int HP = 0;
 	bool IsDeath = false;
 };
 

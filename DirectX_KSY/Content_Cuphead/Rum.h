@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineCore\GameEngineActor.h>
+#include "BaseMonster.h"
 
 enum class RumState
 {
@@ -10,7 +10,7 @@ enum class RumState
 };
 
 // Ό³Έν :
-class Rum : public ContentActor
+class Rum : public BaseMonster
 {
 public:
 	// constrcuter destructer
@@ -23,13 +23,7 @@ public:
 	Rum& operator=(const Rum& _Other) = delete;
 	Rum& operator=(Rum&& _Other) noexcept = delete;
 
-	void HPMinus();
 	void CreateDeathEffect();
-
-	bool GetIsDeath()
-	{
-		return IsDeath;
-	}
 
 protected:
 	void ChangeState(RumState _State);
@@ -59,8 +53,7 @@ protected:
 	std::shared_ptr<class GameEngineCollision> BossCollision = nullptr;
 
 private:
-	int BossHP = 0;
-	bool IsHit = false;
+	int HP = 0;
 	bool IsDeath = false;
 	float IdleTimer = 0.0f;
 	float AttackTimer = 0.0f;
