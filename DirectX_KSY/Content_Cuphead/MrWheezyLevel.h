@@ -24,9 +24,21 @@ protected:
 	void LevelStartTextureLoad();
 	void LevelStartTextureSet();
 
+	void CheckStageClear();
+	void CreateKnockOut();
+	void CreateBossExplosion();
+	void CreateFadeOut(float _Delta);
+
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer;
+	std::shared_ptr<class Background_Smokers> Background = nullptr;
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
 	std::shared_ptr<class MrWheezy> Boss = nullptr;
+	std::shared_ptr<class FightText> Ready = nullptr;
+	std::shared_ptr<class FightText> KnockOut = nullptr;
+	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
+
+	bool IsStageClear = false;
+	float StageClearTime = 0.0f;
 };
 

@@ -52,7 +52,10 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelStartTextureSet();
 
 	// Marker
-	Roulette_Marker = CreateActor<Marker>();
+	if (nullptr == Roulette_Marker)
+	{
+		Roulette_Marker = CreateActor<Marker>();
+	}
 	
 	// Boss
 	if (nullptr == Boss)
@@ -76,6 +79,18 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void KingDiceLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+
+	if (nullptr != Boss)
+	{
+		Boss->Death();
+		Boss = nullptr;
+	}
+
+	if (nullptr != CurLevelPlayer)
+	{
+		CurLevelPlayer->Death();
+		CurLevelPlayer = nullptr;
+	}
 }
 
 bool KingDiceLevel::CheckMarkerEnd()
@@ -179,18 +194,11 @@ void KingDiceLevel::ChangeToSubBossStage()
 
 void KingDiceLevel::FightKingDiceStart()
 {
-	// FightText
 	if (nullptr == ReadyText)
 	{
 		ReadyText = CreateActor<FightText>();
 		ReadyText->SetFightText("Ready");
 	}
-
-	// Boss
-	//if ("Attack" != Boss->GetCurState())
-	//{
-	//	Boss->SetState(KingDiceState::Attack);
-	//}
 }
 
 void KingDiceLevel::FightKingDiceUpdate(float _Delta)

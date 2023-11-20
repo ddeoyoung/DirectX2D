@@ -36,7 +36,7 @@ public:
 		return Dir;
 	}
 
-	void HPMinus();
+	void CreateDeathEffect();
 
 protected:
 	void ChangeState(WheezyState _State);
@@ -68,7 +68,6 @@ protected:
 	void ReverseDir();
 	void CreateCiggyDemon(float _Delta);
 	void CreateFireBullet();
-
 	void DeathCheck();
 
 	std::string CurState = "";
@@ -86,8 +85,5 @@ private:
 	float AttackTime = 0.0f;
 	float CiggyDemonInter = 3.0f;
 	bool IsAttack = false;
-
-	int HP = 0;
-	bool IsDeath = false;
 };
 

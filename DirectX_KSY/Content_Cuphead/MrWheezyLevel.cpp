@@ -9,6 +9,7 @@
 #include "TopSmoke.h"
 #include "CigarFire.h"
 #include "FightText.h"
+#include "FadeAnimation.h"
 
 MrWheezyLevel::MrWheezyLevel()
 {
@@ -26,6 +27,15 @@ void MrWheezyLevel::Start()
 void MrWheezyLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
+
+	CheckStageClear();
+	CreateFadeOut(_Delta);
+
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		// Level Change - King Dice
+		GameEngineCore::ChangeLevel("KingDiceLevel");
+	}
 }
 
 void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -36,11 +46,11 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	LevelStartTextureSet();
 
 	// FightText
-	std::shared_ptr<FightText> Ready = CreateActor<FightText>();
+	Ready = CreateActor<FightText>();
 	Ready->SetFightText("Ready");
 
-	// Background
-	std::shared_ptr<Background_Smokers> Background = CreateActor<Background_Smokers>();
+	// Background (Loop)
+	Background = CreateActor<Background_Smokers>();
 
 	// Pixel Background
 	CurLevelPixelBackground = CreateActor<ContentBackground>();
@@ -63,9 +73,54 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 
 	// Smoke
 	std::shared_ptr<TopSmoke> BackgroundSmoke = CreateActor<TopSmoke>();
+
+	// Fade Out
+	if (nullptr == FadeOut)
+	{
+		FadeOut = CreateActor<FadeAnimation>();
+		FadeOut->SetFade("Out");
+		FadeOut->Off();
+	}
 }
 
 void MrWheezyLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+}
+
+
+void MrWheezyLevel::CreateKnockOut()
+{
+	KnockOut = CreateActor<FightText>();
+	KnockOut->SetFightText("KnockOut");
+}
+
+void MrWheezyLevel::CreateBossExplosion()
+{
+	Boss->CreateDeathEffect();
+}
+
+void MrWheezyLevel::CheckStageClear()
+{
+	bool CheckWheezyDeath = Boss->GetIsDeath();
+
+	if (false == IsStageClear
+		&& true == CheckWheezyDeath)
+	{
+		IsStageClear = true;
+		CreateKnockOut();
+		CreateBossExplosion();
+	}
+}
+
+void MrWheezyLevel::CreateFadeOut(float _Delta)
+{
+	if (true == IsStageClear)
+	{
+		StageClearTime += _Delta;
+		if (StageClearTime > 5.0f)
+		{
+			FadeOut->On();
+		}
+	}
 }

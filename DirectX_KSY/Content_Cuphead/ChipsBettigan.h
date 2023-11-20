@@ -60,7 +60,6 @@ protected:
 	void CheckIdleDir();
 	bool CheckAttackDir();
 	void CheckDeathDir();
-
 	void DeathCheck();
 
 	std::string CurState = "";

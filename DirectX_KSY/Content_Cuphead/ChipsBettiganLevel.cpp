@@ -132,7 +132,41 @@ void ChipsBettiganLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
 
+	if (nullptr != Ready)
+	{
+		Ready->Death();
+		Ready = nullptr;
+	}
 
+	if (nullptr != CurLevelBackground)
+	{
+		CurLevelBackground->Death();
+		CurLevelBackground = nullptr;
+	}
+
+	if (nullptr != CurLevelPixelBackground)
+	{
+		CurLevelPixelBackground->Death();
+		CurLevelPixelBackground = nullptr;
+	}
+
+	if (nullptr != CurLevelPlayer)
+	{
+		CurLevelPlayer->Death();
+		CurLevelPlayer = nullptr;
+	}
+
+	if (nullptr != Boss)
+	{
+		Boss->Death();
+		Boss = nullptr;
+	}
+
+	if (nullptr != FadeOut)
+	{
+		FadeOut->Death();
+		FadeOut = nullptr;
+	}
 }
 
 void ChipsBettiganLevel::CreateKnockOut()

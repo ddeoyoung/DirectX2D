@@ -2,6 +2,7 @@
 #include "MrWheezy.h"
 #include "Attack_FireBullet.h"
 #include "Attack_CiggyDemon.h"
+#include "BossExplosion.h"
 
 MrWheezy::MrWheezy()
 {
@@ -237,22 +238,6 @@ void MrWheezy::CreateFireBullet()
 	FireBullet->SetPos(BossPos);
 }
 
-void MrWheezy::HPMinus()
-{
-	if (nullptr != BossCollision)
-	{
-		if (1 <= HP)
-		{
-			--HP;
-
-			if (0 == HP)
-			{
-				IsDeath = true;
-			}
-		}
-	}
-}
-
 void MrWheezy::DeathCheck()
 {
 	if (false == IsDeath)
@@ -261,4 +246,11 @@ void MrWheezy::DeathCheck()
 	}
 
 	ChangeState(WheezyState::Death);
+}
+
+void MrWheezy::CreateDeathEffect()
+{
+	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
+	float4 BossPos = Transform.GetLocalPosition();
+	DeathEffect->Transform.SetLocalPosition(BossPos);
 }

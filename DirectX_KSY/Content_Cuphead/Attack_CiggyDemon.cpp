@@ -39,13 +39,6 @@ void Attack_CiggyDemon::Start()
 	SetRandomPos();
 
 
-	//FxRenderer = CreateComponent<GameEngineSpriteRenderer>(RenderOrder::Frontground);
-	//FxRenderer->CreateAnimation("CiggyDemonFx", "CiggyDemonFx", 0.05f/*, -1, -1, false*/);
-	//FxRenderer->ChangeAnimation("CiggyDemonFx");
-	//FxRenderer->AutoSpriteSizeOn();
-	//FxRenderer->SetPivotType(PivotType::Top);
-	//FxRenderer->Transform.SetLocalPosition({ 0.0f, -50.0f });
-
 	// Create Collision
 	AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
 	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Cigar_CiggyDemon");

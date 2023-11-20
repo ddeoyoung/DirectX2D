@@ -41,8 +41,6 @@ void Marker::Start()
 	MainRenderer->CreateAnimation("Marker_Spin", "Marker_Spin", 0.05f);
 	MainRenderer->AutoSpriteSizeOn();
 
-	//Transform.SetLocalPosition({ 220, -300 });
-
 	ChangeState(MarkerState::Idle);
 	SetRouletteMarker();
 	CurRouletteSpace = 0;

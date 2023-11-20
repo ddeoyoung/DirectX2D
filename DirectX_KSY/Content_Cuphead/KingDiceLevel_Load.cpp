@@ -213,13 +213,15 @@ void KingDiceLevel::LevelStartTextureLoad()
 void KingDiceLevel::LevelStartTextureSet()
 {
 	// Background
-	CurLevelBackground = CreateActor<ContentBackground>();
-	CurLevelBackground->BackgroundInit("kd_bg_painting2.png");
-	CurLevelBackground->Transform.SetLocalPosition({ -20, 50 });
+	if (nullptr == CurLevelBackground)
+	{
+		CurLevelBackground = CreateActor<ContentBackground>();
+		CurLevelBackground->BackgroundInit("kd_bg_painting2.png");
+		CurLevelBackground->Transform.SetLocalPosition({ -20, 50 });
 
-	CurLevelPixelBackground = CreateActor<ContentBackground>();
-	CurLevelPixelBackground->PixelBackgroundInit("kd_bg_table_pixel.bmp");
-
+		CurLevelPixelBackground = CreateActor<ContentBackground>();
+		CurLevelPixelBackground->PixelBackgroundInit("kd_bg_table_pixel.bmp");
+	}
 
 	// Frontground
 	std::shared_ptr<ContentBackground> Frontground = CreateActor<ContentBackground>();
