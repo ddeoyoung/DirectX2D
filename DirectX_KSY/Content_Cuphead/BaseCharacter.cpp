@@ -24,7 +24,7 @@ void BaseCharacter::Update(float _Delta)
 
 	StateUpdate(_Delta);
 	DirCheck();
-	Gravity(_Delta);
+	//Gravity(_Delta);
 	LerpCamera(_Delta);
 	AimCheck();
 }
@@ -308,13 +308,24 @@ void BaseCharacter::Gravity(float _Delta)
 	if (GroundColor != GameEngineColor::RED)
 	{
 		GravityForce.Y -= _Delta * GRAVITYFORCE;
-		Transform.AddLocalPosition(GravityForce * _Delta);
 	}
 
 	else
 	{
+		float4 CheckTopPos = TOPCHECKPOS;
+		GameEngineColor UpColor = GetPixelColor(CheckTopPos);
+
+		while (UpColor == GameEngineColor::RED)
+		{
+			CheckTopPos = TOPCHECKPOS;
+			UpColor = GetPixelColor(CheckTopPos);
+			Transform.AddWorldPosition(float4::UP);
+		}
+
 		GravityForce = 0.0f;
 	}
+
+	Transform.AddLocalPosition(GravityForce * _Delta);
 }
 
 void BaseCharacter::LerpCamera(float _Delta)
@@ -327,7 +338,6 @@ void BaseCharacter::LerpCamera(float _Delta)
 	float4 PlayerPos = Transform.GetWorldPosition(); // End
 	float4 MovePos = float4::LerpClamp(CameraPos, PlayerPos, CameraSpeed * _Delta);
 
-	// 카메라 Y 고정
 	MovePos.Y = CameraPos.Y;
 
 	if (MovePos.iX() > WindowScale.hX()
@@ -390,7 +400,7 @@ void BaseCharacter::GroundCheck()
 	}
 }
 
-bool BaseCharacter::Collisioncheck()
+bool BaseCharacter::CollisionCheck()
 {
 	if (true == PlayerCollision->Collision(CollisionOrder::Boss)
 		|| true == PlayerCollision->Collision(CollisionOrder::BossAttack))
@@ -399,4 +409,12 @@ bool BaseCharacter::Collisioncheck()
 	}
 
 	return false;
+}
+
+void BaseCharacter::ParryCollisionCheck()
+{
+	if (true == PlayerCollision->Collision(CollisionOrder::ParryObject))
+	{
+		IsParry = true;
+	}
 }

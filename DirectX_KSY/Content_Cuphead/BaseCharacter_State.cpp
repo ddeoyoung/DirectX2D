@@ -9,6 +9,8 @@ void BaseCharacter::IdleStart()
 
 void BaseCharacter::IdleUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == GameEngineInput::IsPress(VK_LEFT, this) || true == GameEngineInput::IsPress(VK_RIGHT, this))
 	{
 		ChangeState(CharacterState::Run);
@@ -48,7 +50,7 @@ void BaseCharacter::IdleUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -65,6 +67,7 @@ void BaseCharacter::RunStart()
 
 void BaseCharacter::RunUpdate(float _Delta)
 {
+	Gravity(_Delta);
 	PixelCheck(_Delta);
 
 	RunDustTimer -= _Delta;
@@ -108,7 +111,7 @@ void BaseCharacter::RunUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -124,6 +127,8 @@ void BaseCharacter::AimStart()
 
 void BaseCharacter::AimUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == GameEngineInput::IsUp('C', this) || true == GameEngineInput::IsFree('C', this))
 	{
 		IsAim = false;
@@ -141,7 +146,7 @@ void BaseCharacter::AimUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -162,6 +167,8 @@ void BaseCharacter::ShootStart()
 
 void BaseCharacter::ShootUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	IsRunShoot = AimCheck();
 
 	if (true == GameEngineInput::IsUp('X', this) || true == GameEngineInput::IsFree('X', this))
@@ -190,7 +197,7 @@ void BaseCharacter::ShootUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -201,12 +208,12 @@ void BaseCharacter::ShootUpdate(float _Delta)
 void BaseCharacter::RunShootStart()
 {
 	ChangeAnimationState("Run_Shoot");
-
 	ShootInterval = 0.0f;
 }
 
 void BaseCharacter::RunShootUpdate(float _Delta)
 {
+	Gravity(_Delta);
 	PixelCheck(_Delta);
 
 	IsRunShoot = AimCheck();
@@ -263,7 +270,7 @@ void BaseCharacter::RunShootUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -278,6 +285,8 @@ void BaseCharacter::DuckStart()
 
 void BaseCharacter::DuckUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		ChangeState(CharacterState::DuckIdle);
@@ -307,7 +316,7 @@ void BaseCharacter::DuckUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -322,6 +331,8 @@ void BaseCharacter::DuckIdleStart()
 
 void BaseCharacter::DuckIdleUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this))
 	{
 		ChangeState(CharacterState::Idle);
@@ -332,7 +343,7 @@ void BaseCharacter::DuckIdleUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -347,6 +358,8 @@ void BaseCharacter::DuckShootStart()
 
 void BaseCharacter::DuckShootUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == GameEngineInput::IsUp(VK_DOWN, this) || true == GameEngineInput::IsFree(VK_DOWN, this))
 	{
 		ChangeState(CharacterState::Idle);
@@ -357,7 +370,7 @@ void BaseCharacter::DuckShootUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -372,7 +385,7 @@ void BaseCharacter::FallStart()
 
 void BaseCharacter::FallUpdate(float _Delta)
 {
-
+	Gravity(_Delta);
 }
 
 void BaseCharacter::HitStart()
@@ -383,6 +396,8 @@ void BaseCharacter::HitStart()
 
 void BaseCharacter::HitUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		// Reset Hit Interval
@@ -395,12 +410,12 @@ void BaseCharacter::HitUpdate(float _Delta)
 void BaseCharacter::DashStart()
 {
 	ChangeAnimationState("Dash");
-
 	DashCount = 1;
 }
 
 void BaseCharacter::DashUpdate(float _Delta)
 {
+	Gravity(_Delta);
 	PixelCheck(_Delta);
 
 	// Dash
@@ -446,22 +461,32 @@ void BaseCharacter::JumpStart()
 	ChangeAnimationState("Jump");
 	IsJump = true;
 	IsParry = false;
-	JumpPower.Y = 2000.0f;
+	GravityForce = 0.0f;
+
+	if (false == IsParry)
+	{
+		JumpPower.Y = 1200.0f;
+	}
+
+	else if (true == IsParry)
+	{
+		JumpPower.Y = 500.0f;
+	}
 }
 
 void BaseCharacter::JumpUpdate(float _Delta)
 {
-	JumpPower.Y -= GravityForce.Y * _Delta;
+	JumpPower.Y += GravityForce.Y * _Delta;
 	Transform.AddLocalPosition(JumpPower * _Delta);
 
 	Gravity(_Delta);
 	PixelCheck(_Delta);
 	GroundCheck();
 
-
 	// Change State
 	if (true == IsGround)
 	{
+		IsParry = false;
 		IsJump = false;
 		CreateJumpDust();
 		ChangeState(CharacterState::Idle);
@@ -474,10 +499,8 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		return;
 	}
 
-	IsParry = PlayerCollision->Collision(CollisionOrder::ParryObject);
-	if (true == IsParry && true == GameEngineInput::IsDown('Z', this))
+	if (true == GameEngineInput::IsDown('Z', this))
 	{
-		CreateParrySpark();
 		ChangeState(CharacterState::Parry);
 		return;
 	}
@@ -486,7 +509,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -497,46 +520,51 @@ void BaseCharacter::JumpUpdate(float _Delta)
 void BaseCharacter::ParryStart()
 {
 	ChangeAnimationState("Parry");
-	JumpPower.Y = 5000.0f;
+	GravityForce = 0.0f;
 
+	IsParry = false;
 	PauseTimer = 0.2f;
 	UnScaleDeltaTime = GameEngineCore::MainTime.GetUnScaleDeltaTime();
 }
 
 void BaseCharacter::ParryUpdate(float _Delta)
 {
-	PauseTimer -= UnScaleDeltaTime;
-	if (PauseTimer > 0.0f)
+	Gravity(_Delta);
+	PixelCheck(_Delta);
+	GroundCheck();
+
+	ParryCollisionCheck();
+	if (true == IsParry)
 	{
-		GameEngineCore::MainTime.SetGlobalTimeScale(0);
-	}
-
-	else if (PauseTimer < 0.0f)
-	{
-		GameEngineCore::MainTime.SetGlobalTimeScale(1);
-
-		JumpPower.Y -= GravityForce.Y * _Delta;
-		Transform.AddLocalPosition(JumpPower * _Delta);
-
-		Gravity(_Delta);
-		PixelCheck(_Delta);
-		GroundCheck();
-
-		if (true == IsGround)
+		PauseTimer -= UnScaleDeltaTime;
+		if (PauseTimer > 0.0f)
 		{
-			IsJump = false;
-			IsParry = false;
-			CreateJumpDust();
-			ChangeState(CharacterState::Idle);
+			GameEngineCore::MainTime.SetGlobalTimeScale(0);
+		}
+
+		else if (PauseTimer < 0.0f)
+		{
+			GameEngineCore::MainTime.SetGlobalTimeScale(1);
+			ChangeState(CharacterState::Jump);
 			return;
 		}
+	}
+
+	// Idle
+	if (true == IsGround)
+	{
+		IsJump = false;
+		IsParry = false;
+		CreateJumpDust();
+		ChangeState(CharacterState::Idle);
+		return;
 	}
 
 	// Hit
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
 	{
-		if (true == Collisioncheck())
+		if (true == CollisionCheck())
 		{
 			ChangeState(CharacterState::Hit);
 			return;
@@ -551,6 +579,8 @@ void BaseCharacter::IntroStart()
 
 void BaseCharacter::IntroUpdate(float _Delta)
 {
+	Gravity(_Delta);
+
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
 		ChangeState(CharacterState::Idle);
@@ -565,7 +595,7 @@ void BaseCharacter::GhostStart()
 
 void BaseCharacter::GhostUpdate(float _Delta)
 {
-
+	Gravity(_Delta);
 }
 
 void BaseCharacter::DeathStart()
@@ -575,5 +605,5 @@ void BaseCharacter::DeathStart()
 
 void BaseCharacter::DeathUpdate(float _Delta)
 {
-
+	Gravity(_Delta);
 }

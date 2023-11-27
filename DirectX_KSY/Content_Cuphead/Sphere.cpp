@@ -54,6 +54,6 @@ void Sphere::Update(float _Delta)
 	if (true == ParryCheck && true == GameEngineInput::IsDown('Z', this))
 	{
 		MainRenderer->ChangeAnimation("Tutorial_Sphere");
-		ParryCollision->Death();
+		//ParryCollision->Off();
 	}
 }

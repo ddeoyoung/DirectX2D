@@ -4,9 +4,10 @@
 #define LEFTCHECKPOS { -40.0f, 40.0f }
 #define RIGHTCHECKPOS { 40.0f, 40.0f }
 #define BOTTOMCHECKPOS { 0.0f, -2.0f }
+#define TOPCHECKPOS { 0.0f, 2.0f }
 
 #define RUNSPEED 500.0f
-#define GRAVITYFORCE 2000.0f
+#define GRAVITYFORCE 2500.0f
 
 #define SHOOT_INTERVAL 0.2f
 
@@ -32,6 +33,11 @@ public:
 	AttackDir GetPlayerAttDir()
 	{
 		return AttDir;
+	}
+
+	bool GetIsParry()
+	{
+		return IsParry;
 	}
 
 protected:
@@ -103,7 +109,8 @@ protected:
 	void DirCheck();
 	bool AimCheck();
 	void GroundCheck();
-	bool Collisioncheck();
+	bool CollisionCheck();
+	void ParryCollisionCheck();
 	void Gravity(float _Delta);
 	void LerpCamera(float _Delta);
 	void PixelCheck(float _Delta);
@@ -143,5 +150,6 @@ private:
 
 	float4 GravityForce = float4::ZERO;
 	float4 JumpPower = float4::ZERO;
+	float4 ParryPower = float4::ZERO;
 };
 

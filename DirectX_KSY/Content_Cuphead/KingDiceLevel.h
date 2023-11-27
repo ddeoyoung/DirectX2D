@@ -35,6 +35,14 @@ public:
 	KingDiceLevel& operator=(const KingDiceLevel& _Other) = delete;
 	KingDiceLevel& operator=(KingDiceLevel&& _Other) noexcept = delete;
 
+	std::shared_ptr<BaseCharacter> GetCurPlayer()
+	{
+		if (nullptr != Player)
+		{
+			return Player;
+		}
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Delta) override;
