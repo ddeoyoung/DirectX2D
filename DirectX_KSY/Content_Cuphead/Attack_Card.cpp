@@ -60,10 +60,6 @@ void Attack_Card::Start()
 	MainRenderer->ChangeAnimation("Card_Club_Start");
 	MainRenderer->AutoSpriteSizeOn();
 
-
-
-
-
 }
 
 void Attack_Card::Update(float _Delta)

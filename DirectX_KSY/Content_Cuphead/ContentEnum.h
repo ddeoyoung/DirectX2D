@@ -28,6 +28,7 @@ enum class CollisionOrder
 {
 	Player,
 	PlayerAttack,
+	PlayerParry,
 	Boss,
 	BossAttack,
 	Monster,

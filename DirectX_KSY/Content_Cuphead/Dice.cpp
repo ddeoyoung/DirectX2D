@@ -187,7 +187,7 @@ void Dice::IdleUpdate(float _Delta)
 		}
 
 		IsHit = ParryCheck; 
-		ParryCollision->Off();
+		//ParryCollision->Off();
 		ChangeState(DiceState::Hit);
 		return;
 	}
@@ -205,6 +205,7 @@ void Dice::HitUpdate(float _Delta)
 	if (HitTimer < 0.0f)
 	{
 		HitTimer = 1.5f;
+		ParryCollision->Off();
 		KingDice::IsDiceOn = false;
 		ChangeState(DiceState::Death);
 		return;

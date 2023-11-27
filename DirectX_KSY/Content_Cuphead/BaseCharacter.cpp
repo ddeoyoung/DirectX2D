@@ -5,8 +5,11 @@
 #include "ContentLevel.h"
 #include "ContentBackground.h"
 
+BaseCharacter* BaseCharacter::MainCharacter = nullptr;
+
 BaseCharacter::BaseCharacter()
 {
+	MainCharacter = this;
 }
 
 BaseCharacter::~BaseCharacter()
@@ -413,8 +416,12 @@ bool BaseCharacter::CollisionCheck()
 
 void BaseCharacter::ParryCollisionCheck()
 {
-	if (true == PlayerCollision->Collision(CollisionOrder::ParryObject))
+	if (true == PlayerParryCollision->Collision(CollisionOrder::ParryObject))
 	{
 		IsParry = true;
+	}
+	else
+	{
+		IsParry = false;
 	}
 }

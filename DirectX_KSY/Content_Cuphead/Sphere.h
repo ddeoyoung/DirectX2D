@@ -20,5 +20,8 @@ protected:
 private:
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> ParryCollision = nullptr;
+
+	float CollisionOffTime = 0.0f;
+	bool IsParry = false;
 };
 

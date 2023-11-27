@@ -92,6 +92,11 @@ void Cuphead::Start()
 	PlayerCollision->Transform.SetLocalScale({ 80, 100 });
 	PlayerCollision->Transform.SetLocalPosition({ 0, 70 });
 
+	PlayerParryCollision = CreateComponent<GameEngineCollision>(CollisionOrder::PlayerParry);
+	PlayerParryCollision->SetCollisionType(ColType::SPHERE2D);
+	PlayerParryCollision->Transform.SetLocalScale({ 50, 50 });
+	PlayerParryCollision->Transform.SetLocalPosition({ 0, 70 });
+
 	ChangeState(CharacterState::Intro);
 }
 

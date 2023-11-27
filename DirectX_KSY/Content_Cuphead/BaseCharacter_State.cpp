@@ -470,7 +470,7 @@ void BaseCharacter::JumpStart()
 
 	else if (true == IsParry)
 	{
-		JumpPower.Y = 500.0f;
+		JumpPower.Y = 400.0f;
 	}
 }
 
@@ -534,7 +534,12 @@ void BaseCharacter::ParryUpdate(float _Delta)
 	GroundCheck();
 
 	ParryCollisionCheck();
-	if (true == IsParry)
+	if (true == IsParry && ParryCount == 0 )
+	{
+		ParryCount = 1;
+	}
+
+	if (ParryCount == 1)
 	{
 		PauseTimer -= UnScaleDeltaTime;
 		if (PauseTimer > 0.0f)
@@ -546,6 +551,7 @@ void BaseCharacter::ParryUpdate(float _Delta)
 		{
 			GameEngineCore::MainTime.SetGlobalTimeScale(1);
 			ChangeState(CharacterState::Jump);
+			ParryCount = 0;
 			return;
 		}
 	}

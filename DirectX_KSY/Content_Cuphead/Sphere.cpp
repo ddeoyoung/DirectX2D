@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Sphere.h"
+#include "BaseCharacter.h"
 
 Sphere::Sphere()
 {
@@ -50,10 +51,21 @@ void Sphere::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
 
-	bool ParryCheck = ParryCollision->Collision(CollisionOrder::Player);
-	if (true == ParryCheck && true == GameEngineInput::IsDown('Z', this))
+	bool ParryCheck = BaseCharacter::MainCharacter->GetIsParry();
+	bool CollisionCheck = ParryCollision->Collision(CollisionOrder::PlayerParry);
+	if (true == ParryCheck && true == CollisionCheck)
 	{
 		MainRenderer->ChangeAnimation("Tutorial_Sphere");
-		//ParryCollision->Off();
+		IsParry = true;
 	}
+
+	if (true == IsParry)
+	{
+		CollisionOffTime += _Delta;
+		if (CollisionOffTime > 0.5f)
+		{
+			ParryCollision->Off();
+		}
+	}
+
 }

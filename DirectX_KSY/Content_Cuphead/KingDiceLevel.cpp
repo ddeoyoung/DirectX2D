@@ -62,7 +62,7 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		Boss = CreateActor<KingDice>();
 		Boss->On();
-		Boss->SetState(KingDiceState::IntroHand);
+		Boss->SetState(KingDiceState::Attack);
 	}
 
 	// Player

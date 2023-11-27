@@ -15,6 +15,8 @@
 class BaseCharacter : public ContentActor
 {
 public:
+	static BaseCharacter* MainCharacter;
+
 	// constrcuter destructer
 	BaseCharacter();
 	~BaseCharacter();
@@ -133,6 +135,7 @@ protected:
 
 	std::shared_ptr<class GameEngineSpriteRenderer> MainRenderer = nullptr;
 	std::shared_ptr<class GameEngineCollision> PlayerCollision = nullptr;
+	std::shared_ptr<class GameEngineCollision> PlayerParryCollision = nullptr;
 
 	std::shared_ptr<class RunDust> RunEffect = nullptr;
 	std::shared_ptr<class JumpDust> JumpEffect = nullptr;
@@ -142,6 +145,7 @@ protected:
 
 private:
 	int DashCount = 0;
+	int ParryCount = 0;
 	float RunDustTimer = 0.0f;
 	float ShootInterval = 0.0f;
 	float HitInterval = 0.0f;
