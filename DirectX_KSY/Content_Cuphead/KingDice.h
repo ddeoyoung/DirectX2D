@@ -139,6 +139,8 @@ protected:
 	void CreateCardPattern();
 	std::vector<CardType> GetRandomCardSet();
 	void DeathCheck();
+	void SetDeathPos();
+
 
 	std::string CurState = "";
 	KingDiceState State = KingDiceState::None;
@@ -159,10 +161,7 @@ private:
 
 	bool IsLevelChange = false;
 	bool IsSafeSpace = false;
-	bool IsDeath = false;
-
 	int AttackCount = 0;
-	int HP = 0;
 
 	std::string AttackDir = "";
 	std::vector<std::vector<CardType>> CardSet;

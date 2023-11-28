@@ -133,6 +133,10 @@ void KingDice::CameraEatUpdate(float _Delta)
 void KingDice::DeathStart()
 {
 	ChangeAnimationState("Death");
+
+	ArmRenderer->Off();
+	//SetDeathPos();
+	Transform.SetWorldPosition({ 630, -645 });
 }
 
 void KingDice::DeathUpdate(float _Delta)

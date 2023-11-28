@@ -104,7 +104,7 @@ void KingDice::Start()
 	MainRenderer->CreateAnimation("KingDice_Curious_Body", "KingDice_Curious_Body");
 
 	// Death
-	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death");
+	MainRenderer->CreateAnimation("KingDice_Death", "KingDice_Death", 0.07f);
 
 	// Attack
 	MainRenderer->CreateAnimation("KingDice_AttackIdle", "KingDice_Idle", 0.05f);
@@ -182,15 +182,14 @@ void KingDice::Start()
 	// Setting
 	CreateCardPattern();
 	ChangeState(KingDiceState::IntroHand);
-	HP = 50;
+	HP = 3;
 }
 
 void KingDice::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
-
-	StateUpdate(_Delta);
 	DeathCheck();
+	StateUpdate(_Delta);
 }
 
 void KingDice::ChangeState(KingDiceState _State)
@@ -486,4 +485,9 @@ void KingDice::DeathCheck()
 	}
 
 	ChangeState(KingDiceState::Death);
+}
+
+void KingDice::SetDeathPos()
+{
+	Transform.SetWorldPosition({ 630, -640 });
 }

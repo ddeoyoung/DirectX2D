@@ -553,30 +553,52 @@ void BaseCharacter::ParryUpdate(float _Delta)
 			GameEngineCore::MainTime.SetGlobalTimeScale(1);
 			ChangeState(CharacterState::Jump);
 			ParryCount = 0;
+
+			// Idle
+			if (true == IsGround)
+			{
+				IsJump = false;
+				IsParry = false;
+				CreateJumpDust();
+				ChangeState(CharacterState::Idle);
+				return;
+			}
+
+			// Hit
+			HitInterval -= _Delta;
+			if (HitInterval < 0.0f)
+			{
+				if (true == CollisionCheck())
+				{
+					ChangeState(CharacterState::Hit);
+					return;
+				}
+			}
+
 			return;
 		}
 	}
 
-	// Idle
-	if (true == IsGround)
-	{
-		IsJump = false;
-		IsParry = false;
-		CreateJumpDust();
-		ChangeState(CharacterState::Idle);
-		return;
-	}
+	//// Idle
+	//if (true == IsGround)
+	//{
+	//	IsJump = false;
+	//	IsParry = false;
+	//	CreateJumpDust();
+	//	ChangeState(CharacterState::Idle);
+	//	return;
+	//}
 
-	// Hit
-	HitInterval -= _Delta;
-	if (HitInterval < 0.0f)
-	{
-		if (true == CollisionCheck())
-		{
-			ChangeState(CharacterState::Hit);
-			return;
-		}
-	}
+	//// Hit
+	//HitInterval -= _Delta;
+	//if (HitInterval < 0.0f)
+	//{
+	//	if (true == CollisionCheck())
+	//	{
+	//		ChangeState(CharacterState::Hit);
+	//		return;
+	//	}
+	//}
 }
 
 void BaseCharacter::IntroStart()
