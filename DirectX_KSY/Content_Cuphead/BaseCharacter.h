@@ -7,6 +7,7 @@
 #define TOPCHECKPOS { 0.0f, 2.0f }
 
 #define RUNSPEED 500.0f
+#define JUMPSPEED 200.0f
 #define GRAVITYFORCE 2500.0f
 
 #define SHOOT_INTERVAL 0.2f

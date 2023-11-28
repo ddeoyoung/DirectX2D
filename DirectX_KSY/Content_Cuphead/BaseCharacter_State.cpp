@@ -470,7 +470,7 @@ void BaseCharacter::JumpStart()
 
 	else if (true == IsParry)
 	{
-		JumpPower.Y = 400.0f;
+		JumpPower.Y = 300.0f;
 	}
 }
 
@@ -537,6 +537,7 @@ void BaseCharacter::ParryUpdate(float _Delta)
 	if (true == IsParry && ParryCount == 0 )
 	{
 		ParryCount = 1;
+		CreateParrySpark();
 	}
 
 	if (ParryCount == 1)

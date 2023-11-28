@@ -379,7 +379,7 @@ void KingDice::SetAttackArm()
 void KingDice::SetBossCollision()
 {
 	BossCollision->On();
-	BossCollision->Transform.SetLocalScale({ 400, 400 });
+	BossCollision->Transform.SetLocalScale({ 300, 300 });
 	
 	if (AttackDir == "Left")
 	{
@@ -454,7 +454,7 @@ void KingDice::CreateCardPattern()
 	// 뒤에서부터 생성 시작
 	std::vector<CardType> Set1 = { Heart, Club, Spade, Heart, Diamond, Heart, Club, Spade, Diamond, Heart, Club, Spade };
 	std::vector<CardType> Set2 = { Diamond, Heart, Club, Spade, Heart, Diamond, Heart, Club, Spade, Diamond, Heart, Club };
-	std::vector<CardType> Set3 = { Heart, Spade, Heart, Diamond, Club, Heart, Spade, Diamond, Heart, Club, Spade, Diamond };
+	std::vector<CardType> Set3 = { Heart, Spade, Heart, Diamond, Club, Heart, Spade, Heart, Diamond, Heart, Spade, Diamond };
 	std::vector<CardType> Set4 = { Club, Heart, Spade, Diamond, Heart, Club, Heart, Spade, Diamond, Heart, Club, Spade };
 
 	CardSet.push_back(Set1);

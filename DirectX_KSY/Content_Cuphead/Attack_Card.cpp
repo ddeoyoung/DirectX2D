@@ -112,20 +112,23 @@ void Attack_Card::MoveUpdate(float _Delta)
 
 void Attack_Card::SetCollisionType()
 {
+	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Card_Club");
+	float4 Scale = Texture->GetSpriteData(0).GetScale();
+
 	// Create Collision
 	if (CurCardType == CardType::Heart)
 	{
 		AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::ParryObject);
+		Scale -= { 100.0f, 40.0f };
 	}
 
 	else
 	{
 		AttackCollision = CreateComponent<GameEngineCollision>(CollisionOrder::BossAttack);
+		Scale -= { 160.0f, 80.0f };
+
 	}
 
-	std::shared_ptr<GameEngineSprite> Texture = GameEngineSprite::Find("Card_Club");
-	float4 Scale = Texture->GetSpriteData(0).GetScale();
-	Scale -= { 100.0f, 40.0f };
 	AttackCollision->SetCollisionType(ColType::AABBBOX2D);
 	AttackCollision->Transform.SetLocalScale(Scale);
 }

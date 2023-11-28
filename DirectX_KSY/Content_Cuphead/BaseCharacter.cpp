@@ -405,8 +405,8 @@ void BaseCharacter::GroundCheck()
 
 bool BaseCharacter::CollisionCheck()
 {
-	if (true == PlayerCollision->Collision(CollisionOrder::Boss)
-		|| true == PlayerCollision->Collision(CollisionOrder::BossAttack))
+	if (/*true == PlayerCollision->Collision(CollisionOrder::Boss)
+		|| */true == PlayerCollision->Collision(CollisionOrder::BossAttack))
 	{
 		return true;
 	}
