@@ -3,6 +3,7 @@
 #include "Dice.h"
 #include "Marker.h"
 #include "Attack_Card.h"
+#include "BossExplosion.h"
 
 KingDice::KingDice()
 {
@@ -487,7 +488,10 @@ void KingDice::DeathCheck()
 	ChangeState(KingDiceState::Death);
 }
 
-void KingDice::SetDeathPos()
+void KingDice::CreateDeathEffect()
 {
-	Transform.SetWorldPosition({ 630, -640 });
+	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
+	float4 BossPos = Transform.GetLocalPosition();
+	BossPos.Y += 320.0f;
+	DeathEffect->SetPos(BossPos);
 }

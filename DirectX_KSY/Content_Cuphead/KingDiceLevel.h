@@ -60,6 +60,11 @@ protected:
 	void FightKingDiceStart();
 	void FightKingDiceUpdate(float _Delta);
 
+	void CheckStageClear();
+	void CreateKnockOut();
+	void CreateBossExplosion();
+	void CreateFadeOut(float _Delta);
+
 	bool IsFightKingDice = false;
 
 private:
@@ -67,8 +72,12 @@ private:
 	std::shared_ptr<class BaseCharacter> Player = nullptr;
 	std::shared_ptr<class Marker> Roulette_Marker = nullptr;
 	std::shared_ptr<class FightText> ReadyText = nullptr;
+	std::shared_ptr<class FightText> KnockOut = nullptr;
+	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
 	std::string LevelName = "";
 
 	float ReadyTime = 0.0f;
+	float StageClearTime = 0.0f;
+	bool IsStageClear = false;
 };
 

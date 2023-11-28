@@ -88,6 +88,7 @@ public:
 	}
 
 	void ChangeState(KingDiceState _State);
+	void CreateDeathEffect();
 
 protected:
 	void StateUpdate(float _Delta);
@@ -139,7 +140,7 @@ protected:
 	void CreateCardPattern();
 	std::vector<CardType> GetRandomCardSet();
 	void DeathCheck();
-	void SetDeathPos();
+
 
 
 	std::string CurState = "";

@@ -42,6 +42,15 @@ void KingDiceLevel::Update(float _Delta)
 	{
 		FightKingDiceUpdate(_Delta);
 	}
+
+	CheckStageClear();
+	CreateFadeOut(_Delta);
+
+	//if (true == FadeOut->IsCurAnimationEnd())
+	//{
+	//	// Level Change - King Dice
+	//	GameEngineCore::ChangeLevel("KingDiceLevel");
+	//}
 }
 
 void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -74,6 +83,14 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	
 	// LevelChange
 	LevelName = "";
+
+	// Fade Out
+	if (nullptr == FadeOut)
+	{
+		FadeOut = CreateActor<FadeAnimation>();
+		FadeOut->SetFade("Out");
+		FadeOut->Off();
+	}
 }
 
 void KingDiceLevel::LevelEnd(GameEngineLevel* _NextLevel)
@@ -192,6 +209,11 @@ void KingDiceLevel::ChangeToSubBossStage()
 	}
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////    Fight    //////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void KingDiceLevel::FightKingDiceStart()
 {
 	if (nullptr == ReadyText)
@@ -209,6 +231,48 @@ void KingDiceLevel::FightKingDiceUpdate(float _Delta)
 		if ("Attack" != Boss->GetCurState())
 		{
 			Boss->SetState(KingDiceState::Attack);
+		}
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////// //////    Stage Clear    ///////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void KingDiceLevel::CheckStageClear()
+{
+	bool CheckKingDiceDeath = Boss->GetIsDeath();
+
+	if (false == IsStageClear
+		&& true == CheckKingDiceDeath)
+	{
+		IsStageClear = true;
+		CreateKnockOut();
+		CreateBossExplosion();
+	}
+}
+
+void KingDiceLevel::CreateKnockOut()
+{
+	// Knock Out
+	KnockOut = CreateActor<FightText>();
+	KnockOut->SetFightText("KnockOut");
+}
+
+void KingDiceLevel::CreateBossExplosion()
+{
+	Boss->CreateDeathEffect();
+}
+
+void KingDiceLevel::CreateFadeOut(float _Delta)
+{
+	if (true == IsStageClear)
+	{
+		StageClearTime += _Delta;
+		if (StageClearTime > 5.0f)
+		{
+			//FadeOut->On();
 		}
 	}
 }

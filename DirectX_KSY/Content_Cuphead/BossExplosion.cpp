@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "BossExplosion.h"
+#include "BaseMonster.h"
 
 BossExplosion::BossExplosion()
 {
@@ -34,10 +35,34 @@ void BossExplosion::Start()
 	MainRenderer->CreateAnimation("BossExplosion", "BossExplosion", 0.05f);
 	MainRenderer->ChangeAnimation("BossExplosion");
 	MainRenderer->AutoSpriteSizeOn();
-
 }
 
 void BossExplosion::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+	SetRandom();
+}
+
+void BossExplosion::SetPos(float4 _Pos)
+{
+	BossPos = _Pos;
+}
+
+void BossExplosion::SetRandom()
+{
+	if (BossPos != float4::ZERO)
+	{
+		GameEngineRandom NewRandom;
+		float RandomX = NewRandom.RandomFloat(-200, 200);
+		float RandomY = NewRandom.RandomFloat(-200, 200);
+		float4 EffectPos = BossPos;
+
+		NewRandom.SetSeed((int)RandomX);
+		NewRandom.SetSeed((int)RandomY);
+
+		EffectPos.X += RandomX;
+		EffectPos.Y += RandomY;
+
+		Transform.SetLocalPosition({ EffectPos.X, EffectPos.Y });
+	}
 }

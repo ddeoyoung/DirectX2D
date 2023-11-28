@@ -252,5 +252,5 @@ void MrWheezy::CreateDeathEffect()
 {
 	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
 	float4 BossPos = Transform.GetLocalPosition();
-	DeathEffect->Transform.SetLocalPosition(BossPos);
+	DeathEffect->SetPos(BossPos);
 }

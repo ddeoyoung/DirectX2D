@@ -135,7 +135,6 @@ void KingDice::DeathStart()
 	ChangeAnimationState("Death");
 
 	ArmRenderer->Off();
-	//SetDeathPos();
 	Transform.SetWorldPosition({ 630, -645 });
 }
 

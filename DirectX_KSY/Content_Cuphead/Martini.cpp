@@ -196,8 +196,7 @@ void Martini::DeathCheck()
 void Martini::CreateDeathEffect()
 {
 	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
-
 	float4 BossPos = Transform.GetLocalPosition();
 	BossPos += { 0.0f, 200.0f };
-	DeathEffect->Transform.SetLocalPosition(BossPos);
+	DeathEffect->SetPos(BossPos);
 }

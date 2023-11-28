@@ -186,8 +186,7 @@ void Rum::DeathCheck()
 void Rum::CreateDeathEffect()
 {
 	std::shared_ptr<BossExplosion> DeathEffect = GetLevel()->CreateActor<BossExplosion>();
-
 	float4 BossPos = Transform.GetLocalPosition();
 	BossPos += { 30.0f, 150.0f };
-	DeathEffect->Transform.SetLocalPosition(BossPos);
+	DeathEffect->SetPos(BossPos);
 }
