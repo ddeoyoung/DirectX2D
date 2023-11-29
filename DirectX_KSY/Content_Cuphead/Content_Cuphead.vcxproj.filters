@@ -397,6 +397,9 @@
     <ClInclude Include="BaseMonster.h">
       <Filter>Actor\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="TitleMenuButton.h">
+      <Filter>Level\0. Title\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -685,6 +688,9 @@
     </ClCompile>
     <ClCompile Include="BaseMonster.cpp">
       <Filter>Actor\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenuButton.cpp">
+      <Filter>Level\0. Title\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
