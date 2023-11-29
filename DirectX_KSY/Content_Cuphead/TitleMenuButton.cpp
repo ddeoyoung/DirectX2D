@@ -46,6 +46,8 @@ void TitleMenuButton::Start()
 	ExitRenderer->SetSprite("Menu_Exit_Dark.png");
 	ExitRenderer->AutoSpriteSizeOn();
 	ExitRenderer->Transform.SetLocalPosition({ 640, -380 });
+
+	CurButtonType = MenuButtonType::Start;
 }
 
 void TitleMenuButton::Update(float _Delta)
@@ -70,7 +72,7 @@ void TitleMenuButton::SelectButton()
 		ExitRenderer->SetSprite("Menu_Exit.png");
 	}
 
-	if (CurButtonType != MenuButtonType::None && true == GameEngineInput::IsDown(VK_SPACE, this))
+	if (true == GameEngineInput::IsDown(VK_SPACE, this))
 	{
 		switch (CurButtonType)
 		{

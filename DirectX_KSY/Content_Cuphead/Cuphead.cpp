@@ -97,7 +97,7 @@ void Cuphead::Start()
 	PlayerParryCollision->Transform.SetLocalScale({ 50, 50 });
 	PlayerParryCollision->Transform.SetLocalPosition({ 0, 70 });
 
-	ChangeState(CharacterState::Intro);
+	ChangeState(CharacterState::Idle);
 }
 
 void Cuphead::ChangeAnimationState(const std::string& _StateName)

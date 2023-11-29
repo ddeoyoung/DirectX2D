@@ -43,6 +43,11 @@ public:
 		return IsParry;
 	}
 
+	void SetCharacterState(CharacterState _State)
+	{
+		ChangeState(_State);
+	}
+
 protected:
 	void ChangeState(CharacterState _State);
 	void StateUpdate(float _Delta);

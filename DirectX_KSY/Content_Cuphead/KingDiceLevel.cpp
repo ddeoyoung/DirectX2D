@@ -221,6 +221,8 @@ void KingDiceLevel::FightKingDiceStart()
 		ReadyText = CreateActor<FightText>();
 		ReadyText->SetFightText("Ready");
 	}
+
+	CurLevelPlayer->SetCharacterState(CharacterState::Intro);
 }
 
 void KingDiceLevel::FightKingDiceUpdate(float _Delta)

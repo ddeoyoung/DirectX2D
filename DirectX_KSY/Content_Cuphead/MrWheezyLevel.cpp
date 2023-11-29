@@ -59,6 +59,7 @@ void MrWheezyLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Player
 	CurLevelPlayer = CreateActor<Cuphead>();
 	CurLevelPlayer->Transform.SetLocalPosition({ 250, -400 });
+	CurLevelPlayer->SetCharacterState(CharacterState::Intro);
 
 	// Boss
 	Boss = CreateActor<MrWheezy>();

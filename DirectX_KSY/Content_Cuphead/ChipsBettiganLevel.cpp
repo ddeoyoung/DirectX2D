@@ -100,6 +100,7 @@ void ChipsBettiganLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Player
 	CurLevelPlayer = CreateActor<Cuphead>();
 	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+	CurLevelPlayer->SetCharacterState(CharacterState::Intro);
 
 	// Boss
 	Boss = CreateActor<ChipsBettigan>();

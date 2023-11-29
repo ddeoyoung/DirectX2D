@@ -77,6 +77,7 @@ void TipsyTroopLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	// Player
 	CurLevelPlayer = CreateActor<Cuphead>();
 	CurLevelPlayer->Transform.SetLocalPosition({ 250, -550 });
+	CurLevelPlayer->SetCharacterState(CharacterState::Intro);
 
 	// Frontground
 	std::shared_ptr<ContentActor> LeftPlant = CreateActor<ContentActor>();
