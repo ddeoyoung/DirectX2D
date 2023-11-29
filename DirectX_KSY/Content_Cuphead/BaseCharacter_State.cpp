@@ -586,6 +586,13 @@ void BaseCharacter::ParryUpdate(float _Delta)
 			return;
 		}
 	}
+
+	if (true == MainRenderer->IsCurAnimation("Cuphead_Parry")
+		&& true == MainRenderer->IsCurAnimationEnd())
+	{
+		ChangeState(CharacterState::Idle);
+		return;
+	}
 }
 
 void BaseCharacter::IntroStart()
