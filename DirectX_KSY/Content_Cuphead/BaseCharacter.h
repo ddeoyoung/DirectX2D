@@ -43,6 +43,11 @@ public:
 		return IsParry;
 	}
 
+	void SetIsCameraLerp(bool _IsCameraLerp)
+	{
+		IsCameraLerp = _IsCameraLerp;
+	}
+
 protected:
 	void ChangeState(CharacterState _State);
 	void StateUpdate(float _Delta);
@@ -117,6 +122,7 @@ protected:
 	void Gravity(float _Delta);
 	void LerpCamera(float _Delta);
 	void PixelCheck(float _Delta);
+	void DashPixelCheck(float _Delta);
 	GameEngineColor GetPixelColor(float4 _Pos);
 
 	bool IsGround = false;
@@ -152,6 +158,7 @@ private:
 	float HitInterval = 0.0f;
 	float UnScaleDeltaTime = 0.0f;
 	float PauseTimer = 0.0f;
+	bool IsCameraLerp = true;
 
 	float4 GravityForce = float4::ZERO;
 	float4 JumpPower = float4::ZERO;

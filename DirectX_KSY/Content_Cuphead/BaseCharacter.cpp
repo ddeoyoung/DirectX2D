@@ -343,12 +343,14 @@ void BaseCharacter::LerpCamera(float _Delta)
 
 	MovePos.Y = CameraPos.Y;
 
-	if (MovePos.iX() > WindowScale.hX()
-		&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
+	if (true == IsCameraLerp)
 	{
-		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
+		if (MovePos.iX() > WindowScale.hX()
+			&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
+		{
+			GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
+		}
 	}
-
 }
 
 GameEngineColor BaseCharacter::GetPixelColor(float4 _Pos)
@@ -385,6 +387,11 @@ void BaseCharacter::PixelCheck(float _Delta)
 	{
 		Transform.AddLocalPosition(MovePos);
 	}
+}
+
+void BaseCharacter::DashPixelCheck(float _Delta)
+{
+
 }
 
 void BaseCharacter::GroundCheck()

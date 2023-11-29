@@ -420,15 +420,18 @@ void BaseCharacter::DashUpdate(float _Delta)
 
 	// Dash
 	float DashSpeed = 1000.0f;
-	float4 MovePos = 0.0f;
+	float4 MovePos = float4::ZERO;
+	float4 CheckPos = float4::ZERO;
 
 	switch (Dir)
 	{
 	case ActorDir::Left:
 		MovePos = float4::LEFT * _Delta * DashSpeed;
+		CheckPos = LEFTCHECKPOS;
 		break;
 	case ActorDir::Right:
 		MovePos = float4::RIGHT * _Delta * DashSpeed;
+		CheckPos = RIGHTCHECKPOS;
 		break;
 	default:
 		break;
@@ -439,7 +442,12 @@ void BaseCharacter::DashUpdate(float _Delta)
 		MovePos.Y -= _Delta * GravityForce.Y;
 	}
 
-	Transform.AddLocalPosition(MovePos);
+	GameEngineColor Color = GetPixelColor(CheckPos);
+
+	if (GameEngineColor::RED != Color)
+	{
+		Transform.AddLocalPosition(MovePos);
+	}
 
 	// Dash Effect
 	if (DashCount == 1)
@@ -578,27 +586,6 @@ void BaseCharacter::ParryUpdate(float _Delta)
 			return;
 		}
 	}
-
-	//// Idle
-	//if (true == IsGround)
-	//{
-	//	IsJump = false;
-	//	IsParry = false;
-	//	CreateJumpDust();
-	//	ChangeState(CharacterState::Idle);
-	//	return;
-	//}
-
-	//// Hit
-	//HitInterval -= _Delta;
-	//if (HitInterval < 0.0f)
-	//{
-	//	if (true == CollisionCheck())
-	//	{
-	//		ChangeState(CharacterState::Hit);
-	//		return;
-	//	}
-	//}
 }
 
 void BaseCharacter::IntroStart()

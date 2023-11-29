@@ -17,7 +17,7 @@ void Target::Start()
 	ContentActor::Start();
 
 	// Create Sprite Folder
-	if (nullptr == GameEngineSprite::Find("Tutorial_Target"))
+	if (nullptr == GameEngineSprite::Find("tutorial_pyramid_topper"))
 	{
 		GameEngineDirectory Dir;
 		Dir.MoveParentToExistsChild("GameEngineResources");
