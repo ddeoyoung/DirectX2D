@@ -101,6 +101,7 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		OverWorldPlayer = CreateActor<OverWorldCharacter>();
 		OverWorldPlayer->Transform.SetLocalPosition({ 1025, -1500 });
 	}
+	OverWorldPlayer->SetIsCameraLerp(true);
 
 	// Frontground
 	std::shared_ptr<ContentActor> CaveFar = CreateActor<ContentActor>();
@@ -134,40 +135,19 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void InkwellHellLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
-
-	if (true == PortalToBossStage->GetIsPortalOn())
-	{
-		FadeOut->On();
-		float4 PlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
-		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-		float4 FadePos = { PlayerPos.X - WindowScale.ihX(), PlayerPos.Y + WindowScale.ihY() };
-		FadeOut->Transform.SetLocalPosition(FadePos);
-
-		NextLevel = PortalToBossStage;
-		NextLevel->SetPortalValue(PortalValue::BossStage);
-	}
-
-	if (true == PortalToInkwell->GetIsPortalOn())
-	{
-		FadeOut->On();
-		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
-		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
-		FadeOut->Transform.SetLocalPosition(FadePos);
-
-		NextLevel = PortalToInkwell;
-		NextLevel->SetPortalValue(PortalValue::Inkwell_Isle);
-	}
-
-	if (true == FadeOut->IsCurAnimationEnd())
-	{
-		NextLevel->LevelChange();
-	}
+	CheckPortal();
+	CheckLevelChange();
 }
 
 void InkwellHellLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
+
+	if (nullptr != OverWorldPlayer)
+	{
+		OverWorldPlayer->Death();
+		OverWorldPlayer = nullptr;
+	}
 
 	if (nullptr != CurLevelBackground)
 	{
@@ -188,6 +168,46 @@ void InkwellHellLevel::LevelEnd(GameEngineLevel* _NextLevel)
 
 	if (nullptr != FadeOut)
 	{
+		FadeOut->Death();
 		FadeOut = nullptr;
+	}
+}
+
+void InkwellHellLevel::CheckPortal()
+{
+	// Boss Stage
+	if (true == PortalToBossStage->GetIsPortalOn())
+	{
+		OverWorldPlayer->SetIsCameraLerp(false);
+		FadeOut->On();
+		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
+		FadeOut->Transform.SetLocalPosition(FadePos);
+
+		NextLevel = PortalToBossStage;
+		NextLevel->SetPortalValue(PortalValue::BossStage);
+	}
+
+	// Inkwell Island (Overworld)
+	if (true == PortalToInkwell->GetIsPortalOn())
+	{
+		OverWorldPlayer->SetIsCameraLerp(false);
+		FadeOut->On();
+		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
+		FadeOut->Transform.SetLocalPosition(FadePos);
+
+		NextLevel = PortalToInkwell;
+		NextLevel->SetPortalValue(PortalValue::Inkwell_Isle);
+	}
+}
+
+void InkwellHellLevel::CheckLevelChange()
+{
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		NextLevel->LevelChange();
 	}
 }

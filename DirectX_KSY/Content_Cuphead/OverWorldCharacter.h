@@ -35,6 +35,11 @@ public:
 	OverWorldCharacter& operator=(const OverWorldCharacter& _Other) = delete;
 	OverWorldCharacter& operator=(OverWorldCharacter&& _Other) noexcept = delete;
 
+	void SetIsCameraLerp(bool _IsCameraLerp)
+	{
+		IsCameraLerp = _IsCameraLerp;
+	}
+
 protected:
 	void ChangeState(OverWorldCharacterState _State);
 	void StateUpdate(float _Delta);
@@ -70,6 +75,6 @@ protected:
 	GameEngineColor GetPixelColor(float4 _Pos);
 
 private:
-
+	bool IsCameraLerp = true;
 };
 

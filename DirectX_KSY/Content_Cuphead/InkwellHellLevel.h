@@ -22,6 +22,9 @@ protected:
 	void LevelStart(GameEngineLevel* _PrevLevel) override;
 	void LevelEnd(GameEngineLevel* _NextLevel) override;
 
+	void CheckPortal();
+	void CheckLevelChange();
+
 private:
 	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
 	std::shared_ptr<class Portal> PortalToInkwell = nullptr;

@@ -343,13 +343,10 @@ void BaseCharacter::LerpCamera(float _Delta)
 
 	MovePos.Y = CameraPos.Y;
 
-	if (true == IsCameraLerp)
+	if (MovePos.iX() > WindowScale.hX()
+		&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
 	{
-		if (MovePos.iX() > WindowScale.hX()
-			&& MovePos.iX() < TextureScale.iX() - WindowScale.hX())
-		{
-			GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
-		}
+		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
 	}
 }
 

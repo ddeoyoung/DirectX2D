@@ -63,7 +63,7 @@ void FadeAnimation::EndCheck()
 {
 	if (true == MainRenderer->IsCurAnimationEnd())
 	{
-		Death();
+		//Death();
 	}
 }
 

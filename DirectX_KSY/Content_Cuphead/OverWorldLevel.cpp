@@ -99,6 +99,8 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		OverWorldPlayer = CreateActor<OverWorldCharacter>();
 		OverWorldPlayer->Transform.SetLocalPosition({ 860, -3400 });
 	}
+	OverWorldPlayer->SetIsCameraLerp(true);
+
 	if (LastPlayerPos != float4::ZERO)
 	{
 		OverWorldPlayer->Transform.SetLocalPosition(LastPlayerPos);
@@ -124,60 +126,13 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 void OverWorldLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
-
-	if (true == FlagToThree->GetIsPortalOn())
-	{
-		OverWorldPlayer->Transform.SetLocalPosition({ 9040, -1200 });
-	}
-
-	if (true == FlagToOne->GetIsPortalOn())
-	{
-		OverWorldPlayer->Transform.SetLocalPosition({ 2200, -3450 });
-	}
-
-	if (true == PortalToHell->GetIsPortalOn()
-		|| true == TutorialHouse->GetIsPortalOn())
-	{
-		FadeOut->On();
-		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
-		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
-		FadeOut->Transform.SetLocalPosition(FadePos);
-		LastPlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
-	}
-
-	if (true == FadeOut->IsCurAnimationEnd())
-	{
-		if (true == PortalToHell->GetIsCollision())
-		{
-			IsHell = true;
-		}
-		
-		else if (true == TutorialHouse->GetIsCollision())
-		{
-			IsHouse = true;
-		}
-	}
-
-	if (true == IsHell)
-	{
-		IsHell = false;
-		PortalToHell->SetIsPortalOn(false);
-		GameEngineCore::ChangeLevel("InkwellHellLevel");
-	}
-
-	if (true == IsHouse)
-	{
-		IsHouse = false;
-		TutorialHouse->SetIsPortalOn(false);
-		GameEngineCore::ChangeLevel("ElderKettleLevel");
-	}
+	CheckPortal();
+	CheckLevelChange();
 }
 
 void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 {
 	ContentLevel::LevelEnd(_NextLevel);
-
 
 	// Background
 	if (nullptr != CurLevelBackground)
@@ -211,8 +166,69 @@ void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 		TutorialHouse = nullptr;
 	}
 
+	// Fade Out
 	if (nullptr != FadeOut)
 	{
+		FadeOut->Death();
 		FadeOut = nullptr;
+	}
+}
+
+void OverWorldLevel::CheckPortal()
+{
+	// Flag
+	if (true == FlagToThree->GetIsPortalOn())
+	{
+		OverWorldPlayer->Transform.SetLocalPosition({ 9040, -1200 });
+	}
+
+	if (true == FlagToOne->GetIsPortalOn())
+	{
+		OverWorldPlayer->Transform.SetLocalPosition({ 2200, -3450 });
+	}
+
+	// Inkwell Hell
+	if (true == PortalToHell->GetIsPortalOn()
+		|| true == TutorialHouse->GetIsPortalOn())
+	{
+		OverWorldPlayer->SetIsCameraLerp(false);
+		FadeOut->On();
+		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
+		FadeOut->Transform.SetLocalPosition(FadePos);
+		LastPlayerPos = OverWorldPlayer->Transform.GetLocalPosition();
+	}
+}
+
+void OverWorldLevel::CheckLevelChange()
+{
+	// Check FadeOut End
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		if (true == PortalToHell->GetIsCollision())
+		{
+			IsHell = true;
+		}
+
+		else if (true == TutorialHouse->GetIsCollision())
+		{
+			IsHouse = true;
+		}
+	}
+
+	// Level Change
+	if (true == IsHell)
+	{
+		IsHell = false;
+		PortalToHell->SetIsPortalOn(false);
+		GameEngineCore::ChangeLevel("InkwellHellLevel");
+	}
+
+	if (true == IsHouse)
+	{
+		IsHouse = false;
+		TutorialHouse->SetIsPortalOn(false);
+		GameEngineCore::ChangeLevel("ElderKettleLevel");
 	}
 }

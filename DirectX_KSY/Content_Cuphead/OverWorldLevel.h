@@ -34,5 +34,8 @@ private:
 	bool IsHouse = false;
 
 	float4 LastPlayerPos = float4::ZERO;
+
+	void CheckPortal();
+	void CheckLevelChange();
 };
 

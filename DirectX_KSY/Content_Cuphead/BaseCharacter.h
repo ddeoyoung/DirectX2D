@@ -43,11 +43,6 @@ public:
 		return IsParry;
 	}
 
-	void SetIsCameraLerp(bool _IsCameraLerp)
-	{
-		IsCameraLerp = _IsCameraLerp;
-	}
-
 protected:
 	void ChangeState(CharacterState _State);
 	void StateUpdate(float _Delta);
@@ -158,7 +153,6 @@ private:
 	float HitInterval = 0.0f;
 	float UnScaleDeltaTime = 0.0f;
 	float PauseTimer = 0.0f;
-	bool IsCameraLerp = true;
 
 	float4 GravityForce = float4::ZERO;
 	float4 JumpPower = float4::ZERO;

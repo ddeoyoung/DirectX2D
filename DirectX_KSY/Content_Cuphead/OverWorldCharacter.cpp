@@ -249,19 +249,21 @@ void OverWorldCharacter::LerpCamera(float _Delta)
 	float4 PlayerPos = Transform.GetWorldPosition(); // End
 	float4 MovePos = float4::LerpClamp(CameraPos, PlayerPos, CameraSpeed * _Delta);
 
-
-	std::string LevelName = GetLevel()->GetName();
-	if (LevelName == "InkwellHellLevel")
+	if (true == IsCameraLerp)
 	{
-		if (MovePos.iX() > 1030 && MovePos.iX() < 2200)
+		std::string LevelName = GetLevel()->GetName();
+		if (LevelName == "InkwellHellLevel")
+		{
+			if (MovePos.iX() > 1030 && MovePos.iX() < 2200)
+			{
+				GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
+			}
+		}
+
+		else
 		{
 			GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
 		}
-	}
-
-	else
-	{
-		GetLevel()->GetMainCamera()->Transform.SetWorldPosition(MovePos);
 	}
 }
 
