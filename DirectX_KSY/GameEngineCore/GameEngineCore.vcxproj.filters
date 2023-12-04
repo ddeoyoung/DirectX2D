@@ -161,6 +161,15 @@
     <ClCompile Include="GameEngineStructuredBuffer.cpp">
       <Filter>Resources\Buffer</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineParticleRenderer.cpp">
+      <Filter>Resources\Rendering\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineComputeUnit.cpp">
+      <Filter>Resources\Rendering\Compute</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineComputeShader.cpp">
+      <Filter>Resources\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -335,6 +344,15 @@
     <ClInclude Include="GameEngineStructuredBuffer.h">
       <Filter>Resources\Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineParticleRenderer.h">
+      <Filter>Resources\Rendering\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineComputeUnit.h">
+      <Filter>Resources\Rendering\Compute</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineComputeShader.h">
+      <Filter>Resources\Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -420,6 +438,9 @@
     </Filter>
     <Filter Include="Resources\Rendering\PostEffect">
       <UniqueIdentifier>{ba277102-6e7f-40a0-9da0-c5ae2207566d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Rendering\Compute">
+      <UniqueIdentifier>{bf659d57-bc8f-431b-bb07-7c1003e69c61}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

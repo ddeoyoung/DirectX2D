@@ -197,6 +197,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameEngineComponent.cpp" />
+    <ClCompile Include="GameEngineComputeShader.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GameEngineComputeUnit.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GameEngineConstantBuffer.cpp">
       <SubType>
       </SubType>
@@ -254,6 +262,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameEngineObject.cpp" />
+    <ClCompile Include="GameEngineParticleRenderer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GameEnginePixelShader.cpp">
       <SubType>
       </SubType>
@@ -367,6 +379,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GameEngineComponent.h" />
+    <ClInclude Include="GameEngineComputeShader.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GameEngineComputeUnit.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GameEngineConstantBuffer.h">
       <SubType>
       </SubType>
@@ -423,6 +443,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GameEngineObject.h" />
+    <ClInclude Include="GameEngineParticleRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GameEnginePixelShader.h">
       <SubType>
       </SubType>

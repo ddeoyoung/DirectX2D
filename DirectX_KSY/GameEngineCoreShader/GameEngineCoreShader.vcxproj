@@ -34,6 +34,9 @@
     </FxCompile>
     <FxCompile Include="FadePostEffect.fx" />
     <FxCompile Include="Function.fx" />
+    <FxCompile Include="ParticleHeader.fx" />
+    <FxCompile Include="ParticleRender.fx" />
+    <FxCompile Include="ParticleUpdate.fx" />
     <FxCompile Include="RenderBase.fx" />
     <FxCompile Include="TargetMerge.fx" />
     <FxCompile Include="TextureShader.fx">
