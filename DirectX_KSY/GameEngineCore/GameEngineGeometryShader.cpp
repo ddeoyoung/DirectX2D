@@ -64,8 +64,7 @@ void GameEngineGeometryShader::ShaderLoad(
 		return;
 	}
 
-
-	Result = GameEngineCore::GetDevice()->CreatePixelShader(
+	Result = GameEngineCore::GetDevice()->CreateGeometryShader(
 		BinaryCode->GetBufferPointer(),
 		BinaryCode->GetBufferSize(),
 		nullptr,
@@ -73,7 +72,7 @@ void GameEngineGeometryShader::ShaderLoad(
 
 	if (S_OK != Result)
 	{
-		MsgBoxAssert("버텍스 쉐이더 생성에 실패했습니다.");
+		MsgBoxAssert("지오메트리 쉐이더 생성에 실패했습니다.");
 	}
 
 	ShaderResCheck();
@@ -81,5 +80,10 @@ void GameEngineGeometryShader::ShaderLoad(
 
 void GameEngineGeometryShader::Setting()
 {
-	GameEngineCore::GetContext()->PSSetShader(ShaderPtr, nullptr, 0);
+	GameEngineCore::GetContext()->GSSetShader(ShaderPtr, nullptr, 0);
+}
+
+void GameEngineGeometryShader::Reset()
+{
+	GameEngineCore::GetContext()->GSSetShader(nullptr, nullptr, 0);
 }

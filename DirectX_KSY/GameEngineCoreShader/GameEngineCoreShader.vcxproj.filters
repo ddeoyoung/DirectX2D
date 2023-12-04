@@ -35,6 +35,9 @@
     <FxCompile Include="ParticleRender.fx">
       <Filter>Particle</Filter>
     </FxCompile>
+    <FxCompile Include="Random.fx">
+      <Filter>Header</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

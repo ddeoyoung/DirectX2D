@@ -115,7 +115,6 @@ bool GameEngineShader::AutoCompile(GameEngineFile& _File)
 			std::string_view EntryName = ShaderCode.substr(FirstIndex + 1, EntryIndex - FirstIndex + 2);
 
 			GameEngineGeometryShader::Load(_File.GetStringPath(), EntryName);
-
 		}
 	}
 
