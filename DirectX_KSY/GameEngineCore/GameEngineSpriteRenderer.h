@@ -119,6 +119,11 @@ public:
 		AutoScaleRatio.Y = _Ratio;
 	}
 
+	float4 GetAutoScaleRatio()
+	{
+		return AutoScaleRatio;
+	}
+
 	inline void SetAutoScaleRatio(float4 _Ratio)
 	{
 		AutoScaleRatio = _Ratio;

@@ -400,6 +400,12 @@
     <ClInclude Include="TitleMenuButton.h">
       <Filter>Level\0. Title\Object</Filter>
     </ClInclude>
+    <ClInclude Include="TitleCard_Fader.h">
+      <Filter>Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleCard_KingDice.h">
+      <Filter>Actor\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -691,6 +697,12 @@
     </ClCompile>
     <ClCompile Include="TitleMenuButton.cpp">
       <Filter>Level\0. Title\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleCard_Fader.cpp">
+      <Filter>Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleCard_KingDice.cpp">
+      <Filter>Actor\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -24,6 +24,8 @@ protected:
 
 	void CheckPortal();
 	void CheckLevelChange();
+	void ShowTitleCard();
+	void CheckBossStageEnter();
 
 private:
 	std::shared_ptr<class OverWorldCharacter> OverWorldPlayer = nullptr;
@@ -31,5 +33,9 @@ private:
 	std::shared_ptr<class Portal> PortalToBossStage = nullptr;
 	std::shared_ptr<class Portal> NextLevel = nullptr;
 	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
+	std::shared_ptr<class TitleCard_Fader> Fader = nullptr;
+	std::shared_ptr<class TitleCard_KingDice> TitleCard = nullptr;
+
+	bool IsTitleCardOn = false;
 };
 

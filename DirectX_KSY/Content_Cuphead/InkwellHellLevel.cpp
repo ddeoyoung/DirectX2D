@@ -4,6 +4,8 @@
 #include "OverWorldLevel.h"
 #include "Portal.h"
 #include "OverWorldCharacter.h"
+#include "TitleCard_Fader.h"
+#include "TitleCard_KingDice.h"
 
 InkwellHellLevel::InkwellHellLevel()
 {
@@ -127,6 +129,19 @@ void InkwellHellLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		FadeOut->Off();
 	}
 
+	// Title Card - Fader
+	if (nullptr == Fader)
+	{
+		Fader = CreateActor<TitleCard_Fader>();
+		Fader->Off();
+	}
+
+	// Title Card - King Dice
+	if (nullptr == TitleCard)
+	{
+		TitleCard = CreateActor<TitleCard_KingDice>();
+		TitleCard->Off();
+	}
 
 	// Initialize
 	NextLevel = nullptr;
@@ -136,6 +151,7 @@ void InkwellHellLevel::Update(float _Delta)
 {
 	ContentLevel::Update(_Delta);
 	CheckPortal();
+	CheckBossStageEnter();
 	CheckLevelChange();
 }
 
@@ -171,6 +187,20 @@ void InkwellHellLevel::LevelEnd(GameEngineLevel* _NextLevel)
 		FadeOut->Death();
 		FadeOut = nullptr;
 	}
+
+	// Title Card - Fader
+	if (nullptr != Fader)
+	{
+		Fader->Death();
+		Fader = nullptr;
+	}
+
+	// Title Card - King Dice
+	if (nullptr != TitleCard)
+	{
+		TitleCard->Death();
+		TitleCard = nullptr;
+	}
 }
 
 void InkwellHellLevel::CheckPortal()
@@ -179,14 +209,8 @@ void InkwellHellLevel::CheckPortal()
 	if (true == PortalToBossStage->GetIsPortalOn())
 	{
 		OverWorldPlayer->SetIsCameraLerp(false);
-		FadeOut->On();
-		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
-		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
-		float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
-		FadeOut->Transform.SetLocalPosition(FadePos);
 
-		NextLevel = PortalToBossStage;
-		NextLevel->SetPortalValue(PortalValue::BossStage);
+		ShowTitleCard();
 	}
 
 	// Inkwell Island (Overworld)
@@ -209,5 +233,44 @@ void InkwellHellLevel::CheckLevelChange()
 	if (true == FadeOut->IsCurAnimationEnd())
 	{
 		NextLevel->LevelChange();
+	}
+}
+
+void InkwellHellLevel::ShowTitleCard()
+{
+	if (false == IsTitleCardOn)
+	{
+		IsTitleCardOn = true;
+
+		float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+		float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+		float4 FaderPos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
+
+		Fader->On();
+		Fader->Transform.SetLocalPosition(FaderPos);
+
+		TitleCard->On();
+		TitleCard->Transform.SetLocalPosition(FaderPos);
+	}
+}
+
+void InkwellHellLevel::CheckBossStageEnter()
+{
+	if (true == IsTitleCardOn)
+	{
+		if (true == GameEngineInput::IsDown(VK_SPACE, this) 
+			|| true == GameEngineInput::IsDown('Z', this) 
+			|| true == GameEngineInput::IsDown(VK_RETURN, this))
+		{
+			float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+			float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+			float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
+
+			FadeOut->On();
+			FadeOut->Transform.SetLocalPosition(FadePos);
+
+			NextLevel = PortalToBossStage;
+			NextLevel->SetPortalValue(PortalValue::BossStage);
+		}
 	}
 }
