@@ -5,6 +5,7 @@
 #include "OverWorldFlag.h"
 #include "FadeAnimation.h"
 #include "OverWorldHouse.h"
+#include "EnterMessage.h"
 
 OverWorldLevel::OverWorldLevel()
 {
@@ -93,6 +94,22 @@ void OverWorldLevel::LevelStart(GameEngineLevel* _PrevLevel)
 		TutorialHouse->SetPortalValue(PortalValue::ElderKettleHouse);
 	}
 
+	// Enter Message
+	if (nullptr == EnterBubbleToThree)
+	{
+		EnterBubbleToThree = CreateActor<EnterMessage>();
+		EnterBubbleToThree->SetBubbleCollisionPos({0, -200});
+		EnterBubbleToThree->Transform.SetLocalPosition({ 2200, -3350 });
+
+	}
+
+	if (nullptr == EnterBubbleToOne)
+	{
+		EnterBubbleToOne = CreateActor<EnterMessage>();
+		EnterBubbleToOne->SetBubbleCollisionPos({ 0, -200 });
+		EnterBubbleToOne->Transform.SetLocalPosition({ 9000, -1050 });
+	}
+
 	// Player
 	if (nullptr == OverWorldPlayer)
 	{
@@ -128,6 +145,9 @@ void OverWorldLevel::Update(float _Delta)
 	ContentLevel::Update(_Delta);
 	CheckPortal();
 	CheckLevelChange();
+
+	EnterBubbleToThree->InteractionCheck();
+	EnterBubbleToOne->InteractionCheck();
 }
 
 void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
@@ -164,6 +184,17 @@ void OverWorldLevel::LevelEnd(GameEngineLevel* _NextLevel)
 	if (nullptr != TutorialHouse)
 	{
 		TutorialHouse = nullptr;
+	}
+
+	// Enter Message
+	if (nullptr != EnterBubbleToThree)
+	{
+		EnterBubbleToThree = nullptr;
+	}
+
+	if (nullptr != EnterBubbleToOne)
+	{
+		EnterBubbleToOne = nullptr;
 	}
 
 	// Fade Out

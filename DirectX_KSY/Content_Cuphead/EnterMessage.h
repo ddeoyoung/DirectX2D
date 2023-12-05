@@ -15,6 +15,10 @@ public:
 	EnterMessage& operator=(EnterMessage&& _Other) noexcept = delete;
 
 	bool InteractionCheck();
+	void SetBubbleCollisionPos(float4 _Pos)
+	{
+		BubbleCollision->Transform.SetLocalPosition(_Pos);
+	}
 
 protected:
 	void Start() override;
