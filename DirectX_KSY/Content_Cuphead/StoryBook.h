@@ -24,8 +24,12 @@ public:
 	StoryBook& operator=(const StoryBook& _Other) = delete;
 	StoryBook& operator=(StoryBook&& _Other) noexcept = delete;
 
-
 	void SetStoryBook(StoryType _StoryType);
+
+	bool GetIsStoryEnd()
+	{
+		return IsStoryEnd;
+	}
 
 protected:
 	void Start() override;
@@ -34,7 +38,10 @@ protected:
 private:
 	int PageNumber = 1;
 	float PageDur = 0.0f;
+	bool IsStoryEnd = false;
 
 	std::shared_ptr<class GameEngineSpriteRenderer> Renderer;
+
+	void CheckStoryEnd();
 };
 

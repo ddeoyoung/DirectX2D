@@ -148,6 +148,8 @@ void StoryBook::Start()
 void StoryBook::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+
+	CheckStoryEnd();
 }
 
 void StoryBook::SetStoryBook(StoryType _StoryType)
@@ -164,5 +166,19 @@ void StoryBook::SetStoryBook(StoryType _StoryType)
 		break;
 	default:
 		break;
+	}
+}
+
+void StoryBook::CheckStoryEnd()
+{
+	if (true == Renderer->IsCurAnimation("TheEnd")
+		&& true == Renderer->IsCurAnimationEnd())
+	{
+		IsStoryEnd = true;
+	}
+
+	else
+	{
+		IsStoryEnd = false;
 	}
 }

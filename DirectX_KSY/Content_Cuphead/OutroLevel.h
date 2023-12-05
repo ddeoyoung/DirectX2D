@@ -24,5 +24,8 @@ protected:
 
 private:
 	std::shared_ptr<class StoryBook> Storybook = nullptr;
+	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
+
+	float FadeOutTime = 0.0f;
 };
 
