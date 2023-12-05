@@ -42,7 +42,7 @@ void ContentsCore::Start()
 	GameEngineCore::CreateLevel<OutroLevel>("OutroLevel");
 	GameEngineCore::CreateLevel<LoadingLevel>("LoadingLevel");
 
-	GameEngineCore::ChangeLevel("TitleLevel");
+	GameEngineCore::ChangeLevel("OutroLevel");
 }
 
 void ContentsCore::Update(float _Delta)

@@ -26,6 +26,7 @@ void IntroLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	ContentLevel::LevelStart(_PrevLevel);
 
 	Storybook = CreateActor<StoryBook>();
+	Storybook->SetStoryBook(StoryType::Intro);
 }
 
 void IntroLevel::LevelEnd(GameEngineLevel* _NextLevel)

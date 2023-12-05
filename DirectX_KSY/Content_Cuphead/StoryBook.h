@@ -3,6 +3,13 @@
 
 #define PAGEDUR 0.03f
 
+enum class StoryType
+{
+	None,
+	Intro,
+	Outro,
+};
+
 // Ό³Έν :
 class StoryBook : public ContentActor
 {
@@ -16,6 +23,9 @@ public:
 	StoryBook(StoryBook&& _Other) noexcept = delete;
 	StoryBook& operator=(const StoryBook& _Other) = delete;
 	StoryBook& operator=(StoryBook&& _Other) noexcept = delete;
+
+
+	void SetStoryBook(StoryType _StoryType);
 
 protected:
 	void Start() override;

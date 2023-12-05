@@ -97,13 +97,48 @@ void StoryBook::Start()
 			GameEngineCore::ChangeLevel("ElderKettleLevel");
 		});
 
-	// Outro
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////// Outro ///////////////////////////////////////////
+
 	Renderer->CreateAnimation("Page12", "Page12", PAGEDUR, 1, 23, false);
+	Renderer->SetEndEvent("Page12", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Page13");
+		});
+
 	Renderer->CreateAnimation("Page13", "Page13", PAGEDUR, 1, 23, false);
+	Renderer->SetEndEvent("Page13", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Page14");
+		});
+
 	Renderer->CreateAnimation("Page14", "Page14", PAGEDUR, 1, 23, false);
+	Renderer->SetEndEvent("Page14", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Page15");
+		});
+
 	Renderer->CreateAnimation("Page15", "Page15", PAGEDUR, 1, 23, false);
+	Renderer->SetEndEvent("Page15", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Page16");
+		});
+
 	Renderer->CreateAnimation("Page16", "Page16", PAGEDUR, 1, 23, false);
+	Renderer->SetEndEvent("Page16", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("Page17");
+		});
+
 	Renderer->CreateAnimation("Page17", "Page17", PAGEDUR, 1, 27, false);
+	Renderer->SetEndEvent("Page17", [](GameEngineSpriteRenderer* _Renderer)
+		{
+			_Renderer->ChangeAnimation("TheEnd");
+		});
+
+	Renderer->CreateAnimation("TheEnd", "TheEnd", PAGEDUR, 1, 106, false);
 
 	Renderer->ChangeAnimation("Page0");
 	Renderer->AutoSpriteSizeOn();
@@ -113,4 +148,21 @@ void StoryBook::Start()
 void StoryBook::Update(float _Delta)
 {
 	ContentActor::Update(_Delta);
+}
+
+void StoryBook::SetStoryBook(StoryType _StoryType)
+{
+	switch (_StoryType)
+	{
+	case StoryType::None:
+		break;
+	case StoryType::Intro:
+		Renderer->ChangeAnimation("Page0");
+		break;
+	case StoryType::Outro:
+		Renderer->ChangeAnimation("Page12");
+		break;
+	default:
+		break;
+	}
 }

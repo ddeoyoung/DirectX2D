@@ -45,12 +45,6 @@ void KingDiceLevel::Update(float _Delta)
 
 	CheckStageClear();
 	CreateFadeOut(_Delta);
-
-	//if (true == FadeOut->IsCurAnimationEnd())
-	//{
-	//	// Level Change - King Dice
-	//	GameEngineCore::ChangeLevel("KingDiceLevel");
-	//}
 }
 
 void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -71,7 +65,7 @@ void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		Boss = CreateActor<KingDice>();
 		Boss->On();
-		Boss->SetState(KingDiceState::IntroHand);
+		Boss->SetState(KingDiceState::Attack);
 	}
 
 	// Player

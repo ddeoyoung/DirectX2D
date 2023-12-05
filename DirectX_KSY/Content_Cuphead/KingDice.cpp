@@ -183,7 +183,7 @@ void KingDice::Start()
 	// Setting
 	CreateCardPattern();
 	ChangeState(KingDiceState::IntroHand);
-	HP = 60;
+	HP = 10;
 }
 
 void KingDice::Update(float _Delta)
