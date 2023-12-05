@@ -45,6 +45,13 @@ void KingDiceLevel::Update(float _Delta)
 
 	CheckStageClear();
 	CreateFadeOut(_Delta);
+
+	
+	// Ending (Outro Level)
+	if (true == FadeOut->IsCurAnimationEnd())
+	{
+		GameEngineCore::ChangeLevel("OutroLevel");
+	}
 }
 
 void KingDiceLevel::LevelStart(GameEngineLevel* _PrevLevel)
@@ -268,7 +275,7 @@ void KingDiceLevel::CreateFadeOut(float _Delta)
 		StageClearTime += _Delta;
 		if (StageClearTime > 5.0f)
 		{
-			//FadeOut->On();
+			FadeOut->On();
 		}
 	}
 }
