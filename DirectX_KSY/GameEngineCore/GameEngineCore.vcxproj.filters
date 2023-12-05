@@ -170,6 +170,15 @@
     <ClCompile Include="GameEngineComputeShader.cpp">
       <Filter>Resources\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngineFBX.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineFBXAnimation.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineFBXMesh.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineCore.h" />
@@ -352,6 +361,15 @@
     </ClInclude>
     <ClInclude Include="GameEngineComputeShader.h">
       <Filter>Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineFBX.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineFBXAnimation.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineFBXMesh.h">
+      <Filter>Resources\Mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
