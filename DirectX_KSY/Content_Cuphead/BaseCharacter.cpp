@@ -27,9 +27,9 @@ void BaseCharacter::Update(float _Delta)
 
 	StateUpdate(_Delta);
 	DirCheck();
-	//Gravity(_Delta);
 	LerpCamera(_Delta);
 	AimCheck();
+	HeightCheck();
 }
 
 void BaseCharacter::LevelStart(GameEngineLevel* _PrevLevel)
@@ -386,11 +386,6 @@ void BaseCharacter::PixelCheck(float _Delta)
 	}
 }
 
-void BaseCharacter::DashPixelCheck(float _Delta)
-{
-
-}
-
 void BaseCharacter::GroundCheck()
 {
 	float4 CheckPos = BOTTOMCHECKPOS;
@@ -427,5 +422,14 @@ void BaseCharacter::ParryCollisionCheck()
 	else
 	{
 		IsParry = false;
+	}
+}
+
+void BaseCharacter::HeightCheck()
+{
+	float4 CurPlayerPos = Transform.GetWorldPosition();
+	if (CurPlayerPos.Y > -100.0f)
+	{
+		Transform.SetWorldPosition({ CurPlayerPos.X , -100.0f });
 	}
 }

@@ -117,6 +117,7 @@ void TutorialLevel::LevelStart(GameEngineLevel* _PrevLevel)
 	{
 		FrontLayer = CreateActor<ContentBackground>();
 		FrontLayer->BackgroundInit("tutorial_room_front_layer_0001.png");
+		FrontLayer->SetOrder(RenderOrder::Frontground);
 	}
 
 	// Player

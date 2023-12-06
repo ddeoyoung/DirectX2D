@@ -122,7 +122,7 @@ protected:
 	void Gravity(float _Delta);
 	void LerpCamera(float _Delta);
 	void PixelCheck(float _Delta);
-	void DashPixelCheck(float _Delta);
+	void HeightCheck();
 	GameEngineColor GetPixelColor(float4 _Pos);
 
 	bool IsGround = false;
