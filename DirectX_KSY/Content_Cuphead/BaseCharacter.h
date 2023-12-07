@@ -129,6 +129,7 @@ protected:
 	void PixelCheck(float _Delta);
 	void HeightCheck();
 	GameEngineColor GetPixelColor(float4 _Pos);
+	void CreateBullet();
 
 	bool IsGround = false;
 	bool IsRun = false;

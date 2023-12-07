@@ -436,3 +436,10 @@ void BaseCharacter::HeightCheck()
 		Transform.SetWorldPosition({ CurPlayerPos.X , -100.0f });
 	}
 }
+
+void BaseCharacter::CreateBullet()
+{
+	std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
+	float4 PlayerPos = Transform.GetWorldPosition();
+	Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
+}

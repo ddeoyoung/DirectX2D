@@ -35,7 +35,7 @@ void BaseCharacter::IdleUpdate(float _Delta)
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown('X', this))
+	if (true == GameEngineInput::IsPress('X', this))
 	{
 		ChangeState(CharacterState::Shoot);
 		return;
@@ -158,10 +158,7 @@ void BaseCharacter::ShootStart()
 {
 	ChangeAnimationState("Shoot");
 
-	std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
-	float4 PlayerPos = Transform.GetWorldPosition();
-	Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
-
+	CreateBullet();
 	ShootInterval = 0.0f;
 }
 
@@ -179,10 +176,7 @@ void BaseCharacter::ShootUpdate(float _Delta)
 
 	if (true == GameEngineInput::IsPress('X', this) && ShootInterval >= SHOOT_INTERVAL)
 	{
-		std::shared_ptr<Peashot> Bullet = GetLevel()->CreateActor<Peashot>();
-		float4 PlayerPos = Transform.GetWorldPosition();
-		Bullet->SetAttackDirAndPos(AttDir, PlayerPos);
-
+		CreateBullet();
 		ShootInterval = 0.0f;
 	}
 	ShootInterval += _Delta;
@@ -191,6 +185,13 @@ void BaseCharacter::ShootUpdate(float _Delta)
 	if (true == IsRunShoot)
 	{
 		ChangeState(CharacterState::RunShoot);
+		return;
+	}
+
+	// Jump
+	if (true == GameEngineInput::IsDown('Z', this))
+	{
+		ChangeState(CharacterState::Jump);
 		return;
 	}
 
@@ -470,6 +471,7 @@ void BaseCharacter::JumpStart()
 	IsJump = true;
 	IsParry = false;
 	GravityForce = 0.0f;
+	ShootInterval = 0.0f;
 
 	if (false == IsParry)
 	{
@@ -490,7 +492,7 @@ void BaseCharacter::JumpUpdate(float _Delta)
 	Gravity(_Delta);
 	PixelCheck(_Delta);
 	GroundCheck();
-
+	
 	// Change State
 	if (true == IsGround)
 	{
@@ -499,6 +501,14 @@ void BaseCharacter::JumpUpdate(float _Delta)
 		CreateJumpDust();
 		ChangeState(CharacterState::Idle);
 		return;
+	}
+
+	// Jump Shoot
+	ShootInterval += _Delta;
+	if (true == GameEngineInput::IsPress('X', this) && ShootInterval >= SHOOT_INTERVAL)
+	{
+		CreateBullet();
+		ShootInterval = 0.0f;
 	}
 
 	if (true == GameEngineInput::IsDown(VK_LSHIFT, this))

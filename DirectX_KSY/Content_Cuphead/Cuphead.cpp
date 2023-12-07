@@ -60,9 +60,9 @@ void Cuphead::Start()
 	MainRenderer->CreateAnimation("Cuphead_Intro_Type_B", "Intro_Type_B", 0.04f);
 
 	// Duck
-	MainRenderer->CreateAnimation("Cuphead_Duck",		"Duck");
-	MainRenderer->CreateAnimation("Cuphead_Duck_Idle",	"Duck_Idle");
-	MainRenderer->CreateAnimation("Cuphead_Duck_Shoot", "Duck_Shoot");
+	MainRenderer->CreateAnimation("Cuphead_Duck",		"Duck", 0.05f, -1, -1, false);
+	MainRenderer->CreateAnimation("Cuphead_Duck_Idle",	"Duck_Idle", 0.05f);
+	MainRenderer->CreateAnimation("Cuphead_Duck_Shoot", "Duck_Shoot", 0.05f);
 
 	// Dash
 	MainRenderer->CreateAnimation("Cuphead_Dash_Ground",	"Dash_Ground", 0.04f);
