@@ -18,11 +18,10 @@ void ContentGUI::Start()
 void ContentGUI::OnGUI(GameEngineLevel* _Level, float _DeltaTime)
 {
 	// Mouse Pos
-	ImGui::Text("Mouse Pos");
-	std::string MousePos = GameEngineCore::MainWindow.GetMousePos().ToString();
-	ImGui::Text(MousePos.c_str());
-	ImGui::Text("\n");
-
+	//ImGui::Text("Mouse Pos");
+	//std::string MousePos = GameEngineCore::MainWindow.GetMousePos().ToString();
+	//ImGui::Text(MousePos.c_str());
+	//ImGui::Text("\n");
 
 	// Collision On/Off
 	ImGui::Text("Collision On/Off");
