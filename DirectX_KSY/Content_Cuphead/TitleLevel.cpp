@@ -69,17 +69,21 @@ void TitleLevel::Update(float _Delta)
 	ContentLevel::Update(_Delta);
 
 	// Change To Menu
-	if (true == GameEngineInput::IsPress('P', this))
+	if (true == IsTitleScreen
+		&& (true == GameEngineInput::IsDown('P', this)
+		|| true == GameEngineInput::IsDown(VK_RETURN, this)
+		|| true == GameEngineInput::IsDown('Z', this)))
 	{
 		Back->Off();
 		CupheadAndMugman->Off();
 		MenuBack->On();
 		MenuButton->On();
+		IsTitleScreen = false;
 	}
 
 	// FadeOut On
 	bool IsLevelChange = MenuButton->GetIsLevelChange();
-	if (true == IsLevelChange)
+	if (true == IsLevelChange && false == IsTitleScreen)
 	{
 		FadeOut->On();
 	}

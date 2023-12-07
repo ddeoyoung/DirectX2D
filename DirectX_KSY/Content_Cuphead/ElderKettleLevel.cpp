@@ -150,8 +150,13 @@ void ElderKettleLevel::TutorialEnterInteraction()
 	{
 		if (true == Check && true == GameEngineInput::IsDown('Z', this))
 		{
+			CurLevelPlayer->SetIsCameraLerp(false);
+			float4 WindowScale = GameEngineCore::MainWindow.GetScale();
+			float4 CameraPos = GetMainCamera()->Transform.GetLocalPosition();
+			float4 FadePos = { CameraPos.X - WindowScale.ihX(), CameraPos.Y + WindowScale.ihY() };
 			Fade->On();
 			Fade->SetFade("Out");
+			Fade->Transform.SetLocalPosition(FadePos);
 			IsLevelChange = true;
 		}
 	}

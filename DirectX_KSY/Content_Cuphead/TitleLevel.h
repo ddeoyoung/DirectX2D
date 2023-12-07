@@ -28,5 +28,7 @@ private:
 	std::shared_ptr<class TitleMenuBackground> MenuBack = nullptr;
 	std::shared_ptr<class TitleMenuButton> MenuButton = nullptr;
 	std::shared_ptr<class FadeAnimation> FadeOut = nullptr;
+
+	bool IsTitleScreen = true;
 };
 
