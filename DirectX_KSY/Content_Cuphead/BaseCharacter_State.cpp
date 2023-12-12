@@ -306,6 +306,7 @@ void BaseCharacter::DuckUpdate(float _Delta)
 		return;
 	}
 
+	// Duck Shoot
 	if ((true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this))
 		&& (true == GameEngineInput::IsDown('X', this) || true == GameEngineInput::IsPress('X', this)))
 	{
@@ -340,6 +341,14 @@ void BaseCharacter::DuckIdleUpdate(float _Delta)
 		return;
 	}
 
+	// Duck Shoot
+	if ((true == GameEngineInput::IsDown(VK_DOWN, this) || true == GameEngineInput::IsPress(VK_DOWN, this))
+		&& (true == GameEngineInput::IsDown('X', this) || true == GameEngineInput::IsPress('X', this)))
+	{
+		ChangeState(CharacterState::DuckShoot);
+		return;
+	}
+
 	// Hit
 	HitInterval -= _Delta;
 	if (HitInterval < 0.0f)
@@ -355,6 +364,8 @@ void BaseCharacter::DuckIdleUpdate(float _Delta)
 void BaseCharacter::DuckShootStart()
 {
 	ChangeAnimationState("Duck_Shoot");
+	CreateBullet();
+	ShootInterval = 0.0f;
 }
 
 void BaseCharacter::DuckShootUpdate(float _Delta)
@@ -365,6 +376,13 @@ void BaseCharacter::DuckShootUpdate(float _Delta)
 	{
 		ChangeState(CharacterState::Idle);
 		return;
+	}
+
+	ShootInterval += _Delta;
+	if (true == GameEngineInput::IsPress('X', this) && ShootInterval >= SHOOT_INTERVAL)
+	{
+		CreateBullet();
+		ShootInterval = 0.0f;
 	}
 
 	// Hit
