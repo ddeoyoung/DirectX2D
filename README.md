@@ -2,7 +2,8 @@
 
 ### DirectX를 이용한 Cuphead 모작입니다
 
-![maintit4le](https://github.com/ddeoyoung/DirectX_KSY/assets/67747071/341a55d4-1198-44d3-8d0c-b85b22b60a2f)
+![cupheadtitle](https://github.com/user-attachments/assets/d4db0340-259c-483b-a836-c486d8a1bd0b)
+
 
 - 개발 기간 : 2023.09.04 ~ 2023.11.30 (3개월)
 - 참여 인원 : 개인 프로젝트(1명)
